@@ -14,6 +14,7 @@ public class Frog : MonoBehaviour
     public float jumpForce = 11f;
 
     private bool isGrounded;
+    private bool isDead;
 
     //public CharacterController2D controller;
 
@@ -29,16 +30,21 @@ public class Frog : MonoBehaviour
     
     void Update()
     {
-        AnimateFrog();
+        isDead = animator.GetBool("IsDead");
+        if(!isDead)AnimateFrog();
     }
     void FixedUpdate()
     {
-        tempPos = transform.position;
-        if (tempPos.x - 10.0f <= player.position.x && player.position.x <= tempPos.x + 10.0f && Time.time >= nextJumpTime)
+        if (!isDead)
         {
-            Debug.Log("detect player");
-            FrogJump();
-            nextJumpTime = Time.time + 1f / jumpRate;
+            tempPos = transform.position;
+            if (tempPos.x - 10.0f <= player.position.x && player.position.x <= tempPos.x + 10.0f && Time.time >= nextJumpTime)
+            {
+                Debug.Log("detect player");
+                FrogJump();
+                nextJumpTime = Time.time + 1f / jumpRate;
+            }
+
         }
     }
     void AnimateFrog()

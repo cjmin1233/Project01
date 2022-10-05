@@ -6,11 +6,13 @@ public class Enemy : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
+    private Animator animator;
 
-    public GameObject deathEffect;
     private void Awake()
     {
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
+        //rg = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(int damage)
@@ -23,8 +25,12 @@ public class Enemy : MonoBehaviour
     }
     void Die()
     {
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        animator.SetBool("IsDead", true);
+        GetComponent<Rigidbody2D>().gravityScale = 0;
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //Destroy(gameObject);
     }
 
 }

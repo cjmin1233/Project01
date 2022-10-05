@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
+    
     public GameObject EquipIcon;
     public GameObject Player;
+    public GameObject Canvas;
     bool isPickUp;
     void Start()
     {
@@ -38,7 +41,17 @@ public class Item : MonoBehaviour
     }
     void PickUp()
     {
-        Player.GetComponent<Animator>().SetInteger("WeaponType", 1);
-        //Destroy(gameObject);
+        if (this.tag.Equals("Sword"))
+        {
+            //Debug.Log("This is Sword");
+            Player.GetComponent<Animator>().SetInteger("WeaponType", 1);
+        }
+        else if (this.tag.Equals("Bow"))
+        {
+            //Debug.Log("This is Bow");
+            Player.GetComponent<Animator>().SetInteger("WeaponType", 2);
+            Canvas.gameObject.SetActive(true);
+        }
+
     }
 }

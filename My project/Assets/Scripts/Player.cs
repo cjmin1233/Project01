@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator animator;
     
-    
-    float movementX;
     //public float moveForce = 10f;
-    [SerializeField] [Range(100f, 2000f)] float moveSpeed = 200f;
-    [SerializeField] [Range(10f, 100f)] float jumpForce = 20f;
+    [Header("Horizontal Movement")]
+    float movementX;
+    [SerializeField] [Range(100f, 2000f)] private float baseSpeed = 400f;
+    private float currentSpeed;
+    [SerializeField] [Range(10f, 100f)] private float jumpForce = 10f;
     private float m_MovementSmoothing = .05f;
     private Vector3 m_Velocity = Vector3.zero;
+    public float dashPower = 5f;
+    public float dashTime = 0.2f;
+    private bool isDashing = false;
+    public float distanceBetweenImages;
+    public float dashCoolDown;
+    private float dashTimeLeft;
+    private float lastImageXpos;
+    private float lastDash = -100f;
+    private bool isFacingRight = true;
 
+    [Header("Vertical Movement")]
     private bool jump;
-
     private bool isGrounded;
     int playerLayer, groundLayer;
 
@@ -35,11 +44,16 @@ public class Player : MonoBehaviour
         playerLayer = LayerMask.NameToLayer("Player");
         groundLayer = LayerMask.NameToLayer("Ground");
     }
+    private void Start()
+    {
+        currentSpeed = baseSpeed;
+        int weaponType = PlayerPrefs.GetInt("weaponType");
+        animator.SetInteger("WeaponType", weaponType);
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        movementX = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        if (!isDashing) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
         animator.SetFloat("Speed", Mathf.Abs(movementX));
 
 
@@ -47,8 +61,21 @@ public class Player : MonoBehaviour
         {
             jump = true;
         }
-        AnimatePlayer();
-        //if (isGrounded) animator.SetBool("IsJumping", false);
+        FlipPlayer();
+
+        
+        if (Input.GetButtonDown("Dash"))
+        {
+            if (!isDashing && !animator.GetBool("IsJumping"))
+            {
+                if (Time.time >= (lastDash + dashCoolDown))
+                {
+                    AttemptToDash();
+                }
+                //StartCoroutine(Dash());
+            }
+        }
+        CheckDash();
     }
 
     void FixedUpdate()
@@ -69,7 +96,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        Vector3 targetVelocity = new Vector2(movementX*Time.fixedDeltaTime, rb.velocity.y);
+        Vector3 targetVelocity;
+        if (isDashing)
+        {
+            targetVelocity = new Vector2(movementX * Time.fixedDeltaTime, 0f);
+        }
+        else targetVelocity = new Vector2(movementX * Time.fixedDeltaTime, rb.velocity.y);
+
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
         if (jump && isGrounded)
@@ -90,28 +123,66 @@ public class Player : MonoBehaviour
     }
 
 
-    void AnimatePlayer()
+    void FlipPlayer()
     {
         if (movementX > 0)
         {
-            sr.flipX = false;
+            isFacingRight = true;
+            if (transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else if (movementX < 0)
         {
-            sr.flipX = true;
+            isFacingRight = false;
+            if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
-    
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    IEnumerator Dash()
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        isDashing = true;
+        currentSpeed *= dashPower;
+        if (!sr.flipX) movementX = currentSpeed;
+        else if (sr.flipX) movementX = (-1f) * currentSpeed;
+
+
+        yield return new WaitForSeconds(dashTime);
+
+        currentSpeed = baseSpeed;
+        isDashing = false;
+    }
+    private void AttemptToDash()
+    {
+        isDashing = true;
+        dashTimeLeft = dashTime;
+        lastDash = Time.time;
+
+        AfterimagePool.Instance.GetFromPool();
+        lastImageXpos = transform.position.x;
+    }
+    private void CheckDash()
+    {
+        if (isDashing)
         {
-            if (rb.velocity.y <= 0.01f && -0.01f <= rb.velocity.y)
+            if (dashTimeLeft > 0)
             {
-                isGrounded = true;
-                animator.SetBool("IsJumping", false);
+                currentSpeed = dashPower * baseSpeed;
+                if (isFacingRight) movementX = currentSpeed;
+                else movementX = (-1f) * currentSpeed;
+
+                dashTimeLeft -= Time.deltaTime;
+
+                if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
+                {
+                    AfterimagePool.Instance.GetFromPool();
+                    lastImageXpos = transform.position.x;
+                }
+
+            }
+            if (dashTimeLeft <= 0)
+            {
+                currentSpeed = baseSpeed;
+                isDashing = false;
             }
         }
-    }*/
+    }
 }
