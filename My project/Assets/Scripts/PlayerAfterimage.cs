@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PlayerAfterimage : MonoBehaviour
 {
-    [SerializeField]
-    private float activeTime = 0.1f;
+    private float activeTime = .2f;
     private float timeActivated;
     private float alpha;
-    [SerializeField]
-    private float alphaSet = 0.8f;
-    private float alphaMultiplier = 0.9f;
+    private float alphaSet = 1.0f;
+    private float alphaSubtracter = 0.0083f;
 
     private Transform player;
 
@@ -19,13 +17,16 @@ public class PlayerAfterimage : MonoBehaviour
 
     private Color color;
 
+
     private void OnEnable()
     {
         sr = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerSR = player.GetComponent<SpriteRenderer>();
+        playerSR = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
         alpha = alphaSet;
+        //alpha = playerSR.color.a;
+        //Debug.Log(alpha);
         sr.sprite = playerSR.sprite;
         transform.position = player.position;
         transform.rotation = player.rotation;
@@ -34,7 +35,7 @@ public class PlayerAfterimage : MonoBehaviour
     }
     private void Update()
     {
-        alpha *= alphaMultiplier;
+        alpha -= alphaSubtracter;
         color = new Color(1f, 1f, 1f, alpha);
         sr.color = color;
 

@@ -165,6 +165,7 @@ public class Player : MonoBehaviour
         {
             if (dashTimeLeft > 0)
             {
+                animator.SetBool("IsDashing", isDashing);
                 currentSpeed = dashPower * baseSpeed;
                 if (isFacingRight) movementX = currentSpeed;
                 else movementX = (-1f) * currentSpeed;
@@ -182,6 +183,7 @@ public class Player : MonoBehaviour
             {
                 currentSpeed = baseSpeed;
                 isDashing = false;
+                animator.SetBool("IsDashing", isDashing);
             }
         }
     }
