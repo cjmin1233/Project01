@@ -36,7 +36,7 @@ public class PlayerAfterimage : MonoBehaviour
     private void Update()
     {
         alpha -= alphaSubtracter;
-        color = new Color(1f, 1f, 1f, alpha);
+        color = new Color(0.2f, 0.2f, 0.2f, alpha);
         sr.color = color;
 
         if (Time.time >= (timeActivated + activeTime))

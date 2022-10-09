@@ -32,7 +32,6 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            //EquipIcon.gameObject.SetActive(false);
             EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", false);
             isPickUp = false;
         }
