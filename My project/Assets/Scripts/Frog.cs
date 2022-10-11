@@ -19,7 +19,7 @@ public class Frog : MonoBehaviour
     //public CharacterController2D controller;
 
     //float horizontalMove = 0f;
-    int count = 1;
+    //int count = 1;
     //bool jump = false;
 
     public Transform player;

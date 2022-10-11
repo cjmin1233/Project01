@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    
+    //public SelectAbility selectAbility;
+    //public Button button;
     public GameObject EquipIcon;
     public GameObject Player;
     public GameObject Canvas;
@@ -50,7 +51,8 @@ public class Item : MonoBehaviour
         {
             //Debug.Log("This is Bow");
             Player.GetComponent<Animator>().SetInteger("WeaponType", 2);
-            Canvas.gameObject.SetActive(true);
+            //Canvas.gameObject.SetActive(true);
+            Player.GetComponent<SelectAbility>().RandomAbility();
         }
 
     }

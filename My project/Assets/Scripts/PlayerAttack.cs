@@ -18,9 +18,9 @@ public class PlayerAttack : MonoBehaviour
     float nextAttackTime = 0f;
 
     private float XattackTime = 0.5f;
-    private float swordCombo_1 = 0.4f;
-    private float swordCombo_2 = 0.3f;
-    private float swordCombo_3 = 0.5f;
+    private float swordCombo_1 = 0.3f;
+    private float swordCombo_2 = 0.2f;
+    private float swordCombo_3 = 0.4f;
 
     private float comboCounter = 0f;
     private float comboTime = 0.5f;
@@ -43,7 +43,6 @@ public class PlayerAttack : MonoBehaviour
             isZAttacking = false;
             isXAttacking = false;
         }
-
 
         if (Input.GetButtonDown("AttackZ") && Time.time >= nextAttackTime)
         {
