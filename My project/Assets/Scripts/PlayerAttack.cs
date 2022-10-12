@@ -14,21 +14,22 @@ public class PlayerAttack : MonoBehaviour
     public GameObject ArrowPrefab;
 
 
-    private int SwordDamage = 40;
-    float nextAttackTime = 0f;
+    //private int SwordDamage = 40;
+    public int swordDamage_z = 40;
+    public int swordDamage_x = 40;
 
-    private float XattackTime = 0.5f;
-    private float swordCombo_1 = 0.3f;
-    private float swordCombo_2 = 0.2f;
-    private float swordCombo_3 = 0.4f;
-
-    private float comboCounter = 0f;
-    private float comboTime = 0.5f;
-    // float comboTimeLeft;
-    int weaponType;
-    bool isZAttacking = false;
+    // Combo attack ***************
+    public int comboCounter = 0;
+    public bool isZAttacking = false;
+    public float Speed_Z = 1.0f;
+    // ****************************
+    
+    // X attack *******************
     bool isXAttacking = false;
-
+    public float Speed_X = 1.0f;
+    // ****************************
+    int weaponType;
+    bool isJumping;
 
     private void Start()
     {
@@ -38,110 +39,110 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
-        if (Time.time >= nextAttackTime)
-        {
-            isZAttacking = false;
-            isXAttacking = false;
-        }
+        isJumping = animator.GetBool("IsJumping");
+        weaponType = animator.GetInteger("WeaponType");
 
-        if (Input.GetButtonDown("AttackZ") && Time.time >= nextAttackTime)
+        if (Input.GetButtonDown("AttackZ") && !isZAttacking && !isJumping && !isXAttacking)
         {
-            weaponType = animator.GetInteger("WeaponType");
-            if (weaponType == 1 && !isXAttacking)
-            {
-                isZAttacking = true;
-                //Debug.Log("Combo Attack");
-                if (comboCounter <= 0.5f || Time.time > nextAttackTime + comboTime)
-                {
-                    // Combo_1
-                    comboCounter = 0f;
-                    nextAttackTime = Time.time + swordCombo_1;
-                    //comboTimeLeft = comboTime;
-                    animator.SetFloat("Combo", comboCounter);
-                    comboCounter = 1.0f;
-                }
-                else if (comboCounter <= 1.5f && Time.time <= nextAttackTime + comboTime)
-                {
-                    // Combo_2
-                    nextAttackTime = Time.time + swordCombo_2;
-                    //comboTimeLeft = comboTime;
-                    animator.SetFloat("Combo", comboCounter);
-                    comboCounter += 1.0f;
-                }
-                else if(comboCounter<=2.5f && Time.time <= nextAttackTime + comboTime)
-                {
-                    // Combo_3
-                    nextAttackTime = Time.time + swordCombo_3;
-                    animator.SetFloat("Combo", comboCounter);
-                    comboCounter = 0f;
-                }
-                SwordZAttack();
-            }
-        }
-
-        if (Time.time >= nextAttackTime && !isZAttacking)
-        {
-            weaponType = animator.GetInteger("WeaponType");
             if (weaponType == 1)
             {
-                if (Input.GetButtonDown("AttackX"))
-                {
-                    isXAttacking = true;
-                    //Debug.Log("Sword attack");
-                    SwordXAttack();
-                    nextAttackTime = Time.time + XattackTime;
-                }
-
+                //  Sword Z combo attack.
+                SwordZAttack();
             }
             else if (weaponType == 2)
             {
-                if (Input.GetButtonDown("AttackX"))
-                {
-                    //Debug.Log("Bow attack");
-                    BowXAttack();
-                    nextAttackTime = Time.time + XattackTime;
-                }
-
+                //  Bow Z combo attack.
+            }
+            else if (weaponType == 3)
+            {
+                //  Spear Z combo attack.
             }
         }
 
-        //comboTimeLeft -= Time.fixedDeltaTime;
+        if (Input.GetButton("AttackX") && !isXAttacking && !isJumping && !isZAttacking)
+        {
+            if (weaponType == 1)
+            {
+                //  Sword X attack.
+                SwordXAttack();
+            }
+            else if (weaponType == 2)
+            {
+                //  Bow X attack.
+                BowXAttack();
+            }
+            else if (weaponType == 3)
+            {
+                //  Spear X attack.
+            }
 
+        }
+
+    }
+    public void Start_Combo()
+    {
+        isZAttacking = false;
+        if (comboCounter < 3)
+        {
+            comboCounter++;
+        }
+    }
+    public void Finish_Combo()
+    {
+        isZAttacking = false;
+        comboCounter = 0;
+    }
+    public void Finish_X()
+    {
+        isXAttacking = false;
     }
     private void SwordZAttack()
     {
-        animator.SetTrigger("AttackZ");
+        animator.SetFloat("Speed_Z", Speed_Z);
+        isZAttacking = true;
+        animator.SetTrigger("Combo" + comboCounter);
+
         //Debug.Log(comboCounter);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(SwordPoint.position, SwordRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             //Debug.Log("We hit " + enemy.name);
-            enemy.GetComponent<Enemy>().TakeDamage(SwordDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(swordDamage_z);
         }
     }
     private void SwordXAttack()
      {
+        animator.SetFloat("Speed_X", Speed_X);
+        isXAttacking = true;
         animator.SetTrigger("AttackX");
+        Finish_Combo();
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(SwordPoint.position, SwordRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             //Debug.Log("We hit " + enemy.name);
-            enemy.GetComponent<Enemy>().TakeDamage(SwordDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(swordDamage_x);
         }
     }
     private void BowXAttack()
     {
+        animator.SetFloat("Speed_X", Speed_X);
+        isXAttacking = true;
         animator.SetTrigger("AttackX");
+        Finish_Combo();
         Instantiate(ArrowPrefab, firePoint.position, firePoint.rotation);
     }
+
+
+
+    /*
     public void BigArrow()
     {
         Debug.Log("Make the arrow Bigger");
         ArrowPrefab.GetComponent<BoxCollider2D>().size = new Vector2(ArrowPrefab.GetComponent<BoxCollider2D>().size.x, ArrowPrefab.GetComponent<BoxCollider2D>().size.y * 1.5f);
-    }
+    }*/
     /*
     private void OnDrawGizmos()
     {

@@ -288,6 +288,11 @@ MonoBehaviour:
     m_Bits: 128
   firePoint: {fileID: 1832905742}
   ArrowPrefab: {fileID: 5042815222521871823, guid: 10f49b9363481dd4080aebbaec303bdf, type: 3}
+  swordDamage_z: 40
+  swordDamage_x: 40
+  comboCounter: 0
+  isZAttacking: 0
+  Speed_Z: 1
 --- !u!114 &5572525395337468932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +317,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  abilityArray: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - {fileID: 0}
+  - {fileID: 0}
   buttonLocations:
   - {fileID: 0}
   - {fileID: 0}
