@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
+    public int index;
     public int Type;
     public int Tier;
     public int level;
