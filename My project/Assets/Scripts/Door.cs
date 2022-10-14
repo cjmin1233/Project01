@@ -48,7 +48,7 @@ public class Door : MonoBehaviour
             Debug.Log("Active Scene is '" + scene.name + "'.");
             Debug.Log("move to the next scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+            Player.gameObject.transform.position = new Vector3(0f, 0f, 0f);
         }
         else Debug.Log("Choose a weapon");
 

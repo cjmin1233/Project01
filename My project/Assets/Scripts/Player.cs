@@ -33,8 +33,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private LayerMask WhatIsGround;
+    
     const float GroundedRadius = 0.2f;
 
+    [SerializeField] private GameObject HP_Bar;
+    public int MaxHP = 100;
+    public int CurHP;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -46,6 +50,8 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
+        CurHP = MaxHP;
+        HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
         currentSpeed = baseSpeed;
         int weaponType = PlayerPrefs.GetInt("weaponType");
         animator.SetInteger("WeaponType", weaponType);
@@ -56,6 +62,15 @@ public class Player : MonoBehaviour
         if (!isDashing) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
         animator.SetFloat("Speed", Mathf.Abs(movementX));
 
+        // HP bar test.
+        if (Input.GetKeyDown(KeyCode.A))    //Increase hp.
+        {
+            IncreaseMaxHP();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))    //Take damage.
+        {
+            TakeDamage(20);
+        }
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -72,7 +87,6 @@ public class Player : MonoBehaviour
                 {
                     AttemptToDash();
                 }
-                //StartCoroutine(Dash());
             }
         }
         CheckDash();
@@ -109,6 +123,10 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
             animator.SetBool("IsJumping", true);
+            gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
+            gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
+            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
+
 
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
@@ -136,7 +154,7 @@ public class Player : MonoBehaviour
             if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
-
+    /*
     IEnumerator Dash()
     {
         isDashing = true;
@@ -149,7 +167,7 @@ public class Player : MonoBehaviour
 
         currentSpeed = baseSpeed;
         isDashing = false;
-    }
+    }*/
     private void AttemptToDash()
     {
         isDashing = true;
@@ -163,6 +181,9 @@ public class Player : MonoBehaviour
     {
         if (isDashing)
         {
+            gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
+            gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
+            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
             if (dashTimeLeft > 0)
             {
                 animator.SetBool("IsDashing", isDashing);
@@ -186,5 +207,33 @@ public class Player : MonoBehaviour
                 animator.SetBool("IsDashing", isDashing);
             }
         }
+    }
+    public void IncreaseMaxHP()
+    {
+        MaxHP += 25;
+        CurHP += 25;
+        HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
+    }
+    public void TakeDamage(int damage)
+    {
+        CurHP -= damage;
+
+        if (CurHP <= 0)
+        {
+            CurHP = 0;
+            Die();
+        }
+
+        HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
+    }
+    private void Die()
+    {
+        //animator.SetBool("IsDead", true);
+        //GetComponent<Rigidbody2D>().gravityScale = 0;
+        //GetComponent<Collider2D>().enabled = false;
+        Debug.Log("Player Died");
+        //this.enabled = false;
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //Destroy(gameObject);
     }
 }

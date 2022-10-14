@@ -25,11 +25,12 @@ public class PlayerAttack : MonoBehaviour
     // ****************************
     
     // X attack *******************
-    bool isXAttacking = false;
+    public bool isXAttacking = false;
     public float Speed_X = 1.0f;
     // ****************************
     int weaponType;
     bool isJumping;
+    bool isDashing;
 
     private void Start()
     {
@@ -39,10 +40,11 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
+        isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
         weaponType = animator.GetInteger("WeaponType");
 
-        if (Input.GetButtonDown("AttackZ") && !isZAttacking && !isJumping && !isXAttacking)
+        if (Input.GetButtonDown("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing)
         {
             if (weaponType == 1)
             {
@@ -59,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        if (Input.GetButton("AttackX") && !isXAttacking && !isJumping && !isZAttacking)
+        if (Input.GetButton("AttackX") && !isXAttacking && !isJumping && !isZAttacking && !isDashing)
         {
             if (weaponType == 1)
             {
