@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
     [SerializeField] private GameObject EnterIcon;
-    [SerializeField] private GameObject Player;
+    private GameObject Player;
     bool isPickUp;
     void Awake()
     {
@@ -23,6 +23,7 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            Player = collision.gameObject;
             EnterIcon.gameObject.SetActive(true);
             EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
             isPickUp = true;

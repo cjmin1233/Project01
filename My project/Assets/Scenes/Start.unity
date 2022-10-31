@@ -1252,10 +1252,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 890479210, guid: 789212538d81f4949b3c8fae066bfafa, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 899068097054526223, guid: 789212538d81f4949b3c8fae066bfafa, type: 3}
       propertyPath: m_Name
       value: Enemy_eagle
@@ -1539,8 +1535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipIcon: {fileID: 2134229784}
-  Player: {fileID: 2028660579}
-  Canvas: {fileID: 1098061233}
 --- !u!61 &443330398
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1639,6 +1633,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2028660580, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
+      propertyPath: isZAttacking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028660580, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
+      propertyPath: enemyLayers.m_Bits
+      value: 1152
+      objectReference: {fileID: 0}
     - target: {fileID: 1375946359166567443, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
       propertyPath: HP_Bar
       value: 
@@ -1686,6 +1688,22 @@ PrefabInstance:
     - target: {fileID: 1375946359166567444, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375946359166567445, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375946359166567445, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375946359166567445, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375946359166567445, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1375946359166567449, guid: 7f8e72c66a3e10e4391f89e1497f3063, type: 3}
       propertyPath: m_Name
@@ -1955,7 +1973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnterIcon: {fileID: 1969723225}
-  Player: {fileID: 2028660579}
 --- !u!61 &651571696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4757,8 +4774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipIcon: {fileID: 843573298}
-  Player: {fileID: 2028660579}
-  Canvas: {fileID: 0}
 --- !u!61 &1196819113
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5204,7 +5219,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8dd52008e65a13f4494c0f811cfc9946, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

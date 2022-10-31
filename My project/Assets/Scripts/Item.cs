@@ -9,8 +9,8 @@ public class Item : MonoBehaviour
     //public SelectAbility selectAbility;
     //public Button button;
     public GameObject EquipIcon;
-    public GameObject Player;
-    public GameObject Canvas;
+    //public GameObject Canvas;
+    private GameObject Player;
     bool isPickUp;
     void Start()
     {
@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            Player = collision.gameObject;
             EquipIcon.gameObject.SetActive(true);
             EquipIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
             isPickUp = true;
