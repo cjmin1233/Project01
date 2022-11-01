@@ -15,18 +15,23 @@ public class PlayerAttack : MonoBehaviour
 
 
     //private int SwordDamage = 40;
-    public int swordDamage_z = 40;
-    public int swordDamage_x = 40;
+    public float swordDamage_z = 40;
+    public float swordDamage_x = 40;
+    public float swordDamage_z_multiplier = 1.0f;
+    public float swordDamage_x_multiplier = 1.0f;
+
 
     // Combo attack ***************
     public int comboCounter = 0;
     public bool isZAttacking = false;
     public float Speed_Z = 1.0f;
+    public GameObject[] comboCollider;
     // ****************************
     
     // X attack *******************
     public bool isXAttacking = false;
     public float Speed_X = 1.0f;
+    public GameObject Sword_Collider_X;
     // ****************************
     int weaponType;
     bool isJumping;
@@ -84,6 +89,7 @@ public class PlayerAttack : MonoBehaviour
     public void Start_Combo()
     {
         isZAttacking = false;
+        Enable_Sword_Combo_Collider();
         if (comboCounter < 3)
         {
             comboCounter++;
@@ -98,6 +104,13 @@ public class PlayerAttack : MonoBehaviour
     {
         isXAttacking = false;
     }
+
+    private void Enable_Sword_Combo_Collider()
+    {
+        comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier);
+        comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_Z;
+        comboCollider[comboCounter].SetActive(true);
+    }
     private void SwordZAttack()
     {
         animator.SetFloat("Speed_Z", Speed_Z);
@@ -105,18 +118,21 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("Combo" + comboCounter);
 
         //Debug.Log(comboCounter);
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(SwordPoint.position, SwordRange, enemyLayers);
 
+        /*
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(SwordPoint.position, SwordRange, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
             string tag = enemy.tag;
             if (tag == "Enemy")
             {
-                enemy.GetComponent<Enemy>().TakeDamage(swordDamage_z);
+                enemy.GetComponent<Enemy>().TakeDamage(Mathf.Round(swordDamage_z * swordDamage_z_multiplier));
+                //enemy.GetComponent<Enemy>().TakeDamage(swordDamage_z);
             }
             else if (tag == "Boss")
             {
-                Debug.Log("We hit " + enemy.name);
+                //Debug.Log("We hit " + enemy.name);
+                enemy.GetComponent<Boss>().TakeDamage(Mathf.Round(swordDamage_z * swordDamage_z_multiplier));
             }
             else
             {
@@ -124,6 +140,13 @@ public class PlayerAttack : MonoBehaviour
             }
             //Debug.Log("We hit " + enemy.name);
         }
+         */
+    }
+    private void Enable_Sword_Collider_X()
+    {
+        Sword_Collider_X.GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
+        Sword_Collider_X.GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_X;
+        Sword_Collider_X.SetActive(true);
     }
     private void SwordXAttack()
      {
@@ -132,6 +155,7 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("AttackX");
         Finish_Combo();
 
+        /*
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(SwordPoint.position, SwordRange, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -139,17 +163,19 @@ public class PlayerAttack : MonoBehaviour
             string tag = enemy.tag;
             if (tag == "Enemy")
             {
-                enemy.GetComponent<Enemy>().TakeDamage(swordDamage_x);
+                enemy.GetComponent<Enemy>().TakeDamage(Mathf.Round(swordDamage_x * swordDamage_x_multiplier));
             }
             else if (tag == "Boss")
             {
                 Debug.Log("We hit " + enemy.name);
+                enemy.GetComponent<Boss>().TakeDamage(Mathf.Round(swordDamage_x * swordDamage_x_multiplier));
             }
             else
             {
                 Debug.Log("We hit nothing");
             }
         }
+         */
     }
     private void BowXAttack()
     {
@@ -159,7 +185,6 @@ public class PlayerAttack : MonoBehaviour
         Finish_Combo();
         Instantiate(ArrowPrefab, firePoint.position, firePoint.rotation);
     }
-
 
 
     /*

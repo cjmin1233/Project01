@@ -10,11 +10,11 @@ public class Enemy_Healthbar : MonoBehaviour
     public Color High;
     public Vector3 Offset;
 
-    public void SetHealth(int currentHealth, int maxHealth)
+    public void SetHealth(float currentHealth, float maxHealth)
     {
         Slider.gameObject.SetActive(currentHealth < maxHealth);
-        Slider.value = currentHealth;
         Slider.maxValue = maxHealth;
+        Slider.value = currentHealth;
 
         Slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, Slider.normalizedValue);
     }

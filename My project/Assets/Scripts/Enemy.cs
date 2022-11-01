@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int maxHealth = 100;
-    private int currentHealth;
+    public float maxHealth = 100;
+    private float currentHealth;
     private Animator animator;
     [SerializeField] private Transform damagePoint;
     public GameObject DamageText;
@@ -14,12 +14,12 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        healthbar.SetHealth(maxHealth, maxHealth);
+        healthbar.SetHealth(currentHealth, maxHealth);
         animator = GetComponent<Animator>();
         //rg = GetComponent<Rigidbody2D>();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         GameObject dmgText = Instantiate(DamageText);
         dmgText.transform.position = damagePoint.transform.position;
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    void Die()
+    private void Die()
     {
         animator.SetBool("IsDead", true);
         GetComponent<Rigidbody2D>().gravityScale = 0;

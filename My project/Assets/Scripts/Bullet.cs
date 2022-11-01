@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 25f;
-    public int damage = 40;
+    public float damage = 40f;
     public GameObject ImpactEffect;
     private Rigidbody2D rb;
 
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         else if (tag == "Boss")
         {
             Debug.Log("We hit the " + hitInfo.name);
-            //
+            hitInfo.GetComponent<Boss>().TakeDamage(damage);
         }
         else
         {

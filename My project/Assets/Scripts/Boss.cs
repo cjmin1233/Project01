@@ -22,7 +22,13 @@ public class Boss : MonoBehaviour
     private float timer = 0f;
     private int nextAction;
 
-    // Start is called before the first frame update
+    // Boss HP
+    private float maxHealth;
+    private float currentHealth;
+    [SerializeField] private Transform damagePoint;
+    public GameObject DamageText;
+    public Boss_Healthbar healthbar;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -30,9 +36,12 @@ public class Boss : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         isActing = false;
+
+        maxHealth = 2000f;
+        currentHealth = maxHealth;
+        healthbar.SetHealth(currentHealth, maxHealth);
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (!isActing) timer += Time.deltaTime;
@@ -102,6 +111,29 @@ public class Boss : MonoBehaviour
             //isFacingRight = false;
             if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        GameObject dmgText = Instantiate(DamageText);
+        dmgText.transform.position = damagePoint.transform.position;
+        dmgText.GetComponent<DamageText>().damage = damage;
+        currentHealth -= damage;
+        healthbar.SetHealth(currentHealth, maxHealth);
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        Debug.Log("Boss Dead. Congratulations!");
+        //animator.SetBool("IsDead", true);
+        //GetComponent<Rigidbody2D>().gravityScale = 0;
+        //GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+        //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
 }
