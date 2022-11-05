@@ -10,12 +10,12 @@ public class Player : MonoBehaviour
     
     //public float moveForce = 10f;
     float movementX;
-    [Header("Horizontal Movement")][SerializeField] [Range(100f, 2000f)] private float baseSpeed = 400f;
+    [Header("Horizontal Movement")][SerializeField] private float baseSpeed = 400f;
     public float dashPower = 5f;
     public float dashTime = 0.2f;
     public float distanceBetweenImages;
     public float dashCoolDown;
-    [SerializeField] [Range(10f, 100f)] private float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 10f;
 
     private Vector3 m_Velocity = Vector3.zero;
     private float m_MovementSmoothing = .05f;
@@ -27,14 +27,15 @@ public class Player : MonoBehaviour
     private bool isFacingRight = true;
 
     [Header("Vertical Movement")]
+    //public bool isStuckable = false;
     private bool jump;
     private bool isGrounded;
     int playerLayer, groundLayer;
+    //bool ignoreGround = false;
 
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private LayerMask WhatIsGround;
-    
-    const float GroundedRadius = 0.2f;
+    const float GroundedRadius = 0.1f;
 
     [SerializeField] private GameObject HP_Bar;
     public int MaxHP = 100;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
     private bool canInvincible = false;
     float invincibleTimeLeft;
     float invincibleTime = 1f;
+    [SerializeField] private GameObject Esc_PopUp;
     private void Start()
     {
         invincibleTimeLeft = 0f;
@@ -90,6 +92,12 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        // UI
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Esc_PopUp.SetActive(true);
+        }
         Invincible();
         FlipPlayer();
         CheckDash();
@@ -97,50 +105,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool wasGrounded = isGrounded;
-        isGrounded = false;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
-        for(int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                isGrounded = true;
-                if (!wasGrounded)
-                {
-                    animator.SetBool("IsJumping", false);
-                }
-            }
-        }
-
-        Vector3 targetVelocity;
-        if (isDashing)
-        {
-            targetVelocity = new Vector2(movementX * Time.fixedDeltaTime, 0f);
-        }
-        else targetVelocity = new Vector2(movementX * Time.fixedDeltaTime, rb.velocity.y);
-
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-
-        if (jump && isGrounded)
-        {
-            isGrounded = false;
-            animator.SetBool("IsJumping", true);
-            gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
-
-
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        }
-        jump = false;
-
-        /*
-        if (rb.velocity.y > 0)
-        {
-            Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
-        }
-        else Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);*/
+        HorizontalMove();
+        VerticalMove();
     }
 
 
@@ -157,20 +123,6 @@ public class Player : MonoBehaviour
             if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
-    /*
-    IEnumerator Dash()
-    {
-        isDashing = true;
-        currentSpeed *= dashPower;
-        if (!sr.flipX) movementX = currentSpeed;
-        else if (sr.flipX) movementX = (-1f) * currentSpeed;
-
-
-        yield return new WaitForSeconds(dashTime);
-
-        currentSpeed = baseSpeed;
-        isDashing = false;
-    }*/
     private void AttemptToDash()
     {
         isDashing = true;
@@ -217,6 +169,120 @@ public class Player : MonoBehaviour
             }
         }
     }
+    private void HorizontalMove()
+    {
+        Vector3 targetVelocity;
+        if (isDashing)
+        {
+            targetVelocity = new Vector2(movementX * Time.fixedDeltaTime, 0f);
+        }
+        else targetVelocity = new Vector2(movementX * Time.fixedDeltaTime, rb.velocity.y);
+
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+    }
+    private void VerticalMove()
+    {
+        //////////////////////////////
+        bool wasGrounded = isGrounded;
+        isGrounded = false;
+        //if(isStuckable) Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
+        if (colliders.Length == 0 && !wasGrounded) Debug.Log("I'm flying!");
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                isGrounded = true;
+                if (!wasGrounded)
+                {
+                    animator.SetBool("IsJumping", false);
+                    //Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
+                    Debug.Log("I'm grounded");
+                }
+            }
+        }
+        if (jump && isGrounded)
+        {
+            isGrounded = false;
+            animator.SetBool("IsJumping", true);
+            gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
+            gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
+            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
+
+
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+        jump = false;
+        /*
+        if (!ignoreGround)
+        {
+            //////////////////////////////
+            bool wasGrounded = isGrounded;
+            isGrounded = false;
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].gameObject != gameObject)
+                {
+                    isGrounded = true;
+                    if (!wasGrounded)
+                    {
+                        animator.SetBool("IsJumping", false);
+                        Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
+                    }
+                }
+            }
+            if (jump && isGrounded)
+            {
+                isGrounded = false;
+                animator.SetBool("IsJumping", true);
+                gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
+                gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
+                gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
+
+
+                rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            }
+            jump = false;
+
+        }
+
+        
+        bool wasGrounded = isGrounded;
+        isGrounded = false;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject != gameObject)
+            {
+                isGrounded = true;
+                if (!wasGrounded)
+                {
+                    animator.SetBool("IsJumping", false);
+                }
+            }
+        }
+        if (jump && isGrounded)
+        {
+            isGrounded = false;
+            animator.SetBool("IsJumping", true);
+            gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
+            gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
+            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
+
+
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+        jump = false;
+        */
+        //if (ignoreGround) Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
+        //else Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
+
+
+    }
     public void IncreaseMaxHP()
     {
         MaxHP += 25;
@@ -257,6 +323,18 @@ public class Player : MonoBehaviour
             }
         }
     }
+    /*
+    public void EnableIgnoreGround()
+    {
+        ignoreGround = true;
+        Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
+    }
+    public void DisableIgnoreGround()
+    {
+        ignoreGround = false;
+        Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
+    }
+     */
     private void Die()
     {
         //animator.SetBool("IsDead", true);

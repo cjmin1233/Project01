@@ -20983,7 +20983,7 @@ GameObject:
   - component: {fileID: 1008627681}
   - component: {fileID: 1008627680}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Map_Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21015,7 +21015,7 @@ Transform:
   - {fileID: 689638561}
   - {fileID: 341028524}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1142933028
 GameObject:
@@ -21187,7 +21187,7 @@ Transform:
   - {fileID: 1250108101}
   - {fileID: 2120763874}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1142933035
 MonoBehaviour:
@@ -21222,7 +21222,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  damagePoint: {fileID: 0}
   DamageText: {fileID: 0}
+  healthbar: {fileID: 0}
 --- !u!1 &1250108100
 GameObject:
   m_ObjectHideFlags: 0
@@ -21285,7 +21287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnterIcon: {fileID: 193473596}
-  Player: {fileID: 0}
 --- !u!61 &1512260048
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21376,7 +21377,7 @@ Transform:
   m_Children:
   - {fileID: 193473599}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1525304431
 PrefabInstance:

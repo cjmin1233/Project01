@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+
 
 public class DamageText : MonoBehaviour
 {
     public float floatingSpeed;
     public float alphaSpeed;
+    //Text text_tmp;
     TextMeshPro text;
     Color alpha;
     public float damage;
@@ -15,6 +18,7 @@ public class DamageText : MonoBehaviour
     void Start()
     {
         text = GetComponent<TextMeshPro>();
+        //text = GetComponent<Text>();
         text.text = damage.ToString();
         alpha = text.color;
         Invoke("DestroyObject", 1);
