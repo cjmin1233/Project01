@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    private Rigidbody2D rg;
     private Animator animator;
     private SpriteRenderer sr;
     public Transform SwordPoint;
@@ -39,6 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
+        rg = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
@@ -116,6 +118,12 @@ public class PlayerAttack : MonoBehaviour
         animator.SetFloat("Speed_Z", Speed_Z);
         isZAttacking = true;
         animator.SetTrigger("Combo" + comboCounter);
+
+        // 공격시 약 전진
+        Debug.Log("i'm here");
+        float swordCombo_force = 2.0f;
+        if (transform.rotation.y != 0f) swordCombo_force *= -1f;
+        rg.AddForce(new Vector2(swordCombo_force, 0f));
 
         //Debug.Log(comboCounter);
 

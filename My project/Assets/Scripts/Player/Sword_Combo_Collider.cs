@@ -16,6 +16,7 @@ public class Sword_Combo_Collider : MonoBehaviour
     {        
         animator.SetFloat("EnableSpeed", anim_Speed);
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.tag;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SelectAbility : MonoBehaviour
 {
-    public GameObject Canvas;
+    public GameObject Ability_UI;
 
     public GameObject[] abilityButtons;
     public Transform[] buttonLocations;
@@ -31,7 +31,7 @@ public class SelectAbility : MonoBehaviour
     {
         for(int i = 0; i < abilityButtons.Length; i++)
         {
-            abilityButtons[i].gameObject.GetComponent<Ability>().index = i;
+            abilityButtons[i].GetComponent<Ability>().index = i;
         }
     }
     public void RandomAbility()
@@ -41,8 +41,8 @@ public class SelectAbility : MonoBehaviour
 
         for(int i = 0; i < abilityButtons.Length; i++)
         {
-            abilityButtons[i].gameObject.GetComponent<Ability>().isAppeared = false;
-            current_weight = abilityButtons[i].gameObject.GetComponent<Ability>().weight;
+            abilityButtons[i].GetComponent<Ability>().isAppeared = false;
+            current_weight = abilityButtons[i].GetComponent<Ability>().weight;
             if (current_weight != 0)
             {
                 totalWeight += current_weight;
@@ -60,7 +60,7 @@ public class SelectAbility : MonoBehaviour
             //
             Debug.Log("Remain ability is : " + remainAbility);
             if (remainAbility > 3) remainAbility = 3;
-            Canvas.gameObject.SetActive(true);
+            Ability_UI.SetActive(true);
 
             for(int j = 0; j < remainAbility; j++)
             {
@@ -69,8 +69,8 @@ public class SelectAbility : MonoBehaviour
 
                 for(int i = 0; i < abilityButtons.Length; i++)
                 {
-                    current_weight = abilityButtons[i].gameObject.GetComponent<Ability>().weight;
-                    if (current_weight == 0 || abilityButtons[i].gameObject.GetComponent<Ability>().isAppeared)
+                    current_weight = abilityButtons[i].GetComponent<Ability>().weight;
+                    if (current_weight == 0 || abilityButtons[i].GetComponent<Ability>().isAppeared)
                     {
                         continue;
                     }
@@ -86,13 +86,10 @@ public class SelectAbility : MonoBehaviour
                     }
                 }
 
-                //
-                Vector3 buttonTransfrom = new Vector3(abilityButtons[rand].gameObject.transform.position.x, abilityButtons[rand].gameObject.transform.position.y, abilityButtons[rand].gameObject.transform.position.z);
-                Vector3 locationVector = new Vector3(buttonLocations[j].transform.position.x, buttonLocations[j].transform.position.y, buttonLocations[j].transform.position.z);
-                abilityButtons[rand].transform.Translate(locationVector - buttonTransfrom);
-                abilityButtons[rand].gameObject.SetActive(true);
-                abilityButtons[rand].gameObject.GetComponent<Ability>().isAppeared = true;
-                totalWeight -= abilityButtons[rand].gameObject.GetComponent<Ability>().weight;
+                abilityButtons[rand].transform.position = buttonLocations[j].transform.position;
+                abilityButtons[rand].SetActive(true);
+                abilityButtons[rand].GetComponent<Ability>().isAppeared = true;
+                totalWeight -= abilityButtons[rand].GetComponent<Ability>().weight;
 
             }
         }
@@ -124,68 +121,76 @@ public class SelectAbility : MonoBehaviour
         for (int i = 0; i < abilityButtons.Length; i++)
         {
             GameObject ability = abilityButtons[i];
-            int type = ability.gameObject.GetComponent<Ability>().Type;
-            int tier = ability.gameObject.GetComponent<Ability>().Tier;
-            bool isSelected = ability.gameObject.GetComponent<Ability>().isSelected;
+            int type = ability.GetComponent<Ability>().Type;
+            int tier = ability.GetComponent<Ability>().Tier;
+            bool isSelected = ability.GetComponent<Ability>().isSelected;
 
             if (type == SelectedAbility.Type && !isSelected)  // 선택된 능력과 타입은 같으나 선택받지 못한 능력일 때
             {
-                ability.gameObject.GetComponent<Ability>().weight += 1;
+                ability.GetComponent<Ability>().weight += 1;
                 if (tier == SelectedAbility.Tier + 1)
                 {
-                    ability.gameObject.GetComponent<Ability>().weight += 1;
+                    ability.GetComponent<Ability>().weight += 1;
                 }
             }
             //if (abilityButtons[i].gameObject.GetComponent<Ability>().appeared) abilityButtons[i].gameObject.GetComponent<Ability>().appeared = false;
-            ability.gameObject.SetActive(false);
+            ability.SetActive(false);
         }
-        /*
-        GameObject SelectedAbility = abilityButtons[index];
-        SelectedAbility.gameObject.GetComponent<Ability>().isSelected = true;
-
-        // 선택된 능력 확인
-        Debug.Log("Selected Ability : " + index + "th ability.");
-        int a_type = SelectedAbility.gameObject.GetComponent<Ability>().Type;
-        int a_tier = SelectedAbility.gameObject.GetComponent<Ability>().Tier;
-        int a_level = SelectedAbility.gameObject.GetComponent<Ability>().level;
-        int a_weight = SelectedAbility.gameObject.GetComponent<Ability>().weight;
-        Debug.Log("Ability Type : " + a_type);
-        Debug.Log("Ability Tier : " + a_tier);
-        Debug.Log("Ability Level : " + a_level);
-        Debug.Log("Ability Weight : " + a_weight);
-        //*******************************************
-
-        SelectedAbility.gameObject.GetComponent<Ability>().weight = 0;    //선택된 능력 출현 확률 0으로
-
-        // Apply ability
-        
-        if (a_type == 0)
-        {
-            this.gameObject.GetComponent<PlayerAttack>().Speed_Z *= 1.5f;
-        }
-        // *************
-
-        for(int i = 0; i < abilityButtons.Length; i++)
-        {
-            GameObject ability = abilityButtons[i];
-            int type = ability.gameObject.GetComponent<Ability>().Type;
-            int tier = ability.gameObject.GetComponent<Ability>().Tier;
-            bool isSelected = ability.gameObject.GetComponent<Ability>().isSelected;
-
-            if (type == a_type && !isSelected)  // 선택된 능력과 타입은 같으나 선택받지 못한 능력일 때
-            {
-                ability.gameObject.GetComponent<Ability>().weight += 1;
-                if (tier == a_tier + 1)
-                {
-                    ability.gameObject.GetComponent<Ability>().weight += 1;
-                }
-            }
-            //if (abilityButtons[i].gameObject.GetComponent<Ability>().appeared) abilityButtons[i].gameObject.GetComponent<Ability>().appeared = false;
-            ability.gameObject.SetActive(false);
-        }*/
     }
 
 
+
+
+
+
+
+
+
+
+    /*
+GameObject SelectedAbility = abilityButtons[index];
+SelectedAbility.gameObject.GetComponent<Ability>().isSelected = true;
+
+// 선택된 능력 확인
+Debug.Log("Selected Ability : " + index + "th ability.");
+int a_type = SelectedAbility.gameObject.GetComponent<Ability>().Type;
+int a_tier = SelectedAbility.gameObject.GetComponent<Ability>().Tier;
+int a_level = SelectedAbility.gameObject.GetComponent<Ability>().level;
+int a_weight = SelectedAbility.gameObject.GetComponent<Ability>().weight;
+Debug.Log("Ability Type : " + a_type);
+Debug.Log("Ability Tier : " + a_tier);
+Debug.Log("Ability Level : " + a_level);
+Debug.Log("Ability Weight : " + a_weight);
+//*******************************************
+
+SelectedAbility.gameObject.GetComponent<Ability>().weight = 0;    //선택된 능력 출현 확률 0으로
+
+// Apply ability
+
+if (a_type == 0)
+{
+    this.gameObject.GetComponent<PlayerAttack>().Speed_Z *= 1.5f;
+}
+// *************
+
+for(int i = 0; i < abilityButtons.Length; i++)
+{
+    GameObject ability = abilityButtons[i];
+    int type = ability.gameObject.GetComponent<Ability>().Type;
+    int tier = ability.gameObject.GetComponent<Ability>().Tier;
+    bool isSelected = ability.gameObject.GetComponent<Ability>().isSelected;
+
+    if (type == a_type && !isSelected)  // 선택된 능력과 타입은 같으나 선택받지 못한 능력일 때
+    {
+        ability.gameObject.GetComponent<Ability>().weight += 1;
+        if (tier == a_tier + 1)
+        {
+            ability.gameObject.GetComponent<Ability>().weight += 1;
+        }
+    }
+    //if (abilityButtons[i].gameObject.GetComponent<Ability>().appeared) abilityButtons[i].gameObject.GetComponent<Ability>().appeared = false;
+    ability.gameObject.SetActive(false);
+}*/
     /*
     void Trash()
     {
@@ -276,9 +281,6 @@ for(int i = 0; i < threeChoices.Length; i++)
 }
 
     }*/
-
-
-
     /*
     private bool canAppearThis(int index){
         bool canAppear = true;

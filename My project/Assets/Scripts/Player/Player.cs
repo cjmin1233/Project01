@@ -27,23 +27,22 @@ public class Player : MonoBehaviour
     private bool isFacingRight = true;
 
     [Header("Vertical Movement")]
-    //public bool isStuckable = false;
     private bool jump;
     private bool isGrounded;
     int playerLayer, groundLayer;
-    //bool ignoreGround = false;
 
     [SerializeField] private Transform GroundCheck;
     [SerializeField] private LayerMask WhatIsGround;
     const float GroundedRadius = 0.1f;
 
     [SerializeField] private GameObject HP_Bar;
-    public int MaxHP = 100;
-    public int CurHP;
+    [HideInInspector] public int MaxHP = 100;
+    [HideInInspector] public int CurHP;
     private bool canInvincible = false;
     float invincibleTimeLeft;
     float invincibleTime = 1f;
-    [SerializeField] private GameObject Esc_PopUp;
+    [SerializeField] private GameObject Esc_UI;
+    [SerializeField] private GameObject Book_UI;
     private void Start()
     {
         invincibleTimeLeft = 0f;
@@ -93,10 +92,15 @@ public class Player : MonoBehaviour
             }
         }
 
-        // UI
+        // PopUp UI
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Esc_PopUp.SetActive(true);
+            Esc_UI.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.B))
+        {
+            // ½ºÅ³ºÏ
+            Book_UI.SetActive(true);
         }
         Invincible();
         FlipPlayer();
@@ -345,4 +349,15 @@ public class Player : MonoBehaviour
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(gameObject);
     }
+
+    // UI part.
+    /*
+    public void TimeStop()
+    {
+        Time.timeScale = 0;
+    }
+    public void TimeStart()
+    {
+        Time.timeScale = 1;
+    }*/
 }
