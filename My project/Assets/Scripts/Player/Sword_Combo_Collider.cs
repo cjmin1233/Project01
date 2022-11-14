@@ -22,6 +22,7 @@ public class Sword_Combo_Collider : MonoBehaviour
         string tag = collision.tag;
         if (tag == "Enemy")
         {
+            Debug.Log("hit " + collision.name);
             collision.GetComponent<Enemy>().TakeDamage(damage);
         }
         else if (tag == "Boss")

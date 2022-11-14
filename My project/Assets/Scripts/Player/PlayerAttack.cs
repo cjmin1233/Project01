@@ -121,9 +121,9 @@ public class PlayerAttack : MonoBehaviour
 
         // 공격시 약 전진
         Debug.Log("i'm here");
-        float swordCombo_force = 2.0f;
+        float swordCombo_force = 40f;
         if (transform.rotation.y != 0f) swordCombo_force *= -1f;
-        rg.AddForce(new Vector2(swordCombo_force, 0f));
+        rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
 
         //Debug.Log(comboCounter);
 
@@ -162,6 +162,10 @@ public class PlayerAttack : MonoBehaviour
         isXAttacking = true;
         animator.SetTrigger("AttackX");
         Finish_Combo();
+
+        float swordCombo_force = 0.1f;
+        if (transform.rotation.y != 0f) swordCombo_force *= -1f;
+        rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
 
         /*
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(SwordPoint.position, SwordRange, enemyLayers);
