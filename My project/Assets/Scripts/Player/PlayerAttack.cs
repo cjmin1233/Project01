@@ -38,6 +38,8 @@ public class PlayerAttack : MonoBehaviour
     bool isJumping;
     bool isDashing;
 
+    //public float swordCombo_force = 100f;
+
     private void Start()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -101,10 +103,12 @@ public class PlayerAttack : MonoBehaviour
     {
         isZAttacking = false;
         comboCounter = 0;
+        gameObject.GetComponent<Player>().canMove = true;
     }
     public void Finish_X()
     {
         isXAttacking = false;
+        gameObject.GetComponent<Player>().canMove = true;
     }
 
     private void Enable_Sword_Combo_Collider()
@@ -115,15 +119,19 @@ public class PlayerAttack : MonoBehaviour
     }
     private void SwordZAttack()
     {
+        // 공격동안 움직임 제어
+        gameObject.GetComponent<Player>().canMove = false;
+
         animator.SetFloat("Speed_Z", Speed_Z);
         isZAttacking = true;
         animator.SetTrigger("Combo" + comboCounter);
 
         // 공격시 약 전진
-        Debug.Log("i'm here");
-        float swordCombo_force = 40f;
+        //Debug.Log("i'm here");
+        float swordCombo_force = 20f;
         if (transform.rotation.y != 0f) swordCombo_force *= -1f;
         rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
+        //rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Force);
 
         //Debug.Log(comboCounter);
 
@@ -158,6 +166,9 @@ public class PlayerAttack : MonoBehaviour
     }
     private void SwordXAttack()
      {
+        // 공격동안 움직임 제어
+        gameObject.GetComponent<Player>().canMove = false;
+
         animator.SetFloat("Speed_X", Speed_X);
         isXAttacking = true;
         animator.SetTrigger("AttackX");
@@ -191,6 +202,9 @@ public class PlayerAttack : MonoBehaviour
     }
     private void BowXAttack()
     {
+        // 공격동안 움직임 제어
+        //gameObject.GetComponent<Player>().canMove = false;
+
         animator.SetFloat("Speed_X", Speed_X);
         isXAttacking = true;
         animator.SetTrigger("AttackX");

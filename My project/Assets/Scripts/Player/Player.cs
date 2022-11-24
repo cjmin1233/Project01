@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float dashTime = 0.2f;
     public float distanceBetweenImages;
     public float dashCoolDown;
+    [HideInInspector] public bool canMove=true;
     [SerializeField] private float jumpForce = 10f;
 
     private Vector3 m_Velocity = Vector3.zero;
@@ -62,9 +63,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!isDashing) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
-        animator.SetFloat("Speed", Mathf.Abs(movementX));
-
         // HP bar test.
         if (Input.GetKeyDown(KeyCode.A))    //Increase hp.
         {
@@ -74,6 +72,18 @@ public class Player : MonoBehaviour
         {
             TakeDamage(20);
         }
+        /////////////////////
+        if (canMove)
+        {
+            if (!isDashing) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
+            animator.SetFloat("Speed", Mathf.Abs(movementX));
+        }
+        else
+        {
+            if (!isDashing) movementX = 0f;
+            animator.SetFloat("Speed", Mathf.Abs(movementX));
+        }
+
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -99,7 +109,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.B))
         {
-            // ½ºÅ³ºÏ
+            //
             Book_UI.SetActive(true);
         }
         Invincible();
@@ -167,6 +177,7 @@ public class Player : MonoBehaviour
             }
             if (dashTimeLeft <= 0)
             {
+                canMove = true;
                 currentSpeed = baseSpeed;
                 isDashing = false;
                 animator.SetBool("IsDashing", isDashing);
@@ -202,11 +213,11 @@ public class Player : MonoBehaviour
                 {
                     animator.SetBool("IsJumping", false);
                     //Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
-                    Debug.Log("I'm grounded");
+                    //Debug.Log("I'm grounded");
                 }
             }
         }
-        if (jump && isGrounded)
+        if (jump && isGrounded && canMove)
         {
             isGrounded = false;
             animator.SetBool("IsJumping", true);
