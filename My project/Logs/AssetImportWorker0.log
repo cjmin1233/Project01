@@ -1,0 +1,1332 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.30f1 (1fb1bf06830e) revision 2077119'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'ko' Physical Memory: 16315 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2020.3.30f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/cjmin/Project01/My project
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+54314
+Successfully changed project path to: C:/Users/cjmin/Project01/My project
+C:/Users/cjmin/Project01/My project
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 44.95 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2020.3.30f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/cjmin/Project01/My project/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1e89)
+    Vendor:   
+    VRAM:     5968 MB
+    Driver:   31.0.15.1694
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56536
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002058 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 45.01 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.500 seconds
+Domain Reload Profiling:
+	ReloadAssembly (500ms)
+		BeginReloadAssembly (61ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (374ms)
+			LoadAssemblies (59ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (118ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (146ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (45ms)
+				BeforeProcessingInitializeOnLoad (14ms)
+				ProcessInitializeOnLoadAttributes (62ms)
+				ProcessInitializeOnLoadMethodAttributes (21ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003598 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 43.90 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.936 seconds
+Domain Reload Profiling:
+	ReloadAssembly (937ms)
+		BeginReloadAssembly (134ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (17ms)
+		EndReloadAssembly (748ms)
+			LoadAssemblies (91ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (235ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (292ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (44ms)
+				BeforeProcessingInitializeOnLoad (72ms)
+				ProcessInitializeOnLoadAttributes (153ms)
+				ProcessInitializeOnLoadMethodAttributes (13ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.57 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2241 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.0 MB.
+System memory in use after: 118.9 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 2696.
+Total: 2.932800 ms (FindLiveObjects: 0.180300 ms CreateObjectMapping: 0.051400 ms MarkObjects: 2.562500 ms  DeleteObjects: 0.137900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1
+  artifactKey: Guid(c8e31b473f8f5e8469ee649c31c191a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1 using Guid(c8e31b473f8f5e8469ee649c31c191a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5365f8637005deddd3e19810dc2d68ee') in 0.008150 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/fire_knight.png
+  artifactKey: Guid(5e095d46cb53c68468362f384c9b525e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/fire_knight.png using Guid(5e095d46cb53c68468362f384c9b525e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8d688424ab1d36e77808b059f7861a1') in 0.122706 seconds 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.37 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 18 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 76.9 MB.
+System memory in use after: 76.9 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 2702.
+Total: 3.635900 ms (FindLiveObjects: 0.270800 ms CreateObjectMapping: 0.055900 ms MarkObjects: 3.176000 ms  DeleteObjects: 0.132200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 5.937097 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/spritesheets
+  artifactKey: Guid(8fcd981821c85bc4f94c23d67e57910f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/spritesheets using Guid(8fcd981821c85bc4f94c23d67e57910f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2a17c4749e601dd11261bf14929f1f4') in 0.005397 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.023276 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/spritesheets/fire_FREE_SpriteSheet_288x128.png
+  artifactKey: Guid(f46cc8e92d35f3e48874f38fc4a5506a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/spritesheets/fire_FREE_SpriteSheet_288x128.png using Guid(f46cc8e92d35f3e48874f38fc4a5506a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14b38bfe1fe82a99b48df264388ae28d') in 0.023075 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.247607 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png
+  artifactKey: Guid(c8c158db8ede67f4a8862f85dd37bc24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png using Guid(c8c158db8ede67f4a8862f85dd37bc24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a592eb7928e0c593c4552b795a1a335') in 0.010328 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.833909 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/aseprite
+  artifactKey: Guid(68cfd43861d768e44a90a72f0847f435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/aseprite using Guid(68cfd43861d768e44a90a72f0847f435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9950175c4ef2fc8550d029b2cc0db3e1') in 0.006919 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.013572 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/aseprite/fire_FREE_v1.1.aseprite
+  artifactKey: Guid(271cb2eac55110148b59b48ba4d39789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/aseprite/fire_FREE_v1.1.aseprite using Guid(271cb2eac55110148b59b48ba4d39789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e5e68cbc2a8b98ca4f748e018ab699d') in 0.008375 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.486037 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight
+  artifactKey: Guid(11ac18509d6f2bf4ba5ef9c4b66d0ac1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight using Guid(11ac18509d6f2bf4ba5ef9c4b66d0ac1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0958b8dbe7b5cc7c652581fbdda6aeb9') in 0.002202 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.890967 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle
+  artifactKey: Guid(0fec7c0e05d1f6a4fa25bb06438dfbb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle using Guid(0fec7c0e05d1f6a4fa25bb06438dfbb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eab38dabe5592b86a172921fe2a8e098') in 0.006325 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.124943 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_1.png
+  artifactKey: Guid(685959c2d54ac8e4b898f92561afcdff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_1.png using Guid(685959c2d54ac8e4b898f92561afcdff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9bd20591dfd2c09b1bee2660bc9b4ec') in 0.011666 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_6.png
+  artifactKey: Guid(62dbe5d3298765f41a8d47de4d07673e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_6.png using Guid(62dbe5d3298765f41a8d47de4d07673e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2bc7d41bb2287df186c191b170f7314') in 0.010372 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000123 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_2.png
+  artifactKey: Guid(62bf2d75d4d7bf84a819df4778a178cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_2.png using Guid(62bf2d75d4d7bf84a819df4778a178cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1314a7c152d5a5d2a91c0bd1eab2b8b1') in 0.010686 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000134 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_5.png
+  artifactKey: Guid(856022151aacf4d489c1a046dc2f0168) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_5.png using Guid(856022151aacf4d489c1a046dc2f0168) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1a645c58934acf62fda1d9f8c3d594e') in 0.010939 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000135 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_7.png
+  artifactKey: Guid(6c320ba3e56e63647ab3a37436f59243) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_7.png using Guid(6c320ba3e56e63647ab3a37436f59243) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7aa903780a397736873c5458ac99b2b0') in 0.010927 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_4.png
+  artifactKey: Guid(d2647cb90dfd5114bafaa6da5e81215d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_4.png using Guid(d2647cb90dfd5114bafaa6da5e81215d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4a1fe1b43b47a0958c1c17a5e3ac0dc') in 0.011217 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_8.png
+  artifactKey: Guid(243da453d7bb4d34e8e7393151b696c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_8.png using Guid(243da453d7bb4d34e8e7393151b696c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97b33a3dc11943a45ad91c619ce1f19d') in 0.011007 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000149 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_3.png
+  artifactKey: Guid(3932a56b67fd8a64e9bc3328b9a2ffe3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/01_idle/idle_3.png using Guid(3932a56b67fd8a64e9bc3328b9a2ffe3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e96d1abb7ad0cbc5c2fb36d029e23d9c') in 0.011092 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 34.817913 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_1.png
+  artifactKey: Guid(b00b7addccdb1844fa3f559141100f26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_1.png using Guid(b00b7addccdb1844fa3f559141100f26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70424d2bd615b217180b5810e12079a1') in 0.016694 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000112 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_5.png
+  artifactKey: Guid(319a72872c7f6874fa071802f74cb66f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_5.png using Guid(319a72872c7f6874fa071802f74cb66f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd65c7fe950bfdb0a088461b3b5f9c9b1') in 0.014232 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000121 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_7.png
+  artifactKey: Guid(36c995ec6faf6af4fb5eb17b9ff7c5cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_7.png using Guid(36c995ec6faf6af4fb5eb17b9ff7c5cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '519624b27d0cbc32f1602d00f6022909') in 0.023346 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000130 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_6.png
+  artifactKey: Guid(767b1f91705762e458312e4be121e9de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_6.png using Guid(767b1f91705762e458312e4be121e9de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ee4192792074a627733f0b8e70c25ff') in 0.023159 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000116 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_3.png
+  artifactKey: Guid(952841d263ea989479c2cb19c2c847d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_3.png using Guid(952841d263ea989479c2cb19c2c847d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '153a708ff0f6d5e8c20128472c493bac') in 0.026931 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000113 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_4.png
+  artifactKey: Guid(8736681202a37de48a1c21662a2f97e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_4.png using Guid(8736681202a37de48a1c21662a2f97e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdf8db18a7054ba36d66ee4315c16d81') in 0.015605 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_2.png
+  artifactKey: Guid(435753fc43481cf49b5e7c9e6ddef70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_2.png using Guid(435753fc43481cf49b5e7c9e6ddef70d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7da6513b743653eb30b462ed44240a22') in 0.021621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000125 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_8.png
+  artifactKey: Guid(28b86bb5ab4974e40b3153b561c52e8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/02_run/run_8.png using Guid(28b86bb5ab4974e40b3153b561c52e8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24ab3d9690243f49e95e956a4f0e5a94') in 0.019188 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.095066 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_1.png
+  artifactKey: Guid(3fc22ba1f26e9e34885e9da0fb59d74e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_1.png using Guid(3fc22ba1f26e9e34885e9da0fb59d74e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6be4ade9dafa386cb826ba4895dee2e4') in 0.016103 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000117 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_14.png
+  artifactKey: Guid(5cd88d50089a0a04ca46dcfdf7c462f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_14.png using Guid(5cd88d50089a0a04ca46dcfdf7c462f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae7737a33c8c109cdf3e01244ca0085b') in 0.011387 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000173 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_20.png
+  artifactKey: Guid(c36cc2667ff5ab8418ac2bac21af80a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_20.png using Guid(c36cc2667ff5ab8418ac2bac21af80a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb75b9a5e7aa6778293dae7bfb03ec68') in 0.013159 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_4.png
+  artifactKey: Guid(16a46caddc1a4db4e8ca48c67c838524) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_4.png using Guid(16a46caddc1a4db4e8ca48c67c838524) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b2d7324afbd2cdfc9cce6be61cb6d56') in 0.010851 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_10.png
+  artifactKey: Guid(6203f1cc00fc01148bc4071a68a74953) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_10.png using Guid(6203f1cc00fc01148bc4071a68a74953) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24ca54e7c8aeaf786e3b3d362696b8d9') in 0.010489 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000126 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_12.png
+  artifactKey: Guid(9c4385a8415fd5542a51e288f5f0ba67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_12.png using Guid(9c4385a8415fd5542a51e288f5f0ba67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86dc22026ad18c4088e6d9d2a3812b78') in 0.011841 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_13.png
+  artifactKey: Guid(e1cdfde01328c9f4997dba33c8579b10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_13.png using Guid(e1cdfde01328c9f4997dba33c8579b10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39776595bef6494157ef6816a7163c29') in 0.010698 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_3.png
+  artifactKey: Guid(e851e1f5f36e75e438369b3b4a02975a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_3.png using Guid(e851e1f5f36e75e438369b3b4a02975a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8b8c425057966b8b09c6b42997198a8') in 0.011050 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_18.png
+  artifactKey: Guid(2440a5e19c804414581b4ca5e8883830) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_18.png using Guid(2440a5e19c804414581b4ca5e8883830) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac95bb532d675a07a6a97d54dbcbe309') in 0.011516 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_16.png
+  artifactKey: Guid(3b009f917c9bb714a92bc410a0edc39d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_16.png using Guid(3b009f917c9bb714a92bc410a0edc39d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d278b4b7860afb597983468e70f70e9') in 0.011342 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_2.png
+  artifactKey: Guid(d2ca51efb4d971e4f80239e64328c598) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_2.png using Guid(d2ca51efb4d971e4f80239e64328c598) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00045b63cd9a61633979498fb078b80b') in 0.010064 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_15.png
+  artifactKey: Guid(ee3caa525863eac449e14c65ff22bcc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_15.png using Guid(ee3caa525863eac449e14c65ff22bcc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92cee497c5ee663ff8ee70846c96acc3') in 0.010759 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_11.png
+  artifactKey: Guid(2eebf3566de2c7f4d8ad9722352a1883) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_11.png using Guid(2eebf3566de2c7f4d8ad9722352a1883) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbb7bb536e0d3518ebf2533ae464eb93') in 0.012111 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000125 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_5.png
+  artifactKey: Guid(5c895882dde35d6409bf75fea49c5108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_5.png using Guid(5c895882dde35d6409bf75fea49c5108) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f01ddb97f887964c92a22bc230e955e9') in 0.012077 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_6.png
+  artifactKey: Guid(658d075479b180843881983d7a71ec79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_6.png using Guid(658d075479b180843881983d7a71ec79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'def5f7df66904f0c9dc1c0389dfc2d7f') in 0.011052 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000122 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_8.png
+  artifactKey: Guid(e5141f5d0c58e9242bb1015cdbc3e672) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_8.png using Guid(e5141f5d0c58e9242bb1015cdbc3e672) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05413f2efb49a925e78d6302f47797f9') in 0.010944 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_19.png
+  artifactKey: Guid(5c2fed915fba44141b759c06f20131ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_19.png using Guid(5c2fed915fba44141b759c06f20131ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31a3574fea82b93d537ba81c95ff2377') in 0.010565 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_17.png
+  artifactKey: Guid(77f763dd73b2dfa49bc0462c8cd39b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_17.png using Guid(77f763dd73b2dfa49bc0462c8cd39b43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c702b4f65d6ab8f06bd901991e553401') in 0.010521 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_9.png
+  artifactKey: Guid(a9e90a0595acafd40a7f7ae3d0008f5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_9.png using Guid(a9e90a0595acafd40a7f7ae3d0008f5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75cd1bfddeb7dca4a23488bdb7ce65a3') in 0.011669 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000174 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_7.png
+  artifactKey: Guid(9fc960c7237e70e46a29f9e7949a1cb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump/jump_7.png using Guid(9fc960c7237e70e46a29f9e7949a1cb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1715ffabbaeaff10700cca7fb7443f99') in 0.011630 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.523687 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_down/jump_down_1.png
+  artifactKey: Guid(ce92d078df88a8f4b8828825e253f048) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_down/jump_down_1.png using Guid(ce92d078df88a8f4b8828825e253f048) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e09dfa58be9ccbdceb0c5b55a40a4672') in 0.011499 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000122 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_down/jump_down_2.png
+  artifactKey: Guid(2fabadc86e3634a47842597a8ef55c27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_down/jump_down_2.png using Guid(2fabadc86e3634a47842597a8ef55c27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '885a0f66af783c4852a7aeae16a9ed65') in 0.011094 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_down/jump_down_3.png
+  artifactKey: Guid(dcc05a8ba15548b40884b4345ba23323) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_down/jump_down_3.png using Guid(dcc05a8ba15548b40884b4345ba23323) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b425896abb96dd24853e9049b247c984') in 0.013265 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.373230 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_up/jump_up_1.png
+  artifactKey: Guid(38ed9178d61740c498fd9c5b30ad60b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_up/jump_up_1.png using Guid(38ed9178d61740c498fd9c5b30ad60b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69b6e0ab4d69a5ea0822e79cc2ed0578') in 0.015124 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_up/jump_up_3.png
+  artifactKey: Guid(d7c3dca843d41574ea587329f0c69997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_up/jump_up_3.png using Guid(d7c3dca843d41574ea587329f0c69997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2069e99daad714b71d6b15c12d35059e') in 0.017551 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_up/jump_up_2.png
+  artifactKey: Guid(f9a565286d04b144db7dd06ffa28671f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/03_jump_up/jump_up_2.png using Guid(f9a565286d04b144db7dd06ffa28671f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d22527a4b9b1fa3795e39f9859fe76d') in 0.027629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 18.255024 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_1.png
+  artifactKey: Guid(f41f63e84db454246b7479336c110fe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_1.png using Guid(f41f63e84db454246b7479336c110fe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db7373209b97d2845fd3cfa296aca624') in 0.019797 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_8.png
+  artifactKey: Guid(0965fe55b8fecd244a5a473f2ab488f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_8.png using Guid(0965fe55b8fecd244a5a473f2ab488f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56aa9ba65ed4fa9436f3a6901e930a23') in 0.022859 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000126 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_4.png
+  artifactKey: Guid(4a89a87822fd57248bdda3f4df12b689) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_4.png using Guid(4a89a87822fd57248bdda3f4df12b689) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a48e23d2e7ce0922ff63811468f4548e') in 0.023720 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_7.png
+  artifactKey: Guid(2a14e02ae123de342a63a8c9b25b5729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_7.png using Guid(2a14e02ae123de342a63a8c9b25b5729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0763e4bfd4a8d69adf9a8d653a58a34d') in 0.022147 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000113 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_2.png
+  artifactKey: Guid(cea1648c30f94d6449589c3daabdb9c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_2.png using Guid(cea1648c30f94d6449589c3daabdb9c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07261cd80ac7daa4eae220a68bdb613b') in 0.028080 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000108 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_6.png
+  artifactKey: Guid(0b300e3383a84f3448b4ab6fe6a6723a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_6.png using Guid(0b300e3383a84f3448b4ab6fe6a6723a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55b67b6f14a2fdb53981e12a6a552fff') in 0.024054 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000120 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_3.png
+  artifactKey: Guid(fc3fe5ef655b5964d9515d788a5d0edb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_3.png using Guid(fc3fe5ef655b5964d9515d788a5d0edb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '221bbe1f0ddcc20e533c35a430da5c6d') in 0.015422 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_5.png
+  artifactKey: Guid(5f21025e8f6c1874b8dec09bf7c881d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/04_roll/roll_5.png using Guid(5f21025e8f6c1874b8dec09bf7c881d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02f6d30715e1f9ee563acde6e4fb59b9') in 0.018590 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.821933 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_1.png
+  artifactKey: Guid(a70ff577c7c086a4aa3a25640af981ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_1.png using Guid(a70ff577c7c086a4aa3a25640af981ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45c99cb1424a071ce9253bd8f7acefff') in 0.013281 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000116 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_4.png
+  artifactKey: Guid(a3b59a07dd8d83444afd7c777efdbc5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_4.png using Guid(a3b59a07dd8d83444afd7c777efdbc5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0732ba42b6c527ec402e75b380915060') in 0.021867 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000119 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_10.png
+  artifactKey: Guid(4229ae6fa53ba564bbce8a10d845c297) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_10.png using Guid(4229ae6fa53ba564bbce8a10d845c297) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64cf1a559ae42c5758706c5642e39040') in 0.016987 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000118 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_11.png
+  artifactKey: Guid(fe65c07a18e71a049ad2147bc0d6f27c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_11.png using Guid(fe65c07a18e71a049ad2147bc0d6f27c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23d4b2c1d02884e58b594635801ebc60') in 0.029066 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000113 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_7.png
+  artifactKey: Guid(6db3fec7988d14e478d19c577aef2aa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_7.png using Guid(6db3fec7988d14e478d19c577aef2aa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '808eb6e72da8cc245b1226f6ffb419b3') in 0.015122 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_9.png
+  artifactKey: Guid(49665e38e6b13c04083eb41de28a0498) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_9.png using Guid(49665e38e6b13c04083eb41de28a0498) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75086bb276397661db1acfa12f90da31') in 0.014527 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_2.png
+  artifactKey: Guid(8ae08934ac1406740bc224a94aff2037) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_2.png using Guid(8ae08934ac1406740bc224a94aff2037) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a6aa5b7e038b8569fd91a6f8cfcccba') in 0.018721 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000123 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_5.png
+  artifactKey: Guid(1d4b85b874c8d8a4996395fb158c7bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_5.png using Guid(1d4b85b874c8d8a4996395fb158c7bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '327d2d736351053166716c55307396fe') in 0.020404 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000122 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_6.png
+  artifactKey: Guid(d91632045eb4490469cd8a0a862a0f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_6.png using Guid(d91632045eb4490469cd8a0a862a0f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38873ce9330e94db07bbfa527fe453a2') in 0.014769 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_8.png
+  artifactKey: Guid(6500908720252e54fb7440a8df83de37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_8.png using Guid(6500908720252e54fb7440a8df83de37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f18268629076b130975edd952f0ded91') in 0.031533 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000116 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_3.png
+  artifactKey: Guid(e5234e3a28334854c94af3af3a2c72ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/05_1_atk/1_atk_3.png using Guid(e5234e3a28334854c94af3af3a2c72ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '179a07e10aafd228271982f364a4599c') in 0.019752 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.398584 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_1.png
+  artifactKey: Guid(f4d1414ddf2e008488c461296e1391f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_1.png using Guid(f4d1414ddf2e008488c461296e1391f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0922102ea1ec2a38b312f7122a13812') in 0.015919 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000118 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_4.png
+  artifactKey: Guid(a5393704665e0e94e8874dc0906bd822) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_4.png using Guid(a5393704665e0e94e8874dc0906bd822) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '162d7a348acfb908d8bccb20cfdb962b') in 0.019195 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_6.png
+  artifactKey: Guid(10f6a35bbb3dec642960e3c103d9513b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_6.png using Guid(10f6a35bbb3dec642960e3c103d9513b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c700aa8d4255f63074e4a15013c3f800') in 0.015212 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_17.png
+  artifactKey: Guid(ff7b880a1b067f643821049fbc2c690d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_17.png using Guid(ff7b880a1b067f643821049fbc2c690d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3f9f3784123ab6c85fd0ad4615015ae') in 0.023871 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000121 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_18.png
+  artifactKey: Guid(d198826eee88b5942bcc533087dc7e6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_18.png using Guid(d198826eee88b5942bcc533087dc7e6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e670413b189625c7d85d02df69328ee5') in 0.017978 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_3.png
+  artifactKey: Guid(f3948b6edc3630448a3b5d6ee191001e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_3.png using Guid(f3948b6edc3630448a3b5d6ee191001e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb5931604dd32888ad5b6d5e5c6ce50a') in 0.021770 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000112 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_19.png
+  artifactKey: Guid(02bdfbf29c62d6248a793879da09c312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_19.png using Guid(02bdfbf29c62d6248a793879da09c312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6c16281381550abb7ababaf705084fe') in 0.014994 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_11.png
+  artifactKey: Guid(80c854f502f4c8f46992b9cac82fdfd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_11.png using Guid(80c854f502f4c8f46992b9cac82fdfd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bf09d53f8e247b1091b21c3f525f9a6') in 0.019560 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000116 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_5.png
+  artifactKey: Guid(0099f34fca3cf33409540d9da9d81061) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_5.png using Guid(0099f34fca3cf33409540d9da9d81061) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7dfa4a8368692bbb197bb956ff88a09d') in 0.015523 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_10.png
+  artifactKey: Guid(2652c0b106d15304fae9464938369fde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_10.png using Guid(2652c0b106d15304fae9464938369fde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f46d173bb987f84a927ba97f18ed7e5f') in 0.019664 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000123 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_13.png
+  artifactKey: Guid(6a3302b9bd208f84a88c8e367350ad63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_13.png using Guid(6a3302b9bd208f84a88c8e367350ad63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e169f6868d04511ae93205037b4cd828') in 0.016357 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000111 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_12.png
+  artifactKey: Guid(d39e3b88566c6c347afab10c72b8d850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_12.png using Guid(d39e3b88566c6c347afab10c72b8d850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '928f62a84e8aadb4b0261c957e38b311') in 0.019986 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_14.png
+  artifactKey: Guid(012c7d474bbede14db5465630eecdbab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_14.png using Guid(012c7d474bbede14db5465630eecdbab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d7773154592c877d08672d36b41750e') in 0.014572 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_2.png
+  artifactKey: Guid(b39556515653d864990893ecd30eabc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_2.png using Guid(b39556515653d864990893ecd30eabc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95ba55863e26c7dc42705b715f0deafd') in 0.015029 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_7.png
+  artifactKey: Guid(652a69df22a671b4a8ea5a2abf7ceea6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_7.png using Guid(652a69df22a671b4a8ea5a2abf7ceea6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd28216b1a8f37c9c68396ce4e7a529f6') in 0.013451 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_8.png
+  artifactKey: Guid(1b5c2103d2c587945b11f654cb98b234) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_8.png using Guid(1b5c2103d2c587945b11f654cb98b234) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b0f6781d4208879a2664ed4bbb3a43c') in 0.014146 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000140 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_15.png
+  artifactKey: Guid(f402b4c0d28132743a5a094a42b8e061) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_15.png using Guid(f402b4c0d28132743a5a094a42b8e061) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '635836f04ada6d224c68c1d1134803ea') in 0.014197 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_9.png
+  artifactKey: Guid(79b5c17c2df686b409d17c9ca88d2c1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_9.png using Guid(79b5c17c2df686b409d17c9ca88d2c1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16e453eca7cba5d13e86289003a79288') in 0.013371 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_16.png
+  artifactKey: Guid(52093c66c5a90b349acca7694424701e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/06_2_atk/2_atk_16.png using Guid(52093c66c5a90b349acca7694424701e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4b772a8a5df71c760aeb78229017c73') in 0.011893 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.135716 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_1.png
+  artifactKey: Guid(99d99ac97cf9d4b47a4b98ce1ff4c146) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_1.png using Guid(99d99ac97cf9d4b47a4b98ce1ff4c146) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e35120c6e143d8608f90d6208745a0b6') in 0.019160 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000125 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_16.png
+  artifactKey: Guid(fcc355a70874b3b4581b177948e46b6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_16.png using Guid(fcc355a70874b3b4581b177948e46b6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f89443915632aad732121cb5274f090d') in 0.018068 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_25.png
+  artifactKey: Guid(f2c334347a18dca4291ca6290ccdb789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_25.png using Guid(f2c334347a18dca4291ca6290ccdb789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4eb9d6b94f529847a1780faa6d92f906') in 0.020471 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000174 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_15.png
+  artifactKey: Guid(2260aa20807dd674a86d33de331094cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_15.png using Guid(2260aa20807dd674a86d33de331094cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6708ae98fdfbd770760299a2c91234f2') in 0.016800 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_10.png
+  artifactKey: Guid(1b177aa9fa5a11244a3f6a649f8feba3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_10.png using Guid(1b177aa9fa5a11244a3f6a649f8feba3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d320e99339727ab43f298d2a425c1d8') in 0.021580 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_11.png
+  artifactKey: Guid(12cbf7f755278e242a733fb73bbe9a3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_11.png using Guid(12cbf7f755278e242a733fb73bbe9a3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d80c11974b9bf32e84877394dceab87') in 0.012634 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_9.png
+  artifactKey: Guid(fd2a361cd5039fe49bef3d70d7aacd80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_9.png using Guid(fd2a361cd5039fe49bef3d70d7aacd80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '615eafd970d482e831509c420613c314') in 0.019849 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_19.png
+  artifactKey: Guid(42b9e1024eefc8d4bace8f479b2502f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_19.png using Guid(42b9e1024eefc8d4bace8f479b2502f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4abe3aafb7ec5e17d6db46ef2f30bd18') in 0.014516 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000123 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_7.png
+  artifactKey: Guid(f3e68401ae60edb4e9e8fda5ad002a38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_7.png using Guid(f3e68401ae60edb4e9e8fda5ad002a38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '599538d3d699a368f75c13dff2c5fa82') in 0.014981 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000183 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_6.png
+  artifactKey: Guid(c084f46b3e3fcc2429ae4f6457baa8f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_6.png using Guid(c084f46b3e3fcc2429ae4f6457baa8f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b8a11fd46ddd5ea9c48bfe8b5b77cae') in 0.017256 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_13.png
+  artifactKey: Guid(52e342e9f90110f43934fd83328968ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_13.png using Guid(52e342e9f90110f43934fd83328968ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90a97be89c99d4e9f52cc31ca68a24ef') in 0.020875 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_4.png
+  artifactKey: Guid(e28325dc32ac31048a6f428a67bb53d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_4.png using Guid(e28325dc32ac31048a6f428a67bb53d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33aa4a93b30b1a0f5cb87c4c8e58c76b') in 0.021423 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_3.png
+  artifactKey: Guid(4fb34d0c8037957408d1edf0a1b57b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_3.png using Guid(4fb34d0c8037957408d1edf0a1b57b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcd8fe9f469ab61b566ec4fda85dfe3e') in 0.015023 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_27.png
+  artifactKey: Guid(40790199b2d54a74c87a082129b63496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_27.png using Guid(40790199b2d54a74c87a082129b63496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '927351f7cec171670c9003cb928d2331') in 0.020071 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000117 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_22.png
+  artifactKey: Guid(6a3c2abac45d3384a8b12fd3a880a5d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_22.png using Guid(6a3c2abac45d3384a8b12fd3a880a5d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '832798a38ce6868eb6b186287066c1f6') in 0.013994 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000216 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_5.png
+  artifactKey: Guid(4657050908bfa78478254dbee7baca5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_5.png using Guid(4657050908bfa78478254dbee7baca5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37cb72dde48cd8560a30de68a7f3913f') in 0.020712 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_26.png
+  artifactKey: Guid(f95da857efc232f4dbcfb019d685119e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_26.png using Guid(f95da857efc232f4dbcfb019d685119e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07d45733889707e88287a0008988c2a5') in 0.019601 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_2.png
+  artifactKey: Guid(452ae45ba369a7643bebdfad34953a14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_2.png using Guid(452ae45ba369a7643bebdfad34953a14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c96f0872092599c2fb0da4b91afab0f2') in 0.014533 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_14.png
+  artifactKey: Guid(0d01d636e5b1a87438b49c6b40cb97b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_14.png using Guid(0d01d636e5b1a87438b49c6b40cb97b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '771c93826e45c2ef4a92efb263c9f8e4') in 0.021599 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_20.png
+  artifactKey: Guid(79dc915ddf91a3b4ebb1a9dcf04b1ac7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_20.png using Guid(79dc915ddf91a3b4ebb1a9dcf04b1ac7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8f58d26297b3034a6e28c5064232211') in 0.013207 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_24.png
+  artifactKey: Guid(d7d4dc5811bd05449aee66cf40474fd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_24.png using Guid(d7d4dc5811bd05449aee66cf40474fd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48ef39f2996aded31b6ddb9ea8a7a80a') in 0.026544 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000169 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_12.png
+  artifactKey: Guid(780ae167c681425469dcb05720efda03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_12.png using Guid(780ae167c681425469dcb05720efda03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00aebc79aa78d971a2766037456d3fc8') in 0.017949 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_18.png
+  artifactKey: Guid(93122bf1d989dc3409396401f07d0f65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_18.png using Guid(93122bf1d989dc3409396401f07d0f65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ff6d6aff12bde22f6e7222490e34103') in 0.015913 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_17.png
+  artifactKey: Guid(98dae67a17748774cb591e591a7bf413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_17.png using Guid(98dae67a17748774cb591e591a7bf413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1905628ddabaf941adce4540eac119aa') in 0.018539 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_21.png
+  artifactKey: Guid(b8f4b50d372601f4abd8dca1f5dedb6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_21.png using Guid(b8f4b50d372601f4abd8dca1f5dedb6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18890591d7589f29ad96882de05d1376') in 0.020383 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_28.png
+  artifactKey: Guid(0c86260d91029cf47b31d9011b765721) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_28.png using Guid(0c86260d91029cf47b31d9011b765721) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c8db5eaa9cf176823c7fc60c9f0fa0b') in 0.013403 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_23.png
+  artifactKey: Guid(4a540fd74aa3a9448a80060e20c916fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_23.png using Guid(4a540fd74aa3a9448a80060e20c916fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10525e88cd41d3a03331d61841061de9') in 0.018190 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000134 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_8.png
+  artifactKey: Guid(95581e08a0a182c47b48c75915d9da23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/07_3_atk/3_atk_8.png using Guid(95581e08a0a182c47b48c75915d9da23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3920fff9dd640a2571884b54215688a9') in 0.026651 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.358456 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_1.png
+  artifactKey: Guid(7c108799d12e99845a517e50b29b1eb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_1.png using Guid(7c108799d12e99845a517e50b29b1eb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '602966f5e3803df66d38f7fdc27962a9') in 0.018083 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000149 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_16.png
+  artifactKey: Guid(65001897792e35146ac7ae44a595200b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_16.png using Guid(65001897792e35146ac7ae44a595200b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0ae881a1bb215482695d03c977d7017') in 0.016388 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000121 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_4.png
+  artifactKey: Guid(f602b79a9253e6b439a7ec32c9dd70f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_4.png using Guid(f602b79a9253e6b439a7ec32c9dd70f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '994fc119eda94b5b1c045492fbcb37e5') in 0.021299 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000130 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_8.png
+  artifactKey: Guid(20d0852c5e9bff8489abaa6eedec9fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_8.png using Guid(20d0852c5e9bff8489abaa6eedec9fcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c0cd43a03be95c21ef2edcb0c462c8b') in 0.028213 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_18.png
+  artifactKey: Guid(b9cae9ff2258c8d4a976bb886c68b566) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_18.png using Guid(b9cae9ff2258c8d4a976bb886c68b566) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23aff0e2599095ac284bf90a65efc310') in 0.015515 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000114 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_11.png
+  artifactKey: Guid(82a1a041097027040bac096328a8799e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_11.png using Guid(82a1a041097027040bac096328a8799e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '538821c4f977a43a2d98216c1b44d988') in 0.020902 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_5.png
+  artifactKey: Guid(b79e3accf3da1ec498f44819703f3b7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_5.png using Guid(b79e3accf3da1ec498f44819703f3b7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '302b2b27ba4fb13d8ae01ef3e679ee28') in 0.021770 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_12.png
+  artifactKey: Guid(8e3c2a80d2236f64ba5786d90d22a512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_12.png using Guid(8e3c2a80d2236f64ba5786d90d22a512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8d01df93dd451516de5722c7e279e50') in 0.022102 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_3.png
+  artifactKey: Guid(6762cdd5ef54da94f83afc133ffbbbeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_3.png using Guid(6762cdd5ef54da94f83afc133ffbbbeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ef50db8374157e169fc2d7a87cba3a7') in 0.022961 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_13.png
+  artifactKey: Guid(128685b19f112ad4792d6744df96e7db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_13.png using Guid(128685b19f112ad4792d6744df96e7db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '875d32b8c59703fd6abff43536bfd82d') in 0.019646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_10.png
+  artifactKey: Guid(54a9ab9ab26aa684db51b054c69c3f4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_10.png using Guid(54a9ab9ab26aa684db51b054c69c3f4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6ca22bea8786126e3646c2365598ecb') in 0.015492 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_14.png
+  artifactKey: Guid(3ba631771f7b3664480882d1591adadd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_14.png using Guid(3ba631771f7b3664480882d1591adadd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32876b25654c4d4865722f0b62bdec2e') in 0.019914 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_2.png
+  artifactKey: Guid(728f58628b106d04393b29b687878d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_2.png using Guid(728f58628b106d04393b29b687878d58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cad30e30dcfeee3a85cb2fd37ac7080a') in 0.023899 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000311 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_6.png
+  artifactKey: Guid(85aaa0731a5782647b1017c0318fab48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_6.png using Guid(85aaa0731a5782647b1017c0318fab48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c93e1e774f9850bdfb5247692976e124') in 0.012412 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_17.png
+  artifactKey: Guid(5c08275269237db438cc771050bae8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_17.png using Guid(5c08275269237db438cc771050bae8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '655be81a06dce7118e850bc573f339e4') in 0.011902 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_9.png
+  artifactKey: Guid(83a2aad0d01afc14c8d72c6b1731b286) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_9.png using Guid(83a2aad0d01afc14c8d72c6b1731b286) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f0c6ff83cbfea9cac7673e8c00a1b83') in 0.011116 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_15.png
+  artifactKey: Guid(7b6f6ee89d4cadf40ae582e7076ae86a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_15.png using Guid(7b6f6ee89d4cadf40ae582e7076ae86a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ca140072221d1c8989bbf96816cd26d') in 0.011745 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_7.png
+  artifactKey: Guid(b6e810cacee5959489d3c4120cf385a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/08_sp_atk/sp_atk_7.png using Guid(b6e810cacee5959489d3c4120cf385a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48f2742fcad5b962897d71b23f5c46b7') in 0.010895 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.595290 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_1.png
+  artifactKey: Guid(3d29b9a5032f17f4fb7bce5ae99c3967) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_1.png using Guid(3d29b9a5032f17f4fb7bce5ae99c3967) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5623a72d1a538c025b5166db82041555') in 0.017053 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000135 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_3.png
+  artifactKey: Guid(441207ec0d41d5c4d965128b213468d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_3.png using Guid(441207ec0d41d5c4d965128b213468d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df381ca0397e06bf42293fae652f2fea') in 0.019281 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_6.png
+  artifactKey: Guid(fe6c8e852b87b794fbc92bbd965a7ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_6.png using Guid(fe6c8e852b87b794fbc92bbd965a7ebf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e2fb03734b55872e8d7f2d7354f742d') in 0.020185 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000126 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_10.png
+  artifactKey: Guid(100a922d52aabdd459f86a17fcd79aa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_10.png using Guid(100a922d52aabdd459f86a17fcd79aa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06b2beaa0bf562fef091c3e5de37e770') in 0.016467 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_8.png
+  artifactKey: Guid(44c6cab41bd89534ab8c08f94396ef6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_8.png using Guid(44c6cab41bd89534ab8c08f94396ef6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21c6c26e41ff415e22f36210430ce411') in 0.020580 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000123 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_4.png
+  artifactKey: Guid(cd7281c8a885230479c776be42a28c5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_4.png using Guid(cd7281c8a885230479c776be42a28c5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caa4772ac97bf183c4f894feb9c1cdd4') in 0.023304 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000119 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_2.png
+  artifactKey: Guid(529def1715fa05d449010b57516a870f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_2.png using Guid(529def1715fa05d449010b57516a870f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bba3ec439f42a03d5a1e20b989fa6b57') in 0.017274 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_9.png
+  artifactKey: Guid(8b8eaab7d10149c46a2d7f66dc235b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_9.png using Guid(8b8eaab7d10149c46a2d7f66dc235b05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0383dbe643be4ceece795d8d863d96d6') in 0.024294 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000126 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_7.png
+  artifactKey: Guid(e90bacff1dbe4a440879f683b52b98dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_7.png using Guid(e90bacff1dbe4a440879f683b52b98dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c4221c2c227433289ca219d0ecddc64') in 0.013681 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_5.png
+  artifactKey: Guid(4dda0b060996e2544a356a58e926e564) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/09_defend/defend_5.png using Guid(4dda0b060996e2544a356a58e926e564) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c38d56454c907b0a08876e3794a8e1b6') in 0.021641 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.161477 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_1.png
+  artifactKey: Guid(ac6479c238889c04ca65c181c835c87f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_1.png using Guid(ac6479c238889c04ca65c181c835c87f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca8f4acc0a9dc89ec909552765f204e8') in 0.021429 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_6.png
+  artifactKey: Guid(2a05d1949282a8946aeab5b04139d8ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_6.png using Guid(2a05d1949282a8946aeab5b04139d8ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a133587329adbc40bf4184e8804c1464') in 0.020882 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000127 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_3.png
+  artifactKey: Guid(5479fe643de0a584f8efa921548d1837) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_3.png using Guid(5479fe643de0a584f8efa921548d1837) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0a7ef61ff2965bd8066104edc621e82') in 0.020947 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000114 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_2.png
+  artifactKey: Guid(10ea97652f19fbc45a5df784e60d5e8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_2.png using Guid(10ea97652f19fbc45a5df784e60d5e8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9d28c428173b60d694defac66d3eff9') in 0.021120 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000118 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_4.png
+  artifactKey: Guid(6a7010904f24cc14cbf6e1eed70ca87d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_4.png using Guid(6a7010904f24cc14cbf6e1eed70ca87d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a92441dd4db4160cba29b3745b6641e4') in 0.029641 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000121 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_5.png
+  artifactKey: Guid(52b79295e4e5f9b4a8ba2713c50ff488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/10_take_hit/take_hit_5.png using Guid(52b79295e4e5f9b4a8ba2713c50ff488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31c76928831c0b39334d265b6e2d335e') in 0.013771 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.824996 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_1.png
+  artifactKey: Guid(4a6642d900bfa5d4aa7038b323da0260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_1.png using Guid(4a6642d900bfa5d4aa7038b323da0260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3287f67026a866475db07b0c05796983') in 0.017559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000114 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_3.png
+  artifactKey: Guid(4b37238ce4c62ec4d9f5e490c7c881bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_3.png using Guid(4b37238ce4c62ec4d9f5e490c7c881bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46141de314214bd0d30603a3e8e349d0') in 0.023473 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_12.png
+  artifactKey: Guid(2a87451b2cd8ebf4cafee5c875cda77d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_12.png using Guid(2a87451b2cd8ebf4cafee5c875cda77d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4a82204495538cd16011d5ffeaa0dfd') in 0.017036 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000114 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_11.png
+  artifactKey: Guid(801d31613edf4f5408571da835ff4c2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_11.png using Guid(801d31613edf4f5408571da835ff4c2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20474861e634515894f1248feaa1312e') in 0.020398 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_13.png
+  artifactKey: Guid(336ce7f8acd8aeb44b1e7dd50cb8cf84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_13.png using Guid(336ce7f8acd8aeb44b1e7dd50cb8cf84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3389d50a33463d854fa1a2fd77a5a292') in 0.029228 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_6.png
+  artifactKey: Guid(7cdc60155506873408331c5ae3e884cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_6.png using Guid(7cdc60155506873408331c5ae3e884cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1705e347401fde524202666ec41fee52') in 0.013143 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_10.png
+  artifactKey: Guid(5eeac0c4ff2161944b9bc999136005f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_10.png using Guid(5eeac0c4ff2161944b9bc999136005f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '279d7c6e3665ec5bbfd30e3d6bacdf7a') in 0.021327 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000113 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_9.png
+  artifactKey: Guid(7982e9675ae5f174e8a1af6185996fd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_9.png using Guid(7982e9675ae5f174e8a1af6185996fd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee57d89f57ab77e1dadbd3ac6a675988') in 0.022578 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000120 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_8.png
+  artifactKey: Guid(db378ea8cd8caec4bb7da5e317453b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_8.png using Guid(db378ea8cd8caec4bb7da5e317453b75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd75742f6af9e7e5ebd5da51e4fad6604') in 0.021017 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_4.png
+  artifactKey: Guid(e9ae45e3ee0eefc4bbb400baef2bfc54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_4.png using Guid(e9ae45e3ee0eefc4bbb400baef2bfc54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c51675db4900081ed37c5696ca3ec88') in 0.021507 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_5.png
+  artifactKey: Guid(0d29091c486feeb40b0375b89f4b68e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_5.png using Guid(0d29091c486feeb40b0375b89f4b68e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de174eea9a19ee458502a60fbbe7b184') in 0.021584 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000116 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_2.png
+  artifactKey: Guid(8ca08e1b526477748acc0ea33bd7adcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_2.png using Guid(8ca08e1b526477748acc0ea33bd7adcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7fefd4f82d876dd613b0516e3d26a78') in 0.010888 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_7.png
+  artifactKey: Guid(ce2b5a2da79ff314d83899d6d1a31b47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/11_death/death_7.png using Guid(ce2b5a2da79ff314d83899d6d1a31b47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ab229d43568e0a6332f1d7d02c1166a') in 0.011795 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.465770 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_1.png
+  artifactKey: Guid(a8f55b8d3c15b704999f97b00f511dfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_1.png using Guid(a8f55b8d3c15b704999f97b00f511dfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b3a9e3e7457ed27f5a68b6a442611d9') in 0.017379 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000135 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_7.png
+  artifactKey: Guid(4135ff93c44e2ee44af348c1df0c394c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_7.png using Guid(4135ff93c44e2ee44af348c1df0c394c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb41bf4db444ea16309c719956b05811') in 0.022680 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000119 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_2.png
+  artifactKey: Guid(3911a0ad618389245b728234c8169a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_2.png using Guid(3911a0ad618389245b728234c8169a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59a1b3b15a15cfc2a7732432dbfeab88') in 0.022088 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_3.png
+  artifactKey: Guid(4358f4cb1c99f294cae83b5f3709e1a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_3.png using Guid(4358f4cb1c99f294cae83b5f3709e1a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cea4d42f95ec7105aa8cdbcfbfba76bb') in 0.022342 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000126 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_4.png
+  artifactKey: Guid(e73ebaf6353c79449bb11c5830c24382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_4.png using Guid(e73ebaf6353c79449bb11c5830c24382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a4fa42bc0708f74a38fd9df11f66b77') in 0.021223 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000117 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_8.png
+  artifactKey: Guid(e196887bb5a2941458d5fbdba676ff78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_8.png using Guid(e196887bb5a2941458d5fbdba676ff78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4f029674ffcdd15627b4590a577b24a') in 0.030280 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_5.png
+  artifactKey: Guid(5b2ebb6a27a8714469c3e068ec8de442) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_5.png using Guid(5b2ebb6a27a8714469c3e068ec8de442) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5b3fb1a3037147f9a8d5808ca031a49') in 0.014228 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000216 seconds.
+  path: Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_6.png
+  artifactKey: Guid(4777b2b7454d9cc408d5f3882a6ba650) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Elementals_fire_knight_FREE_v1.1/png/fire_knight/air_atk/air_atk_6.png using Guid(4777b2b7454d9cc408d5f3882a6ba650) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2d0a6e0e5b5663df6868d15120fe784') in 0.020746 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 212.019920 seconds.
+  path: Assets/Prefabs/ExPlayer.prefab
+  artifactKey: Guid(7f8e72c66a3e10e4391f89e1497f3063) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/ExPlayer.prefab using Guid(7f8e72c66a3e10e4391f89e1497f3063) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'adaa856933dd4427dcc0e1e9b209e150') in 0.282901 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004291 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.865 seconds
+Domain Reload Profiling:
+	ReloadAssembly (865ms)
+		BeginReloadAssembly (116ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (32ms)
+		EndReloadAssembly (693ms)
+			LoadAssemblies (96ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (236ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (254ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (155ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2223 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.1 MB.
+System memory in use after: 121.2 MB.
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2714.
+Total: 2.937900 ms (FindLiveObjects: 0.180700 ms CreateObjectMapping: 0.055100 ms MarkObjects: 2.561100 ms  DeleteObjects: 0.140100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 135.665610 seconds.
+  path: Assets/Prefabs/ExPlayer.prefab
+  artifactKey: Guid(7f8e72c66a3e10e4391f89e1497f3063) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/ExPlayer.prefab using Guid(7f8e72c66a3e10e4391f89e1497f3063) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0971ebe89a057d9944865d179bc1953f') in 0.131644 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 36.173182 seconds.
+  path: Assets/Prefabs/GameObject.prefab
+  artifactKey: Guid(bc94b756c2485f94083e0ebc49687b62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/GameObject.prefab using Guid(bc94b756c2485f94083e0ebc49687b62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b863724f52cfd16c45651747d4f1ecb') in 0.008151 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 38.536611 seconds.
+  path: Assets/Prefabs/New_Player Variant.prefab
+  artifactKey: Guid(f280e66e022e7df468e12888d3baf0c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/New_Player Variant.prefab using Guid(f280e66e022e7df468e12888d3baf0c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcecb924d73cbc12b1ef490933cf4b9f') in 0.063139 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 37.074844 seconds.
+  path: Assets/Prefabs/ExPlayer.prefab
+  artifactKey: Guid(7f8e72c66a3e10e4391f89e1497f3063) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/ExPlayer.prefab using Guid(7f8e72c66a3e10e4391f89e1497f3063) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6117d532c71ea917104a9705dac9b24b') in 0.051991 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000210 seconds.
+  path: Assets/Prefabs/New_Player Variant.prefab
+  artifactKey: Guid(f280e66e022e7df468e12888d3baf0c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/New_Player Variant.prefab using Guid(f280e66e022e7df468e12888d3baf0c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cbfac08f1af591a41eef08a8adbff27') in 0.058970 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004084 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.856 seconds
+Domain Reload Profiling:
+	ReloadAssembly (857ms)
+		BeginReloadAssembly (115ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (685ms)
+			LoadAssemblies (96ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (233ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (252ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (76ms)
+				ProcessInitializeOnLoadAttributes (154ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (9ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2223 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.3 MB.
+System memory in use after: 121.3 MB.
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 2717.
+Total: 3.255000 ms (FindLiveObjects: 0.251600 ms CreateObjectMapping: 0.059100 ms MarkObjects: 2.792200 ms  DeleteObjects: 0.150600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

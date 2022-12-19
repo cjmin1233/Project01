@@ -70,7 +70,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        if (Input.GetButton("AttackX") && !isXAttacking && !isJumping && !isZAttacking && !isDashing)
+        if (Input.GetButtonDown("AttackX") && !isXAttacking && !isJumping && !isZAttacking && !isDashing)
         {
             if (weaponType == 1)
             {

@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
             {
                 if (Time.time >= (lastDash + dashCoolDown))
                 {
+                    movementX = Input.GetAxisRaw("Horizontal");
                     AttemptToDash();
                 }
             }
