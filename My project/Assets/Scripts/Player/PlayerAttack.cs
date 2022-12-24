@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     private Rigidbody2D rg;
     private Animator animator;
     private SpriteRenderer sr;
-    public Transform SwordPoint;
+    //public Transform SwordPoint;
     public float SwordRange = 0.5f;
     public LayerMask enemyLayers;
 
