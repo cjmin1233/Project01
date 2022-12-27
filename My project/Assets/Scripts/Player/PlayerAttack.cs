@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D rg;
     private Animator animator;
-    private SpriteRenderer sr;
+    //private SpriteRenderer sr;
     //public Transform SwordPoint;
     public float SwordRange = 0.5f;
     public LayerMask enemyLayers;
@@ -27,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
     public bool isZAttacking = false;
     public float Speed_Z = 1.0f;
     public GameObject[] comboCollider;
+    private int inputZCounter = 0;
     // ****************************
     
     // X attack *******************
@@ -43,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         rg = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        //sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
     }
@@ -53,12 +54,73 @@ public class PlayerAttack : MonoBehaviour
         isJumping = animator.GetBool("IsJumping");
         weaponType = animator.GetInteger("WeaponType");
 
-        if (Input.GetButtonDown("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing)
+        if (Input.GetButtonDown("AttackZ") && !isJumping && !isXAttacking && !isDashing && comboCounter<3)
+        {
+            if (isZAttacking)
+            {
+                // 스택 증가
+                inputZCounter++;
+                Debug.Log("over Z input************");
+            }
+            else
+            {
+                if (weaponType == 1)
+                {
+                    //  Sword Z combo attack.
+                    SwordZAttack();
+                }
+                else if (weaponType == 2)
+                {
+                    //  Bow Z combo attack.
+                }
+                else if (weaponType == 3)
+                {
+                    //  Spear Z combo attack.
+                }
+            }
+        }
+
+        if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
+        {
+            if (comboCounter == 3)
+            {
+                gameObject.GetComponent<Player>().canMove = false;
+
+                animator.SetFloat("Speed_X", Speed_X);
+                isXAttacking = true;
+                animator.SetTrigger("Combo3");
+
+                float swordCombo_force = 0.1f;
+                if (transform.rotation.y != 0f) swordCombo_force *= -1f;
+                rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
+            }
+            else 
+            {
+                if (weaponType == 1)
+                {
+                    //  Sword X attack.
+                    SwordXAttack();
+                }
+                else if (weaponType == 2)
+                {
+                    //  Bow X attack.
+                    BowXAttack();
+                }
+                else if (weaponType == 3)
+                {
+                    //  Spear X attack.
+                }
+            }
+        }
+
+        //  over Z input handle
+        if (!isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)
         {
             if (weaponType == 1)
             {
                 //  Sword Z combo attack.
                 SwordZAttack();
+                inputZCounter--;
             }
             else if (weaponType == 2)
             {
@@ -70,30 +132,11 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("AttackX") && !isXAttacking && !isJumping && !isZAttacking && !isDashing)
-        {
-            if (weaponType == 1)
-            {
-                //  Sword X attack.
-                SwordXAttack();
-            }
-            else if (weaponType == 2)
-            {
-                //  Bow X attack.
-                BowXAttack();
-            }
-            else if (weaponType == 3)
-            {
-                //  Spear X attack.
-            }
-
-        }
-
     }
     public void Start_Combo()
     {
         isZAttacking = false;
-        Enable_Sword_Combo_Collider();
+        //Enable_Sword_Combo_Collider();
         if (comboCounter < 3)
         {
             comboCounter++;
@@ -104,16 +147,21 @@ public class PlayerAttack : MonoBehaviour
         isZAttacking = false;
         comboCounter = 0;
         gameObject.GetComponent<Player>().canMove = true;
+        // 스택 초기화
+        inputZCounter = 0;
     }
     public void Finish_X()
     {
         isXAttacking = false;
+        comboCounter = 0;
         gameObject.GetComponent<Player>().canMove = true;
+        // 스택 초기화
+        inputZCounter = 0;
     }
 
     private void Enable_Sword_Combo_Collider()
     {
-        comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier);
+        comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1+comboCounter*0.2f));
         comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_Z;
         comboCollider[comboCounter].SetActive(true);
     }
@@ -172,7 +220,8 @@ public class PlayerAttack : MonoBehaviour
         animator.SetFloat("Speed_X", Speed_X);
         isXAttacking = true;
         animator.SetTrigger("AttackX");
-        Finish_Combo();
+        isZAttacking = false;
+        comboCounter = 0;
 
         float swordCombo_force = 0.1f;
         if (transform.rotation.y != 0f) swordCombo_force *= -1f;
