@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     //public float moveForce = 10f;
     float movementX;
     [Header("Horizontal Movement")][SerializeField] private float baseSpeed = 400f;
+    public AudioSource dash_sound_1;
+    public AudioSource dash_sound_2;
     public float dashPower = 5f;
     public float dashTime = 0.2f;
     public float distanceBetweenImages;
@@ -140,6 +142,10 @@ public class Player : MonoBehaviour
     }
     private void AttemptToDash()
     {
+        int rand = Random.Range(0, 2);
+        if (rand == 1) dash_sound_1.PlayOneShot(dash_sound_1.clip);
+        else dash_sound_2.PlayOneShot(dash_sound_2.clip);
+
         isDashing = true;
         dashTimeLeft = dashTime;
         lastDash = Time.time;

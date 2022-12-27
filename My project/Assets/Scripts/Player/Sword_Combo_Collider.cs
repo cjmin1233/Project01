@@ -6,6 +6,7 @@ public class Sword_Combo_Collider : MonoBehaviour
 {
     public float damage;
     public float anim_Speed = 1.0f;
+    public AudioSource audioSource;
 
     private Animator animator;
     private void Awake()
@@ -15,6 +16,7 @@ public class Sword_Combo_Collider : MonoBehaviour
     private void OnEnable()
     {        
         animator.SetFloat("EnableSpeed", anim_Speed);
+        if (audioSource!=null) audioSource.PlayOneShot(audioSource.clip);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
