@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     public bool isZAttacking = false;
     public float Speed_Z = 1.0f;
     public GameObject[] comboCollider;
-    private int inputZCounter = 0;
+    public int inputZCounter = 0;
     // ****************************
     
     // X attack *******************
@@ -60,7 +60,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 // 스택 증가
                 inputZCounter++;
-                Debug.Log("over Z input************");
+                //Debug.Log("over Z input************");
             }
             else
             {
@@ -161,8 +161,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void Enable_Sword_Combo_Collider()
     {
+        Vector2 damageForce = new Vector2(20f,0f);
+        if (transform.rotation.y != 0f) damageForce.x *= -1f;
         comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1+comboCounter*0.2f));
         comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_Z;
+        comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
         comboCollider[comboCounter].SetActive(true);
     }
     private void SwordZAttack()
@@ -208,8 +211,11 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Enable_Sword_Collider_X()
     {
+        Vector2 damageForce = new Vector2(20f, 0f);
+        if (transform.rotation.y != 0f) damageForce.x *= -1f;
         Sword_Collider_X.GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
         Sword_Collider_X.GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_X;
+        Sword_Collider_X.GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
         Sword_Collider_X.SetActive(true);
     }
     private void SwordXAttack()
@@ -260,7 +266,13 @@ public class PlayerAttack : MonoBehaviour
         Finish_Combo();
         Instantiate(ArrowPrefab, firePoint.position, firePoint.rotation);
     }
-
+    public void PlayerInit()
+    {
+        isZAttacking = false;
+        isXAttacking = false;
+        comboCounter = 0;
+        inputZCounter = 0;
+    }
 
     /*
     public void BigArrow()

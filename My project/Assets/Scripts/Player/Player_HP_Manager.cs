@@ -12,15 +12,15 @@ public class Player_HP_Manager : MonoBehaviour
 
     [SerializeField]
     private GameObject Player;
-    int MaxHP;
-    int CurHP;
+    float MaxHP;
+    float CurHP;
 
 
     public void HandleHP()
     {
         MaxHP = Player.gameObject.GetComponent<Player>().MaxHP;
         CurHP = Player.gameObject.GetComponent<Player>().CurHP;
-        HP_Bar.value = (float)CurHP / (float)MaxHP;
-        HP_Text.text = CurHP.ToString() + " / " + MaxHP.ToString();
+        HP_Bar.value = CurHP / MaxHP;
+        HP_Text.text = ((int)CurHP).ToString() + " / " + ((int)MaxHP).ToString();
     }
 }

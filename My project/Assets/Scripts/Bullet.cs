@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         string tag = hitInfo.tag;
         if (tag == "Enemy")
         {
-            hitInfo.GetComponent<Enemy>().TakeDamage(damage);
+            hitInfo.GetComponent<Enemy>().TakeDamage(damage, new Vector2(0,0));
         }
         else if (tag == "Boss")
         {

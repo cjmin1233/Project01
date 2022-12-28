@@ -11,8 +11,7 @@ public class Player : MonoBehaviour
     //public float moveForce = 10f;
     float movementX;
     [Header("Horizontal Movement")][SerializeField] private float baseSpeed = 400f;
-    public AudioSource dash_sound_1;
-    public AudioSource dash_sound_2;
+    public AudioSource[] dash_sound;
     public float dashPower = 5f;
     public float dashTime = 0.2f;
     public float distanceBetweenImages;
@@ -30,6 +29,7 @@ public class Player : MonoBehaviour
     private bool isFacingRight = true;
 
     [Header("Vertical Movement")]
+    public AudioSource[] jump_sound;
     private bool jump;
     private bool isGrounded;
     int playerLayer, groundLayer;
@@ -39,8 +39,8 @@ public class Player : MonoBehaviour
     const float GroundedRadius = 0.1f;
 
     [SerializeField] private GameObject HP_Bar;
-    [HideInInspector] public int MaxHP = 100;
-    [HideInInspector] public int CurHP;
+    [HideInInspector] public float MaxHP = 100;
+    [HideInInspector] public float CurHP;
     private bool canInvincible = false;
     float invincibleTimeLeft;
     float invincibleTime = 1f;
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         groundLayer = LayerMask.NameToLayer("Ground");
 
         CurHP = MaxHP;
-        HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
+        HP_Bar.GetComponent<Player_HP_Manager>().HandleHP();
         currentSpeed = baseSpeed;
         int weaponType = PlayerPrefs.GetInt("weaponType");
         animator.SetInteger("WeaponType", weaponType);
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q))    //Take damage.
         {
-            TakeDamage(20);
+            TakeDamage(20f);
         }
         /////////////////////
         if (canMove)
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !isDashing)
         {
             jump = true;
         }
@@ -142,9 +142,9 @@ public class Player : MonoBehaviour
     }
     private void AttemptToDash()
     {
+        gameObject.GetComponent<PlayerAttack>().PlayerInit();
         int rand = Random.Range(0, 2);
-        if (rand == 1) dash_sound_1.PlayOneShot(dash_sound_1.clip);
-        else dash_sound_2.PlayOneShot(dash_sound_2.clip);
+        if (dash_sound[rand]!=null) dash_sound[rand].PlayOneShot(dash_sound[rand].clip);
 
         isDashing = true;
         dashTimeLeft = dashTime;
@@ -163,9 +163,9 @@ public class Player : MonoBehaviour
     {
         if (isDashing)
         {
-            gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
+            /*gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
             gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
+            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;*/
             if (dashTimeLeft > 0)
             {
                 animator.SetBool("IsDashing", isDashing);
@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
         //if(isStuckable) Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
-        if (colliders.Length == 0 && !wasGrounded) Debug.Log("I'm flying!");
+        //if (colliders.Length == 0 && !wasGrounded) Debug.Log("I'm flying!");
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
@@ -228,12 +228,14 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
             animator.SetBool("IsJumping", true);
-            gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
+            /*gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
             gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
-
+            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;*/
+            gameObject.GetComponent<PlayerAttack>().PlayerInit();
 
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            int rand = Random.Range(0, 3);
+            if (jump_sound[rand]!=null) jump_sound[rand].PlayOneShot(jump_sound[rand].clip);
         }
         jump = false;
         /*
@@ -311,7 +313,7 @@ public class Player : MonoBehaviour
         CurHP += 25;
         HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (!canInvincible)
         {
@@ -331,7 +333,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
+        HP_Bar.GetComponent<Player_HP_Manager>().HandleHP();
     }
     private void Invincible()
     {
@@ -367,15 +369,4 @@ public class Player : MonoBehaviour
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(gameObject);
     }
-
-    // UI part.
-    /*
-    public void TimeStop()
-    {
-        Time.timeScale = 0;
-    }
-    public void TimeStart()
-    {
-        Time.timeScale = 1;
-    }*/
 }
