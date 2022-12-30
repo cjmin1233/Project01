@@ -58,10 +58,23 @@ public class Item : MonoBehaviour
             Player.GetComponent<Animator>().SetInteger("WeaponType", 2);
             //Player.GetComponent<SelectAbility>().RandomAbility();
         }
-        else if(this.tag.Equals("Chest"))
+        else if (this.tag.Equals("Chest"))
         {
             Debug.Log("this is chest");
             Player.GetComponent<SelectAbility>().RandomAbility();
+            //Destroy(gameObject);
+        }
+        else if (this.tag.Equals("Potion"))
+        {
+            Debug.Log("this is potion");
+            Player.GetComponent<Player>().IncreaseMaxHP();
+            Destroy(gameObject);
+        }
+        else if (this.tag.Equals("Book"))
+        {
+            Debug.Log("this is book");
+            Player.GetComponent<SelectAbility>().UpgradeAbility();
+            //Destroy(gameObject);
         }
     }
     private void Floating()

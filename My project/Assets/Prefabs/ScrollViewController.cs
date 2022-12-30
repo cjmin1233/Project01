@@ -7,7 +7,7 @@ public class ScrollViewController : MonoBehaviour
 {
     private ScrollRect scrollRect;
     float space = 50f;
-    public GameObject uiPrefab;
+    //public GameObject uiPrefab;
     //public List<RectTransform> uiObjects = new List<RectTransform>();
     public List<GameObject> AbilityList = new List<GameObject>();
     [HideInInspector] public List<GameObject> SelectedAbilityList = new List<GameObject>();
@@ -31,13 +31,36 @@ public class ScrollViewController : MonoBehaviour
         scrollRect.content.sizeDelta = new Vector2(scrollRect.content.sizeDelta.x, y);
     }
      */
-    public void AddTest(GameObject gameObject)
+    public void AddToBook(GameObject gameObject)
     {
         if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
-        int index = gameObject.GetComponent<Ability>().index;
+        /*int index = gameObject.GetComponent<Ability>().index;
         Debug.Log("The selected ability index is : " + index);
         var newUi = Instantiate(AbilityList[index], scrollRect.content);
-        SelectedAbilityList.Add(newUi);
+        SelectedAbilityList.Add(newUi);*/
+
+        //*********************
+        if (gameObject.GetComponent<Ability>().level == 1)
+        {
+            // 새로운 어빌리티 선택
+            var newUi = Instantiate(gameObject, scrollRect.content);
+            newUi.SetActive(true);
+            newUi.GetComponent<Button>().enabled = false;
+            SelectedAbilityList.Add(newUi);
+        }
+        else
+        {
+            // 선택한 능력 강화
+            for(int i = 0; i < SelectedAbilityList.Count; i++)
+            {
+                if (SelectedAbilityList[i].GetComponent<Ability>().index == gameObject.GetComponent<Ability>().index)
+                {
+                    SelectedAbilityList[i].GetComponent<Ability>().level = gameObject.GetComponent<Ability>().level;
+                    break;
+                }
+            }
+        }
+
 
         UpdateBook();
         /*

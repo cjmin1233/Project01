@@ -313,6 +313,11 @@ public class Player : MonoBehaviour
         CurHP += 25;
         HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
     }
+    public void IncreaseRunSpeed()
+    {
+        baseSpeed *= 1.3f;
+        currentSpeed *= 1.3f;
+    }
     public void TakeDamage(float damage)
     {
         if (!canInvincible)

@@ -11,4 +11,8 @@ public class Ability : MonoBehaviour
     public int weight;
     public bool isAppeared = false;
     public bool isSelected = false;
+    public void IncreaseLevel()
+    {
+        level++;
+    }
 }
