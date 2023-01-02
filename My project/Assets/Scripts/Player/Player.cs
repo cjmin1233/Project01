@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     const float GroundedRadius = 0.1f;
 
     [SerializeField] private GameObject HP_Bar;
+    [SerializeField] private GameObject Gold_UI;
     [HideInInspector] public float MaxHP = 100;
     [HideInInspector] public float CurHP;
     private bool canInvincible = false;
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour
     float invincibleTime = 1f;
     [SerializeField] private GameObject Esc_UI;
     [SerializeField] private GameObject Book_UI;
+    [HideInInspector] public int gold;
     private void Start()
     {
         invincibleTimeLeft = 0f;
@@ -56,6 +58,8 @@ public class Player : MonoBehaviour
         playerLayer = LayerMask.NameToLayer("Player");
         groundLayer = LayerMask.NameToLayer("Ground");
 
+        gold = 0;
+        Gold_UI.GetComponent<Player_Gold_Manager>().HandleGold(gold);
         CurHP = MaxHP;
         HP_Bar.GetComponent<Player_HP_Manager>().HandleHP();
         currentSpeed = baseSpeed;
@@ -340,6 +344,11 @@ public class Player : MonoBehaviour
 
         HP_Bar.GetComponent<Player_HP_Manager>().HandleHP();
     }
+    public void GetGold(int get_gold)
+    {
+        gold += get_gold;
+        Gold_UI.GetComponent<Player_Gold_Manager>().HandleGold(gold);
+    }
     private void Invincible()
     {
         if (canInvincible)
@@ -352,18 +361,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-    /*
-    public void EnableIgnoreGround()
-    {
-        ignoreGround = true;
-        Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
-    }
-    public void DisableIgnoreGround()
-    {
-        ignoreGround = false;
-        Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
-    }
-     */
     private void Die()
     {
         //animator.SetBool("IsDead", true);

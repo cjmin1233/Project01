@@ -18,8 +18,8 @@ public class Player_HP_Manager : MonoBehaviour
 
     public void HandleHP()
     {
-        MaxHP = Player.gameObject.GetComponent<Player>().MaxHP;
-        CurHP = Player.gameObject.GetComponent<Player>().CurHP;
+        MaxHP = Player.GetComponent<Player>().MaxHP;
+        CurHP = Player.GetComponent<Player>().CurHP;
         HP_Bar.value = CurHP / MaxHP;
         HP_Text.text = ((int)CurHP).ToString() + " / " + ((int)MaxHP).ToString();
     }

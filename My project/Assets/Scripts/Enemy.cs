@@ -132,6 +132,10 @@ public class Enemy : MonoBehaviour
         //this.enabled = false;
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(gameObject);
+        // °ñµå Ãß°¡
+        player = GameObject.FindGameObjectWithTag("Player");
+        int random_gold = Random.Range(10, 101);
+        player.GetComponent<Player>().GetGold(random_gold);
     }
     private void destroyEnemy()
     {

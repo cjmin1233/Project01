@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
@@ -58,9 +57,9 @@ public class Item : MonoBehaviour
             Player.GetComponent<Animator>().SetInteger("WeaponType", 2);
             //Player.GetComponent<SelectAbility>().RandomAbility();
         }
-        else if (this.tag.Equals("Chest"))
+        else if (this.tag.Equals("Book"))
         {
-            Debug.Log("this is chest");
+            Debug.Log("this is book");
             Player.GetComponent<SelectAbility>().RandomAbility();
             //Destroy(gameObject);
         }
@@ -70,11 +69,18 @@ public class Item : MonoBehaviour
             Player.GetComponent<Player>().IncreaseMaxHP();
             Destroy(gameObject);
         }
-        else if (this.tag.Equals("Book"))
+        else if (this.tag.Equals("Upgrade"))
         {
-            Debug.Log("this is book");
+            Debug.Log("this is upgrade");
             Player.GetComponent<SelectAbility>().UpgradeAbility();
             //Destroy(gameObject);
+        }
+        else if (this.tag.Equals("Chest"))
+        {
+            Debug.Log("this is chest");
+            gameObject.GetComponent<Chest>().OpenChest();
+            //Player.GetComponent<SelectAbility>().UpgradeAbility();
+            Destroy(gameObject);
         }
     }
     private void Floating()
