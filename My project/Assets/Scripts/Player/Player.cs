@@ -317,6 +317,12 @@ public class Player : MonoBehaviour
         CurHP += 25;
         HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
     }
+    public void Heal(float heal)
+    {
+        CurHP += heal;
+        if (CurHP > MaxHP) CurHP = MaxHP;
+        HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
+    }
     public void IncreaseRunSpeed()
     {
         baseSpeed *= 1.3f;

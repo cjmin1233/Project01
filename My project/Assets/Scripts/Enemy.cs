@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     public GameObject DamageText;
     public Enemy_Healthbar healthbar;
 
-    [HideInInspector] public bool detectPlayer = false;
+    [HideInInspector] public bool detectPlayer;
     [HideInInspector] public bool doAttack = false;
     private float attackRate = 0.5f;
     private float lastAttackTime = 0f;
@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
         healthbar.SetHealth(currentHealth, maxHealth);
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        detectPlayer = false;
     }
     private void FixedUpdate()
     {

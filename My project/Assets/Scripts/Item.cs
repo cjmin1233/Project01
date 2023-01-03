@@ -13,7 +13,7 @@ public class Item : MonoBehaviour
     bool isPickUp;
     float theta;
     float floatingAmplitude=.2f;
-    void Start()
+    void Awake()
     {
         EquipIcon.gameObject.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
@@ -82,6 +82,19 @@ public class Item : MonoBehaviour
             //Player.GetComponent<SelectAbility>().UpgradeAbility();
             Destroy(gameObject);
         }
+        else if (this.tag.Equals("Coin"))
+        {
+            Debug.Log("this is coin");
+            Player.GetComponent<Player>().GetGold(100);
+            Destroy(gameObject);
+        }
+        else if (this.tag.Equals("Food"))
+        {
+            Debug.Log("this is food");
+            Player.GetComponent<Player>().Heal(50);
+            Destroy(gameObject);
+        }
+
     }
     private void Floating()
     {

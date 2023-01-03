@@ -11,7 +11,7 @@ public class Door : MonoBehaviour
     bool isPickUp;
     void Awake()
     {
-        EnterIcon.gameObject.SetActive(false);
+        EnterIcon.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Player = collision.gameObject;
-            EnterIcon.gameObject.SetActive(true);
+            EnterIcon.SetActive(true);
             EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
             isPickUp = true;
         }
@@ -49,7 +49,8 @@ public class Door : MonoBehaviour
             Debug.Log("Active Scene is '" + scene.name + "'.");
             Debug.Log("move to the next scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Player.gameObject.transform.position = new Vector3(0f, 0f, 0f);
+            Player.transform.position = new Vector3(0f, 0f, 0f);
+            EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", false);
         }
         else Debug.Log("Choose a weapon");
 
