@@ -139,6 +139,19 @@ public class SelectAbility : MonoBehaviour
             // run speed upgrade
             gameObject.GetComponent<Player>().IncreaseRunSpeed();
         }
+        else if (SelectedAbility.index == 6)
+        {
+            // °ËÇ³ °ø°Ý
+            gameObject.GetComponent<PlayerAttack>().sword_wind_enable = true;
+        }
+        else if (SelectedAbility.index == 7)
+        {
+            // ÈíÇ÷
+        }
+        else if (SelectedAbility.index == 8)
+        {
+            // ¤±¤±¤±
+        }
 
         /*
         if (SelectedAbility.Type == 0)

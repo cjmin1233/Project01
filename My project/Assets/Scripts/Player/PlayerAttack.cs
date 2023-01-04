@@ -28,8 +28,13 @@ public class PlayerAttack : MonoBehaviour
     public float Speed_Z = 1.0f;
     public GameObject[] comboCollider;
     public int inputZCounter = 0;
+    public GameObject swordwindPrefab;
+    public GameObject[] swordwindCollider;
+    public bool sword_wind_enable;
+    [SerializeField] private Transform sword_wind_startpoint;
+    [SerializeField] private List<AudioSource> sword_wind_sound;
     // ****************************
-    
+
     // X attack *******************
     public bool isXAttacking = false;
     public float Speed_X = 1.0f;
@@ -46,7 +51,7 @@ public class PlayerAttack : MonoBehaviour
         rg = GetComponent<Rigidbody2D>();
         //sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-
+        sword_wind_enable = false;
     }
     void Update()
     {
@@ -167,6 +172,22 @@ public class PlayerAttack : MonoBehaviour
         comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_Z;
         comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
         comboCollider[comboCounter].SetActive(true);
+        if (sword_wind_enable)
+        {
+            /*            GameObject swordwind = Instantiate(swordwindPrefab, sword_wind_startpoint.position, sword_wind_startpoint.rotation);
+                        swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(0.5f * swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
+                        swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
+                        swordwind.GetComponent<Sword_Wind_Collider>().damageForce = damageForce;
+                        swordwind.SetActive(true);
+            */            ////////////
+            GameObject swordwind = SwordWindPool.Instance.GetFromPool();
+            swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(0.5f * swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
+            swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
+            swordwind.GetComponent<Sword_Wind_Collider>().damageForce = damageForce;
+            swordwind.SetActive(true);
+            int rand = Random.Range(0, sword_wind_sound.Count);
+            if (sword_wind_sound[rand] != null) sword_wind_sound[rand].PlayOneShot(sword_wind_sound[rand].clip);
+        }
     }
     private void SwordZAttack()
     {

@@ -9,5 +9,6 @@ public class Chest : MonoBehaviour
     {
         int rand = Random.Range(0, items.Count);
         Instantiate(items[rand], transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

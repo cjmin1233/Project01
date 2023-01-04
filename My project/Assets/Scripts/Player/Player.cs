@@ -150,6 +150,7 @@ public class Player : MonoBehaviour
         int rand = Random.Range(0, 2);
         if (dash_sound[rand]!=null) dash_sound[rand].PlayOneShot(dash_sound[rand].clip);
 
+        // 대쉬 조건 초기화
         isDashing = true;
         dashTimeLeft = dashTime;
         lastDash = Time.time;
@@ -167,11 +168,9 @@ public class Player : MonoBehaviour
     {
         if (isDashing)
         {
-            /*gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;*/
             if (dashTimeLeft > 0)
             {
+                // 대쉬 방향 설정
                 animator.SetBool("IsDashing", isDashing);
                 currentSpeed = dashPower * baseSpeed;
                 if (isFacingRight) movementX = currentSpeed;
@@ -188,6 +187,7 @@ public class Player : MonoBehaviour
             }
             if (dashTimeLeft <= 0)
             {
+                // 대쉬 정지
                 canMove = true;
                 currentSpeed = baseSpeed;
                 isDashing = false;

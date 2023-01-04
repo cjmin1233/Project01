@@ -54,6 +54,11 @@ public class Enemy : MonoBehaviour
                 EnemyAttack();
                 lastAttackTime = Time.time;
             }
+            if (!detectPlayer)
+            {
+                rb.velocity = Vector2.zero;
+                animator.SetFloat("Speed", 0);
+            }
             Flip();
         }
     }

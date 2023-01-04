@@ -80,7 +80,7 @@ public class Item : MonoBehaviour
             Debug.Log("this is chest");
             gameObject.GetComponent<Chest>().OpenChest();
             //Player.GetComponent<SelectAbility>().UpgradeAbility();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else if (this.tag.Equals("Coin"))
         {
@@ -94,7 +94,6 @@ public class Item : MonoBehaviour
             Player.GetComponent<Player>().Heal(50);
             Destroy(gameObject);
         }
-
     }
     private void Floating()
     {
