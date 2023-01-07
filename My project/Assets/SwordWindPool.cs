@@ -18,7 +18,7 @@ public class SwordWindPool : MonoBehaviour
     }
     private void GrowPool()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             var instanceToAdd = Instantiate(prefab);
             instanceToAdd.transform.SetParent(transform);

@@ -81,6 +81,7 @@ public class Item : MonoBehaviour
             gameObject.GetComponent<Chest>().OpenChest();
             //Player.GetComponent<SelectAbility>().UpgradeAbility();
             //Destroy(gameObject);
+            this.enabled = false;
         }
         else if (this.tag.Equals("Coin"))
         {

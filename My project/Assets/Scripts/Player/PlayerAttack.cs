@@ -125,7 +125,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 //  Sword Z combo attack.
                 SwordZAttack();
-                inputZCounter--;
+                inputZCounter=0;
             }
             else if (weaponType == 2)
             {
@@ -140,20 +140,20 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Start_Combo()
     {
-        isZAttacking = false;
-        //Enable_Sword_Combo_Collider();
         if (comboCounter < 3)
         {
             comboCounter++;
         }
+        isZAttacking = false;
+        //Enable_Sword_Combo_Collider();
     }
     public void Finish_Combo()
     {
-        isZAttacking = false;
+        inputZCounter = 0;
         comboCounter = 0;
+        isZAttacking = false;
         gameObject.GetComponent<Player>().canMove = true;
         // 스택 초기화
-        inputZCounter = 0;
     }
     public void Finish_X()
     {
@@ -197,7 +197,11 @@ public class PlayerAttack : MonoBehaviour
         animator.SetFloat("Speed_Z", Speed_Z);
         isZAttacking = true;
         animator.SetTrigger("Combo" + comboCounter);
-
+        if (comboCounter == 0)
+        {
+            animator.ResetTrigger("Combo1");
+            animator.ResetTrigger("Combo2");
+        }
         // 공격시 약 전진
         //Debug.Log("i'm here");
         float swordCombo_force = 20f;

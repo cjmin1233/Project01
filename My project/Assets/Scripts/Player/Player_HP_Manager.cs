@@ -10,12 +10,14 @@ public class Player_HP_Manager : MonoBehaviour
     [SerializeField]
     private Text HP_Text;
 
-    [SerializeField]
     private GameObject Player;
     float MaxHP;
     float CurHP;
 
-
+    private void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
     public void HandleHP()
     {
         MaxHP = Player.GetComponent<Player>().MaxHP;
