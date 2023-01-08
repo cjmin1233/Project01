@@ -52,12 +52,12 @@ public class PlayerAttack : MonoBehaviour
         //sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         sword_wind_enable = false;
+        weaponType = animator.GetInteger("WeaponType");
     }
     void Update()
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
-        weaponType = animator.GetInteger("WeaponType");
 
         if (Input.GetButtonDown("AttackZ") && !isJumping && !isXAttacking && !isDashing && comboCounter<3)
         {
@@ -77,6 +77,7 @@ public class PlayerAttack : MonoBehaviour
                 else if (weaponType == 2)
                 {
                     //  Bow Z combo attack.
+                    BowZAttack();
                 }
                 else if (weaponType == 3)
                 {
@@ -87,6 +88,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
         {
+            // Z+X 콤보
             if (comboCounter == 3)
             {
                 gameObject.GetComponent<Player>().canMove = false;
@@ -95,10 +97,14 @@ public class PlayerAttack : MonoBehaviour
                 isXAttacking = true;
                 animator.SetTrigger("Combo3");
 
-                float swordCombo_force = 0.1f;
-                if (transform.rotation.y != 0f) swordCombo_force *= -1f;
-                rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
+                if (weaponType == 1)
+                {
+                    float swordCombo_force = 0.1f;
+                    if (transform.rotation.y != 0f) swordCombo_force *= -1f;
+                    rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
+                }
             }
+            // 일반 X
             else 
             {
                 if (weaponType == 1)
@@ -130,6 +136,8 @@ public class PlayerAttack : MonoBehaviour
             else if (weaponType == 2)
             {
                 //  Bow Z combo attack.
+                BowZAttack();
+                inputZCounter = 0;
             }
             else if (weaponType == 3)
             {
@@ -174,16 +182,11 @@ public class PlayerAttack : MonoBehaviour
         comboCollider[comboCounter].SetActive(true);
         if (sword_wind_enable)
         {
-            /*            GameObject swordwind = Instantiate(swordwindPrefab, sword_wind_startpoint.position, sword_wind_startpoint.rotation);
-                        swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(0.5f * swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
-                        swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
-                        swordwind.GetComponent<Sword_Wind_Collider>().damageForce = damageForce;
-                        swordwind.SetActive(true);
-            */            ////////////
             GameObject swordwind = SwordWindPool.Instance.GetFromPool();
             swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(0.5f * swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
             swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
             swordwind.GetComponent<Sword_Wind_Collider>().damageForce = damageForce;
+            swordwind.transform.position = sword_wind_startpoint.position;
             swordwind.SetActive(true);
             int rand = Random.Range(0, sword_wind_sound.Count);
             if (sword_wind_sound[rand] != null) sword_wind_sound[rand].PlayOneShot(sword_wind_sound[rand].clip);
@@ -208,31 +211,6 @@ public class PlayerAttack : MonoBehaviour
         if (transform.rotation.y != 0f) swordCombo_force *= -1f;
         rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
         //rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Force);
-
-        //Debug.Log(comboCounter);
-
-        /*
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(SwordPoint.position, SwordRange, enemyLayers);
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            string tag = enemy.tag;
-            if (tag == "Enemy")
-            {
-                enemy.GetComponent<Enemy>().TakeDamage(Mathf.Round(swordDamage_z * swordDamage_z_multiplier));
-                //enemy.GetComponent<Enemy>().TakeDamage(swordDamage_z);
-            }
-            else if (tag == "Boss")
-            {
-                //Debug.Log("We hit " + enemy.name);
-                enemy.GetComponent<Boss>().TakeDamage(Mathf.Round(swordDamage_z * swordDamage_z_multiplier));
-            }
-            else
-            {
-                Debug.Log("We hit nothing");
-            }
-            //Debug.Log("We hit " + enemy.name);
-        }
-         */
     }
     private void Enable_Sword_Collider_X()
     {
@@ -257,39 +235,42 @@ public class PlayerAttack : MonoBehaviour
         float swordCombo_force = 0.1f;
         if (transform.rotation.y != 0f) swordCombo_force *= -1f;
         rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
+    }
+    private void BowZAttack()
+    {
+        // 공격동안 움직임 제어
+        gameObject.GetComponent<Player>().canMove = false;
 
-        /*
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(SwordPoint.position, SwordRange, enemyLayers);
-
-        foreach (Collider2D enemy in hitEnemies)
+        animator.SetFloat("Speed_Z", Speed_Z);
+        isZAttacking = true;
+        animator.SetTrigger("Combo" + comboCounter);
+        if (comboCounter == 0)
         {
-            string tag = enemy.tag;
-            if (tag == "Enemy")
-            {
-                enemy.GetComponent<Enemy>().TakeDamage(Mathf.Round(swordDamage_x * swordDamage_x_multiplier));
-            }
-            else if (tag == "Boss")
-            {
-                Debug.Log("We hit " + enemy.name);
-                enemy.GetComponent<Boss>().TakeDamage(Mathf.Round(swordDamage_x * swordDamage_x_multiplier));
-            }
-            else
-            {
-                Debug.Log("We hit nothing");
-            }
+            animator.ResetTrigger("Combo1");
+            animator.ResetTrigger("Combo2");
         }
-         */
+    }
+    private void ShootArrow()
+    {
+        GameObject arrow = ArrowPool.Instance.GetFromPool();
+        arrow.GetComponent<Bullet>().damage = Mathf.Round(40f * (1 + comboCounter * 0.2f));
+        arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
+        arrow.transform.position = firePoint.position;
+        arrow.SetActive(true);
+        /*int rand = Random.Range(0, sword_wind_sound.Count);
+        if (sword_wind_sound[rand] != null) sword_wind_sound[rand].PlayOneShot(sword_wind_sound[rand].clip);*/
     }
     private void BowXAttack()
     {
         // 공격동안 움직임 제어
-        //gameObject.GetComponent<Player>().canMove = false;
+        gameObject.GetComponent<Player>().canMove = false;
 
         animator.SetFloat("Speed_X", Speed_X);
         isXAttacking = true;
         animator.SetTrigger("AttackX");
-        Finish_Combo();
-        Instantiate(ArrowPrefab, firePoint.position, firePoint.rotation);
+        isZAttacking = false;
+        comboCounter = 0;
+        //Instantiate(ArrowPrefab, firePoint.position, firePoint.rotation);
     }
     public void PlayerInit()
     {
@@ -298,20 +279,4 @@ public class PlayerAttack : MonoBehaviour
         comboCounter = 0;
         inputZCounter = 0;
     }
-
-    /*
-    public void BigArrow()
-    {
-        Debug.Log("Make the arrow Bigger");
-        ArrowPrefab.GetComponent<BoxCollider2D>().size = new Vector2(ArrowPrefab.GetComponent<BoxCollider2D>().size.x, ArrowPrefab.GetComponent<BoxCollider2D>().size.y * 1.5f);
-    }*/
-    /*
-    private void OnDrawGizmos()
-    {
-        if (SwordPoint == null) return;
-        Gizmos.DrawWireSphere(SwordPoint.position, SwordRange);
-
-        //Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
-    }
-    */
 }

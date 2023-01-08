@@ -27,16 +27,12 @@ public class Sword_Wind_Collider : MonoBehaviour
     {
         //
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        transform.position = player.position;
+        //transform.position = player.position;
         transform.rotation = player.rotation;
         //
         animator.SetFloat("EnableSpeed", anim_Speed);
-/*        int rand = Random.Range(0, audioSource.Count);
-        if (audioSource[rand] != null) audioSource[rand].PlayOneShot(audioSource[rand].clip);
-*/        
-        Vector2 vel = new Vector2(10f * anim_Speed, 0f);
-        if (damageForce.x < 0) vel.x *= -1f;
-        rb.velocity = vel;
+        
+        rb.velocity = transform.right * 10f * anim_Speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -4,49 +4,50 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 25f;
-    public float damage = 40f;
-    public GameObject ImpactEffect;
+    [HideInInspector] public float damage;
+    [HideInInspector] public float anim_Speed;
+    private float speed = 25f;
+    //public GameObject ImpactEffect;
+    private Transform player;
     private Rigidbody2D rb;
+    private Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        anim_Speed = 1.0f;
+    }
+    private void OnEnable()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //transform.position = player.position;
+        transform.rotation = player.rotation;
+        //
+        animator.SetFloat("EnableSpeed", anim_Speed);
         rb.velocity = transform.right * speed;
-        Invoke("destroyBullet", 2f);
     }
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         string tag = hitInfo.tag;
         if (tag == "Enemy")
         {
-            hitInfo.GetComponent<Enemy>().TakeDamage(damage, new Vector2(0,0));
+            hitInfo.GetComponent<Enemy>().TakeDamage(damage, Vector2.zero);
         }
         else if (tag == "Boss")
         {
             Debug.Log("We hit the " + hitInfo.name);
             hitInfo.GetComponent<Boss>().TakeDamage(damage);
         }
-        else
+        /*else
         {
             Debug.Log("We hit nothing");
-        }
-        /*
-        /*
-        Enemy enemy = hitInfo.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            enemy.TakeDamage(damage);
-        }
-         */
-
-        Instantiate(ImpactEffect, transform.position, transform.rotation);
-        //Destroy(gameObject);
-        destroyBullet();
+        }*/
+        //destroyBullet();
+        Disable_Arrow();
     }
-    private void destroyBullet()
+    private void Disable_Arrow()
     {
-        Destroy(gameObject);
+        ArrowPool.Instance.AddToPool(gameObject);
     }
 }
