@@ -40,6 +40,8 @@ public class PlayerAttack : MonoBehaviour
     public float Speed_X = 1.0f;
     public GameObject Sword_Collider_X;
     [SerializeField] private GameObject Bow_Beam;
+    [SerializeField] private GameObject arrow_shower_startpoint;
+
     // ****************************
     int weaponType;
     bool isJumping;
@@ -93,7 +95,10 @@ public class PlayerAttack : MonoBehaviour
             if (comboCounter == 3)
             {
                 gameObject.GetComponent<Player>().canMove = false;
-
+                if (weaponType == 2)
+                {
+                    arrow_shower_startpoint.GetComponent<Arrow_Shower_Startpoint>().anim_Speed = Speed_X;
+                }
                 animator.SetFloat("Speed_X", Speed_X);
                 isXAttacking = true;
                 animator.SetTrigger("Combo3");
@@ -205,6 +210,7 @@ public class PlayerAttack : MonoBehaviour
         {
             animator.ResetTrigger("Combo1");
             animator.ResetTrigger("Combo2");
+            animator.ResetTrigger("Combo3");
         }
         // 공격시 약 전진
         //Debug.Log("i'm here");
@@ -249,6 +255,7 @@ public class PlayerAttack : MonoBehaviour
         {
             animator.ResetTrigger("Combo1");
             animator.ResetTrigger("Combo2");
+            animator.ResetTrigger("Combo3");
         }
     }
     private void ShootArrow()
@@ -284,16 +291,20 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Enable_Arrow_Shower()
     {
-        Vector2 damageForce = new Vector2(transform.right.x * 5f, 0f);
+        Vector2 damageForce = new Vector2(transform.right.x * 8f, 0f);
         GameObject arrowshower = ArrowShowerPool.Instance.GetFromPool();
         arrowshower.GetComponent<Arrow_Shower_Collider>().damage = Mathf.Round(11f);
         //swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
         arrowshower.GetComponent<Arrow_Shower_Collider>().damageForce = damageForce;
-        arrowshower.transform.position = transform.position;
+        arrowshower.transform.position = arrow_shower_startpoint.transform.position;
         arrowshower.SetActive(true);
 /*        int rand = Random.Range(0, sword_wind_sound.Count);
         if (sword_wind_sound[rand] != null) sword_wind_sound[rand].PlayOneShot(sword_wind_sound[rand].clip);
 */
+    }
+    private void Arrow_Shower_Startpoint()
+    {
+        arrow_shower_startpoint.SetActive(true);
     }
     public void PlayerInit()
     {

@@ -9,11 +9,14 @@ public class ArrowShowerPool : MonoBehaviour
 
     private Queue<GameObject> availableObjects = new Queue<GameObject>();
 
+    //[HideInInspector] public Transform startpoint;
+
     public static ArrowShowerPool Instance { get; private set; }
 
     private void Awake()
     {
         Instance = this;
+        //startpoint = transform;
         GrowPool();
     }
     private void GrowPool()
@@ -43,4 +46,8 @@ public class ArrowShowerPool : MonoBehaviour
         return instance;
     }
 
+    /*public void Init_Startpoint(Transform transform)
+    {
+        startpoint.position = transform.position;
+    }*/
 }

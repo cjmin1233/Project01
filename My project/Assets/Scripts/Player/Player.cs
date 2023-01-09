@@ -334,7 +334,7 @@ public class Player : MonoBehaviour
         {
             float damageForce = 20.0f;
             if (isFacingRight) damageForce *= -1.0f;
-            rb.AddForce(new Vector2(damageForce, 5f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(damageForce, 0f), ForceMode2D.Impulse);
             CurHP -= damage;
             canInvincible = true;
             invincibleTimeLeft = invincibleTime;
