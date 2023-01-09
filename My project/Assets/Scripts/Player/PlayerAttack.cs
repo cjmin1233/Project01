@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
     //private SpriteRenderer sr;
     //public Transform SwordPoint;
-    public float SwordRange = 0.5f;
+    //public float SwordRange = 0.5f;
     public LayerMask enemyLayers;
 
     [SerializeField] private Transform firePoint;
@@ -39,6 +39,7 @@ public class PlayerAttack : MonoBehaviour
     public bool isXAttacking = false;
     public float Speed_X = 1.0f;
     public GameObject Sword_Collider_X;
+    [SerializeField] private GameObject Bow_Beam;
     // ****************************
     int weaponType;
     bool isJumping;
@@ -214,8 +215,8 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Enable_Sword_Collider_X()
     {
-        Vector2 damageForce = new Vector2(20f, 0f);
-        if (transform.rotation.y != 0f) damageForce.x *= -1f;
+        Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
+        //if (transform.rotation.y != 0f) damageForce.x *= -1f;
         Sword_Collider_X.GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
         Sword_Collider_X.GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_X;
         Sword_Collider_X.GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
@@ -271,6 +272,28 @@ public class PlayerAttack : MonoBehaviour
         isZAttacking = false;
         comboCounter = 0;
         //Instantiate(ArrowPrefab, firePoint.position, firePoint.rotation);
+    }
+    private void Enable_Bow_Beam()
+    {
+        Vector2 damageForce = new Vector2(transform.right.x * 10f, 0f);
+        //if (transform.rotation.y != 0f) damageForce.x *= -1f;
+        Bow_Beam.GetComponent<Bow_Beam_Collider>().damage = Mathf.Round(111f);
+        Bow_Beam.GetComponent<Bow_Beam_Collider>().anim_Speed = Speed_X;
+        Bow_Beam.GetComponent<Bow_Beam_Collider>().damageForce = damageForce;
+        Bow_Beam.SetActive(true);
+    }
+    private void Enable_Arrow_Shower()
+    {
+        Vector2 damageForce = new Vector2(transform.right.x * 5f, 0f);
+        GameObject arrowshower = ArrowShowerPool.Instance.GetFromPool();
+        arrowshower.GetComponent<Arrow_Shower_Collider>().damage = Mathf.Round(11f);
+        //swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
+        arrowshower.GetComponent<Arrow_Shower_Collider>().damageForce = damageForce;
+        arrowshower.transform.position = transform.position;
+        arrowshower.SetActive(true);
+/*        int rand = Random.Range(0, sword_wind_sound.Count);
+        if (sword_wind_sound[rand] != null) sword_wind_sound[rand].PlayOneShot(sword_wind_sound[rand].clip);
+*/
     }
     public void PlayerInit()
     {
