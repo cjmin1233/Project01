@@ -33,6 +33,8 @@ public class PlayerAttack : MonoBehaviour
     public bool sword_wind_enable;
     [SerializeField] private Transform sword_wind_startpoint;
     [SerializeField] private List<AudioSource> sword_wind_sound;
+    [SerializeField] private AudioSource bow_shoot_sound;
+
     // ****************************
 
     // X attack *******************
@@ -265,8 +267,8 @@ public class PlayerAttack : MonoBehaviour
         arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
         arrow.transform.position = firePoint.position;
         arrow.SetActive(true);
-        /*int rand = Random.Range(0, sword_wind_sound.Count);
-        if (sword_wind_sound[rand] != null) sword_wind_sound[rand].PlayOneShot(sword_wind_sound[rand].clip);*/
+        /*int rand = Random.Range(0, sword_wind_sound.Count);*/
+        if (bow_shoot_sound != null) bow_shoot_sound.PlayOneShot(bow_shoot_sound.clip);
     }
     private void BowXAttack()
     {

@@ -1,0 +1,749 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.30f1 (1fb1bf06830e) revision 2077119'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Core' Language: 'ko' Physical Memory: 16315 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2020.3.30f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/cjmin/Project01/My project
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+55199
+Successfully changed project path to: C:/Users/cjmin/Project01/My project
+C:/Users/cjmin/Project01/My project
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 47.47 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2020.3.30f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/cjmin/Project01/My project/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2060 (ID=0x1e89)
+    Vendor:   
+    VRAM:     5968 MB
+    Driver:   31.0.15.1694
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56312
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002096 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 48.11 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.502 seconds
+Domain Reload Profiling:
+	ReloadAssembly (502ms)
+		BeginReloadAssembly (59ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (379ms)
+			LoadAssemblies (57ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (119ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (25ms)
+			SetupLoadedEditorAssemblies (149ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (48ms)
+				BeforeProcessingInitializeOnLoad (14ms)
+				ProcessInitializeOnLoadAttributes (61ms)
+				ProcessInitializeOnLoadMethodAttributes (21ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003594 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 48.18 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.954 seconds
+Domain Reload Profiling:
+	ReloadAssembly (955ms)
+		BeginReloadAssembly (133ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (17ms)
+		EndReloadAssembly (766ms)
+			LoadAssemblies (91ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (242ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (41ms)
+			SetupLoadedEditorAssemblies (301ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (48ms)
+				BeforeProcessingInitializeOnLoad (73ms)
+				ProcessInitializeOnLoadAttributes (155ms)
+				ProcessInitializeOnLoadMethodAttributes (13ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2254 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.5 MB.
+System memory in use after: 119.5 MB.
+
+Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 2709.
+Total: 3.558000 ms (FindLiveObjects: 0.287100 ms CreateObjectMapping: 0.079100 ms MarkObjects: 3.038300 ms  DeleteObjects: 0.152400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Sounds/Bow and Hammer Sound Effects
+  artifactKey: Guid(c5a627c6489e0fb48a86f8015ac3c2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects using Guid(c5a627c6489e0fb48a86f8015ac3c2dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46d6ef84aa3fc87bde47ba752a966df0') in 0.009399 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.044226 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow
+  artifactKey: Guid(5b209cc48da91f640aca63e8e008792e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow using Guid(5b209cc48da91f640aca63e8e008792e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d6a49438d22285623347b6e27d036ec') in 0.005850 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.077319 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow1.wav
+  artifactKey: Guid(24252664d1f41c140864d611ea092c18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow1.wav using Guid(24252664d1f41c140864d611ea092c18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f72080906194f6a65c450b3abf8c013') in 0.108846 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow11.wav
+  artifactKey: Guid(6e73cd9a6e031c04c96bc3b19497252b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow11.wav using Guid(6e73cd9a6e031c04c96bc3b19497252b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '839d26cafd56b00c9348bfd07829ed39') in 0.010437 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow12.wav
+  artifactKey: Guid(145c12bc6f9bf9f4ab06c30f964092da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow12.wav using Guid(145c12bc6f9bf9f4ab06c30f964092da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5301d8c8dd36bcee0b4bcb6eec06f514') in 0.010345 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire4.wav
+  artifactKey: Guid(446efb2bed112d943bac13192a0a0cc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire4.wav using Guid(446efb2bed112d943bac13192a0a0cc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e215dd9df118a2ee8622d80bca362efd') in 0.010619 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater4.wav
+  artifactKey: Guid(cf0ec74e225a45a4bb440dc1ec9388b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater4.wav using Guid(cf0ec74e225a45a4bb440dc1ec9388b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a88d8809376f3f8c9eda2d8f58c29c99') in 0.010490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000112 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow10.wav
+  artifactKey: Guid(40ad02b6a6e60774a8d1b18f16275f56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow10.wav using Guid(40ad02b6a6e60774a8d1b18f16275f56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43a7f8f2805960ab6a52c2ff36435db9') in 0.009486 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull8.wav
+  artifactKey: Guid(f0b12966d2945914886ec59864fca561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull8.wav using Guid(f0b12966d2945914886ec59864fca561) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '051454148f2fd7d16bfd41443a247013') in 0.010711 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce2.wav
+  artifactKey: Guid(b46570503514e2a4f8183e73714a8fa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce2.wav using Guid(b46570503514e2a4f8183e73714a8fa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c59a330f36f70c3f4ec58aafa1b208ff') in 0.012943 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater2.wav
+  artifactKey: Guid(2fe440d2ae3a07041aed13ecfb7986df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater2.wav using Guid(2fe440d2ae3a07041aed13ecfb7986df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33cfa7243f962273f718aab33963b2a2') in 0.013914 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce1.wav
+  artifactKey: Guid(0a1c8512ec0ce824fa0485eaaccf700f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce1.wav using Guid(0a1c8512ec0ce824fa0485eaaccf700f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b4ba0119031f542e48ebcebb9f92c0e') in 0.010004 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh5.wav
+  artifactKey: Guid(dfad3e99ec3bd854db41d7ed5e8d7fb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh5.wav using Guid(dfad3e99ec3bd854db41d7ed5e8d7fb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8448b391350e0d1c78d7ad130a1e1be') in 0.009961 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow7.wav
+  artifactKey: Guid(0110fb898f1725d4f912d700578a874f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow7.wav using Guid(0110fb898f1725d4f912d700578a874f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f77a0da14f8c9d5635ff623794f81d2b') in 0.010258 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow13.wav
+  artifactKey: Guid(1d8cc3c188ec572489b65bbcf098ddd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow13.wav using Guid(1d8cc3c188ec572489b65bbcf098ddd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78bd22488e418b0bafe1cf841b8ef922') in 0.010630 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow4.wav
+  artifactKey: Guid(f9cfc0e6ef7909a4fa3f8663ac5f3034) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow4.wav using Guid(f9cfc0e6ef7909a4fa3f8663ac5f3034) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9485cdcbddf7028344837f3a5fdb0a2') in 0.010552 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh1.wav
+  artifactKey: Guid(29087d7031d2abc4991376b3c22a770a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh1.wav using Guid(29087d7031d2abc4991376b3c22a770a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08fdf3455140733642561245ca574044') in 0.009782 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire2.wav
+  artifactKey: Guid(07cc499b4e48b544aadf3af4b86365bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire2.wav using Guid(07cc499b4e48b544aadf3af4b86365bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57977bb478bb73bd08e3c957f8f5cb52') in 0.012769 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000133 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater5.wav
+  artifactKey: Guid(9b6c52dc63fcf6d45892aea2d2b717f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater5.wav using Guid(9b6c52dc63fcf6d45892aea2d2b717f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9147bdd0d61962e792a4046d6568299') in 0.012417 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull9.wav
+  artifactKey: Guid(28ecac922c44d264383925bb733197ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull9.wav using Guid(28ecac922c44d264383925bb733197ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08776cd70228c09e846d13bd83484bef') in 0.010883 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull1.wav
+  artifactKey: Guid(699b912cc46ba4f4fad8fa38e997e232) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull1.wav using Guid(699b912cc46ba4f4fad8fa38e997e232) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac7e9080ff2ce07ef303a9471957c296') in 0.009990 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull10.wav
+  artifactKey: Guid(153cc42fbabf480428286131bfba51b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull10.wav using Guid(153cc42fbabf480428286131bfba51b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a66e713631355114bdadc3932e175c99') in 0.009864 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull7.wav
+  artifactKey: Guid(ee833d5407efca04a9b10a8700e6b35e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull7.wav using Guid(ee833d5407efca04a9b10a8700e6b35e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75092580110ad4d0ed3ad088bfa0483d') in 0.010546 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire3.wav
+  artifactKey: Guid(bbf962a63a63c7b46a8e1d13be6b9177) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire3.wav using Guid(bbf962a63a63c7b46a8e1d13be6b9177) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee16480ea20555d7b57434c8dbe9db17') in 0.010688 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000153 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow5.wav
+  artifactKey: Guid(ad10399abb9431a40b001f8ea803e810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow5.wav using Guid(ad10399abb9431a40b001f8ea803e810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3e5132d0c58c06acc50132d1c8b6269') in 0.010160 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow6.wav
+  artifactKey: Guid(5327c5b1179ffab4397a2876a89291f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow6.wav using Guid(5327c5b1179ffab4397a2876a89291f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a08cc21a55b0d3e485086fceaab2fad5') in 0.011834 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow15.wav
+  artifactKey: Guid(02d534e1e22780a418556be9bfdbeb1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow15.wav using Guid(02d534e1e22780a418556be9bfdbeb1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c274b282c4bd209ab54174f2a23c6c3f') in 0.010836 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow14.wav
+  artifactKey: Guid(d19fbf2ffc3058c47b2470da79cc5431) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow14.wav using Guid(d19fbf2ffc3058c47b2470da79cc5431) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46ead0d0dd578d55d440428ba6dd52b5') in 0.010421 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow2.wav
+  artifactKey: Guid(6b50bafaa2ac38c43a8bd2a002b7cfe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow2.wav using Guid(6b50bafaa2ac38c43a8bd2a002b7cfe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'feac462ead1ae94419cdd328f391a9a1') in 0.010169 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater1.wav
+  artifactKey: Guid(e2a4dc134d559e64ba37dc1339fd52f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater1.wav using Guid(e2a4dc134d559e64ba37dc1339fd52f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b829301cf8b731e98d553d3a54e18cad') in 0.009775 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh4.wav
+  artifactKey: Guid(67ec363e05e9dc74d930a48a6f1941e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh4.wav using Guid(67ec363e05e9dc74d930a48a6f1941e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '26a410b361d465fec385845b03bf250b') in 0.009862 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000174 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh2.wav
+  artifactKey: Guid(7282ca5a2495791438d14a92c68afd17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh2.wav using Guid(7282ca5a2495791438d14a92c68afd17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91367cca6a4dcf9dd14fd4dc55b693ca') in 0.010055 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire5.wav
+  artifactKey: Guid(c7dfaade8a16d6f4e953914319840ee9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire5.wav using Guid(c7dfaade8a16d6f4e953914319840ee9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f27c74746086bfcac8300350ff7beb1') in 0.010301 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce3.wav
+  artifactKey: Guid(5e0be140f13f0c341bb91abddd2e76bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce3.wav using Guid(5e0be140f13f0c341bb91abddd2e76bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bcea9a8458995b6b498735e36dc2784') in 0.015492 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire1.wav
+  artifactKey: Guid(522e3ab7bac86e443bd5721d8933b455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFire1.wav using Guid(522e3ab7bac86e443bd5721d8933b455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c45f7df1b3e590dea985485addd03e7') in 0.013568 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh3.wav
+  artifactKey: Guid(9496feb530c6bc647a5d5a9208e8eaa3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowFlesh3.wav using Guid(9496feb530c6bc647a5d5a9208e8eaa3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13fc5c56eec76ffe8215f4e9a5f30b48') in 0.010790 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull3.wav
+  artifactKey: Guid(2562f28a52b24ed45a3b563b9ad8ac73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull3.wav using Guid(2562f28a52b24ed45a3b563b9ad8ac73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f70d562c96bd49772c0ea775bb6409e3') in 0.010328 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce4.wav
+  artifactKey: Guid(589b20060dc19154ab2d746246fe6b7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce4.wav using Guid(589b20060dc19154ab2d746246fe6b7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5312bf57ab01d4aeb85cff0a702120e2') in 0.009765 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull2.wav
+  artifactKey: Guid(470d35b1638f4234e895ca3e65fb00dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull2.wav using Guid(470d35b1638f4234e895ca3e65fb00dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98765abf5e990e362f9e58ed3441666c') in 0.010680 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000127 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull5.wav
+  artifactKey: Guid(eca8a0d2601435d48a00ed0d95545385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull5.wav using Guid(eca8a0d2601435d48a00ed0d95545385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b415122a8d017947b4a9d56d78169381') in 0.010127 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000145 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow8.wav
+  artifactKey: Guid(0d0b319c3ae49a843893aba4950ff680) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow8.wav using Guid(0d0b319c3ae49a843893aba4950ff680) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ffcef3d99ca2c20d14601e2101813ff') in 0.010025 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow3.wav
+  artifactKey: Guid(a31d3d19acf252a4989e16e695393b1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow3.wav using Guid(a31d3d19acf252a4989e16e695393b1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3d892c33dbc56cbedddf1d40c70c58c') in 0.010065 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull6.wav
+  artifactKey: Guid(7a2bdfb02d40f88498572ce438a724f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull6.wav using Guid(7a2bdfb02d40f88498572ce438a724f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db72aee47db375765fd502f7047ddb8a') in 0.019230 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce5.wav
+  artifactKey: Guid(0ae514078a95a03499c5b85136f4fa57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowIce5.wav using Guid(0ae514078a95a03499c5b85136f4fa57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a984beef61c7e3a4a2855861dbccd894') in 0.010495 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater3.wav
+  artifactKey: Guid(77e16104b41b88d4598eb278a1d8b756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowWater3.wav using Guid(77e16104b41b88d4598eb278a1d8b756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4635bc7e788f77115e0f8d29abe5c2d2') in 0.010496 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull4.wav
+  artifactKey: Guid(240adc6fec9322a4e8ad90d4738bca65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/BowStringPull4.wav using Guid(240adc6fec9322a4e8ad90d4738bca65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95790a6654386a29c3ac7b21f3acbd64') in 0.033530 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000174 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow9.wav
+  artifactKey: Guid(d08c773f94f3afc4695531d74f341087) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Bow/Bow9.wav using Guid(d08c773f94f3afc4695531d74f341087) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3efdb79aeeaf94a20047c91aab854228') in 0.009979 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 77.295890 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer
+  artifactKey: Guid(17e49a73eaecceb4197d08d225044a68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer using Guid(17e49a73eaecceb4197d08d225044a68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eecf0c1c651aadbf122abcbdbd5e146d') in 0.007709 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.042306 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe1.wav
+  artifactKey: Guid(6cdf2b6afcdf03c4fb959f056819ba48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe1.wav using Guid(6cdf2b6afcdf03c4fb959f056819ba48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaf72a009f74187d30879bda858b736a') in 0.016827 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh3.wav
+  artifactKey: Guid(a9fe83366307d414ea5aec26a348f3ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh3.wav using Guid(a9fe83366307d414ea5aec26a348f3ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe316652d2cb4ab800706fbb145c58f6') in 0.013595 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact4.wav
+  artifactKey: Guid(f72a112b8aedd154887e21eb1e70c0f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact4.wav using Guid(f72a112b8aedd154887e21eb1e70c0f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7eb223677ec1c2f9acf90a0866d5d51') in 0.013747 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe4.wav
+  artifactKey: Guid(94c93377631b5c14e959b951b435b46a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe4.wav using Guid(94c93377631b5c14e959b951b435b46a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec56f650001a4f8d0c942f9323a554ed') in 0.012102 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000173 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact6.wav
+  artifactKey: Guid(b084521af24466e4b8bbf8743d5c2493) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact6.wav using Guid(b084521af24466e4b8bbf8743d5c2493) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2a94d01c202cfb6391fbee5de875ab0') in 0.012819 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact10.wav
+  artifactKey: Guid(4827fbf98a5198d45a996fbc8ff7bbbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact10.wav using Guid(4827fbf98a5198d45a996fbc8ff7bbbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24ff5ae450d93aab3b7b50d587bd3da6') in 0.015490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact15.wav
+  artifactKey: Guid(c20a131ee400df544a6cafa00e56cca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact15.wav using Guid(c20a131ee400df544a6cafa00e56cca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e42e06bd27eda4589008016939f84cf') in 0.021169 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact1.wav
+  artifactKey: Guid(d3b11b80263d8a145ad7641f5e978ff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact1.wav using Guid(d3b11b80263d8a145ad7641f5e978ff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40cb9f737345e0d652968dddd34779b0') in 0.021221 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact2.wav
+  artifactKey: Guid(6e125c7f6c3574341bb7b01fe6b9dfee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact2.wav using Guid(6e125c7f6c3574341bb7b01fe6b9dfee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d8bb3c41b3bece1bd38bf2549d08d8a') in 0.012181 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000187 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact13.wav
+  artifactKey: Guid(96228358d940aef4c8f99ed7bb4f3488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact13.wav using Guid(96228358d940aef4c8f99ed7bb4f3488) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6cc5fe32bea694dfb7416ac17d0b996') in 0.014210 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact11.wav
+  artifactKey: Guid(1674e1d30004b9b46b597f21c3ffdfa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact11.wav using Guid(1674e1d30004b9b46b597f21c3ffdfa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8aa7ed7823168c738e0f2a75991620a2') in 0.015048 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact8.wav
+  artifactKey: Guid(80bd9d4bd8318a14485df52d305370ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact8.wav using Guid(80bd9d4bd8318a14485df52d305370ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12feb3a32101d347c5652d74b9666edb') in 0.019038 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact7.wav
+  artifactKey: Guid(8e728a1e9d3dc5f41a2d59668c45e98e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact7.wav using Guid(8e728a1e9d3dc5f41a2d59668c45e98e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9198acbd1047f9bba300d5362e8c88d0') in 0.011245 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000216 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe2.wav
+  artifactKey: Guid(594c4d362d2ee664e91397fd725b3b3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe2.wav using Guid(594c4d362d2ee664e91397fd725b3b3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9dba83b623e5c531eb8d7d006cbe2d5') in 0.014420 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe3.wav
+  artifactKey: Guid(b0c1abd0649fdfd428d028574a0805fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe3.wav using Guid(b0c1abd0649fdfd428d028574a0805fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4fe9b2d71fa2a82525271045c73845a') in 0.009676 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact12.wav
+  artifactKey: Guid(662368c20c74f1347bfe72d20c30a417) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact12.wav using Guid(662368c20c74f1347bfe72d20c30a417) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ecf6becf7d8be4392a90de3ca1dee33') in 0.011060 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh4.wav
+  artifactKey: Guid(d4bebb49f2606a84ab636a6ffc5d3379) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh4.wav using Guid(d4bebb49f2606a84ab636a6ffc5d3379) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72224cc4a3983f534708c245e00eb9b1') in 0.010910 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh1.wav
+  artifactKey: Guid(cdaaf73197bb7a74bb085cd94afccfba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh1.wav using Guid(cdaaf73197bb7a74bb085cd94afccfba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'facf71de67df4ddfc6d87457ad6df7a3') in 0.009866 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000181 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact14.wav
+  artifactKey: Guid(580a4c0578dc75541932f82d6784965c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact14.wav using Guid(580a4c0578dc75541932f82d6784965c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e081228e03e58aa581ce8cf5f0384fd') in 0.010971 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact9.wav
+  artifactKey: Guid(43ee5d708d955024a8d299dd01f323d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact9.wav using Guid(43ee5d708d955024a8d299dd01f323d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '730930200e18058a766245047ee5a960') in 0.010847 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh2.wav
+  artifactKey: Guid(22eab4df0bfb76b439118c30d20e43b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh2.wav using Guid(22eab4df0bfb76b439118c30d20e43b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '377c96d1a97fadcc80830b7f80425e80') in 0.010157 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000139 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact5.wav
+  artifactKey: Guid(918f83b22a83106499b56f98ef8934cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact5.wav using Guid(918f83b22a83106499b56f98ef8934cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3233a76a90293a37c07148d4d2ecd3dc') in 0.010204 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact3.wav
+  artifactKey: Guid(3af8a9d07bc438e458fa25f5e334a22b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerImpact3.wav using Guid(3af8a9d07bc438e458fa25f5e334a22b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23c659185447c5f9821ef9f3e76d47ec') in 0.010565 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe5.wav
+  artifactKey: Guid(64052350e1c642c46ae3f682ec7fabc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/Battleaxe5.wav using Guid(64052350e1c642c46ae3f682ec7fabc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e39351cf9f01ec2cca7d0e8abb593467') in 0.010103 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000140 seconds.
+  path: Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh5.wav
+  artifactKey: Guid(446dee533cec9a448b8f3df7254e64ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Bow and Hammer Sound Effects/Hammer/HammerFlesh5.wav using Guid(446dee533cec9a448b8f3df7254e64ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11262577ab581a51c1ce16bb15e9f324') in 0.010214 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1077.100886 seconds.
+  path: Assets/Sounds/Weapon Arrow Shot - QuickSounds.com.mp3
+  artifactKey: Guid(a0cf65f061a5c4e47977c787927b77db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sounds/Weapon Arrow Shot - QuickSounds.com.mp3 using Guid(a0cf65f061a5c4e47977c787927b77db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4833e6e8bf1979f2b2d27d1aab5dbd1d') in 0.016897 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 87.154116 seconds.
+  path: Assets/toDoList.txt
+  artifactKey: Guid(43f70b0707662ee49a742bf0ea7bc786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/toDoList.txt using Guid(43f70b0707662ee49a742bf0ea7bc786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c8548f53697202818428a13480d67a6') in 0.024237 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005215 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.850 seconds
+Domain Reload Profiling:
+	ReloadAssembly (850ms)
+		BeginReloadAssembly (115ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (33ms)
+		EndReloadAssembly (677ms)
+			LoadAssemblies (94ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (232ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (249ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (74ms)
+				ProcessInitializeOnLoadAttributes (152ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.70 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.4 MB.
+System memory in use after: 121.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2720.
+Total: 2.991200 ms (FindLiveObjects: 0.247800 ms CreateObjectMapping: 0.059200 ms MarkObjects: 2.542800 ms  DeleteObjects: 0.140200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004216 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.953 seconds
+Domain Reload Profiling:
+	ReloadAssembly (953ms)
+		BeginReloadAssembly (110ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (787ms)
+			LoadAssemblies (95ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (293ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (46ms)
+			SetupLoadedEditorAssemblies (267ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (166ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (10ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.5 MB.
+System memory in use after: 121.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2722.
+Total: 2.999600 ms (FindLiveObjects: 0.199600 ms CreateObjectMapping: 0.057000 ms MarkObjects: 2.588200 ms  DeleteObjects: 0.153900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004449 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.77 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.858 seconds
+Domain Reload Profiling:
+	ReloadAssembly (858ms)
+		BeginReloadAssembly (109ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (691ms)
+			LoadAssemblies (94ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (230ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (261ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (79ms)
+				ProcessInitializeOnLoadAttributes (158ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.65 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.5 MB.
+System memory in use after: 121.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2724.
+Total: 3.244800 ms (FindLiveObjects: 0.206800 ms CreateObjectMapping: 0.062400 ms MarkObjects: 2.828900 ms  DeleteObjects: 0.145700 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

@@ -21,7 +21,7 @@ public class Arrow_Shower_Startpoint : MonoBehaviour
     {
         hit_list.Clear();
         transform.position = offset.position;
-        Debug.Log("position is : " + transform.position.x);
+        //Debug.Log("position is : " + transform.position.x);
         rb.velocity = transform.right * speed * anim_Speed;
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,14 +30,7 @@ public class Arrow_Shower_Startpoint : MonoBehaviour
         string name = collision.name;
         if (tag == "Enemy" || tag == "Boss")
         {
-            Debug.Log("Found target");
             rb.velocity = Vector2.zero;
-            //float offset_X = collision.GetComponent<Transform>().position.x - transform.position.x;
-            //transform.Translate(new Vector3(offset_X, 0f, 0f));
-            //ArrowShowerPool.Instance.Init_Startpoint(collision.GetComponent<Transform>());
-            //gameObject.SetActive(false);
-            //transform.position.x = collision.gameObject.transform.position.x;
-
         }
     }
 }

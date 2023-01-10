@@ -6437,7 +6437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP_Bar: {fileID: 93130276328965989}
   HP_Text: {fileID: 93130275581673001}
-  Player: {fileID: 1320270001586724024}
 --- !u!1 &93130276344488254
 GameObject:
   m_ObjectHideFlags: 0
@@ -12686,7 +12685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1e089bdd81ffc40a94bebbfdcafd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordRange: 1.3
   enemyLayers:
     serializedVersion: 2
     m_Bits: 1152
@@ -12709,7 +12707,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  sword_wind_enable: 1
+  sword_wind_enable: 0
   sword_wind_startpoint: {fileID: 1237311227}
   sword_wind_sound:
   - {fileID: 2039482459}
@@ -12717,6 +12715,8 @@ MonoBehaviour:
   isXAttacking: 0
   Speed_X: 1
   Sword_Collider_X: {fileID: 93130276930052984}
+  Bow_Beam: {fileID: 0}
+  arrow_shower_startpoint: {fileID: 0}
 --- !u!114 &5485185526310700197
 MonoBehaviour:
   m_ObjectHideFlags: 0
