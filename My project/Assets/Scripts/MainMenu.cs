@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public void PlayGame(int selected)
     {
-        PlayerPrefs.SetInt("weaponType", 0);
+        PlayerPrefs.SetInt("weaponType", selected);
+        Debug.Log("Selected character type is: " + selected);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void QuitGame()

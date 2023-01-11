@@ -7,7 +7,7 @@ public class Arrow_Shower_Collider : MonoBehaviour
     [HideInInspector] public float damage;
     //[HideInInspector] public float anim_Speed = 1.0f;
     [HideInInspector] public Vector2 damageForce;
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
     //private Animator animator;
     //private List<string> hit_list;
     /*private void Awake()
@@ -15,11 +15,11 @@ public class Arrow_Shower_Collider : MonoBehaviour
         //animator = GetComponent<Animator>();
         //hit_list = new List<string>();
     }*/
-    private void OnEnable()
+    /*private void OnEnable()
     {
         //animator.SetFloat("EnableSpeed", anim_Speed);
-        if (audioSource != null) audioSource.PlayOneShot(audioSource.clip);
-    }
+        //if (audioSource != null) audioSource.PlayOneShot(audioSource.clip);
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

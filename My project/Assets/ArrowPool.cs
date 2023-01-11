@@ -11,11 +11,17 @@ public class ArrowPool : MonoBehaviour
 
     public static ArrowPool Instance { get; private set; }
 
-    private void Awake()
+    /*private void Awake()
+    {
+        Instance = this;
+        GrowPool();
+    }*/
+    private void OnEnable()
     {
         Instance = this;
         GrowPool();
     }
+
     private void GrowPool()
     {
         for (int i = 0; i < 5; i++)

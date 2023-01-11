@@ -14,7 +14,7 @@ public class Player_HP_Manager : MonoBehaviour
     float MaxHP;
     float CurHP;
 
-    private void Awake()
+    private void OnEnable()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }

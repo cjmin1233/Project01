@@ -63,8 +63,8 @@ public class Player : MonoBehaviour
         CurHP = MaxHP;
         HP_Bar.GetComponent<Player_HP_Manager>().HandleHP();
         currentSpeed = baseSpeed;
-        int weaponType = PlayerPrefs.GetInt("weaponType");
-        animator.SetInteger("WeaponType", weaponType);
+        //int weaponType = PlayerPrefs.GetInt("weaponType");
+        //animator.SetInteger("WeaponType", weaponType);
     }
 
     private void Update()

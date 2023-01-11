@@ -11,7 +11,12 @@ public class AfterimagePool : MonoBehaviour
 
     public static AfterimagePool Instance { get; private set; }
 
-    private void Awake()
+    /*private void Awake()
+    {
+        Instance = this;
+        GrowPool();
+    }*/
+    private void OnEnable()
     {
         Instance = this;
         GrowPool();
