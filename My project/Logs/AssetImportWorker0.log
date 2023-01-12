@@ -15,11 +15,11 @@ C:/Users/cjmin/Project01/My project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60583
+60691
 Successfully changed project path to: C:/Users/cjmin/Project01/My project
 C:/Users/cjmin/Project01/My project
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 52.85 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 49.80 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity 2020.3.30f1/Editor/Data/Resources/UnitySubsystems
@@ -35,74 +35,74 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56584
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56092
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity 2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002656 seconds.
+Registered in 0.002066 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 52.30 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 50.09 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.520 seconds
+- Completed reload, in  0.507 seconds
 Domain Reload Profiling:
-	ReloadAssembly (520ms)
-		BeginReloadAssembly (62ms)
+	ReloadAssembly (507ms)
+		BeginReloadAssembly (59ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (391ms)
-			LoadAssemblies (60ms)
+		EndReloadAssembly (383ms)
+			LoadAssemblies (57ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (122ms)
+			SetupTypeCache (123ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (155ms)
+			RebuildScriptCaches (24ms)
+			SetupLoadedEditorAssemblies (151ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (52ms)
+				RefreshPlugins (50ms)
 				BeforeProcessingInitializeOnLoad (14ms)
 				ProcessInitializeOnLoadAttributes (62ms)
-				ProcessInitializeOnLoadMethodAttributes (22ms)
+				ProcessInitializeOnLoadMethodAttributes (21ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004004 seconds.
+Registered in 0.003678 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 49.86 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 48.82 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.971 seconds
+- Completed reload, in  0.940 seconds
 Domain Reload Profiling:
-	ReloadAssembly (972ms)
-		BeginReloadAssembly (139ms)
+	ReloadAssembly (941ms)
+		BeginReloadAssembly (132ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (774ms)
-			LoadAssemblies (96ms)
+			CreateAndSetChildDomain (16ms)
+		EndReloadAssembly (753ms)
+			LoadAssemblies (90ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (243ms)
+			SetupTypeCache (235ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (42ms)
-			SetupLoadedEditorAssemblies (304ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (295ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (50ms)
-				BeforeProcessingInitializeOnLoad (75ms)
-				ProcessInitializeOnLoadAttributes (153ms)
+				RefreshPlugins (49ms)
+				BeforeProcessingInitializeOnLoad (72ms)
+				ProcessInitializeOnLoadAttributes (151ms)
 				ProcessInitializeOnLoadMethodAttributes (13ms)
-				AfterProcessingInitializeOnLoad (9ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (5ms)
@@ -110,14 +110,14 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.59 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2254 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 119.5 MB.
 System memory in use after: 119.5 MB.
 
 Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 2709.
-Total: 3.011000 ms (FindLiveObjects: 0.183300 ms CreateObjectMapping: 0.057800 ms MarkObjects: 2.637200 ms  DeleteObjects: 0.131600 ms)
+Total: 2.949500 ms (FindLiveObjects: 0.197300 ms CreateObjectMapping: 0.070500 ms MarkObjects: 2.548900 ms  DeleteObjects: 0.131300 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,110 +131,1032 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Prefabs/SwordWind_0.prefab
-  artifactKey: Guid(c82ee132470215d42af94a4caee3ef23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/SwordWind_0.prefab using Guid(c82ee132470215d42af94a4caee3ef23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbe2f77e6faf834eeb7ab0ba863793d8') in 0.080952 seconds 
+  path: Assets/Animation/WindHashashinAnimations
+  artifactKey: Guid(de37e3a46d4a87041933764089ad4585) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations using Guid(de37e3a46d4a87041933764089ad4585) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '410190f43f640cabb2d5b3a7e34a0357') in 0.007612 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.912559 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle
+  artifactKey: Guid(60417583f42048a4d9085a88c2863395) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle using Guid(60417583f42048a4d9085a88c2863395) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c5f31b9fb8c1a192fcafc5555a6a82b') in 0.005463 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.108617 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_1.png
+  artifactKey: Guid(02126c7df3d99514894fee3e1b69f0fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_1.png using Guid(02126c7df3d99514894fee3e1b69f0fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '222592e2cfb255d96470908ba62ff360') in 0.080773 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_2.png
+  artifactKey: Guid(64bc658b4026e564194cc9f78fb36114) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_2.png using Guid(64bc658b4026e564194cc9f78fb36114) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87f0ece5cac3b5441109592168124f05') in 0.022640 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000127 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_3.png
+  artifactKey: Guid(1c3796a4bbd529f4eb231c57e21cce02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_3.png using Guid(1c3796a4bbd529f4eb231c57e21cce02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '914fd7ff74c08d713be83929c66c65ba') in 0.022372 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_5.png
+  artifactKey: Guid(acdac5991c5393447b5cc9775b8fdac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_5.png using Guid(acdac5991c5393447b5cc9775b8fdac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b73f6513a3df591da1b54a70de1d4f23') in 0.022601 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000202 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_7.png
+  artifactKey: Guid(e6b094a0c2cab4042a3e1aa01f59ab25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_7.png using Guid(e6b094a0c2cab4042a3e1aa01f59ab25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5eeeac2d3fd9f760b48f4070581c8e37') in 0.017338 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_8.png
+  artifactKey: Guid(85999cd933234684dbd5b3f8a65f69d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_8.png using Guid(85999cd933234684dbd5b3f8a65f69d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5d2417e3747ee33d24fa45d92ed0c3a') in 0.017625 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000146 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_4.png
+  artifactKey: Guid(8041b1cdf2670554dbdde2d0a772c47d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_4.png using Guid(8041b1cdf2670554dbdde2d0a772c47d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '945bd1a252b92fd20c0588183d62b162') in 0.025960 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000130 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_6.png
+  artifactKey: Guid(84f7dc03a3b79474287ad9ebd356f2f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_6.png using Guid(84f7dc03a3b79474287ad9ebd356f2f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d6e160e0defb8ea6de642a7512e1e70') in 0.021379 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.423361 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_1.png
+  artifactKey: Guid(02126c7df3d99514894fee3e1b69f0fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_1.png using Guid(02126c7df3d99514894fee3e1b69f0fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1a4b2777bd3c6b5754cfe2fcbb16506') in 0.012217 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_2.png
+  artifactKey: Guid(64bc658b4026e564194cc9f78fb36114) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_2.png using Guid(64bc658b4026e564194cc9f78fb36114) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f01078121a7842293a8a7cc9cb4d58b7') in 0.023769 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_3.png
+  artifactKey: Guid(1c3796a4bbd529f4eb231c57e21cce02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_3.png using Guid(1c3796a4bbd529f4eb231c57e21cce02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afa41cd5d963fc575ef3026dc84f6d83') in 0.020934 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_5.png
+  artifactKey: Guid(acdac5991c5393447b5cc9775b8fdac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_5.png using Guid(acdac5991c5393447b5cc9775b8fdac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd3c16478f6701798aace11064552659') in 0.021926 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_7.png
+  artifactKey: Guid(e6b094a0c2cab4042a3e1aa01f59ab25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_7.png using Guid(e6b094a0c2cab4042a3e1aa01f59ab25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e48716ba6dacaa1d93be5b7f4862995') in 0.022785 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_8.png
+  artifactKey: Guid(85999cd933234684dbd5b3f8a65f69d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_8.png using Guid(85999cd933234684dbd5b3f8a65f69d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ac1227482c27824e4346ef785037cfc') in 0.023538 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000145 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_4.png
+  artifactKey: Guid(8041b1cdf2670554dbdde2d0a772c47d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_4.png using Guid(8041b1cdf2670554dbdde2d0a772c47d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8938b5542cc4155685cb757a0c6d3bef') in 0.016514 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_6.png
+  artifactKey: Guid(84f7dc03a3b79474287ad9ebd356f2f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/idle/idle_6.png using Guid(84f7dc03a3b79474287ad9ebd356f2f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c47c0cde6a3b0b700c0af64105808b79') in 0.016942 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 45.428499 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_1.png
+  artifactKey: Guid(af82340bf4955ce46afd28ebd6719345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_1.png using Guid(af82340bf4955ce46afd28ebd6719345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9143dfa013e91df797fb7842233cd9cc') in 0.017104 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_6.png
+  artifactKey: Guid(6d44e60492dbaba41a583afcba2d7267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_6.png using Guid(6d44e60492dbaba41a583afcba2d7267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e4546096b06c9a936ebb0c39cb09a98') in 0.021323 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000105 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_8.png
+  artifactKey: Guid(5cf564772acb63e4cac394c61f2050bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_8.png using Guid(5cf564772acb63e4cac394c61f2050bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2deb098d546dd96d7b5cbb64dd8d6d67') in 0.020715 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_15.png
+  artifactKey: Guid(cb0ecef138038c84e8481a642f4dbe4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_15.png using Guid(cb0ecef138038c84e8481a642f4dbe4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '046ba4bf976fa1d82d26e2de2877df16') in 0.019398 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_9.png
+  artifactKey: Guid(5e1375b8fea1a1f43afa403f22bf15ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_9.png using Guid(5e1375b8fea1a1f43afa403f22bf15ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ed5e11ed39024e18f7eee428dae6a96') in 0.030214 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_10.png
+  artifactKey: Guid(0db96ec8bda61ad41b6f7bb706a9668c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_10.png using Guid(0db96ec8bda61ad41b6f7bb706a9668c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5595211b4c46980a6349cca169d46e99') in 0.022706 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_7.png
+  artifactKey: Guid(fea0d4bb0c19d6f49855ec2c69aef385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_7.png using Guid(fea0d4bb0c19d6f49855ec2c69aef385) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51addff56f2b1959135764418cfc546f') in 0.017171 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_4.png
+  artifactKey: Guid(5d5482309a24ff24bb62d33059288bcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_4.png using Guid(5d5482309a24ff24bb62d33059288bcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a68bc5a0b74763eb9bf93c2013c83419') in 0.021483 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_12.png
+  artifactKey: Guid(8f43c299768558143a9b0a8a05c13cab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_12.png using Guid(8f43c299768558143a9b0a8a05c13cab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e19906cb40d85057788b385de3c2d2ce') in 0.025871 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_2.png
+  artifactKey: Guid(49ddff3e5859874419a9cbe6fccefa20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_2.png using Guid(49ddff3e5859874419a9cbe6fccefa20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '177cdf2b0bff8fae8252223c4a209be3') in 0.020997 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000194 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_13.png
+  artifactKey: Guid(e3d5476b2a9341d44ad2cffe2ccbc7b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_13.png using Guid(e3d5476b2a9341d44ad2cffe2ccbc7b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8d77d76ee83b08b26b9bb5de8196817') in 0.022114 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000149 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_16.png
+  artifactKey: Guid(9a2e2d05a7ebe1141b4f60498d7166dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_16.png using Guid(9a2e2d05a7ebe1141b4f60498d7166dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5aeb6efc21b6db921b400b62fe99cd6b') in 0.023408 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_17.png
+  artifactKey: Guid(2f716c6f869678d46b131fedb8d14c12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_17.png using Guid(2f716c6f869678d46b131fedb8d14c12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a8c57121a9511a82385a62e8ceabb56') in 0.029872 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000135 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_14.png
+  artifactKey: Guid(86d36abbe159427498a5644e36d1f91e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_14.png using Guid(86d36abbe159427498a5644e36d1f91e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38b27a04b7da898c4713510581a73236') in 0.015440 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_18.png
+  artifactKey: Guid(81c06b8309ca28b428ad5e54d26c9dfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_18.png using Guid(81c06b8309ca28b428ad5e54d26c9dfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '086c715348a03e47c5d9fd48c11f3a66') in 0.026474 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_3.png
+  artifactKey: Guid(b30fda05d21a1344fa216aa3430fc7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_3.png using Guid(b30fda05d21a1344fa216aa3430fc7ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6f36ddbe8fb670809dc5500cb924eae') in 0.017051 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_5.png
+  artifactKey: Guid(41a99d6b272777845960065f238d64ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_5.png using Guid(41a99d6b272777845960065f238d64ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2e7d26cda2d94ddf75fa8397a3926fe') in 0.017954 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_19.png
+  artifactKey: Guid(ab5f9751f60974648b8fa503ed4bd63b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_19.png using Guid(ab5f9751f60974648b8fa503ed4bd63b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f68188715d3fa800146071e70c03cdc2') in 0.016467 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_5.png
+  artifactKey: Guid(d98e60d94111ee144a92f1762aabb76f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_5.png using Guid(d98e60d94111ee144a92f1762aabb76f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '278c5adb7248d6ea364b8383eab02e24') in 0.024805 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000119 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_1.png
+  artifactKey: Guid(4a9440b6a13c4664ea32d1a2555a0ea6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_1.png using Guid(4a9440b6a13c4664ea32d1a2555a0ea6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cce1d96664f9e7a9b46a077fefe76c2') in 0.018887 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_2.png
+  artifactKey: Guid(689f7ec2fdcb48b4ebd5579ba05b0067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_2.png using Guid(689f7ec2fdcb48b4ebd5579ba05b0067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b43292332192b12e7085f74138d9cc1') in 0.019702 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_6.png
+  artifactKey: Guid(384e338676f4c2347b7f47770422cf4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_6.png using Guid(384e338676f4c2347b7f47770422cf4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd31652ecd1bf89374d55218b67039472') in 0.020935 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_8.png
+  artifactKey: Guid(fc936994b0a958f47adb7df25407279b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_8.png using Guid(fc936994b0a958f47adb7df25407279b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f0da53cce94ea838e1074ed31c71ca9') in 0.021282 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000140 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_3.png
+  artifactKey: Guid(93aaa487a0461834e9f1185eb95ac228) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_3.png using Guid(93aaa487a0461834e9f1185eb95ac228) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77151e38ae2acbea88afd3c2af881b67') in 0.015552 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_4.png
+  artifactKey: Guid(42aef1dda69cc5944b0880eee935435f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_4.png using Guid(42aef1dda69cc5944b0880eee935435f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad10e686c13fde205b34eda48ff8e9a1') in 0.018924 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000169 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_7.png
+  artifactKey: Guid(50a1931591457f947b13c64f638d2b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/defend/defend_7.png using Guid(50a1931591457f947b13c64f638d2b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75e79db0a40010b22a9dc08ebb4c36c5') in 0.022524 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000169 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_11.png
+  artifactKey: Guid(1a65bb5ed8240544280c12512905ef98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/death/death_11.png using Guid(1a65bb5ed8240544280c12512905ef98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46df2cdd113d63191da5c79eac79a600') in 0.021378 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.852756 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_down/j_down_1.png
+  artifactKey: Guid(364b7609d0cc3994ba21a40c7d4ffbf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_down/j_down_1.png using Guid(364b7609d0cc3994ba21a40c7d4ffbf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebe93af2bdaaa9390d12c94292070ab7') in 0.014630 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_down/j_down_2.png
+  artifactKey: Guid(9f85ea31da6fd2f45b5ec6e664822fef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_down/j_down_2.png using Guid(9f85ea31da6fd2f45b5ec6e664822fef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1da012de1f7020b418ea11faa2426e3c') in 0.013803 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_down/j_down_3.png
+  artifactKey: Guid(0080953b9d1b30a4a8781e461e503fab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_down/j_down_3.png using Guid(0080953b9d1b30a4a8781e461e503fab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e7381b16133ef0d8b75f3176659821b') in 0.014719 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.422551 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_1.png
+  artifactKey: Guid(09ce47403f1858b4ea743d1b07f5f5d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_1.png using Guid(09ce47403f1858b4ea743d1b07f5f5d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd25e974ba54579b2cc1b97b299a71a84') in 0.013626 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_2.png
+  artifactKey: Guid(6fe11b9127a0ca9428bf47e269a41c33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_2.png using Guid(6fe11b9127a0ca9428bf47e269a41c33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '347523ba2a7006ee4a64c0ff0c2eff75') in 0.014611 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_3.png
+  artifactKey: Guid(6e5f78abf50a1534a8dbcdd4a7bfa0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_3.png using Guid(6e5f78abf50a1534a8dbcdd4a7bfa0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16af097b29c6591563974ef68b540297') in 0.014587 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.171544 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_1.png
+  artifactKey: Guid(cc4e4f4b987662c4d9edc90dc56372f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_1.png using Guid(cc4e4f4b987662c4d9edc90dc56372f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d4f8aca5166580b9e617cd43dffc98c') in 0.023104 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_3.png
+  artifactKey: Guid(6a8b77943097c584da76972b533a667d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_3.png using Guid(6a8b77943097c584da76972b533a667d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1244fbf53f03d169ec5484c9d373b77') in 0.015361 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_4.png
+  artifactKey: Guid(b52343de2d4eb2645bb7a3f0b52fa93b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_4.png using Guid(b52343de2d4eb2645bb7a3f0b52fa93b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab6d01df1749169f04a50f42e1cf207c') in 0.026914 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_5.png
+  artifactKey: Guid(07c7de15e794cf94bba3ee4e010bd6a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_5.png using Guid(07c7de15e794cf94bba3ee4e010bd6a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7065ee25731b4b010344388cd1a5a1f') in 0.020665 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_2.png
+  artifactKey: Guid(a01ce1c83d3361d4392e55287e8478b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_2.png using Guid(a01ce1c83d3361d4392e55287e8478b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e17d4d1076a9fc5ecc38d4ec05a69cc8') in 0.026306 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000119 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_6.png
+  artifactKey: Guid(c237e0cbe2fa6614abc2dec6e961b497) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_6.png using Guid(c237e0cbe2fa6614abc2dec6e961b497) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7adeea91fdbc6545bc576050a360aaf7') in 0.025497 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.650637 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_1.png
+  artifactKey: Guid(cc4e4f4b987662c4d9edc90dc56372f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_1.png using Guid(cc4e4f4b987662c4d9edc90dc56372f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebd00cab7c532a726ab00ba693448eb8') in 0.017494 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_3.png
+  artifactKey: Guid(6a8b77943097c584da76972b533a667d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_3.png using Guid(6a8b77943097c584da76972b533a667d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb714201635297d0e41963765d735ba7') in 0.014597 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_4.png
+  artifactKey: Guid(b52343de2d4eb2645bb7a3f0b52fa93b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_4.png using Guid(b52343de2d4eb2645bb7a3f0b52fa93b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74112cf1db2f179f7f079338958e4f59') in 0.020698 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_5.png
+  artifactKey: Guid(07c7de15e794cf94bba3ee4e010bd6a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_5.png using Guid(07c7de15e794cf94bba3ee4e010bd6a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '657bf613ba4c7d5250a24408865ef737') in 0.018617 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_2.png
+  artifactKey: Guid(a01ce1c83d3361d4392e55287e8478b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_2.png using Guid(a01ce1c83d3361d4392e55287e8478b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efafa9fea55754bc0e2e4e58859a6c1d') in 0.010239 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_6.png
+  artifactKey: Guid(c237e0cbe2fa6614abc2dec6e961b497) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/roll/roll_6.png using Guid(c237e0cbe2fa6614abc2dec6e961b497) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3bed4ce8ff74c71620c1db9cadb421d') in 0.009907 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 29.460039 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_1.png
+  artifactKey: Guid(8b7d51c429916f643afc8b97e5fa86cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_1.png using Guid(8b7d51c429916f643afc8b97e5fa86cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c59ae6b19c8c56edf2d172ed7de25a54') in 0.019787 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_5.png
+  artifactKey: Guid(f1c7b624b9869f449b25107552683129) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_5.png using Guid(f1c7b624b9869f449b25107552683129) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '587423f754ffd78c1e41568808305f2a') in 0.020908 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000215 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_7.png
+  artifactKey: Guid(bad80d4695eb2c44e9e8e373367c7c6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_7.png using Guid(bad80d4695eb2c44e9e8e373367c7c6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcc07c2ffc16bf3e75ee280206da74e4') in 0.022773 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000201 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_3.png
+  artifactKey: Guid(b19d229aced156e42bb7b51aba4c7b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_3.png using Guid(b19d229aced156e42bb7b51aba4c7b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a5ad2349200c44196dd8f075b5ccbc3') in 0.020949 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_8.png
+  artifactKey: Guid(e5074e45352c0ae4ea152ca176f45219) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_8.png using Guid(e5074e45352c0ae4ea152ca176f45219) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a15cd6d8b8a26f5254e4a32b60f7e43') in 0.028762 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_4.png
+  artifactKey: Guid(aabff639155badd40959420a310c5b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_4.png using Guid(aabff639155badd40959420a310c5b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81af938319c33df4d5ecfd8945c6e68b') in 0.023315 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_6.png
+  artifactKey: Guid(3cfc46b8d3eaad748b2ac607f3897669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_6.png using Guid(3cfc46b8d3eaad748b2ac607f3897669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '265ecf1e0942d7d4a59258e578fbd705') in 0.020788 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_2.png
+  artifactKey: Guid(eacc428cac46a3d4f80e85ad7f1917f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_2.png using Guid(eacc428cac46a3d4f80e85ad7f1917f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06be35beaf2c68f2f0287e3d06f9a922') in 0.025390 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.073810 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_1.png
+  artifactKey: Guid(8b7d51c429916f643afc8b97e5fa86cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_1.png using Guid(8b7d51c429916f643afc8b97e5fa86cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a143ae6899e053f47748efc3e849c68') in 0.011416 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000177 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_5.png
+  artifactKey: Guid(f1c7b624b9869f449b25107552683129) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_5.png using Guid(f1c7b624b9869f449b25107552683129) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73bc44bc94e1434fad342a7589013416') in 0.012361 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000143 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_7.png
+  artifactKey: Guid(bad80d4695eb2c44e9e8e373367c7c6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_7.png using Guid(bad80d4695eb2c44e9e8e373367c7c6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a306193230b342be8654b1b05c13ab55') in 0.022260 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_3.png
+  artifactKey: Guid(b19d229aced156e42bb7b51aba4c7b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_3.png using Guid(b19d229aced156e42bb7b51aba4c7b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d86f10e60408f0352fc186e65669220') in 0.015335 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000173 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_8.png
+  artifactKey: Guid(e5074e45352c0ae4ea152ca176f45219) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_8.png using Guid(e5074e45352c0ae4ea152ca176f45219) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b3344d6c8504de3213127c02a385299') in 0.009989 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000124 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_4.png
+  artifactKey: Guid(aabff639155badd40959420a310c5b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_4.png using Guid(aabff639155badd40959420a310c5b61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '290cddebe333706686ae84b4a9676b36') in 0.009865 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_6.png
+  artifactKey: Guid(3cfc46b8d3eaad748b2ac607f3897669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_6.png using Guid(3cfc46b8d3eaad748b2ac607f3897669) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53209e022330c3a2da00863a1a8d8b08') in 0.009365 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_2.png
+  artifactKey: Guid(eacc428cac46a3d4f80e85ad7f1917f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_2.png using Guid(eacc428cac46a3d4f80e85ad7f1917f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '073e0d24b37301f28254d899e422ae4a') in 0.009651 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 19.997480 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_1.png
+  artifactKey: Guid(171ed113b8c5a884e9776d2970489955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_1.png using Guid(171ed113b8c5a884e9776d2970489955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '742b63f9522d6dad73b84e69270f1156') in 0.017079 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_15.png
+  artifactKey: Guid(d5ebef8a4db816b4385e2086d74e3d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_15.png using Guid(d5ebef8a4db816b4385e2086d74e3d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77ebf9c99765de30699833187a45a254') in 0.020213 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000117 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_21.png
+  artifactKey: Guid(e139bda01ca1646468811154cc2515f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_21.png using Guid(e139bda01ca1646468811154cc2515f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '686ddc330b824dae8de40993de2b1818') in 0.022633 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_23.png
+  artifactKey: Guid(b41d2f7d1cc3541448834006ccab76d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_23.png using Guid(b41d2f7d1cc3541448834006ccab76d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3596df709a32b84df685f9019980267') in 0.017169 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_24.png
+  artifactKey: Guid(942c5a5f7f8f2814eb29a8d5141bf04c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_24.png using Guid(942c5a5f7f8f2814eb29a8d5141bf04c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2e1cc9d687095a5d58552327a97dd88') in 0.024583 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000137 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_29.png
+  artifactKey: Guid(2b9b7b16ed30c7b4889d15e1a3c7223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_29.png using Guid(2b9b7b16ed30c7b4889d15e1a3c7223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14cc6a48ff9db20eda534869770c170f') in 0.018449 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_2.png
+  artifactKey: Guid(d389a023aa66ea947ba213f63b20b1dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_2.png using Guid(d389a023aa66ea947ba213f63b20b1dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54b12a3da5b826b36d0567a1e1e3c5a0') in 0.025886 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_6.png
+  artifactKey: Guid(9bcbd3551a52dd5418aef7bbee658276) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_6.png using Guid(9bcbd3551a52dd5418aef7bbee658276) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '566d3360cb8e5f8b8c4670c3e06930d7') in 0.016851 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000180 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_16.png
+  artifactKey: Guid(4881d2c8a5aac93478d0a0c7e6024ac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_16.png using Guid(4881d2c8a5aac93478d0a0c7e6024ac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f0943d99497e14d3a72bb3a662a2087') in 0.023913 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_20.png
+  artifactKey: Guid(1f8186fe32f32bc498f1b8f9efed5d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_20.png using Guid(1f8186fe32f32bc498f1b8f9efed5d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4048022ede37e58ce590b6b40d89c12d') in 0.023221 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000162 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_19.png
+  artifactKey: Guid(b435fb60d7dd08241b390b9f8d2e9f12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_19.png using Guid(b435fb60d7dd08241b390b9f8d2e9f12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffd5d2ecd67d6b4cd94576ccb5aa8260') in 0.016460 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_17.png
+  artifactKey: Guid(d0988b61cf4234f49bca15ed336eeeca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_17.png using Guid(d0988b61cf4234f49bca15ed336eeeca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c3c615a0a832ade59ec2eb2a147b260') in 0.019341 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_28.png
+  artifactKey: Guid(7805f406f1f86be41804caf697c4e829) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_28.png using Guid(7805f406f1f86be41804caf697c4e829) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97d5be8a924f2efe7bfff3e2b3cc133f') in 0.019819 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_27.png
+  artifactKey: Guid(c6f6067ebe0eb3745900962dc80fb85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_27.png using Guid(c6f6067ebe0eb3745900962dc80fb85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03036b4286286a4c767c9b166223af8f') in 0.023536 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000159 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_22.png
+  artifactKey: Guid(c5f3fc3897a98fe4981ba9e2185f5417) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_22.png using Guid(c5f3fc3897a98fe4981ba9e2185f5417) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec18993f39da6f7867383318a429a47c') in 0.021485 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_13.png
+  artifactKey: Guid(c4a7ff0f61d7f8448a37695466f84ed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_13.png using Guid(c4a7ff0f61d7f8448a37695466f84ed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ea367354ec38e66ff519790a26bb196') in 0.017044 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_10.png
+  artifactKey: Guid(7d1eea7be0bf6d1438c1ce94da0ac9eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_10.png using Guid(7d1eea7be0bf6d1438c1ce94da0ac9eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e8ee3f4d8e625aaf45a9b4e4c0825af') in 0.020097 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_26.png
+  artifactKey: Guid(773a8c92c58ebf24d94f8977e1910e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_26.png using Guid(773a8c92c58ebf24d94f8977e1910e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0c100bfa7f68dcd167ddfae4e2c1498') in 0.018952 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_11.png
+  artifactKey: Guid(09c1e0b620994974894a3b49587d2c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_11.png using Guid(09c1e0b620994974894a3b49587d2c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be410b447bda98993310b03c7eaaf22a') in 0.018205 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_9.png
+  artifactKey: Guid(d87889dab37cd8a4faa7810b5bbe217a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_9.png using Guid(d87889dab37cd8a4faa7810b5bbe217a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b2120c7a5e44ce0143ca3d5b4986310') in 0.019225 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_5.png
+  artifactKey: Guid(a9788d3e9ce067242ab59b6fde073ca0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_5.png using Guid(a9788d3e9ce067242ab59b6fde073ca0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53c4a7ece82ff64fb4c2dd19b6e19a0a') in 0.013782 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000155 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_25.png
+  artifactKey: Guid(bc58daf1ab9f05b479d48502f880f331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_25.png using Guid(bc58daf1ab9f05b479d48502f880f331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37027072f5e37ed1b68a7d28fbbf991e') in 0.014321 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_7.png
+  artifactKey: Guid(72fb6044985415f45a66192f5181a285) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_7.png using Guid(72fb6044985415f45a66192f5181a285) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa6b9618b20fde6e8c35f38171e8160a') in 0.013468 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_3.png
+  artifactKey: Guid(b55defe4eb0e8f9458fb7c5e96ef2996) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_3.png using Guid(b55defe4eb0e8f9458fb7c5e96ef2996) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd448cbe934c02f17e6cc6833cae26514') in 0.014172 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_12.png
+  artifactKey: Guid(17ce7b1a2d0901a47b78887172506c60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_12.png using Guid(17ce7b1a2d0901a47b78887172506c60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1d996c2cac49c0ca3b5341e68d218c2') in 0.014432 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000128 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_14.png
+  artifactKey: Guid(1944531e8eca70a4ca5703d6ba7f2b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_14.png using Guid(1944531e8eca70a4ca5703d6ba7f2b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bab69b204bd1cba1311e0cbbac98c6d3') in 0.013487 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000168 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_4.png
+  artifactKey: Guid(1e50e58804728cf4ca7b9a9babf0e602) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_4.png using Guid(1e50e58804728cf4ca7b9a9babf0e602) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '536a2eee645e11ef500cd36fd8f04185') in 0.014188 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000186 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_8.png
+  artifactKey: Guid(46d03f00bd5727f44beb9b32d56753bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_8.png using Guid(46d03f00bd5727f44beb9b32d56753bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '080818db9de73ecaca8d97acd649305a') in 0.014467 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_30.png
+  artifactKey: Guid(d15332d7b545702478f92d1f2a763e80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_30.png using Guid(d15332d7b545702478f92d1f2a763e80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '385767ef830430efaf2b87cc79056fc9') in 0.014519 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000145 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_18.png
+  artifactKey: Guid(73d8eab8657fa63408a2af140935b694) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_18.png using Guid(73d8eab8657fa63408a2af140935b694) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20404a066798c6e7f372105981784137') in 0.015010 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.924259 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_1.png
+  artifactKey: Guid(171ed113b8c5a884e9776d2970489955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_1.png using Guid(171ed113b8c5a884e9776d2970489955) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bca70737b5db292e378575d69d6dd1e6') in 0.018748 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_15.png
+  artifactKey: Guid(d5ebef8a4db816b4385e2086d74e3d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_15.png using Guid(d5ebef8a4db816b4385e2086d74e3d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3f865a7e755e8494897ea57cf5d612e') in 0.029942 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_21.png
+  artifactKey: Guid(e139bda01ca1646468811154cc2515f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_21.png using Guid(e139bda01ca1646468811154cc2515f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51701e1b9394ae9f2ef9ca4171066cfe') in 0.029237 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_23.png
+  artifactKey: Guid(b41d2f7d1cc3541448834006ccab76d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_23.png using Guid(b41d2f7d1cc3541448834006ccab76d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6437a942371a6a9982cbc9aae53b8b37') in 0.020795 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_24.png
+  artifactKey: Guid(942c5a5f7f8f2814eb29a8d5141bf04c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_24.png using Guid(942c5a5f7f8f2814eb29a8d5141bf04c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9f7f89de683b84c0f32822a7fa657b9') in 0.021676 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_29.png
+  artifactKey: Guid(2b9b7b16ed30c7b4889d15e1a3c7223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_29.png using Guid(2b9b7b16ed30c7b4889d15e1a3c7223c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e86c37581bd370ab035a85b8fc68e0b') in 0.020683 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_2.png
+  artifactKey: Guid(d389a023aa66ea947ba213f63b20b1dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_2.png using Guid(d389a023aa66ea947ba213f63b20b1dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cccedb2d86ed41c51e85c7cd1ce56c0') in 0.021708 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000164 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_6.png
+  artifactKey: Guid(9bcbd3551a52dd5418aef7bbee658276) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_6.png using Guid(9bcbd3551a52dd5418aef7bbee658276) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32a5006e44c21e54e679e137558f915f') in 0.019767 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000158 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_16.png
+  artifactKey: Guid(4881d2c8a5aac93478d0a0c7e6024ac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_16.png using Guid(4881d2c8a5aac93478d0a0c7e6024ac0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8717e47200cf18fd8320f5eaf2c26a61') in 0.017138 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_20.png
+  artifactKey: Guid(1f8186fe32f32bc498f1b8f9efed5d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_20.png using Guid(1f8186fe32f32bc498f1b8f9efed5d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b37881b0664ec1d64eb0be154473396') in 0.017822 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_19.png
+  artifactKey: Guid(b435fb60d7dd08241b390b9f8d2e9f12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_19.png using Guid(b435fb60d7dd08241b390b9f8d2e9f12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa3afe591acc77e3dc3c4cc2853bd813') in 0.020079 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000169 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_17.png
+  artifactKey: Guid(d0988b61cf4234f49bca15ed336eeeca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_17.png using Guid(d0988b61cf4234f49bca15ed336eeeca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8da1ff78a092ecfa40fd2a898d9a7701') in 0.017884 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_28.png
+  artifactKey: Guid(7805f406f1f86be41804caf697c4e829) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_28.png using Guid(7805f406f1f86be41804caf697c4e829) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc1b7fa228332a034b9a17c375b2332a') in 0.012195 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000150 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_27.png
+  artifactKey: Guid(c6f6067ebe0eb3745900962dc80fb85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_27.png using Guid(c6f6067ebe0eb3745900962dc80fb85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '485c1fe2a23723e336ae93f657a4d9f1') in 0.014810 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000131 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_22.png
+  artifactKey: Guid(c5f3fc3897a98fe4981ba9e2185f5417) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_22.png using Guid(c5f3fc3897a98fe4981ba9e2185f5417) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5794e5a9de99d95ce4294ff8525b5fee') in 0.011632 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000174 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_13.png
+  artifactKey: Guid(c4a7ff0f61d7f8448a37695466f84ed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_13.png using Guid(c4a7ff0f61d7f8448a37695466f84ed9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '44a02d6b2f6cfd16d5219045834fed31') in 0.010493 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_10.png
+  artifactKey: Guid(7d1eea7be0bf6d1438c1ce94da0ac9eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_10.png using Guid(7d1eea7be0bf6d1438c1ce94da0ac9eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76e4fa950dc39f4fa8b8c3621b6a22da') in 0.013052 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000182 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_26.png
+  artifactKey: Guid(773a8c92c58ebf24d94f8977e1910e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_26.png using Guid(773a8c92c58ebf24d94f8977e1910e83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b244f2237fb14fd1cdb727e86bba6f1b') in 0.012450 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_11.png
+  artifactKey: Guid(09c1e0b620994974894a3b49587d2c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_11.png using Guid(09c1e0b620994974894a3b49587d2c36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afd5f03f9aa59eafa5180a4adf559168') in 0.014391 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000165 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_9.png
+  artifactKey: Guid(d87889dab37cd8a4faa7810b5bbe217a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_9.png using Guid(d87889dab37cd8a4faa7810b5bbe217a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58402a733ce9b8cbe48942dd31a5bb88') in 0.012682 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_5.png
+  artifactKey: Guid(a9788d3e9ce067242ab59b6fde073ca0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_5.png using Guid(a9788d3e9ce067242ab59b6fde073ca0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c23ccf6c0594be41fe55261499340011') in 0.013284 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000110 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_25.png
+  artifactKey: Guid(bc58daf1ab9f05b479d48502f880f331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_25.png using Guid(bc58daf1ab9f05b479d48502f880f331) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63c5302bbe261adf53711a0ba6986fdc') in 0.012010 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000163 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_7.png
+  artifactKey: Guid(72fb6044985415f45a66192f5181a285) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_7.png using Guid(72fb6044985415f45a66192f5181a285) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fe4ac77b73ef5c8857cfb5bec7b4845') in 0.009917 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_3.png
+  artifactKey: Guid(b55defe4eb0e8f9458fb7c5e96ef2996) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_3.png using Guid(b55defe4eb0e8f9458fb7c5e96ef2996) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '513ca5567ada567665f68a1792aa40ae') in 0.010727 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_12.png
+  artifactKey: Guid(17ce7b1a2d0901a47b78887172506c60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_12.png using Guid(17ce7b1a2d0901a47b78887172506c60) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02925e8b9824c85324b14b48ff27fd05') in 0.010833 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000170 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_14.png
+  artifactKey: Guid(1944531e8eca70a4ca5703d6ba7f2b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_14.png using Guid(1944531e8eca70a4ca5703d6ba7f2b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '375d22d21c66a19983c20b05c94a76d4') in 0.010899 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000161 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_4.png
+  artifactKey: Guid(1e50e58804728cf4ca7b9a9babf0e602) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_4.png using Guid(1e50e58804728cf4ca7b9a9babf0e602) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8757dd8fcd5750a3e5252b4e7d86d61') in 0.012776 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_8.png
+  artifactKey: Guid(46d03f00bd5727f44beb9b32d56753bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_8.png using Guid(46d03f00bd5727f44beb9b32d56753bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c03a7a61b9b474c5563bdf280f817d0') in 0.008218 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_30.png
+  artifactKey: Guid(d15332d7b545702478f92d1f2a763e80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_30.png using Guid(d15332d7b545702478f92d1f2a763e80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa9cb9d5d9413a3b147d0bd31eaf1d7') in 0.012688 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000169 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_18.png
+  artifactKey: Guid(73d8eab8657fa63408a2af140935b694) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/sp_atk/sp_atk_18.png using Guid(73d8eab8657fa63408a2af140935b694) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af2eeb53f60e0f13a6a0347fee906294') in 0.009960 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 890.612118 seconds.
+  path: Assets/Animation/WindHashashinAnimations/idle_1.controller
+  artifactKey: Guid(b810683261d609f43b938ca7a5c66475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/idle_1.controller using Guid(b810683261d609f43b938ca7a5c66475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '386b01f3d3c37ccf681b20829abe186d') in 0.010696 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.029077 seconds.
+  path: Assets/Animation/WindHashashinAnimations/roll_1.controller
+  artifactKey: Guid(65fc52f9c324ac24fabe0889999e8ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/roll_1.controller using Guid(65fc52f9c324ac24fabe0889999e8ce9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdc509de9f06428fc73161792f2737bf') in 0.002880 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.803213 seconds.
+  path: Assets/Animation/WindHashashinAnimations/run_1.controller
+  artifactKey: Guid(12e6f1f72d1c4dd4a8702058a8542b5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/run_1.controller using Guid(12e6f1f72d1c4dd4a8702058a8542b5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fe4f032ce84f0f5c06b8052003378c7') in 0.003110 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.288666 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin_Idle.anim
+  artifactKey: Guid(4da5eabb1a64e1f44a2634833d06e769) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin_Idle.anim using Guid(4da5eabb1a64e1f44a2634833d06e769) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e8b7053255a31978e297ddda46f9ebd') in 0.008035 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.090841 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin_Dash.anim
+  artifactKey: Guid(eb0aa3784d6bbb84884d64138b310a70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin_Dash.anim using Guid(eb0aa3784d6bbb84884d64138b310a70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e36e5e6849ec7df4b23fc85564d32923') in 0.006536 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.650081 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin_Run.anim
+  artifactKey: Guid(45e36977122fd7d4396c80928e5a47d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin_Run.anim using Guid(45e36977122fd7d4396c80928e5a47d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb2448e6c15804afec53833557c455fb') in 0.006352 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.044329 seconds.
+  path: Assets/Animation/LeafRangerAnimations/Arrow_Shower.anim
+  artifactKey: Guid(1a6ccff5e328a624dbef1cef50575df5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/LeafRangerAnimations/Arrow_Shower.anim using Guid(1a6ccff5e328a624dbef1cef50575df5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32aec304fc109d4b659bb399d15da5ac') in 0.007079 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.947141 seconds.
+  path: Assets/Animation/LeafRangerAnimations/arrow_shower_effect_1.controller
+  artifactKey: Guid(3b6e4c4dde2f3b44890ac20264fbd1b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/LeafRangerAnimations/arrow_shower_effect_1.controller using Guid(3b6e4c4dde2f3b44890ac20264fbd1b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e44a824531bb25c28a7ef7d3c9481457') in 0.007355 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.148665 seconds.
+  path: Assets/Animation/LeafRangerAnimations/beam_extension_effect_1.controller
+  artifactKey: Guid(f3cb69348d684f54789b1f859fc61a74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/LeafRangerAnimations/beam_extension_effect_1.controller using Guid(f3cb69348d684f54789b1f859fc61a74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '780a8e0977d8f0553fb28d6150822bfb') in 0.006723 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.424390 seconds.
+  path: Assets/Animation/LeafRangerAnimations/LeafRanger.controller
+  artifactKey: Guid(6b85285bb75c4d743a6450b3ad926656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/LeafRangerAnimations/LeafRanger.controller using Guid(6b85285bb75c4d743a6450b3ad926656) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c558bfd465a827e68205ce6897d9d99') in 0.010151 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.429987 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin.controller
+  artifactKey: Guid(b810683261d609f43b938ca7a5c66475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin.controller using Guid(b810683261d609f43b938ca7a5c66475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea8e215f815133948d3903e6ca3838d8') in 0.005930 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 119.853524 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_1.png
+  artifactKey: Guid(09ce47403f1858b4ea743d1b07f5f5d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_1.png using Guid(09ce47403f1858b4ea743d1b07f5f5d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b33c7ce955ed0313e75bb6c871b0c0d2') in 0.020479 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_2.png
+  artifactKey: Guid(6fe11b9127a0ca9428bf47e269a41c33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_2.png using Guid(6fe11b9127a0ca9428bf47e269a41c33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd16f9c8f44a66a4bd8aa8baa35d732b') in 0.012205 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_3.png
+  artifactKey: Guid(6e5f78abf50a1534a8dbcdd4a7bfa0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/j_up/j_up_3.png using Guid(6e5f78abf50a1534a8dbcdd4a7bfa0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1196158635440e560e2ffbda0269f00') in 0.011815 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 22.370770 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/jump/j_down_1.png
+  artifactKey: Guid(364b7609d0cc3994ba21a40c7d4ffbf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/jump/j_down_1.png using Guid(364b7609d0cc3994ba21a40c7d4ffbf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '282085b43fe9ee4e0a2551478f3933f5') in 0.014426 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/jump/j_down_2.png
+  artifactKey: Guid(9f85ea31da6fd2f45b5ec6e664822fef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/jump/j_down_2.png using Guid(9f85ea31da6fd2f45b5ec6e664822fef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0669e0c8ac0c578f5ba861224cec6f0e') in 0.020688 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/jump/j_down_3.png
+  artifactKey: Guid(0080953b9d1b30a4a8781e461e503fab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/elementals_wind_hashashin_FREE_v1.1/PNG/jump/j_down_3.png using Guid(0080953b9d1b30a4a8781e461e503fab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '610985c16246f0d1e1e800c5c3337e28') in 0.022192 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 88.248244 seconds.
+  path: Assets/Animation/WindHashashinAnimations/j_up_1.controller
+  artifactKey: Guid(8d6030974fac7f74785544a2985ddbe1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/j_up_1.controller using Guid(8d6030974fac7f74785544a2985ddbe1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '430531281553de0c3ed7f97011e93e7f') in 0.003611 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.847577 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin.controller
+  artifactKey: Guid(b810683261d609f43b938ca7a5c66475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin.controller using Guid(b810683261d609f43b938ca7a5c66475) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '621ee34524353a36096560b1fc79ae2c') in 0.004085 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.567162 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin_Dash.anim
+  artifactKey: Guid(eb0aa3784d6bbb84884d64138b310a70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin_Dash.anim using Guid(eb0aa3784d6bbb84884d64138b310a70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b50ac94b6a66dc857c237fa7c49157ef') in 0.002829 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.995843 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin_Idle.anim
+  artifactKey: Guid(4da5eabb1a64e1f44a2634833d06e769) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin_Idle.anim using Guid(4da5eabb1a64e1f44a2634833d06e769) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50c30f2ee5ee630fe3ffe037c71068a4') in 0.002972 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.644039 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin_Jump.anim
+  artifactKey: Guid(386a86c29551a504f8871e9724a2a5d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin_Jump.anim using Guid(386a86c29551a504f8871e9724a2a5d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a2fd561daf721ffa88bb6da8f0f7090') in 0.006627 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.220521 seconds.
+  path: Assets/Animation/WindHashashinAnimations/WindHashashin_Run.anim
+  artifactKey: Guid(45e36977122fd7d4396c80928e5a47d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/WindHashashinAnimations/WindHashashin_Run.anim using Guid(45e36977122fd7d4396c80928e5a47d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf8f61cac26e31cf5bfa738b22622705') in 0.002858 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 183.422613 seconds.
+  path: Assets/Scenes/Scene01.unity
+  artifactKey: Guid(9b640abde0b922142a7d7edcf5375bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Scene01.unity using Guid(9b640abde0b922142a7d7edcf5375bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e1157859c0c07616ddefac9493454df') in 0.006141 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.336244 seconds.
+  path: Assets/Scenes/Scene01.unity
+  artifactKey: Guid(9b640abde0b922142a7d7edcf5375bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Scene01.unity using Guid(9b640abde0b922142a7d7edcf5375bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '284bcff03f3272fb3ecda24e3abaa8b5') in 0.002409 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004323 seconds.
+Registered in 0.003889 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.67 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.71 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.861 seconds
+- Completed reload, in  0.837 seconds
 Domain Reload Profiling:
-	ReloadAssembly (862ms)
-		BeginReloadAssembly (110ms)
+	ReloadAssembly (837ms)
+		BeginReloadAssembly (111ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (29ms)
-		EndReloadAssembly (695ms)
-			LoadAssemblies (92ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (233ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (42ms)
-			SetupLoadedEditorAssemblies (256ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (77ms)
-				ProcessInitializeOnLoadAttributes (156ms)
-				ProcessInitializeOnLoadMethodAttributes (10ms)
-				AfterProcessingInitializeOnLoad (9ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.1 MB.
-System memory in use after: 121.2 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2718.
-Total: 2.916600 ms (FindLiveObjects: 0.194000 ms CreateObjectMapping: 0.057700 ms MarkObjects: 2.523500 ms  DeleteObjects: 0.140600 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004276 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.68 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.842 seconds
-Domain Reload Profiling:
-	ReloadAssembly (842ms)
-		BeginReloadAssembly (106ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (27ms)
-		EndReloadAssembly (679ms)
-			LoadAssemblies (94ms)
+			CreateAndSetChildDomain (32ms)
+		EndReloadAssembly (671ms)
+			LoadAssemblies (91ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
 			SetupTypeCache (230ms)
 			ReleaseScriptCaches (1ms)
 			RebuildScriptCaches (35ms)
-			SetupLoadedEditorAssemblies (250ms)
+			SetupLoadedEditorAssemblies (244ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (75ms)
-				ProcessInitializeOnLoadAttributes (153ms)
+				BeforeProcessingInitializeOnLoad (71ms)
+				ProcessInitializeOnLoadAttributes (152ms)
 				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (8ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.2 MB.
-System memory in use after: 121.2 MB.
+System memory in use before: 121.4 MB.
+System memory in use after: 121.5 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2720.
-Total: 2.950300 ms (FindLiveObjects: 0.197400 ms CreateObjectMapping: 0.056800 ms MarkObjects: 2.567600 ms  DeleteObjects: 0.127900 ms)
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2717.
+Total: 2.881900 ms (FindLiveObjects: 0.202200 ms CreateObjectMapping: 0.056100 ms MarkObjects: 2.498600 ms  DeleteObjects: 0.124300 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -249,92 +1171,36 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004229 seconds.
+Registered in 0.003597 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.866 seconds
-Domain Reload Profiling:
-	ReloadAssembly (866ms)
-		BeginReloadAssembly (107ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (27ms)
-		EndReloadAssembly (702ms)
-			LoadAssemblies (92ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (239ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (36ms)
-			SetupLoadedEditorAssemblies (261ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (81ms)
-				ProcessInitializeOnLoadAttributes (158ms)
-				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (9ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
-Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.2 MB.
-System memory in use after: 121.2 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2722.
-Total: 3.102900 ms (FindLiveObjects: 0.205200 ms CreateObjectMapping: 0.057600 ms MarkObjects: 2.696100 ms  DeleteObjects: 0.143300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004254 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.862 seconds
+- Completed reload, in  0.850 seconds
 Domain Reload Profiling:
-	ReloadAssembly (863ms)
-		BeginReloadAssembly (107ms)
+	ReloadAssembly (851ms)
+		BeginReloadAssembly (113ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (27ms)
-		EndReloadAssembly (698ms)
-			LoadAssemblies (94ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (678ms)
+			LoadAssemblies (96ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
 			SetupTypeCache (234ms)
 			ReleaseScriptCaches (1ms)
 			RebuildScriptCaches (35ms)
-			SetupLoadedEditorAssemblies (262ms)
+			SetupLoadedEditorAssemblies (246ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (77ms)
-				ProcessInitializeOnLoadAttributes (162ms)
+				BeforeProcessingInitializeOnLoad (72ms)
+				ProcessInitializeOnLoadAttributes (153ms)
 				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (9ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (7ms)
@@ -342,11 +1208,109 @@ Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.63 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.1 MB.
-System memory in use after: 121.2 MB.
+System memory in use before: 121.5 MB.
+System memory in use after: 121.5 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2724.
-Total: 3.101100 ms (FindLiveObjects: 0.192400 ms CreateObjectMapping: 0.056800 ms MarkObjects: 2.695100 ms  DeleteObjects: 0.156200 ms)
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2719.
+Total: 2.895400 ms (FindLiveObjects: 0.205500 ms CreateObjectMapping: 0.065100 ms MarkObjects: 2.498600 ms  DeleteObjects: 0.125200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 171.984117 seconds.
+  path: Assets/Prefabs/Leaf_Ranger 1.prefab
+  artifactKey: Guid(71cb4e94265ce104ab8a17c57b61923e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Leaf_Ranger 1.prefab using Guid(71cb4e94265ce104ab8a17c57b61923e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd04aea31579f8bd3133956f9ee9b7e02') in 0.060977 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 129.305845 seconds.
+  path: Assets/Prefabs/Leaf_Ranger 2.prefab
+  artifactKey: Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Leaf_Ranger 2.prefab using Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2a19c35470bbdd80396468570f32324') in 0.019634 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 25.002146 seconds.
+  path: Assets/Prefabs/Wind_Hashashin.prefab
+  artifactKey: Guid(6ba3832b7edf9d4439e6899805159749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Wind_Hashashin.prefab using Guid(6ba3832b7edf9d4439e6899805159749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f7649d82eb7df5e7f7448ee6e9df4d6') in 0.019230 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.896355 seconds.
+  path: Assets/Prefabs/Leaf_Ranger.prefab
+  artifactKey: Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Leaf_Ranger.prefab using Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc7d468beb94ad608d29c8846bc6734e') in 0.018902 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 29.982849 seconds.
+  path: Assets/Prefabs/Wind_Hashashin.prefab
+  artifactKey: Guid(6ba3832b7edf9d4439e6899805159749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Wind_Hashashin.prefab using Guid(6ba3832b7edf9d4439e6899805159749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd18aca0f63543874360db85659d4bd9b') in 0.014973 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.191076 seconds.
+  path: Assets/Prefabs/Leaf_Ranger.prefab
+  artifactKey: Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Leaf_Ranger.prefab using Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '174457b24d7f3be0ca7a548d5ef4084c') in 0.012809 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 24.377901 seconds.
+  path: Assets/Scenes/Scene01.unity
+  artifactKey: Guid(9b640abde0b922142a7d7edcf5375bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Scene01.unity using Guid(9b640abde0b922142a7d7edcf5375bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12082a61b3c3418270339eeb5808b682') in 0.002823 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003654 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.839 seconds
+Domain Reload Profiling:
+	ReloadAssembly (840ms)
+		BeginReloadAssembly (103ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (28ms)
+		EndReloadAssembly (678ms)
+			LoadAssemblies (90ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (236ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (245ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (71ms)
+				ProcessInitializeOnLoadAttributes (153ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.6 MB.
+System memory in use after: 121.6 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2726.
+Total: 2.989000 ms (FindLiveObjects: 0.224900 ms CreateObjectMapping: 0.056500 ms MarkObjects: 2.577400 ms  DeleteObjects: 0.129400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -361,36 +1325,36 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004348 seconds.
+Registered in 0.003896 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.846 seconds
+- Completed reload, in  0.840 seconds
 Domain Reload Profiling:
-	ReloadAssembly (847ms)
-		BeginReloadAssembly (107ms)
+	ReloadAssembly (841ms)
+		BeginReloadAssembly (110ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (27ms)
-		EndReloadAssembly (682ms)
+			CreateAndSetChildDomain (30ms)
+		EndReloadAssembly (672ms)
 			LoadAssemblies (93ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (230ms)
+			SetupTypeCache (228ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (36ms)
-			SetupLoadedEditorAssemblies (253ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (248ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (75ms)
-				ProcessInitializeOnLoadAttributes (156ms)
+				BeforeProcessingInitializeOnLoad (72ms)
+				ProcessInitializeOnLoadAttributes (155ms)
 				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (8ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (7ms)
@@ -398,11 +1362,91 @@ Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.1 MB.
-System memory in use after: 121.2 MB.
+System memory in use before: 121.5 MB.
+System memory in use after: 121.6 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2726.
-Total: 2.955000 ms (FindLiveObjects: 0.199300 ms CreateObjectMapping: 0.060000 ms MarkObjects: 2.556500 ms  DeleteObjects: 0.138400 ms)
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2728.
+Total: 2.982100 ms (FindLiveObjects: 0.189100 ms CreateObjectMapping: 0.055400 ms MarkObjects: 2.548400 ms  DeleteObjects: 0.188500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 130.070830 seconds.
+  path: Assets/Prefabs/Leaf_Ranger.prefab
+  artifactKey: Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Leaf_Ranger.prefab using Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27f5743a3af140ebdc6fcf8558b1667c') in 0.056516 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/Prefabs/Wind_Hashashin.prefab
+  artifactKey: Guid(6ba3832b7edf9d4439e6899805159749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Wind_Hashashin.prefab using Guid(6ba3832b7edf9d4439e6899805159749) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25db695b04f3f9d34c1bc37717a46fcd') in 0.019040 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.765225 seconds.
+  path: Assets/Prefabs/Leaf_Ranger.prefab
+  artifactKey: Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Leaf_Ranger.prefab using Guid(48b61e944bfa7a846abc881507a841ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9cd21d545ceee77f4875cd3675d87ae') in 0.015997 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 34.036990 seconds.
+  path: Assets/Scenes/Scene01.unity
+  artifactKey: Guid(9b640abde0b922142a7d7edcf5375bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Scene01.unity using Guid(9b640abde0b922142a7d7edcf5375bf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4075c27bf3d12fda31f67864b629b535') in 0.002434 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005219 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.847 seconds
+Domain Reload Profiling:
+	ReloadAssembly (847ms)
+		BeginReloadAssembly (105ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (686ms)
+			LoadAssemblies (89ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (237ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (247ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (72ms)
+				ProcessInitializeOnLoadAttributes (154ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.78 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.5 MB.
+System memory in use after: 121.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2731.
+Total: 3.141600 ms (FindLiveObjects: 0.228700 ms CreateObjectMapping: 0.057500 ms MarkObjects: 2.703900 ms  DeleteObjects: 0.150900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -417,48 +1461,104 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004267 seconds.
+Registered in 0.003589 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.869 seconds
+- Completed reload, in  0.827 seconds
 Domain Reload Profiling:
-	ReloadAssembly (870ms)
-		BeginReloadAssembly (107ms)
+	ReloadAssembly (828ms)
+		BeginReloadAssembly (102ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (25ms)
-		EndReloadAssembly (705ms)
-			LoadAssemblies (94ms)
+			CreateAndSetChildDomain (26ms)
+		EndReloadAssembly (663ms)
+			LoadAssemblies (90ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (228ms)
+			SetupTypeCache (225ms)
 			ReleaseScriptCaches (1ms)
 			RebuildScriptCaches (35ms)
-			SetupLoadedEditorAssemblies (275ms)
+			SetupLoadedEditorAssemblies (243ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
+				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (84ms)
-				ProcessInitializeOnLoadAttributes (162ms)
+				BeforeProcessingInitializeOnLoad (72ms)
+				ProcessInitializeOnLoadAttributes (151ms)
 				ProcessInitializeOnLoadMethodAttributes (9ms)
-				AfterProcessingInitializeOnLoad (15ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (8ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 121.5 MB.
+System memory in use after: 121.5 MB.
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2733.
+Total: 3.006100 ms (FindLiveObjects: 0.283300 ms CreateObjectMapping: 0.084200 ms MarkObjects: 2.496200 ms  DeleteObjects: 0.141500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004009 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.66 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.821 seconds
+Domain Reload Profiling:
+	ReloadAssembly (822ms)
+		BeginReloadAssembly (102ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (663ms)
+			LoadAssemblies (88ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (224ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (243ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (71ms)
+				ProcessInitializeOnLoadAttributes (151ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2236 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 121.2 MB.
-System memory in use after: 121.2 MB.
+System memory in use before: 121.5 MB.
+System memory in use after: 121.5 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2728.
-Total: 2.880200 ms (FindLiveObjects: 0.195100 ms CreateObjectMapping: 0.056600 ms MarkObjects: 2.493300 ms  DeleteObjects: 0.134400 ms)
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 2735.
+Total: 2.999300 ms (FindLiveObjects: 0.195100 ms CreateObjectMapping: 0.063200 ms MarkObjects: 2.604200 ms  DeleteObjects: 0.136000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
