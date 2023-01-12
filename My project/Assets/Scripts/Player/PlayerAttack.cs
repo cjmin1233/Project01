@@ -191,6 +191,8 @@ public class PlayerAttack : MonoBehaviour
         if (sword_wind_enable)
         {
             GameObject swordwind = SwordWindPool.Instance.GetFromPool();
+            //swordwind.SetActive(false);
+
             swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(0.5f * swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
             swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
             swordwind.GetComponent<Sword_Wind_Collider>().damageForce = damageForce;

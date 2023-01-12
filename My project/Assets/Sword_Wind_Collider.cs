@@ -5,7 +5,8 @@ using UnityEngine;
 public class Sword_Wind_Collider : MonoBehaviour
 {
     [HideInInspector] public float damage;
-    [HideInInspector] public float anim_Speed;
+    /*[HideInInspector] */
+    public float anim_Speed;
     [HideInInspector] public Vector2 damageForce;
     //public Transform start_point;
     private Transform player;
@@ -20,9 +21,9 @@ public class Sword_Wind_Collider : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         hit_list = new List<string>();
-        //damageForce = Vector2.zero;
         anim_Speed = 1.0f;
     }
+
     private void OnEnable()
     {
         //
@@ -31,9 +32,18 @@ public class Sword_Wind_Collider : MonoBehaviour
         transform.rotation = player.rotation;
         //
         animator.SetFloat("EnableSpeed", anim_Speed);
-        
-        rb.velocity = transform.right * 10f * anim_Speed;
+
+        rb.velocity = 10f * anim_Speed * transform.right;
     }
+    /*public void Init()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        transform.rotation = player.rotation;
+
+        animator.SetFloat("EnableSpeed", anim_Speed);
+        rb.velocity = 10f * anim_Speed * transform.right;
+        Debug.Log("current speed is : " + anim_Speed);
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
