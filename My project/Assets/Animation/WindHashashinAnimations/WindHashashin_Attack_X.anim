@@ -16,7 +16,116 @@ AnimationClip:
   m_EulerCurves: []
   m_PositionCurves: []
   m_ScaleCurves: []
-  m_FloatCurves: []
+  m_FloatCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.33333334
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.9166667
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.0833334
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.4166666
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.5
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.5833334
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.6666666
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 2.0833333
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 2.3333333
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Attack_X
+    classID: 1
+    script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
@@ -62,22 +171,18 @@ AnimationClip:
     - time: 1.6666666
       value: {fileID: 21300000, guid: e139bda01ca1646468811154cc2515f3, type: 3}
     - time: 1.75
-      value: {fileID: 21300000, guid: c5f3fc3897a98fe4981ba9e2185f5417, type: 3}
-    - time: 1.8333334
       value: {fileID: 21300000, guid: b41d2f7d1cc3541448834006ccab76d3, type: 3}
-    - time: 1.9166666
-      value: {fileID: 21300000, guid: 942c5a5f7f8f2814eb29a8d5141bf04c, type: 3}
-    - time: 2
+    - time: 1.8333334
       value: {fileID: 21300000, guid: bc58daf1ab9f05b479d48502f880f331, type: 3}
-    - time: 2.0833333
+    - time: 1.9166666
       value: {fileID: 21300000, guid: 773a8c92c58ebf24d94f8977e1910e83, type: 3}
-    - time: 2.1666667
+    - time: 2
       value: {fileID: 21300000, guid: c6f6067ebe0eb3745900962dc80fb85c, type: 3}
-    - time: 2.25
+    - time: 2.0833333
       value: {fileID: 21300000, guid: 7805f406f1f86be41804caf697c4e829, type: 3}
-    - time: 2.3333333
+    - time: 2.1666667
       value: {fileID: 21300000, guid: 2b9b7b16ed30c7b4889d15e1a3c7223c, type: 3}
-    - time: 2.4166667
+    - time: 2.25
       value: {fileID: 21300000, guid: d15332d7b545702478f92d1f2a763e80, type: 3}
     attribute: m_Sprite
     path: 
@@ -90,6 +195,13 @@ AnimationClip:
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
     genericBindings:
+    - serializedVersion: 2
+      path: 2572229753
+      attribute: 2086281974
+      script: {fileID: 0}
+      typeID: 1
+      customType: 0
+      isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 0
@@ -119,9 +231,7 @@ AnimationClip:
     - {fileID: 21300000, guid: b435fb60d7dd08241b390b9f8d2e9f12, type: 3}
     - {fileID: 21300000, guid: 1f8186fe32f32bc498f1b8f9efed5d31, type: 3}
     - {fileID: 21300000, guid: e139bda01ca1646468811154cc2515f3, type: 3}
-    - {fileID: 21300000, guid: c5f3fc3897a98fe4981ba9e2185f5417, type: 3}
     - {fileID: 21300000, guid: b41d2f7d1cc3541448834006ccab76d3, type: 3}
-    - {fileID: 21300000, guid: 942c5a5f7f8f2814eb29a8d5141bf04c, type: 3}
     - {fileID: 21300000, guid: bc58daf1ab9f05b479d48502f880f331, type: 3}
     - {fileID: 21300000, guid: 773a8c92c58ebf24d94f8977e1910e83, type: 3}
     - {fileID: 21300000, guid: c6f6067ebe0eb3745900962dc80fb85c, type: 3}
@@ -133,7 +243,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.5
+    m_StopTime: 2.3333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -148,8 +258,131 @@ AnimationClip:
     m_KeepOriginalPositionXZ: 0
     m_HeightFromFeet: 0
     m_Mirror: 0
-  m_EditorCurves: []
+  m_EditorCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.33333334
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.9166667
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.0833334
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.4166666
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.5
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.5833334
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1.6666666
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 2.0833333
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 2.3333333
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Attack_X
+    classID: 1
+    script: {fileID: 0}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: Enable_Dagger_X_Collider
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.3333333
+    functionName: Finish_X
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
     private float lastImageXpos;
     private float lastDash = -100f;
     private bool isFacingRight = true;
+    // after image 
+    public bool AfterImageAvailable = false;
+    private float AfterImageRate = 20f;
+    private float lastAfterImageTime = -100f;
 
     [Header("Vertical Movement")]
     public AudioSource[] jump_sound;
@@ -122,6 +126,7 @@ public class Player : MonoBehaviour
         Invincible();
         FlipPlayer();
         CheckDash();
+        CheckAfterImage();
     }
 
     private void FixedUpdate()
@@ -195,6 +200,17 @@ public class Player : MonoBehaviour
             }
         }
     }
+    private void CheckAfterImage()
+    {
+        if (AfterImageAvailable && !isDashing)
+        {
+            if (Time.time > lastAfterImageTime + 1 / AfterImageRate)
+            {
+                AfterimagePool.Instance.GetFromPool();
+                lastAfterImageTime = Time.time;
+            }
+        }
+    }
     private void HorizontalMove()
     {
         Vector3 targetVelocity;
@@ -242,72 +258,6 @@ public class Player : MonoBehaviour
             if (jump_sound[rand]!=null) jump_sound[rand].PlayOneShot(jump_sound[rand].clip);
         }
         jump = false;
-        /*
-        if (!ignoreGround)
-        {
-            //////////////////////////////
-            bool wasGrounded = isGrounded;
-            isGrounded = false;
-
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                if (colliders[i].gameObject != gameObject)
-                {
-                    isGrounded = true;
-                    if (!wasGrounded)
-                    {
-                        animator.SetBool("IsJumping", false);
-                        Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
-                    }
-                }
-            }
-            if (jump && isGrounded)
-            {
-                isGrounded = false;
-                animator.SetBool("IsJumping", true);
-                gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
-                gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
-                gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
-
-
-                rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-            }
-            jump = false;
-
-        }
-
-        
-        bool wasGrounded = isGrounded;
-        isGrounded = false;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                isGrounded = true;
-                if (!wasGrounded)
-                {
-                    animator.SetBool("IsJumping", false);
-                }
-            }
-        }
-        if (jump && isGrounded)
-        {
-            isGrounded = false;
-            animator.SetBool("IsJumping", true);
-            gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;
-
-
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        }
-        jump = false;
-        */
-        //if (ignoreGround) Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
-        //else Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
 
 
     }

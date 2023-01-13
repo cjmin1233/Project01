@@ -129,7 +129,7 @@ public class PlayerAttack : MonoBehaviour
                 else if (weaponType == 3)
                 {
                     //  Spear X attack.
-                    //DaggerXAttack();
+                    DaggerXAttack();
                 }
             }
         }
@@ -339,7 +339,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Enable_Dagger_Combo_Collider()
     {
-        Vector2 damageForce = new Vector2(5f * transform.right.x, 0f);
+        Vector2 damageForce = new Vector2(0.1f * transform.right.x, 0f);
         //if (transform.rotation.y != 0f) damageForce.x *= -1f;
         comboCollider[comboCounter].GetComponent<Combo_Collider>().damage = Mathf.Round(55f * (1 + comboCounter * 0.2f));
         //comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
@@ -347,9 +347,36 @@ public class PlayerAttack : MonoBehaviour
         comboCollider[comboCounter].GetComponent<Combo_Collider>().damageForce = damageForce;
         //comboCollider[comboCounter].SetActive(true);
     }
+    private void DaggerXAttack()
+    {
+        // 공격동안 움직임 제어
+        gameObject.GetComponent<Player>().canMove = false;
+
+        animator.SetFloat("Speed_X", Speed_X);
+        isXAttacking = true;
+        // after image on
+        gameObject.GetComponent<Player>().AfterImageAvailable = true;
+        animator.SetTrigger("AttackX");
+        isZAttacking = false;
+        comboCounter = 0;
+    }
+
+    private void Enable_Dagger_X_Collider()
+    {
+        Vector2 damageForce = new Vector2(1f * transform.right.x, 0f);
+        //if (transform.rotation.y != 0f) damageForce.x *= -1f;
+        Sword_Collider_X.GetComponent<Combo_Collider>().damage = Mathf.Round(77f);
+        //comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
+        //comboCollider[comboCounter].GetComponent<Combo_Collider>().anim_Speed = Speed_Z;
+        Sword_Collider_X.GetComponent<Combo_Collider>().damageForce = damageForce;
+        //comboCollider[comboCounter].SetActive(true);
+    }
 
     public void PlayerInit()
     {
+        // after image off
+        gameObject.GetComponent<Player>().AfterImageAvailable = false;
+
         isZAttacking = false;
         isXAttacking = false;
         comboCounter = 0;
