@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject[] comboCollider;
     public int inputZCounter = 0;
     public GameObject swordwindPrefab;
-    public GameObject[] swordwindCollider;
+    //public GameObject[] swordwindCollider;
     public bool sword_wind_enable;
     [SerializeField] private Transform sword_wind_startpoint;
     [SerializeField] private List<AudioSource> sword_wind_sound;
@@ -86,7 +86,8 @@ public class PlayerAttack : MonoBehaviour
                 }
                 else if (weaponType == 3)
                 {
-                    //  Spear Z combo attack.
+                    //  Dagger Z combo attack.
+                    DaggerZAttack();
                 }
             }
         }
@@ -94,7 +95,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
         {
             // Z+X 콤보
-            if (comboCounter == 3)
+            if (comboCounter == 3 && (weaponType == 1 || weaponType == 2))
             {
                 gameObject.GetComponent<Player>().canMove = false;
                 if (weaponType == 2)
@@ -128,6 +129,7 @@ public class PlayerAttack : MonoBehaviour
                 else if (weaponType == 3)
                 {
                     //  Spear X attack.
+                    //DaggerXAttack();
                 }
             }
         }
@@ -139,18 +141,20 @@ public class PlayerAttack : MonoBehaviour
             {
                 //  Sword Z combo attack.
                 SwordZAttack();
-                inputZCounter=0;
+                //inputZCounter=0;
             }
             else if (weaponType == 2)
             {
                 //  Bow Z combo attack.
                 BowZAttack();
-                inputZCounter = 0;
+                //inputZCounter = 0;
             }
             else if (weaponType == 3)
             {
-                //  Spear Z combo attack.
+                //  Dagger Z combo attack.
+                DaggerZAttack();
             }
+            inputZCounter = 0;
         }
 
     }
@@ -310,6 +314,40 @@ public class PlayerAttack : MonoBehaviour
     {
         arrow_shower_startpoint.SetActive(true);
     }
+
+    // Hashashin functions
+    private void DaggerZAttack()
+    {
+        // 공격동안 움직임 제어
+        gameObject.GetComponent<Player>().canMove = false;
+
+        animator.SetFloat("Speed_Z", Speed_Z);
+        isZAttacking = true;
+        animator.SetTrigger("Combo" + comboCounter);
+        if (comboCounter == 0)
+        {
+            animator.ResetTrigger("Combo1");
+            animator.ResetTrigger("Combo2");
+            //animator.ResetTrigger("Combo3");
+        }
+        // 공격시 약 전진
+        //Debug.Log("i'm here");
+        /*float swordCombo_force = 20f;
+        if (transform.rotation.y != 0f) swordCombo_force *= -1f;
+        rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);*/
+        //rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Force);
+    }
+    private void Enable_Dagger_Combo_Collider()
+    {
+        Vector2 damageForce = new Vector2(5f * transform.right.x, 0f);
+        //if (transform.rotation.y != 0f) damageForce.x *= -1f;
+        comboCollider[comboCounter].GetComponent<Combo_Collider>().damage = Mathf.Round(55f * (1 + comboCounter * 0.2f));
+        //comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
+        //comboCollider[comboCounter].GetComponent<Combo_Collider>().anim_Speed = Speed_Z;
+        comboCollider[comboCounter].GetComponent<Combo_Collider>().damageForce = damageForce;
+        //comboCollider[comboCounter].SetActive(true);
+    }
+
     public void PlayerInit()
     {
         isZAttacking = false;
