@@ -8,12 +8,13 @@ public class CameraFollow : MonoBehaviour
     private Vector3 tempPos;
     [SerializeField] private GameObject[] player_type;
     [SerializeField] private GameObject[] pool_container;
+    [HideInInspector] public bool playerFollowing;
 
     private void Awake()
     {
         int weaponType = PlayerPrefs.GetInt("weaponType");
         //animator.SetInteger("WeaponType", weaponType);
-        Debug.Log("Camera detected : " + weaponType + "th character.");
+        //Debug.Log("Camera detected : " + weaponType + "th character.");
         for (int i = 0; i < player_type.Length; i++)
         {
             if (i + 1 == weaponType)
@@ -27,6 +28,7 @@ public class CameraFollow : MonoBehaviour
         {
             pool_container[i].SetActive(true);
         }
+        playerFollowing = true;
     }
     // Start is called before the first frame update
     /*void Start()
@@ -53,11 +55,13 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        tempPos = transform.position;
-        tempPos.x = player.position.x;
-        tempPos.y = player.position.y;
+        if (playerFollowing)
+        {
+            tempPos = transform.position;
+            tempPos.x = player.position.x;
+            tempPos.y = player.position.y;
 
-        transform.position = tempPos;
-        
+            transform.position = tempPos;
+        }
     }
 }

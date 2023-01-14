@@ -46,15 +46,18 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Gold_UI;
     [HideInInspector] public float MaxHP = 100;
     [HideInInspector] public float CurHP;
-    private bool canInvincible = false;
-    float invincibleTimeLeft;
-    float invincibleTime = 1f;
+    /*[HideInInspector] */public bool canInvincible;
+    private float damagingTimeLeft = -1f;
+    const float damagingTime = 1f;
+
     [SerializeField] private GameObject Esc_UI;
     [SerializeField] private GameObject Book_UI;
     [HideInInspector] public int gold;
     private void Start()
     {
-        invincibleTimeLeft = 0f;
+        canInvincible = false;
+        damagingTimeLeft = -1f;
+
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -123,7 +126,7 @@ public class Player : MonoBehaviour
             //
             Book_UI.SetActive(true);
         }
-        Invincible();
+        DamagingCheck();
         FlipPlayer();
         CheckDash();
         CheckAfterImage();
@@ -160,11 +163,11 @@ public class Player : MonoBehaviour
         dashTimeLeft = dashTime;
         lastDash = Time.time;
 
-        canInvincible = true;
+        /*canInvincible = true;
         if (invincibleTimeLeft < dashTimeLeft)
         {
             invincibleTimeLeft = dashTimeLeft;
-        }
+        }*/
 
         AfterimagePool.Instance.GetFromPool();
         lastImageXpos = transform.position.x;
@@ -197,6 +200,11 @@ public class Player : MonoBehaviour
                 currentSpeed = baseSpeed;
                 isDashing = false;
                 animator.SetBool("IsDashing", isDashing);
+                if (damagingTimeLeft <= 0)
+                {
+                    // 데미지를 입은 상태가 아니라면 무적 해제
+                    Invincible_OFF();
+                }
             }
         }
     }
@@ -282,19 +290,33 @@ public class Player : MonoBehaviour
     {
         if (!canInvincible)
         {
-            float damageForce = 20.0f;
-            if (isFacingRight) damageForce *= -1.0f;
-            rb.AddForce(new Vector2(damageForce, 0f), ForceMode2D.Impulse);
-            CurHP -= damage;
-            canInvincible = true;
-            invincibleTimeLeft = invincibleTime;
-            Color invincibleColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
-            sr.color = invincibleColor;
-
-            if (CurHP <= 0)
+            if (isDashing)
             {
-                CurHP = 0;
-                Die();
+                Debug.Log("Dodged!");
+            }
+            else
+            {
+                // 플레이어 밀침 효과
+                float damageForce = 20.0f;
+                if (isFacingRight) damageForce *= -1.0f;
+                rb.AddForce(new Vector2(damageForce, 0f), ForceMode2D.Impulse);
+
+                CurHP -= damage;
+
+                // 무적 시간 부여
+                canInvincible = true;
+                damagingTimeLeft = damagingTime;
+
+                // 스프라이트 이미지 어둡게
+                Color invincibleColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+                sr.color = invincibleColor;
+
+                if (CurHP <= 0)
+                {
+                    // 플레이어 사망
+                    CurHP = 0;
+                    Die();
+                }
             }
         }
 
@@ -305,17 +327,25 @@ public class Player : MonoBehaviour
         gold += get_gold;
         Gold_UI.GetComponent<Player_Gold_Manager>().HandleGold(gold);
     }
-    private void Invincible()
+    private void DamagingCheck()
     {
-        if (canInvincible)
+        if (damagingTimeLeft > 0)
         {
-            invincibleTimeLeft -= Time.deltaTime;
-            if (invincibleTimeLeft <= 0)
+            damagingTimeLeft -= Time.deltaTime;
+            if (damagingTimeLeft <= 0)
             {
                 canInvincible = false;
                 sr.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
         }
+    }
+    public void Invincible_ON()
+    {
+        canInvincible = true;
+    }
+    public void Invincible_OFF()
+    {
+        canInvincible = false;
     }
     private void Die()
     {

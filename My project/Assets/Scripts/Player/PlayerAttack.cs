@@ -49,8 +49,6 @@ public class PlayerAttack : MonoBehaviour
     bool isJumping;
     bool isDashing;
 
-    //public float swordCombo_force = 100f;
-
     private void Start()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -177,6 +175,8 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Finish_X()
     {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = true;
+
         isXAttacking = false;
         comboCounter = 0;
         gameObject.GetComponent<Player>().canMove = true;
@@ -349,6 +349,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void DaggerXAttack()
     {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = false;
         // 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
 
@@ -376,6 +377,7 @@ public class PlayerAttack : MonoBehaviour
     {
         // after image off
         gameObject.GetComponent<Player>().AfterImageAvailable = false;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = true;
 
         isZAttacking = false;
         isXAttacking = false;
