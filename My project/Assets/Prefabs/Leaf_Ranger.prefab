@@ -1,5 +1,76 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &826028324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 826028327}
+  - component: {fileID: 826028326}
+  - component: {fileID: 826028325}
+  m_Layer: 6
+  m_Name: GroundChecker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &826028327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826028324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1336409127228282686}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &826028326
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826028324}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0055437908, y: -0.63234293}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.26367033, y: 0.011795521}
+  m_EdgeRadius: 0
+--- !u!114 &826028325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826028324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e91b55733e4820449e382c928a915d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGrounded: 0
 --- !u!1 &61198366319963693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,7 +1555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1336409126639845862
 Transform:
   m_ObjectHideFlags: 0
@@ -1516,13 +1587,14 @@ GameObject:
   - component: {fileID: 113635528800171086}
   - component: {fileID: 5532145182586916654}
   - component: {fileID: 4884070746369977198}
+  - component: {fileID: 3258120412469955934}
   m_Layer: 6
   m_Name: Leaf_Ranger
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1336409127228282686
 Transform:
   m_ObjectHideFlags: 0
@@ -1540,6 +1612,7 @@ Transform:
   - {fileID: 61198366925613910}
   - {fileID: 4592768121662727973}
   - {fileID: 4592768120553382451}
+  - {fileID: 826028327}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1647,7 +1720,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021779787, y: -0.40101814}
+  m_Offset: {x: -0.0009405762, y: -0.40101814}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1658,7 +1731,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29296383, y: 0.46346784}
+  m_Size: {x: 0.2605063, y: 0.46346784}
   m_EdgeRadius: 0
 --- !u!114 &1336409127228282681
 MonoBehaviour:
@@ -1682,6 +1755,7 @@ MonoBehaviour:
   dashCoolDown: 1
   canMove: 1
   jumpForce: 10
+  AfterImageAvailable: 0
   jump_sound:
   - {fileID: 61198367033989984}
   - {fileID: 61198367736860411}
@@ -1694,9 +1768,11 @@ MonoBehaviour:
   Gold_UI: {fileID: 0}
   MaxHP: 100
   CurHP: 0
+  canInvincible: 0
   Esc_UI: {fileID: 0}
   Book_UI: {fileID: 0}
   gold: 0
+  ground_checker: {fileID: 826028325}
 --- !u!114 &113635528800171086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1727,10 +1803,6 @@ MonoBehaviour:
   - {fileID: 0}
   inputZCounter: 0
   swordwindPrefab: {fileID: 2414716417716098614, guid: c82ee132470215d42af94a4caee3ef23, type: 3}
-  swordwindCollider:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   sword_wind_enable: 1
   sword_wind_startpoint: {fileID: 0}
   sword_wind_sound:
@@ -1784,6 +1856,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03be9ea303106d04696ff111d0480f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3258120412469955934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336409127228282675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0733c0b768f8554e8f92dc29ea4c555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCollision: 0
 --- !u!1 &4592768120553382448
 GameObject:
   m_ObjectHideFlags: 0

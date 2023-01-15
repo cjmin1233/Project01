@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
     public AudioSource[] jump_sound;
     private bool jump;
     private bool isGrounded;
+    private BoxCollider2D player_collider;
+    private float prev_vel_y;
     int playerLayer, groundLayer;
 
     [SerializeField] private Transform GroundCheck;
@@ -46,13 +48,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject Gold_UI;
     [HideInInspector] public float MaxHP = 100;
     [HideInInspector] public float CurHP;
-    /*[HideInInspector] */public bool canInvincible;
+    [HideInInspector] public bool canInvincible;
     private float damagingTimeLeft = -1f;
     const float damagingTime = 1f;
 
     [SerializeField] private GameObject Esc_UI;
     [SerializeField] private GameObject Book_UI;
     [HideInInspector] public int gold;
+    [SerializeField] private Player_Ground_Checker ground_checker;
     private void Start()
     {
         canInvincible = false;
@@ -61,6 +64,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        player_collider = GetComponent<BoxCollider2D>();
 
         playerLayer = LayerMask.NameToLayer("Player");
         groundLayer = LayerMask.NameToLayer("Ground");
@@ -232,26 +236,48 @@ public class Player : MonoBehaviour
     }
     private void VerticalMove()
     {
-        //////////////////////////////
+        ///////////////////////////////
         bool wasGrounded = isGrounded;
         isGrounded = false;
-        //if(isStuckable) Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, true);
+        if (GetComponent<Player_Collider_Checker>().groundCollision && ground_checker.isGrounded) isGrounded = true;
+        if (!wasGrounded && isGrounded)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsJumpingDown", false);
+        }
+        //////////////////////////////
+        /*bool wasGrounded = isGrounded;
+        isGrounded = false;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
+
         //if (colliders.Length == 0 && !wasGrounded) Debug.Log("I'm flying!");
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i].gameObject != gameObject)
             {
                 isGrounded = true;
+                //Debug.Log(colliders[i].gameObject.layer);
                 if (!wasGrounded)
                 {
+                    // 현재는 땅에 닿았으나 이전 프레임에는 닿지 않은 경우, 즉 방금 착지한 경우
                     animator.SetBool("IsJumping", false);
-                    //Physics2D.IgnoreLayerCollision(playerLayer, groundLayer, false);
-                    //Debug.Log("I'm grounded");
+                    animator.SetBool("IsJumpingDown", false);
                 }
             }
+        }*/
+        // 점프하지 않고 낙하하는 경우
+        /*if (wasGrounded && !isGrounded && rb.velocity.y < 0)
+        {
+            Debug.Log("i'm falling!");
+        }*/
+        if (prev_vel_y > 0 && rb.velocity.y <= 0 && animator.GetBool("IsJumping"))
+        {
+            // 점프중 낙하구간
+            //Debug.Log("Jumping and falling");
+            animator.SetBool("IsJumpingDown", true);
         }
+        prev_vel_y = rb.velocity.y;
         if (jump && isGrounded && canMove)
         {
             isGrounded = false;
