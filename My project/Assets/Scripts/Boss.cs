@@ -71,7 +71,6 @@ public class Boss : MonoBehaviour
             else if (nextAction == 1)
             {
                 animator.SetBool("Skill_FireWall", true);
-                //fireWall01.gameObject.SetActive(true);
             }
         }
     }

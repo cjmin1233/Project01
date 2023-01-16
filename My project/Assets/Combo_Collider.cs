@@ -32,6 +32,7 @@ public class Combo_Collider : MonoBehaviour
             {
                 //Debug.Log("hit " + collision.name);
                 collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);
+                //Debug.Log("x,y collider offset: " + collision.offset.x + " " + collision.offset.y);
             }
             else if (tag == "Boss")
             {

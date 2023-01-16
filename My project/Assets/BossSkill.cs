@@ -15,7 +15,8 @@ public class BossSkill : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            player.gameObject.GetComponent<Player>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
+            //player.gameObject.GetComponent<Player>().TakeDamage(damage);
         }
     }
     private void Fin_Ani()
