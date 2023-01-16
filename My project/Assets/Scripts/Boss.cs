@@ -127,12 +127,17 @@ public class Boss : MonoBehaviour
     private void Die()
     {
         Debug.Log("Boss Dead. Congratulations!");
-        //animator.SetBool("IsDead", true);
+        animator.SetBool("IsDead", true);
         //GetComponent<Rigidbody2D>().gravityScale = 0;
         //GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        Time.timeScale = 0.5f;
+        //this.enabled = false;
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //Destroy(gameObject);
+    }
+    private void Die_Fin()
+    {
+        Time.timeScale = 1f;
         Destroy(gameObject);
     }
-
 }

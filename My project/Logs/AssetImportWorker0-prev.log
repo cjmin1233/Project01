@@ -15,11 +15,11 @@ C:/Users/cjmin/Project01/My project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59770
+55430
 Successfully changed project path to: C:/Users/cjmin/Project01/My project
 C:/Users/cjmin/Project01/My project
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 50.30 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 50.16 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity 2020.3.30f1/Editor/Data/Resources/UnitySubsystems
@@ -35,74 +35,74 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56628
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56652
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity 2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002194 seconds.
+Registered in 0.002117 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 51.24 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 51.02 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.501 seconds
+- Completed reload, in  0.506 seconds
 Domain Reload Profiling:
-	ReloadAssembly (501ms)
+	ReloadAssembly (506ms)
 		BeginReloadAssembly (60ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (377ms)
+		EndReloadAssembly (382ms)
 			LoadAssemblies (57ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (117ms)
+			SetupTypeCache (119ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (24ms)
-			SetupLoadedEditorAssemblies (152ms)
+			RebuildScriptCaches (25ms)
+			SetupLoadedEditorAssemblies (153ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (51ms)
 				BeforeProcessingInitializeOnLoad (14ms)
-				ProcessInitializeOnLoadAttributes (61ms)
-				ProcessInitializeOnLoadMethodAttributes (21ms)
+				ProcessInitializeOnLoadAttributes (62ms)
+				ProcessInitializeOnLoadMethodAttributes (22ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003819 seconds.
+Registered in 0.003619 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 50.42 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 51.62 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.980 seconds
+- Completed reload, in  0.944 seconds
 Domain Reload Profiling:
-	ReloadAssembly (980ms)
-		BeginReloadAssembly (146ms)
+	ReloadAssembly (945ms)
+		BeginReloadAssembly (133ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (771ms)
-			LoadAssemblies (94ms)
+		EndReloadAssembly (755ms)
+			LoadAssemblies (90ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (247ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (39ms)
-			SetupLoadedEditorAssemblies (299ms)
+			SetupTypeCache (233ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (303ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (51ms)
-				BeforeProcessingInitializeOnLoad (73ms)
-				ProcessInitializeOnLoadAttributes (152ms)
-				ProcessInitializeOnLoadMethodAttributes (13ms)
-				AfterProcessingInitializeOnLoad (8ms)
+				RefreshPlugins (52ms)
+				BeforeProcessingInitializeOnLoad (74ms)
+				ProcessInitializeOnLoadAttributes (154ms)
+				ProcessInitializeOnLoadMethodAttributes (14ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (5ms)
@@ -110,14 +110,14 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.63 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.66 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2258 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 119.5 MB.
 System memory in use after: 119.6 MB.
 
 Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2714.
-Total: 3.014900 ms (FindLiveObjects: 0.194700 ms CreateObjectMapping: 0.065700 ms MarkObjects: 2.532900 ms  DeleteObjects: 0.220600 ms)
+Total: 3.303700 ms (FindLiveObjects: 0.269100 ms CreateObjectMapping: 0.060500 ms MarkObjects: 2.837500 ms  DeleteObjects: 0.135400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -131,169 +131,121 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse
-  artifactKey: Guid(04834eb24d0f00b45a7a64df81b61413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse using Guid(04834eb24d0f00b45a7a64df81b61413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96e8868f88fa42b4b5b968c28ad1502d') in 0.008991 seconds 
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death.gif
+  artifactKey: Guid(a3b5722c35aa57b4a8ab16b716dd5c26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death.gif using Guid(a3b5722c35aa57b4a8ab16b716dd5c26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68b380b90f98bbad9b7d69dcb45127c1') in 0.088820 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.053990 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png
-  artifactKey: Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png using Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b9b5b3ab5d54ca17705b7b69f2458c6') in 0.079948 seconds 
+  Time since last request: 6.345060 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death.gif
+  artifactKey: Guid(a3b5722c35aa57b4a8ab16b716dd5c26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death.gif using Guid(a3b5722c35aa57b4a8ab16b716dd5c26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78cd1d3369aadbdce93747c8fcafaa43') in 0.011896 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000145 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_3.png
-  artifactKey: Guid(bb639e2f93307c5419cc84de62f7b8f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_3.png using Guid(bb639e2f93307c5419cc84de62f7b8f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e211232c1a4fe84437899fa2a065bfdd') in 0.011641 seconds 
+  Time since last request: 214.873699 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death1.png
+  artifactKey: Guid(a860044822b99b84ab8a8d19d2671cee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death1.png using Guid(a860044822b99b84ab8a8d19d2671cee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5691801d216d1964863f36a0bda5c60e') in 0.021125 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000142 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_7.png
-  artifactKey: Guid(9c01b0825c0af0744ad92b809ff005ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_7.png using Guid(9c01b0825c0af0744ad92b809ff005ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8f6e3f9e76c2067a51742666a557188') in 0.012463 seconds 
+  Time since last request: 0.000158 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death8.png
+  artifactKey: Guid(ebfc6154362ee3b4384e70d339e94070) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death8.png using Guid(ebfc6154362ee3b4384e70d339e94070) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6683f1f30517b2f9695112849344f12') in 0.012589 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000124 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_6.png
-  artifactKey: Guid(4152ca3769a255f479f1683b8ed64c8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_6.png using Guid(4152ca3769a255f479f1683b8ed64c8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87c6dec59973aaef9ddef292a3459cd1') in 0.011389 seconds 
+  Time since last request: 0.000152 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death7.png
+  artifactKey: Guid(e23b9f45fd495104e869ce0ef840903b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death7.png using Guid(e23b9f45fd495104e869ce0ef840903b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4e69ac7d3f4ec0dc0d93fafae780692') in 0.011476 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000136 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_5.png
-  artifactKey: Guid(94ab12fc765f87849b41d0fe53f30cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_5.png using Guid(94ab12fc765f87849b41d0fe53f30cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7995187dbbc4315f34269f6c65bab8a') in 0.011625 seconds 
+  Time since last request: 0.000137 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death3.png
+  artifactKey: Guid(f240476c176108b43b58f6169499af32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death3.png using Guid(f240476c176108b43b58f6169499af32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9a1451473d305c45517eb59ceaeb393') in 0.011066 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000111 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_4.png
-  artifactKey: Guid(ea538eda72bcc964fb23223659f70008) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_4.png using Guid(ea538eda72bcc964fb23223659f70008) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60eb0406a4c81e40b0bf966720bc782e') in 0.012857 seconds 
+  Time since last request: 0.000133 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death5.png
+  artifactKey: Guid(f31ed23b79222184c83bf2855937b3f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death5.png using Guid(f31ed23b79222184c83bf2855937b3f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caddf0e56d9887face59ef4329a51040') in 0.011180 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000145 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_8.png
-  artifactKey: Guid(a06973c3046555b44979c206995b4f92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_8.png using Guid(a06973c3046555b44979c206995b4f92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c99ab0ce9716d7c506c8e1586f763a73') in 0.011240 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000159 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_2.png
-  artifactKey: Guid(e2c4a72b3a87b93469bcf43955674d20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_2.png using Guid(e2c4a72b3a87b93469bcf43955674d20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01401cfc2c279b8edad8b994443b83cf') in 0.012279 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.176507 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_6.png
-  artifactKey: Guid(4152ca3769a255f479f1683b8ed64c8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_6.png using Guid(4152ca3769a255f479f1683b8ed64c8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '448c790612898942609b0f7877633c0f') in 0.015286 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000161 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_3.png
-  artifactKey: Guid(bb639e2f93307c5419cc84de62f7b8f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_3.png using Guid(bb639e2f93307c5419cc84de62f7b8f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86012e38fa3c2c60f335e5819fbbe482') in 0.016654 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000136 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_7.png
-  artifactKey: Guid(9c01b0825c0af0744ad92b809ff005ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_7.png using Guid(9c01b0825c0af0744ad92b809ff005ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2714162d6b031760c5bd2b7cc57723b9') in 0.019610 seconds 
+  Time since last request: 0.000141 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death6.png
+  artifactKey: Guid(ff75354e1790ea64d9f52b5ad17bd6b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death6.png using Guid(ff75354e1790ea64d9f52b5ad17bd6b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '848ec1f2626954505cf1a95b7a1c9051') in 0.011435 seconds 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000142 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_5.png
-  artifactKey: Guid(94ab12fc765f87849b41d0fe53f30cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_5.png using Guid(94ab12fc765f87849b41d0fe53f30cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e9b58c8970ba54f242b301bfdb6cd00') in 0.015236 seconds 
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death4.png
+  artifactKey: Guid(50cdc1191a8a7d34695ea1bda48727d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death4.png using Guid(50cdc1191a8a7d34695ea1bda48727d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3947f4b5d985757723daf7ac53e71d5b') in 0.011900 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000121 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png
-  artifactKey: Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png using Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7821165d3368153a5588a04e4eb1852') in 0.018092 seconds 
+  Time since last request: 0.000243 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death2.png
+  artifactKey: Guid(f4557437ef7862f4096006627e588243) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death2.png using Guid(f4557437ef7862f4096006627e588243) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51b15be31612ff3181da4f50b50c5204') in 0.022540 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000119 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_4.png
-  artifactKey: Guid(ea538eda72bcc964fb23223659f70008) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_4.png using Guid(ea538eda72bcc964fb23223659f70008) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d69dabd2925bdbf06372afa19bb4b4d') in 0.009996 seconds 
+  Time since last request: 5.810831 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death3.png
+  artifactKey: Guid(f240476c176108b43b58f6169499af32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death3.png using Guid(f240476c176108b43b58f6169499af32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1c65d43620943e8a5193264336023c2') in 0.012080 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.003584 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death1.png
+  artifactKey: Guid(a860044822b99b84ab8a8d19d2671cee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death1.png using Guid(a860044822b99b84ab8a8d19d2671cee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f947d1e4ba98fc899a2df2063029c67') in 0.014567 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000160 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death8.png
+  artifactKey: Guid(ebfc6154362ee3b4384e70d339e94070) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death8.png using Guid(ebfc6154362ee3b4384e70d339e94070) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ddfba2e3993950b9f76d22d58e720b7') in 0.012905 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000195 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death7.png
+  artifactKey: Guid(e23b9f45fd495104e869ce0ef840903b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death7.png using Guid(e23b9f45fd495104e869ce0ef840903b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '104ecc1be2f1ac7c19766432acb2ac55') in 0.009931 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death5.png
+  artifactKey: Guid(f31ed23b79222184c83bf2855937b3f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death5.png using Guid(f31ed23b79222184c83bf2855937b3f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f396929c909350d1a7a103f2a37e383a') in 0.010351 seconds 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000147 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_8.png
-  artifactKey: Guid(a06973c3046555b44979c206995b4f92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_8.png using Guid(a06973c3046555b44979c206995b4f92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7013efa018709adc138a13454dc7d23') in 0.009891 seconds 
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death6.png
+  artifactKey: Guid(ff75354e1790ea64d9f52b5ad17bd6b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death6.png using Guid(ff75354e1790ea64d9f52b5ad17bd6b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04bca18463ee21c44ff3a41bca0da33d') in 0.010240 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000131 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_2.png
-  artifactKey: Guid(e2c4a72b3a87b93469bcf43955674d20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_2.png using Guid(e2c4a72b3a87b93469bcf43955674d20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4682eed07497edef4e021610b3f85107') in 0.009961 seconds 
+  Time since last request: 0.000157 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death4.png
+  artifactKey: Guid(50cdc1191a8a7d34695ea1bda48727d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death4.png using Guid(50cdc1191a8a7d34695ea1bda48727d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41493d5306570a96f0f027da843bd57b') in 0.010193 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 15.029589 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png
-  artifactKey: Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png using Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68406eb4ada6a6c774d2b9015f2995ff') in 0.008936 seconds 
+  Time since last request: 0.000147 seconds.
+  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death2.png
+  artifactKey: Guid(f4557437ef7862f4096006627e588243) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death2.png using Guid(f4557437ef7862f4096006627e588243) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a603c8a221b88334b66d9f0707998064') in 0.011183 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 184.499947 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.controller
-  artifactKey: Guid(2731907dc2c5319438e6c9b5b4669c25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.controller using Guid(2731907dc2c5319438e6c9b5b4669c25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c7f9bd57af80543ca173b6ca8688948') in 0.007142 seconds 
+  Time since last request: 62.194858 seconds.
+  path: Assets/Animation/BossAnimations/Bringer-of-Death1.controller
+  artifactKey: Guid(77d3f2628404253439ba3b36ee6a3c9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/BossAnimations/Bringer-of-Death1.controller using Guid(77d3f2628404253439ba3b36ee6a3c9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '821782866b11d2a38f1f303340c4923b') in 0.006297 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.025731 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/New Animation.anim
-  artifactKey: Guid(6204eed6b2e1e2548bd3ff2780ad57f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/New Animation.anim using Guid(6204eed6b2e1e2548bd3ff2780ad57f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '073ef036bc20a4e236c953bedcc84364') in 0.008178 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 14.257905 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png
-  artifactKey: Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png using Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b188af4c9e100355b4b05e8c1499b9b2') in 0.008718 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 53.482606 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png
-  artifactKey: Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png using Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdac083f8dd9aef8a208a1aa27c3507d') in 0.020858 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 18.504303 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png
-  artifactKey: Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png using Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db2d31735c2ad81ec23efc745d10b0c6') in 0.017441 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.721660 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png
-  artifactKey: Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle_1.png using Guid(3442289f54d944d4b9f2115d6e2c94b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90538488d4cb70ebf674246ed7d9971d') in 0.014989 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1687.819531 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle.png
-  artifactKey: Guid(4e1d56d250fd5d84b89d9cb08a9d715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle.png using Guid(4e1d56d250fd5d84b89d9cb08a9d715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89d3766c5d52dc4afab0712246413718') in 0.034527 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 25.064998 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle.png
-  artifactKey: Guid(4e1d56d250fd5d84b89d9cb08a9d715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle.png using Guid(4e1d56d250fd5d84b89d9cb08a9d715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e9fcf218ca11d20dfe1f9054af28186') in 0.010894 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 21.778345 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle.png
-  artifactKey: Guid(4e1d56d250fd5d84b89d9cb08a9d715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle.png using Guid(4e1d56d250fd5d84b89d9cb08a9d715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95673eb536a835668ba68456bb55e56a') in 0.031700 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 21.034900 seconds.
-  path: Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle.png
-  artifactKey: Guid(4e1d56d250fd5d84b89d9cb08a9d715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/MySprites/Bringer-Of-Death/Individual Sprite/Idle/Reverse/Bringer-of-Death_Idle.png using Guid(4e1d56d250fd5d84b89d9cb08a9d715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51cae3ed86a86bfb8daa00bfb2330c82') in 0.021721 seconds 
+  Time since last request: 3.736001 seconds.
+  path: Assets/Animation/BossAnimations/Bringer-of-Death_Cast_1.controller
+  artifactKey: Guid(4eadbe608401f1f41a08f9fa81132e89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/BossAnimations/Bringer-of-Death_Cast_1.controller using Guid(4eadbe608401f1f41a08f9fa81132e89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd258b727c633a7acbcc6e443effb23a') in 0.006696 seconds 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
