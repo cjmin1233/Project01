@@ -5,22 +5,26 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     GameObject player;
-    [SerializeField] private GameObject fireWall01;
-    [SerializeField] private GameObject fireWall02;
+    [SerializeField] private GameObject spell_1;
+    [SerializeField] private GameObject spell_2;
     SpriteRenderer sr;
     Rigidbody2D rb;
     Animator animator;
 
     private float movementX = 200f;
 
-    //private bool isFacingRight = true;
     private Vector3 m_Velocity = Vector3.zero;
     private float m_MovementSmoothing = 0.05f;
 
-    private bool isActing;
+    /*private bool isActing;
     private float waitTime = 2f;
     private float timer = 0f;
-    private int nextAction;
+    private int nextAction;*/
+    //
+    [HideInInspector] public bool playerInRange;
+    private bool canMove;
+    private bool isAttacking;
+    private int actionCounter;
 
     // Boss HP
     private float maxHealth;
@@ -29,22 +33,29 @@ public class Boss : MonoBehaviour
     public GameObject DamageText;
     public Boss_Healthbar healthbar;
 
+    //
+    int random;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        isActing = false;
+        //isActing = false;
 
         maxHealth = 2000f;
         currentHealth = maxHealth;
         healthbar.SetHealth(currentHealth, maxHealth);
+        //
+        canMove = true;
+        isAttacking = false;
+        actionCounter = 0;
+        playerInRange = false;
     }
 
     private void Update()
     {
-        if (!isActing) timer += Time.deltaTime;
+        /*if (!isActing) timer += Time.deltaTime;
         if (timer > waitTime)
         {
             int random = Random.Range(0, 2);
@@ -54,6 +65,28 @@ public class Boss : MonoBehaviour
 
             isActing = true;
             timer = 0f;
+        }*/
+        if (!isAttacking)
+        {
+            if (!playerInRange) canMove = true;
+            else
+            {
+                BossStop();
+                if (actionCounter < 3)
+                {
+                    // 짤패턴
+                    random = Random.Range(0, 2);
+                    animator.SetTrigger("Skill" + random);
+                    isAttacking = true;
+                }
+                else
+                {
+                    // 메인 패턴
+                    random = Random.Range(0, 2);
+                    animator.SetTrigger("Main_Skill" + random);
+                    isAttacking = true;
+                }
+            }
         }
 
         Flip();
@@ -61,7 +94,7 @@ public class Boss : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isActing)
+        /*if (isActing)
         {
             if (nextAction == 0)
             {
@@ -72,14 +105,14 @@ public class Boss : MonoBehaviour
             {
                 animator.SetBool("Skill_FireWall", true);
             }
+        }*/
+        if (!animator.GetBool("IsDead") && canMove)
+        {
+            // 움직임 가능한 경우
+            player = GameObject.FindGameObjectWithTag("Player");
+            if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
+            BossMove();
         }
-    }
-    private void Fin_Act()
-    {
-        isActing = false;
-        animator.SetBool("Skill_FireWall", false);
-        rb.velocity = Vector3.zero;
-        animator.SetFloat("Speed", 0);
     }
     private void BossMove()
     {
@@ -89,26 +122,50 @@ public class Boss : MonoBehaviour
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         animator.SetFloat("Speed", Mathf.Abs(movementX));
     }
-
-    private void FireWall01()
+    private void BossStop()
     {
-        fireWall01.gameObject.SetActive(true);
+        canMove = false;
+        rb.velocity = Vector2.zero;
+        animator.SetFloat("Speed", 0);
     }
-    private void FireWall02()
+    /*private void Fin_Act()
     {
-        fireWall02.gameObject.SetActive(true);
+        isActing = false;
+        animator.SetBool("Skill_FireWall", false);
+        rb.velocity = Vector3.zero;
+        animator.SetFloat("Speed", 0);
+    }*/
+    private void Fin_Skill()
+    {
+        actionCounter++;
+    }
+    private void Fin_Main_Skill()
+    {
+        actionCounter = 0;
+    }
+    private void Boss_Idle_Init()
+    {
+        canMove = true;
+        isAttacking = false;
+    }
+
+    private void Spell01()
+    {
+        spell_1.SetActive(true);
+    }
+    private void Spell02()
+    {
+        spell_2.SetActive(true);
     }
     private void Flip()
     {
-        if (movementX >= 0)
+        if (movementX >= 0 && transform.rotation.y != 0f)
         {
-            //isFacingRight = true;
-            if (transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
-        else
+        else if (movementX < 0 && transform.rotation.y == 0f)
         {
-            //isFacingRight = false;
-            if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
 
@@ -128,12 +185,8 @@ public class Boss : MonoBehaviour
     {
         Debug.Log("Boss Dead. Congratulations!");
         animator.SetBool("IsDead", true);
-        //GetComponent<Rigidbody2D>().gravityScale = 0;
-        //GetComponent<Collider2D>().enabled = false;
+        BossStop();
         Time.timeScale = 0.5f;
-        //this.enabled = false;
-        //Instantiate(deathEffect, transform.position, Quaternion.identity);
-        //Destroy(gameObject);
     }
     private void Die_Fin()
     {

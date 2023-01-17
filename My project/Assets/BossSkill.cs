@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossSkill : MonoBehaviour
 {
-    public GameObject target;
+    //public GameObject target;
     GameObject player;
     public int damage;
     private void Awake()
@@ -22,7 +22,8 @@ public class BossSkill : MonoBehaviour
     private void Fin_Ani()
     {
         //GetComponentInParent<GameObject>().SetActive(false);
-        target.gameObject.SetActive(false);
+        //target.gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
     }
 
 }
