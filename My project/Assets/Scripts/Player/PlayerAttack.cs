@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
     public bool sword_wind_enable;
     [SerializeField] private Transform sword_wind_startpoint;
     [SerializeField] private List<AudioSource> sword_wind_sound;
-    [SerializeField] private AudioSource bow_shoot_sound;
+    [SerializeField] private AudioSource[] bow_shoot_sound;
 
     // ****************************
 
@@ -277,7 +277,7 @@ public class PlayerAttack : MonoBehaviour
         arrow.transform.position = firePoint.position;
         arrow.SetActive(true);
         /*int rand = Random.Range(0, sword_wind_sound.Count);*/
-        if (bow_shoot_sound != null) bow_shoot_sound.PlayOneShot(bow_shoot_sound.clip);
+        if (bow_shoot_sound[0] != null) bow_shoot_sound[0].PlayOneShot(bow_shoot_sound[0].clip);
     }
     private void BowXAttack()
     {
@@ -304,13 +304,10 @@ public class PlayerAttack : MonoBehaviour
         Vector2 damageForce = new Vector2(transform.right.x * 8f, 0f);
         GameObject arrowshower = ArrowShowerPool.Instance.GetFromPool();
         arrowshower.GetComponent<Arrow_Shower_Collider>().damage = Mathf.Round(11f);
-        //swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
         arrowshower.GetComponent<Arrow_Shower_Collider>().damageForce = damageForce;
         arrowshower.transform.position = arrow_shower_startpoint.transform.position;
         arrowshower.SetActive(true);
-/*        int rand = Random.Range(0, sword_wind_sound.Count);
-        if (sword_wind_sound[rand] != null) sword_wind_sound[rand].PlayOneShot(sword_wind_sound[rand].clip);
-*/
+        if (bow_shoot_sound[1] != null) bow_shoot_sound[1].PlayOneShot(bow_shoot_sound[1].clip);
     }
     private void Arrow_Shower_Startpoint()
     {
