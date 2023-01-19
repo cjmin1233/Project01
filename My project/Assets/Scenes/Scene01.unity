@@ -3286,7 +3286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71d6232dc0601343ac93f71fa5426e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnterIcon: {fileID: 1447473959}
   destination: {fileID: 1396819351}
 --- !u!61 &334016106
 BoxCollider2D:
@@ -5795,7 +5794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71d6232dc0601343ac93f71fa5426e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnterIcon: {fileID: 1447473959}
   destination: {fileID: 43741802}
 --- !u!61 &553323065
 BoxCollider2D:
@@ -14499,6 +14497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1235018081}
+  - component: {fileID: 1235018082}
   m_Layer: 5
   m_Name: Toggle_Text_Container
   m_TagString: Untagged
@@ -14532,6 +14531,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -471.08}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1235018082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235018080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef620429b9050554b97ed5ae973e5215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleText:
+  - {fileID: 571667603}
+  - {fileID: 1514856273}
+  - {fileID: 2111984571}
+  - {fileID: 34583912}
+  - {fileID: 1447473959}
+  - {fileID: 1324696877}
+  - {fileID: 1139946814}
 --- !u!1 &1252455898
 GameObject:
   m_ObjectHideFlags: 0
@@ -43331,10 +43350,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
-    - target: {fileID: 782244102334554573, guid: c42ab2961aebaa642956af4a47f80f2e, type: 3}
-      propertyPath: EquipIcon
-      value: 
-      objectReference: {fileID: 1139946814}
     - target: {fileID: 782244102334554610, guid: c42ab2961aebaa642956af4a47f80f2e, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -43436,10 +43451,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1302863136683244311, guid: 13dc8a61c08720645bbc49ee3e9b2cec, type: 3}
-      propertyPath: EquipIcon
-      value: 
-      objectReference: {fileID: 2111984571}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13dc8a61c08720645bbc49ee3e9b2cec, type: 3}
 --- !u!1001 &1442349836686189295
@@ -43736,10 +43747,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2165256201410143789, guid: 52481a99f34034043bc957f7a2c6aabf, type: 3}
-      propertyPath: EquipIcon
-      value: 
-      objectReference: {fileID: 34583912}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52481a99f34034043bc957f7a2c6aabf, type: 3}
 --- !u!1001 &2424953882697147243
@@ -43749,10 +43756,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2424953882419232868, guid: c0d11d0c1da007f4caa209ca227183cd, type: 3}
-      propertyPath: EquipIcon
-      value: 
-      objectReference: {fileID: 1514856273}
     - target: {fileID: 2424953882419232870, guid: c0d11d0c1da007f4caa209ca227183cd, type: 3}
       propertyPath: m_Name
       value: Potion
@@ -43810,10 +43813,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2757896321434010196, guid: 0b9889ed5ef46f142b84ce7dd3bc87c4, type: 3}
-      propertyPath: EquipIcon
-      value: 
-      objectReference: {fileID: 1324696877}
     - target: {fileID: 2757896321434010198, guid: 0b9889ed5ef46f142b84ce7dd3bc87c4, type: 3}
       propertyPath: items.Array.data[3]
       value: 
@@ -44054,10 +44053,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Upgrade
       objectReference: {fileID: 0}
-    - target: {fileID: 7846662889742369195, guid: 00cac1ddcf6837c49970cb34584a67a0, type: 3}
-      propertyPath: EquipIcon
-      value: 
-      objectReference: {fileID: 571667603}
     - target: {fileID: 7846662889742369198, guid: 00cac1ddcf6837c49970cb34584a67a0, type: 3}
       propertyPath: m_RootOrder
       value: 11

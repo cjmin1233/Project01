@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private GameObject EnterIcon;
+    //[SerializeField] private GameObject EnterIcon;
     private GameObject Player;
     bool isPickUp;
-    void Awake()
+    /*void Awake()
     {
         EnterIcon.SetActive(false);
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {
@@ -24,8 +24,7 @@ public class Door : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Player = collision.gameObject;
-            EnterIcon.SetActive(true);
-            EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
+            ToggleTextContainer.Instance.EnableToggleText(4);
             isPickUp = true;
         }
     }
@@ -33,7 +32,7 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", false);
+            ToggleTextContainer.Instance.DisableToggleText(4);
             isPickUp = false;
         }
     }
@@ -50,7 +49,7 @@ public class Door : MonoBehaviour
             Debug.Log("move to the next scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Player.transform.position = new Vector3(0f, 0f, 0f);
-            EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", false);
+            ToggleTextContainer.Instance.DisableToggleText(4);
         }
         else Debug.Log("Choose a weapon");
 
