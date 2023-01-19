@@ -40,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
     // X attack *******************
     public bool isXAttacking = false;
     public float Speed_X = 1.0f;
-    public GameObject Sword_Collider_X;
+    public GameObject[] Sword_Collider_X;
     [SerializeField] private GameObject Bow_Beam;
     [SerializeField] private GameObject arrow_shower_startpoint;
 
@@ -231,10 +231,13 @@ public class PlayerAttack : MonoBehaviour
     {
         Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
         //if (transform.rotation.y != 0f) damageForce.x *= -1f;
-        Sword_Collider_X.GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
-        Sword_Collider_X.GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_X;
-        Sword_Collider_X.GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
-        Sword_Collider_X.SetActive(true);
+        for(int i = 0; i < Sword_Collider_X.Length; i++)
+        {
+            Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
+            Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_X;
+            Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
+            Sword_Collider_X[i].SetActive(true);
+        }
     }
     private void SwordXAttack()
      {
@@ -295,7 +298,6 @@ public class PlayerAttack : MonoBehaviour
         Bow_Beam.GetComponent<Bow_Beam_Collider>().damage = Mathf.Round(111f);
         Bow_Beam.GetComponent<Bow_Beam_Collider>().anim_Speed = Speed_X;
         Bow_Beam.GetComponent<Bow_Beam_Collider>().damageForce = damageForce;
-        Bow_Beam.SetActive(true);
     }
     private void Enable_Arrow_Shower()
     {
@@ -366,11 +368,11 @@ public class PlayerAttack : MonoBehaviour
     {
         Vector2 damageForce = new Vector2(1f * transform.right.x, 0f);
         //if (transform.rotation.y != 0f) damageForce.x *= -1f;
-        Sword_Collider_X.GetComponent<Combo_Collider>().damage = Mathf.Round(77f);
-        //comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
-        //comboCollider[comboCounter].GetComponent<Combo_Collider>().anim_Speed = Speed_Z;
-        Sword_Collider_X.GetComponent<Combo_Collider>().damageForce = damageForce;
-        //comboCollider[comboCounter].SetActive(true);
+        for (int i = 0; i < Sword_Collider_X.Length; i++)
+        {
+            Sword_Collider_X[i].GetComponent<Combo_Collider>().damage = Mathf.Round(77f);
+            Sword_Collider_X[i].GetComponent<Combo_Collider>().damageForce = damageForce;
+        }
     }
 
     public void PlayerInit()

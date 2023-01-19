@@ -7,19 +7,20 @@ public class Combo_Collider : MonoBehaviour
     [HideInInspector] public float damage;
     //[HideInInspector] public float anim_Speed = 1.0f;
     [HideInInspector] public Vector2 damageForce;
-    //public AudioSource audioSource;
+    public AudioSource[] audioSource;
     //private Animator animator;
     private List<string> hit_list;
+    int rand;
     private void Awake()
     {
         //animator = GetComponent<Animator>();
         hit_list = new List<string>();
     }
-    /*private void OnEnable()
+    private void OnEnable()
     {
-        //animator.SetFloat("EnableSpeed", anim_Speed);
-        //if (audioSource != null) audioSource.PlayOneShot(audioSource.clip);
-    }*/
+        rand = Random.Range(0, audioSource.Length);
+        if (audioSource[rand] != null) audioSource[rand].PlayOneShot(audioSource[rand].clip);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,9 +31,7 @@ public class Combo_Collider : MonoBehaviour
             hit_list.Add(name);
             if (tag == "Enemy")
             {
-                //Debug.Log("hit " + collision.name);
                 collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);
-                //Debug.Log("x,y collider offset: " + collision.offset.x + " " + collision.offset.y);
             }
             else if (tag == "Boss")
             {
