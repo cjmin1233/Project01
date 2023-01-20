@@ -4886,11 +4886,14 @@ MonoBehaviour:
   - {fileID: 1442349836686189296}
   - {fileID: 3258120412469955933}
   - {fileID: 7113246021913483760}
-  pool_container:
-  - {fileID: 1989948416}
-  - {fileID: 1771471591}
-  - {fileID: 1252455898}
+  player_setting:
   - {fileID: 1041143555}
+  - {fileID: 1989948416}
+  knight_setting:
+  - {fileID: 1771471591}
+  ranger_setting:
+  - {fileID: 1252455898}
+  - {fileID: 663772790}
   playerFollowing: 0
 --- !u!114 &479565068
 MonoBehaviour:
@@ -6566,7 +6569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &663772791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7839,7 +7842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70be6187b08400b4f84aedcf3b4f7948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnterIcon: {fileID: 1447473959}
 --- !u!61 &714974177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43460,22 +43462,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 815865362, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
-      propertyPath: m_Size.x
-      value: 0.28855386
-      objectReference: {fileID: 0}
-    - target: {fileID: 815865362, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
-      propertyPath: m_Size.y
-      value: 0.011795521
-      objectReference: {fileID: 0}
-    - target: {fileID: 815865362, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.024068296
-      objectReference: {fileID: 0}
-    - target: {fileID: 1320270000993536620, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1320270001586724018, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
       propertyPath: Esc_UI
       value: 
@@ -43539,10 +43525,6 @@ PrefabInstance:
     - target: {fileID: 1320270001586724024, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
       propertyPath: m_Name
       value: Fire_Knight
-      objectReference: {fileID: 0}
-    - target: {fileID: 1320270001586724024, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5485185526310700197, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
       propertyPath: Ability_UI
@@ -43894,6 +43876,10 @@ PrefabInstance:
     - target: {fileID: 1336409127228282675, guid: 48b61e944bfa7a846abc881507a841ee, type: 3}
       propertyPath: m_Name
       value: Leaf_Ranger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1336409127228282675, guid: 48b61e944bfa7a846abc881507a841ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1336409127228282681, guid: 48b61e944bfa7a846abc881507a841ee, type: 3}
       propertyPath: Esc_UI

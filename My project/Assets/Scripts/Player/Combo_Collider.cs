@@ -5,10 +5,8 @@ using UnityEngine;
 public class Combo_Collider : MonoBehaviour
 {
     [HideInInspector] public float damage;
-    //[HideInInspector] public float anim_Speed = 1.0f;
     [HideInInspector] public Vector2 damageForce;
     public AudioSource[] audioSource;
-    //private Animator animator;
     private List<string> hit_list;
     int rand;
     private void Awake()

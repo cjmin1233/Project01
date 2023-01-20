@@ -7,7 +7,7 @@ public class Sword_Wind_Collider : MonoBehaviour
     [HideInInspector] public float damage;
     /*[HideInInspector] */
     public float anim_Speed;
-    [HideInInspector] public Vector2 damageForce;
+    //[HideInInspector] public Vector2 damageForce;
     //public Transform start_point;
     private Transform player;
 

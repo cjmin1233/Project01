@@ -594,7 +594,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.027134746, y: -0.63234293}
+  m_Offset: {x: 0.024068296, y: -0.63234293}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -605,7 +605,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2946868, y: 0.01179558}
+  m_Size: {x: 0.28855386, y: 0.011795521}
   m_EdgeRadius: 0
 --- !u!114 &815865361
 MonoBehaviour:
@@ -1549,8 +1549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93130276224028735}
   - component: {fileID: 93130276224028734}
-  - component: {fileID: 93130276224028673}
-  - component: {fileID: 93130277298873848}
+  - component: {fileID: 1056668879}
   m_Layer: 0
   m_Name: SwordCombo_0
   m_TagString: Untagged
@@ -1616,7 +1615,7 @@ PolygonCollider2D:
       - {x: 0.6855275, y: -0.32071477}
       - {x: 0.6532075, y: -0.14546889}
       - {x: 0.5465013, y: 0.021058679}
---- !u!114 &93130276224028673
+--- !u!114 &1056668879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1625,32 +1624,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 93130276224028732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0bb879b88278f04e85c506a1037ad3e, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a1263ca43dbc64bba9d10b938fc107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  anim_Speed: 0
   damageForce: {x: 0, y: 0}
-  audioSource: {fileID: 1492782785}
---- !u!95 &93130277298873848
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93130276224028732}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ac8b679b755138144a77ccfa6f108694, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  audioSource:
+  - {fileID: 1492782785}
 --- !u!1 &93130276312372353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,8 +1641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93130276312372352}
   - component: {fileID: 93130276312372355}
-  - component: {fileID: 93130276312372354}
-  - component: {fileID: 93130276148886604}
+  - component: {fileID: 415705184}
   m_Layer: 0
   m_Name: SwordCombo_1
   m_TagString: Untagged
@@ -1726,7 +1705,7 @@ PolygonCollider2D:
       - {x: 0.6173951, y: -0.24244006}
       - {x: 0.47784492, y: -0.17280482}
       - {x: 0.24356413, y: -0.12067461}
---- !u!114 &93130276312372354
+--- !u!114 &415705184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1735,32 +1714,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 93130276312372353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0bb879b88278f04e85c506a1037ad3e, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a1263ca43dbc64bba9d10b938fc107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  anim_Speed: 0
   damageForce: {x: 0, y: 0}
-  audioSource: {fileID: 1029165181}
---- !u!95 &93130276148886604
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93130276312372353}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ac8b679b755138144a77ccfa6f108694, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  audioSource:
+  - {fileID: 1029165181}
 --- !u!1 &93130276930052984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,8 +1731,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93130276930052989}
   - component: {fileID: 93130276930052986}
-  - component: {fileID: 93130276930052987}
-  - component: {fileID: 93130276930052988}
+  - component: {fileID: 1442349836686189299}
   m_Layer: 0
   m_Name: SwordCombo_X
   m_TagString: Untagged
@@ -1840,7 +1799,7 @@ PolygonCollider2D:
       - {x: 1.0692289, y: -0.25395694}
       - {x: 0.9771547, y: 0.054890696}
       - {x: 0.82065165, y: 0.2721101}
---- !u!114 &93130276930052987
+--- !u!114 &1442349836686189299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1849,32 +1808,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 93130276930052984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0bb879b88278f04e85c506a1037ad3e, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a1263ca43dbc64bba9d10b938fc107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  anim_Speed: 0
   damageForce: {x: 0, y: 0}
-  audioSource: {fileID: 787222547}
---- !u!95 &93130276930052988
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93130276930052984}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ac8b679b755138144a77ccfa6f108694, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  audioSource:
+  - {fileID: 787222547}
 --- !u!1 &93130277039606292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,8 +1825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 93130277039606295}
   - component: {fileID: 93130277039606294}
-  - component: {fileID: 93130277039606297}
-  - component: {fileID: 93130275833388079}
+  - component: {fileID: 1524939856}
   m_Layer: 0
   m_Name: SwordCombo_2
   m_TagString: Untagged
@@ -1955,7 +1894,7 @@ PolygonCollider2D:
       - {x: 0.9903036, y: -0.10718244}
       - {x: 0.98281175, y: 0.029799}
       - {x: 0.8911955, y: 0.119023435}
---- !u!114 &93130277039606297
+--- !u!114 &1524939856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1964,32 +1903,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 93130277039606292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0bb879b88278f04e85c506a1037ad3e, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a1263ca43dbc64bba9d10b938fc107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  anim_Speed: 0
   damageForce: {x: 0, y: 0}
-  audioSource: {fileID: 821024022}
---- !u!95 &93130275833388079
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93130277039606292}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ac8b679b755138144a77ccfa6f108694, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  audioSource:
+  - {fileID: 821024022}
 --- !u!1 &1320270000993536620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,7 +1925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1320270000993536621
 Transform:
   m_ObjectHideFlags: 0
@@ -2259,10 +2179,12 @@ MonoBehaviour:
   sword_wind_sound:
   - {fileID: 2039482459}
   - {fileID: 1302699396}
-  bow_shoot_sound: {fileID: 0}
+  bow_shoot_sound:
+  - {fileID: 0}
   isXAttacking: 0
   Speed_X: 1
-  Sword_Collider_X: {fileID: 93130276930052984}
+  Sword_Collider_X:
+  - {fileID: 93130276930052984}
   Bow_Beam: {fileID: 0}
   arrow_shower_startpoint: {fileID: 0}
 --- !u!114 &5485185526310700197

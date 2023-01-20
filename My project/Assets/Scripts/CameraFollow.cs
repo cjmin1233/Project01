@@ -7,14 +7,16 @@ public class CameraFollow : MonoBehaviour
     private Transform player;
     private Vector3 tempPos;
     [SerializeField] private GameObject[] player_type;
-    [SerializeField] private GameObject[] pool_container;
+    [SerializeField] private GameObject[] player_setting;
+    [SerializeField] private GameObject[] knight_setting;
+    [SerializeField] private GameObject[] ranger_setting;
+    //[SerializeField] private GameObject[] hashashin_setting;
     [HideInInspector] public bool playerFollowing;
 
     private void Awake()
     {
         int weaponType = PlayerPrefs.GetInt("weaponType");
-        //animator.SetInteger("WeaponType", weaponType);
-        //Debug.Log("Camera detected : " + weaponType + "th character.");
+
         for (int i = 0; i < player_type.Length; i++)
         {
             if (i + 1 == weaponType)
@@ -24,33 +26,28 @@ public class CameraFollow : MonoBehaviour
             }
             else player_type[i].SetActive(false);
         }
-        for (int i = 0; i < pool_container.Length; i++)
+        for (int i = 0; i < player_setting.Length; i++)
         {
-            pool_container[i].SetActive(true);
+            player_setting[i].SetActive(true);
+        }
+        if (weaponType == 1)
+        {
+            // knight setting
+            for (int i = 0; i < knight_setting.Length; i++)
+            {
+                knight_setting[i].SetActive(true);
+            }
+        }
+        else if (weaponType == 2)
+        {
+            // ranger setting
+            for (int i = 0; i < ranger_setting.Length; i++)
+            {
+                ranger_setting[i].SetActive(true);
+            }
         }
         playerFollowing = true;
     }
-    // Start is called before the first frame update
-    /*void Start()
-    {
-        int weaponType = PlayerPrefs.GetInt("weaponType");
-        //animator.SetInteger("WeaponType", weaponType);
-        Debug.Log("Camera detected : " + weaponType + "th character.");
-        for(int i = 0; i < player_type.Length; i++)
-        {
-            if (i + 1 == weaponType)
-            {
-                player_type[i].SetActive(true);
-                player = player_type[i].transform;
-            }
-            else player_type[i].SetActive(false);
-        }
-        for(int i = 0; i < pool_container.Length; i++)
-        {
-            pool_container[i].SetActive(true);
-        }
-        //player = GameObject.FindWithTag("Player").transform;
-    }*/
     
     // Update is called once per frame
     void LateUpdate()

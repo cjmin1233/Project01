@@ -6,9 +6,6 @@ public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D rg;
     private Animator animator;
-    //private SpriteRenderer sr;
-    //public Transform SwordPoint;
-    //public float SwordRange = 0.5f;
     public LayerMask enemyLayers;
 
     [SerializeField] private Transform firePoint;
@@ -29,7 +26,6 @@ public class PlayerAttack : MonoBehaviour
     public GameObject[] comboCollider;
     public int inputZCounter = 0;
     public GameObject swordwindPrefab;
-    //public GameObject[] swordwindCollider;
     public bool sword_wind_enable;
     [SerializeField] private Transform sword_wind_startpoint;
     [SerializeField] private List<AudioSource> sword_wind_sound;
@@ -40,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
     // X attack *******************
     public bool isXAttacking = false;
     public float Speed_X = 1.0f;
-    public GameObject[] Sword_Collider_X;
+    [SerializeField] private GameObject[] Sword_Collider_X;
     [SerializeField] private GameObject Bow_Beam;
     [SerializeField] private GameObject arrow_shower_startpoint;
 
@@ -186,20 +182,20 @@ public class PlayerAttack : MonoBehaviour
 
     private void Enable_Sword_Combo_Collider()
     {
-        Vector2 damageForce = new Vector2(20f,0f);
-        if (transform.rotation.y != 0f) damageForce.x *= -1f;
-        comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1+comboCounter*0.2f));
-        comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_Z;
-        comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
-        comboCollider[comboCounter].SetActive(true);
+        Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
+
+        comboCollider[comboCounter].GetComponent<Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1+comboCounter*0.2f));
+        comboCollider[comboCounter].GetComponent<Combo_Collider>().damageForce = damageForce;
+    }
+    private void ShootSwordWind()
+    {
         if (sword_wind_enable)
         {
             GameObject swordwind = SwordWindPool.Instance.GetFromPool();
-            //swordwind.SetActive(false);
 
             swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(0.5f * swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
             swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
-            swordwind.GetComponent<Sword_Wind_Collider>().damageForce = damageForce;
+
             swordwind.transform.position = sword_wind_startpoint.position;
             swordwind.SetActive(true);
             int rand = Random.Range(0, sword_wind_sound.Count);
@@ -233,10 +229,12 @@ public class PlayerAttack : MonoBehaviour
         //if (transform.rotation.y != 0f) damageForce.x *= -1f;
         for(int i = 0; i < Sword_Collider_X.Length; i++)
         {
-            Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
+            Sword_Collider_X[i].GetComponent<Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
+            Sword_Collider_X[i].GetComponent<Combo_Collider>().damageForce = damageForce;
+/*            Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
             Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_X;
             Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
-            Sword_Collider_X[i].SetActive(true);
+*/            //Sword_Collider_X[i].SetActive(true);
         }
     }
     private void SwordXAttack()
@@ -329,22 +327,13 @@ public class PlayerAttack : MonoBehaviour
             animator.ResetTrigger("Combo2");
             //animator.ResetTrigger("Combo3");
         }
-        // 공격시 약 전진
-        //Debug.Log("i'm here");
-        /*float swordCombo_force = 20f;
-        if (transform.rotation.y != 0f) swordCombo_force *= -1f;
-        rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);*/
-        //rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Force);
     }
     private void Enable_Dagger_Combo_Collider()
     {
         Vector2 damageForce = new Vector2(0.1f * transform.right.x, 0f);
         //if (transform.rotation.y != 0f) damageForce.x *= -1f;
         comboCollider[comboCounter].GetComponent<Combo_Collider>().damage = Mathf.Round(55f * (1 + comboCounter * 0.2f));
-        //comboCollider[comboCounter].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
-        //comboCollider[comboCounter].GetComponent<Combo_Collider>().anim_Speed = Speed_Z;
         comboCollider[comboCounter].GetComponent<Combo_Collider>().damageForce = damageForce;
-        //comboCollider[comboCounter].SetActive(true);
     }
     private void DaggerXAttack()
     {
