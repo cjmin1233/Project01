@@ -6,6 +6,9 @@ public class Combo_Collider : MonoBehaviour
 {
     [HideInInspector] public float damage;
     [HideInInspector] public Vector2 damageForce;
+    private PlayerAttack playerAttack;
+    private Player player;
+
     public AudioSource[] audioSource;
     private List<string> hit_list;
     int rand;
@@ -13,6 +16,8 @@ public class Combo_Collider : MonoBehaviour
     {
         //animator = GetComponent<Animator>();
         hit_list = new List<string>();
+        playerAttack = transform.parent.GetComponent<PlayerAttack>();
+        player = transform.parent.GetComponent<Player>();
     }
     private void OnEnable()
     {
@@ -34,6 +39,10 @@ public class Combo_Collider : MonoBehaviour
             else if (tag == "Boss")
             {
                 collision.GetComponent<Boss>().TakeDamage(damage);
+            }
+            if ((tag == "Enemy" || tag == "Boss") && playerAttack.sword_cursed_enable)
+            {
+                player.Heal(2f);
             }
             //else Debug.Log("We hit " + collision.name);
         }

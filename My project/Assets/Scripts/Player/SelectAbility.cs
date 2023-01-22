@@ -141,16 +141,17 @@ public class SelectAbility : MonoBehaviour
         }
         else if (SelectedAbility.index == 6)
         {
-            // °ËÇ³ °ø°Ý
+            // ÁúÇ³ º£±â
             gameObject.GetComponent<PlayerAttack>().sword_wind_enable = true;
         }
         else if (SelectedAbility.index == 7)
         {
-            // ÈíÇ÷
+            // ÆøÇ³ º£±â
+            gameObject.GetComponent<PlayerAttack>().sword_storm_enable = true;
         }
         else if (SelectedAbility.index == 8)
         {
-            // ¤±¤±¤±
+            // ÈíÇ÷
         }
 
         /*

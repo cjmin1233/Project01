@@ -20,13 +20,15 @@ public class PlayerAttack : MonoBehaviour
 
 
     // Combo attack ***************
-    public int comboCounter = 0;
+    private int comboCounter = 0;
     public bool isZAttacking = false;
     public float Speed_Z = 1.0f;
     public GameObject[] comboCollider;
     public int inputZCounter = 0;
     public GameObject swordwindPrefab;
     public bool sword_wind_enable;
+    public bool sword_storm_enable;
+    public bool sword_cursed_enable;
     [SerializeField] private Transform sword_wind_startpoint;
     [SerializeField] private List<AudioSource> sword_wind_sound;
     [SerializeField] private AudioSource[] bow_shoot_sound;
@@ -39,7 +41,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject[] Sword_Collider_X;
     [SerializeField] private GameObject Bow_Beam;
     [SerializeField] private GameObject arrow_shower_startpoint;
-
+    public bool sword_charging_enable;
+    bool isCharging;
+    private float chargeCounter = 0;
     // ****************************
     int weaponType;
     bool isJumping;
@@ -51,13 +55,21 @@ public class PlayerAttack : MonoBehaviour
         //sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         sword_wind_enable = false;
+        sword_storm_enable = false;
+        sword_cursed_enable = false;
+        sword_charging_enable = false;
+        isCharging = false;
         weaponType = animator.GetInteger("WeaponType");
     }
     void Update()
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
-
+        if (sword_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
+        {
+            // Sword storm attack.
+            SwordZAttack();
+        }
         if (Input.GetButtonDown("AttackZ") && !isJumping && !isXAttacking && !isDashing && comboCounter<3)
         {
             if (isZAttacking)
@@ -127,6 +139,14 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+        if(Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
+        {
+            if (weaponType == 1)
+            {
+                isCharging = false;
+                animator.SetBool("IsCharging", isCharging);
+            }
+        }
 
         //  over Z input handle
         if (!isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)
@@ -152,16 +172,17 @@ public class PlayerAttack : MonoBehaviour
         }
 
     }
-    public void Start_Combo()
+    private void Start_Combo()
     {
-        if (comboCounter < 3)
+        if (comboCounter == 1 && sword_storm_enable) comboCounter = 4;
+        else if (comboCounter < 3)
         {
             comboCounter++;
         }
         isZAttacking = false;
         //Enable_Sword_Combo_Collider();
     }
-    public void Finish_Combo()
+    private void Finish_Combo()
     {
         inputZCounter = 0;
         comboCounter = 0;
@@ -169,7 +190,7 @@ public class PlayerAttack : MonoBehaviour
         gameObject.GetComponent<Player>().canMove = true;
         // 스택 초기화
     }
-    public void Finish_X()
+    private void Finish_X()
     {
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = true;
 
@@ -179,7 +200,14 @@ public class PlayerAttack : MonoBehaviour
         // 스택 초기화
         inputZCounter = 0;
     }
-
+    private void Finish_X_Charging()
+    {
+        if (chargeCounter < 3f)
+        {
+            chargeCounter += 1f;
+            // charge sound
+        }
+    }
     private void Enable_Sword_Combo_Collider()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
@@ -215,26 +243,22 @@ public class PlayerAttack : MonoBehaviour
             animator.ResetTrigger("Combo1");
             animator.ResetTrigger("Combo2");
             animator.ResetTrigger("Combo3");
+            animator.ResetTrigger("Combo4");
         }
         // 공격시 약 전진
-        //Debug.Log("i'm here");
-        float swordCombo_force = 20f;
-        if (transform.rotation.y != 0f) swordCombo_force *= -1f;
-        rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
+        /*//Debug.Log("i'm here");
+        float swordCombo_force = 10f;
+        if (transform.rotation.y != 0f) swordCombo_force *= -1f;*/
+        rg.AddForce(new Vector2(transform.right.x * 10f, 0f), ForceMode2D.Impulse);
         //rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Force);
     }
     private void Enable_Sword_Collider_X()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
-        //if (transform.rotation.y != 0f) damageForce.x *= -1f;
         for(int i = 0; i < Sword_Collider_X.Length; i++)
         {
-            Sword_Collider_X[i].GetComponent<Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
+            Sword_Collider_X[i].GetComponent<Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier * (1 + 0.5f * chargeCounter));
             Sword_Collider_X[i].GetComponent<Combo_Collider>().damageForce = damageForce;
-/*            Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier);
-            Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().anim_Speed = Speed_X;
-            Sword_Collider_X[i].GetComponent<Sword_Combo_Collider>().damageForce = damageForce;
-*/            //Sword_Collider_X[i].SetActive(true);
         }
     }
     private void SwordXAttack()
@@ -244,7 +268,14 @@ public class PlayerAttack : MonoBehaviour
 
         animator.SetFloat("Speed_X", Speed_X);
         isXAttacking = true;
-        animator.SetTrigger("AttackX");
+        if (sword_charging_enable)
+        {
+            animator.SetTrigger("AttackX_Charge_In");
+            isCharging = true;
+            animator.SetBool("IsCharging", isCharging);
+            chargeCounter = 0;
+        }
+        else animator.SetTrigger("AttackX");
         isZAttacking = false;
         comboCounter = 0;
 
