@@ -29,6 +29,8 @@ public class PlayerAttack : MonoBehaviour
     public bool sword_wind_enable;
     public bool sword_storm_enable;
     public bool sword_cursed_enable;
+    public bool bow_storm_enable;
+    public bool bow_poison_enable;
     [SerializeField] private Transform sword_wind_startpoint;
     [SerializeField] private List<AudioSource> sword_wind_sound;
     [SerializeField] private AudioSource[] bow_shoot_sound;
@@ -63,6 +65,8 @@ public class PlayerAttack : MonoBehaviour
         sword_charging_enable = false;
         sword_critical_enable = false;
         sword_shield_enable = false;
+        bow_storm_enable = false;
+        bow_poison_enable = false;
         isCharging = false;
         weaponType = animator.GetInteger("WeaponType");
     }
@@ -70,10 +74,18 @@ public class PlayerAttack : MonoBehaviour
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
-        if (sword_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
+        if ((sword_storm_enable || bow_storm_enable) && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
         {
-            // Sword storm attack.
-            SwordZAttack();
+            if (weaponType == 1)
+            {
+                // Sword storm attack.
+                SwordZAttack();
+            }
+            else if (weaponType == 2)
+            {
+                // Bow storm attack.
+                BowZAttack();
+            }
         }
         if (Input.GetButtonDown("AttackZ") && !isJumping && !isXAttacking && !isDashing && comboCounter<3)
         {
@@ -179,7 +191,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Start_Combo()
     {
-        if (comboCounter == 1 && sword_storm_enable) comboCounter = 4;
+        if (comboCounter == 1 && (sword_storm_enable || bow_storm_enable)) comboCounter = 4;
         else if (comboCounter < 3)
         {
             comboCounter++;
@@ -322,6 +334,7 @@ public class PlayerAttack : MonoBehaviour
         GameObject arrow = ArrowPool.Instance.GetFromPool();
         arrow.GetComponent<Bullet>().damage = Mathf.Round(40f * (1 + comboCounter * 0.2f));
         arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
+        if (bow_poison_enable) arrow.GetComponent<Bullet>().isPoisoned = true;
         arrow.transform.position = firePoint.position;
         arrow.SetActive(true);
         /*int rand = Random.Range(0, sword_wind_sound.Count);*/
