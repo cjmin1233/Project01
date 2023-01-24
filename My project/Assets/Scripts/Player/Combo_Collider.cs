@@ -6,6 +6,7 @@ public class Combo_Collider : MonoBehaviour
 {
     [HideInInspector] public float damage;
     [HideInInspector] public Vector2 damageForce;
+    [HideInInspector] public bool critical;
     private PlayerAttack playerAttack;
     private Player player;
 
@@ -18,11 +19,13 @@ public class Combo_Collider : MonoBehaviour
         hit_list = new List<string>();
         playerAttack = transform.parent.GetComponent<PlayerAttack>();
         player = transform.parent.GetComponent<Player>();
+        critical = false;
     }
     private void OnEnable()
     {
         rand = Random.Range(0, audioSource.Length);
         if (audioSource[rand] != null) audioSource[rand].PlayOneShot(audioSource[rand].clip);
+        //if (critical) Debug.Log("Critical!");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,6 +35,7 @@ public class Combo_Collider : MonoBehaviour
         if (!hit_list.Contains(name))
         {
             hit_list.Add(name);
+            
             if (tag == "Enemy")
             {
                 collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);

@@ -42,8 +42,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject Bow_Beam;
     [SerializeField] private GameObject arrow_shower_startpoint;
     public bool sword_charging_enable;
+    public bool sword_critical_enable;
+    public bool sword_shield_enable;
     bool isCharging;
-    private float chargeCounter = 0;
+    private int chargeCounter = 0;
+    [SerializeField] private AudioSource[] Charge_Sound;
+    [SerializeField] private GameObject ChargeEffect;
     // ****************************
     int weaponType;
     bool isJumping;
@@ -52,12 +56,13 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         rg = GetComponent<Rigidbody2D>();
-        //sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         sword_wind_enable = false;
         sword_storm_enable = false;
         sword_cursed_enable = false;
         sword_charging_enable = false;
+        sword_critical_enable = false;
+        sword_shield_enable = false;
         isCharging = false;
         weaponType = animator.GetInteger("WeaponType");
     }
@@ -202,17 +207,19 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Finish_X_Charging()
     {
-        if (chargeCounter < 3f)
+        if (chargeCounter < 3)
         {
-            chargeCounter += 1f;
             // charge sound
+            if (Charge_Sound[chargeCounter] != null) Charge_Sound[chargeCounter].PlayOneShot(Charge_Sound[chargeCounter].clip);
+            ChargeEffect.GetComponent<Animator>().SetTrigger("Enable");
+            chargeCounter++;
         }
     }
     private void Enable_Sword_Combo_Collider()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
 
-        comboCollider[comboCounter].GetComponent<Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1+comboCounter*0.2f));
+        comboCollider[comboCounter].GetComponent<Combo_Collider>().damage = Mathf.Round(swordDamage_z * swordDamage_z_multiplier * (1 + (float)comboCounter * 0.2f));
         comboCollider[comboCounter].GetComponent<Combo_Collider>().damageForce = damageForce;
     }
     private void ShootSwordWind()
@@ -221,7 +228,7 @@ public class PlayerAttack : MonoBehaviour
         {
             GameObject swordwind = SwordWindPool.Instance.GetFromPool();
 
-            swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(0.5f * swordDamage_z * swordDamage_z_multiplier * (1 + comboCounter * 0.2f));
+            swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(0.5f * swordDamage_z * swordDamage_z_multiplier * (1 + (float)comboCounter * 0.2f));
             swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
 
             swordwind.transform.position = sword_wind_startpoint.position;
@@ -255,9 +262,21 @@ public class PlayerAttack : MonoBehaviour
     private void Enable_Sword_Collider_X()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
+        float damage = 0f;
         for(int i = 0; i < Sword_Collider_X.Length; i++)
         {
-            Sword_Collider_X[i].GetComponent<Combo_Collider>().damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier * (1 + 0.5f * chargeCounter));
+            damage = Mathf.Round(swordDamage_x * swordDamage_x_multiplier * (1 + 0.5f * (float)chargeCounter));
+            if (sword_critical_enable)
+            {
+                int rand = Random.Range(1, 101);
+                if (rand <= 40)
+                {
+                    Sword_Collider_X[i].GetComponent<Combo_Collider>().critical = true;
+                    damage = Mathf.Round(damage * 1.5f);
+                }
+                else Sword_Collider_X[i].GetComponent<Combo_Collider>().critical = false;
+            }
+            Sword_Collider_X[i].GetComponent<Combo_Collider>().damage = damage;
             Sword_Collider_X[i].GetComponent<Combo_Collider>().damageForce = damageForce;
         }
     }

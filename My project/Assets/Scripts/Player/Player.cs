@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator animator;
+    private PlayerAttack playerAttack;
     
     //public float moveForce = 10f;
     float movementX;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public float MaxHP = 100;
     [HideInInspector] public float CurHP;
     [HideInInspector] public bool canInvincible;
+    [SerializeField] private AudioSource damage_shield_sound;
     private float damagingTimeLeft = -1f;
     const float damagingTime = 1f;
 
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         player_collider = GetComponent<BoxCollider2D>();
+        playerAttack = GetComponent<PlayerAttack>();
 
         playerLayer = LayerMask.NameToLayer("Player");
         groundLayer = LayerMask.NameToLayer("Ground");
@@ -318,6 +321,7 @@ public class Player : MonoBehaviour
         {
             if (isDashing)
             {
+                // 피격 회피
                 Debug.Log("Dodged!");
             }
             else
@@ -327,6 +331,11 @@ public class Player : MonoBehaviour
                 if (isFacingRight) damageForce *= -1.0f;
                 rb.AddForce(new Vector2(damageForce, 0f), ForceMode2D.Impulse);
 
+                if(playerAttack.sword_shield_enable && playerAttack.isXAttacking)
+                {
+                    damage = Mathf.Round(damage * 0.5f);
+                    if (damage_shield_sound != null) damage_shield_sound.PlayOneShot(damage_shield_sound.clip);
+                }
                 CurHP -= damage;
 
                 // 무적 시간 부여
