@@ -37,13 +37,13 @@ public class Player : MonoBehaviour
     public AudioSource[] jump_sound;
     private bool jump;
     private bool isGrounded;
-    private BoxCollider2D player_collider;
+    //private BoxCollider2D player_collider;
     private float prev_vel_y;
     int playerLayer, groundLayer;
 
-    [SerializeField] private Transform GroundCheck;
+    //[SerializeField] private Transform GroundCheck;
+    //const float GroundedRadius = 0.1f;
     [SerializeField] private LayerMask WhatIsGround;
-    const float GroundedRadius = 0.1f;
 
     [SerializeField] private GameObject HP_Bar;
     [SerializeField] private GameObject Gold_UI;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        player_collider = GetComponent<BoxCollider2D>();
+        //player_collider = GetComponent<BoxCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
 
         playerLayer = LayerMask.NameToLayer("Player");
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Jump") && !isDashing)
+        if (Input.GetButton("Jump") && !isDashing && !jump)
         {
             jump = true;
         }
@@ -162,6 +162,7 @@ public class Player : MonoBehaviour
     private void AttemptToDash()
     {
         gameObject.GetComponent<PlayerAttack>().PlayerInit();
+        // 대쉬 효과음
         int rand = Random.Range(0, 2);
         if (dash_sound[rand]!=null) dash_sound[rand].PlayOneShot(dash_sound[rand].clip);
 
@@ -188,8 +189,9 @@ public class Player : MonoBehaviour
                 // 대쉬 방향 설정
                 animator.SetBool("IsDashing", isDashing);
                 currentSpeed = dashPower * baseSpeed;
-                if (isFacingRight) movementX = currentSpeed;
-                else movementX = (-1f) * currentSpeed;
+                movementX = transform.right.x * currentSpeed;
+                /*if (isFacingRight) movementX = currentSpeed;
+                else movementX = (-1f) * currentSpeed;*/
 
                 dashTimeLeft -= Time.deltaTime;
 
@@ -245,8 +247,11 @@ public class Player : MonoBehaviour
         if (GetComponent<Player_Collider_Checker>().groundCollision && ground_checker.isGrounded) isGrounded = true;
         if (!wasGrounded && isGrounded)
         {
+            // 공중에서 착지
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsJumpingDown", false);
+            //animator.SetBool("IsFalling", false);
+            //rb.velocity = Vector2.zero;
         }
         //////////////////////////////
         /*bool wasGrounded = isGrounded;
@@ -269,11 +274,19 @@ public class Player : MonoBehaviour
                 }
             }
         }*/
-        // 점프하지 않고 낙하하는 경우
-        /*if (wasGrounded && !isGrounded && rb.velocity.y < 0)
+        /*// 점프하지 않고 낙하하는 경우
+        if (wasGrounded && !isGrounded && rb.velocity.y <= 0)
         {
-            Debug.Log("i'm falling!");
+            Debug.Log("i'm falling! Am I jumping? : " + animator.GetBool("IsJumping"));
         }*/
+        // 점프없이 낙하하는 경우
+        if (wasGrounded && !isGrounded)
+        {
+            Debug.Log("Not grounded");
+            animator.SetBool("IsJumping", true);
+            animator.SetBool("IsJumpingDown", true);
+            animator.SetTrigger("Fall");
+        }
         if (prev_vel_y > 0 && rb.velocity.y <= 0 && animator.GetBool("IsJumping"))
         {
             // 점프중 낙하구간

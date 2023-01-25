@@ -428,6 +428,7 @@ public class PlayerAttack : MonoBehaviour
     {
         // after image off
         gameObject.GetComponent<Player>().AfterImageAvailable = false;
+        GetComponent<Player>().canMove = true;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = true;
 
         isZAttacking = false;

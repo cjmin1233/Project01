@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1336409127228282686}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &826028326
 BoxCollider2D:
@@ -747,7 +747,7 @@ Transform:
   - {fileID: 1068409335}
   - {fileID: 1677126857}
   m_Father: {fileID: 1336409127228282686}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &61198366998682522
 GameObject:
@@ -1666,36 +1666,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1336409127228282686}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1336409126639845863
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1336409126639845862}
-  m_Layer: 6
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1336409126639845862
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336409126639845863}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.637, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1336409127228282686}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1336409127228282675
@@ -1734,7 +1704,6 @@ Transform:
   m_LocalPosition: {x: -8.42, y: -0.096, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
-  - {fileID: 1336409126639845862}
   - {fileID: 113635528970764068}
   - {fileID: 6355217911893348025}
   - {fileID: 61198366925613910}
@@ -1888,7 +1857,7 @@ MonoBehaviour:
   - {fileID: 61198367033989984}
   - {fileID: 61198367736860411}
   - {fileID: 61198366529980166}
-  GroundCheck: {fileID: 1336409126639845862}
+  GroundCheck: {fileID: 0}
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -1934,6 +1903,7 @@ MonoBehaviour:
   sword_wind_enable: 0
   sword_storm_enable: 0
   sword_cursed_enable: 0
+  bow_storm_enable: 0
   bow_poison_enable: 0
   sword_wind_startpoint: {fileID: 0}
   sword_wind_sound:
@@ -2036,7 +2006,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1336409127228282686}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4592768120636576604
 GameObject:
@@ -2196,7 +2166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1336409127228282686}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4592768121662727975
 BoxCollider2D:
@@ -2291,7 +2261,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1336409127228282686}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &552458224948196956
 SpriteRenderer:
