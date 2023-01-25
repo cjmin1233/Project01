@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public float damage;
     [HideInInspector] public float anim_Speed;
     [HideInInspector] public bool isPoisoned;
+    [HideInInspector] public bool isDiagonal;
     private float speed = 25f;
     //public GameObject ImpactEffect;
     private Transform player;
@@ -19,6 +20,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim_Speed = 1.0f;
         isPoisoned = false;
+        isDiagonal = false;
     }
     private void OnEnable()
     {
@@ -26,8 +28,10 @@ public class Bullet : MonoBehaviour
         //transform.position = player.position;
         transform.rotation = player.rotation;
         animator.SetBool("IsPoisoned", isPoisoned);
+        animator.SetBool("IsDiagonal", isDiagonal);
         //animator.SetFloat("EnableSpeed", anim_Speed);
-        rb.velocity = transform.right * speed;
+        if (isDiagonal) rb.velocity = new Vector2(transform.right.x * speed, transform.up.y * (-speed));
+        else rb.velocity = transform.right * speed;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {

@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetButton("Jump") && !isDashing && !jump)
+        if (Input.GetButton("Jump") && !isDashing && !animator.GetBool("IsJumping"))
         {
             jump = true;
         }

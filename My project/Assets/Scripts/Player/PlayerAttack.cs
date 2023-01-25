@@ -31,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
     public bool sword_cursed_enable;
     public bool bow_storm_enable;
     public bool bow_poison_enable;
+    public bool bow_air_enable;
     [SerializeField] private Transform sword_wind_startpoint;
     [SerializeField] private List<AudioSource> sword_wind_sound;
     [SerializeField] private AudioSource[] bow_shoot_sound;
@@ -54,6 +55,7 @@ public class PlayerAttack : MonoBehaviour
     int weaponType;
     bool isJumping;
     bool isDashing;
+    RaycastHit2D rayHit;
 
     private void Start()
     {
@@ -67,13 +69,26 @@ public class PlayerAttack : MonoBehaviour
         sword_shield_enable = false;
         bow_storm_enable = false;
         bow_poison_enable = false;
+        bow_air_enable = false;
         isCharging = false;
         weaponType = animator.GetInteger("WeaponType");
     }
-    void Update()
+    private void Update()
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
+        if(bow_storm_enable && bow_air_enable && Input.GetButton("AttackZ") && !isZAttacking && isJumping && !isXAttacking && !isDashing && comboCounter == 4)
+        {
+            BowZAttack_Air();
+        }
+        if (bow_air_enable && Input.GetButtonDown("AttackZ") && isJumping && !isXAttacking && !isDashing && comboCounter < 3)
+        {
+            if (isZAttacking) inputZCounter++;
+            else
+            {
+                BowZAttack_Air();
+            }
+        }
         if ((sword_storm_enable || bow_storm_enable) && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
         {
             if (weaponType == 1)
@@ -187,7 +202,18 @@ public class PlayerAttack : MonoBehaviour
             }
             inputZCounter = 0;
         }
+        // air attack over z input handle
+        if (bow_air_enable && !isZAttacking && isJumping && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)
+        {
+            if (weaponType == 2) BowZAttack_Air();
+            inputZCounter = 0;
+        }
 
+    }
+    private void FixedUpdate()
+    {
+        rayHit = Physics2D.Raycast(rg.position, Vector3.down, 10f, LayerMask.GetMask("Ground"));
+        //Debug.Log(rayHit.distance);
     }
     private void Start_Combo()
     {
@@ -206,6 +232,10 @@ public class PlayerAttack : MonoBehaviour
         isZAttacking = false;
         gameObject.GetComponent<Player>().canMove = true;
         // 스택 초기화
+    }
+    private void Finish_Air_Combo()
+    {
+        isZAttacking = true;
     }
     private void Finish_X()
     {
@@ -321,12 +351,35 @@ public class PlayerAttack : MonoBehaviour
 
         animator.SetFloat("Speed_Z", Speed_Z);
         isZAttacking = true;
-        animator.SetTrigger("Combo" + comboCounter);
         if (comboCounter == 0)
         {
             animator.ResetTrigger("Combo1");
             animator.ResetTrigger("Combo2");
             animator.ResetTrigger("Combo3");
+            animator.ResetTrigger("Combo4");
+        }
+        animator.SetTrigger("Combo" + comboCounter);
+    }
+    private void BowZAttack_Air()
+    {
+        if (rayHit.distance > 3f)
+        {
+            // 공격동안 움직임 제어
+            gameObject.GetComponent<Player>().canMove = false;
+
+            animator.SetFloat("Speed_Z", Speed_Z);
+            isZAttacking = true;
+            if (comboCounter == 0)
+            {
+                animator.ResetTrigger("Combo1");
+                animator.ResetTrigger("Combo2");
+                animator.ResetTrigger("Combo3");
+                animator.ResetTrigger("Combo4");
+            }
+            animator.SetTrigger("Combo" + comboCounter);
+            animator.SetBool("IsJumpingDown", true);
+            rg.velocity = new Vector2(rg.velocity.x, 0f);
+            rg.AddForce(new Vector2(transform.right.x * (-5f), 3f), ForceMode2D.Impulse);
         }
     }
     private void ShootArrow()
@@ -334,6 +387,7 @@ public class PlayerAttack : MonoBehaviour
         GameObject arrow = ArrowPool.Instance.GetFromPool();
         arrow.GetComponent<Bullet>().damage = Mathf.Round(40f * (1 + comboCounter * 0.2f));
         arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
+        arrow.GetComponent<Bullet>().isDiagonal = isJumping;
         if (bow_poison_enable) arrow.GetComponent<Bullet>().isPoisoned = true;
         arrow.transform.position = firePoint.position;
         arrow.SetActive(true);
