@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody2D rg;
     private Animator animator;
-    public LayerMask enemyLayers;
+    //public LayerMask enemyLayers;
 
     [SerializeField] private Transform firePoint;
     public GameObject ArrowPrefab;

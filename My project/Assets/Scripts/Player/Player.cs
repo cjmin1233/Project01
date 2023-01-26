@@ -298,9 +298,6 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
             animator.SetBool("IsJumping", true);
-            /*gameObject.GetComponent<PlayerAttack>().isZAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().isXAttacking = false;
-            gameObject.GetComponent<PlayerAttack>().comboCounter = 0;*/
             gameObject.GetComponent<PlayerAttack>().PlayerInit();
 
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);

@@ -14,6 +14,9 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    [SerializeField] private new BoxCollider2D collider;
+    [SerializeField] private BoxCollider2D collider_diagonal;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -21,6 +24,7 @@ public class Bullet : MonoBehaviour
         anim_Speed = 1.0f;
         isPoisoned = false;
         isDiagonal = false;
+        collider.enabled = true;
     }
     private void OnEnable()
     {
@@ -32,6 +36,19 @@ public class Bullet : MonoBehaviour
         //animator.SetFloat("EnableSpeed", anim_Speed);
         if (isDiagonal) rb.velocity = new Vector2(transform.right.x * speed, transform.up.y * (-speed));
         else rb.velocity = transform.right * speed;
+        /*if(isDiagonal) transform.rotation = Quaternion.Euler(0f, 0f, -45f);
+        else transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        rb.velocity = transform.right * speed;*/
+        if (isDiagonal)
+        {
+            collider.enabled = false;
+            collider_diagonal.enabled = true;
+        }
+        else
+        {
+            collider.enabled = true;
+            collider_diagonal.enabled = false;
+        }
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
