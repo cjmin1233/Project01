@@ -117,12 +117,12 @@ public class SelectAbility : MonoBehaviour
         if (SelectedAbility.index == 0)
         {
             // power up z attack
-            gameObject.GetComponent<PlayerAttack>().swordDamage_z_multiplier = 1f + 0.1f * lv;
+            gameObject.GetComponent<PlayerAttack>().damage_z_multiplier = 1f + 0.1f * lv;
         }
         else if (SelectedAbility.index == 1)
         {
             // power up x attack
-            gameObject.GetComponent<PlayerAttack>().swordDamage_x_multiplier = 1f + 0.1f * lv;
+            gameObject.GetComponent<PlayerAttack>().damage_x_multiplier = 1f + 0.1f * lv;
         }
         else if (SelectedAbility.index == 2)
         {

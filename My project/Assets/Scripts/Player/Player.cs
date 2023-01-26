@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.S)) playerAttack.PlayerInit();
         // HP bar test.
         if (Input.GetKeyDown(KeyCode.A))    //Increase hp.
         {

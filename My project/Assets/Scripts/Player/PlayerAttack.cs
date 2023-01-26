@@ -4,78 +4,83 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private Rigidbody2D rg;
-    private Animator animator;
+    public bool isZAttacking = false;
+    public bool isXAttacking = false;
+    public float Speed_Z = 1.0f;
+    public float Speed_X = 1.0f;
+
+    protected Rigidbody2D rb;
+    protected Animator animator;
+
+    protected int comboCounter = 0;
+    protected int inputZCounter = 0;
     //public LayerMask enemyLayers;
 
-    [SerializeField] private Transform firePoint;
-    public GameObject ArrowPrefab;
-
-
     //private int SwordDamage = 40;
-    public float swordDamage_z = 40;
-    public float swordDamage_x = 40;
-    public float swordDamage_z_multiplier = 1.0f;
-    public float swordDamage_x_multiplier = 1.0f;
+    /*public float swordDamage_z = 40;
+    public float swordDamage_x = 40;*/
+    public float playerPower = 100f;
+    public float damage_z_multiplier = 1.0f;
+    public float damage_x_multiplier = 1.0f;
 
 
     // Combo attack ***************
-    private int comboCounter = 0;
-    public bool isZAttacking = false;
-    public float Speed_Z = 1.0f;
-    public GameObject[] comboCollider;
-    public int inputZCounter = 0;
-    public GameObject swordwindPrefab;
+    //public GameObject[] comboCollider;
+    //public GameObject swordwindPrefab;
+
     public bool sword_wind_enable;
     public bool sword_storm_enable;
     public bool sword_cursed_enable;
+    public bool sword_charging_enable;
+    public bool sword_critical_enable;
+    public bool sword_shield_enable;
+
     public bool bow_storm_enable;
     public bool bow_poison_enable;
     public bool bow_air_enable;
-    [SerializeField] private Transform sword_wind_startpoint;
-    [SerializeField] private List<AudioSource> sword_wind_sound;
-    [SerializeField] private AudioSource[] bow_shoot_sound;
+
+    protected bool isJumping;
+    protected bool isDashing;
+
+    int weaponType;
+    //[SerializeField] private Transform sword_wind_startpoint;
+    //[SerializeField] private List<AudioSource> sword_wind_sound;
 
     // ****************************
 
     // X attack *******************
-    public bool isXAttacking = false;
-    public float Speed_X = 1.0f;
-    [SerializeField] private GameObject[] Sword_Collider_X;
-    [SerializeField] private GameObject Bow_Beam;
-    [SerializeField] private GameObject arrow_shower_startpoint;
-    public bool sword_charging_enable;
-    public bool sword_critical_enable;
-    public bool sword_shield_enable;
-    bool isCharging;
-    private int chargeCounter = 0;
-    [SerializeField] private AudioSource[] Charge_Sound;
-    [SerializeField] private GameObject ChargeEffect;
+    //[SerializeField] private GameObject[] Sword_Collider_X;
+    //bool isCharging;
+    //private int chargeCounter = 0;
+    //[SerializeField] private AudioSource[] Charge_Sound;
+    //[SerializeField] private GameObject ChargeEffect;
     // ****************************
-    int weaponType;
-    bool isJumping;
-    bool isDashing;
-    RaycastHit2D rayHit;
 
-    private void Start()
+    protected virtual void Start()
     {
-        rg = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        weaponType = animator.GetInteger("WeaponType");
+
         sword_wind_enable = false;
         sword_storm_enable = false;
         sword_cursed_enable = false;
         sword_charging_enable = false;
         sword_critical_enable = false;
         sword_shield_enable = false;
+
         bow_storm_enable = false;
         bow_poison_enable = false;
         bow_air_enable = false;
-        isCharging = false;
-        weaponType = animator.GetInteger("WeaponType");
+
+        isJumping = false;
+        isDashing = false;
+
+        //isCharging = false;
     }
-    private void Update()
+    protected virtual void Update()
     {
-        isDashing = animator.GetBool("IsDashing");
+        /*isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
         if(bow_storm_enable && bow_air_enable && Input.GetButton("AttackZ") && !isZAttacking && isJumping && !isXAttacking && !isDashing && comboCounter == 4)
         {
@@ -207,14 +212,14 @@ public class PlayerAttack : MonoBehaviour
         {
             if (weaponType == 2) BowZAttack_Air();
             inputZCounter = 0;
-        }
+        }*/
 
     }
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         rayHit = Physics2D.Raycast(rg.position, Vector3.down, 10f, LayerMask.GetMask("Ground"));
         //Debug.Log(rayHit.distance);
-    }
+    }*/
     private void Start_Combo()
     {
         if (comboCounter == 1 && (sword_storm_enable || bow_storm_enable)) comboCounter = 4;
@@ -223,7 +228,6 @@ public class PlayerAttack : MonoBehaviour
             comboCounter++;
         }
         isZAttacking = false;
-        //Enable_Sword_Combo_Collider();
     }
     private void Finish_Combo()
     {
@@ -233,9 +237,9 @@ public class PlayerAttack : MonoBehaviour
         gameObject.GetComponent<Player>().canMove = true;
         // 스택 초기화
     }
-    private void Finish_Air_Combo()
+    protected virtual void Finish_Air_Combo()
     {
-        isZAttacking = true;
+        /*isZAttacking = true;*/
     }
     private void Finish_X()
     {
@@ -247,7 +251,7 @@ public class PlayerAttack : MonoBehaviour
         // 스택 초기화
         inputZCounter = 0;
     }
-    private void Finish_X_Charging()
+    /*private void Finish_X_Charging()
     {
         if (chargeCounter < 3)
         {
@@ -256,8 +260,8 @@ public class PlayerAttack : MonoBehaviour
             ChargeEffect.GetComponent<Animator>().SetTrigger("Enable");
             chargeCounter++;
         }
-    }
-    private void Enable_Sword_Combo_Collider()
+    }*/
+    /*private void Enable_Sword_Combo_Collider()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
 
@@ -295,9 +299,9 @@ public class PlayerAttack : MonoBehaviour
             animator.ResetTrigger("Combo4");
         }
         // 공격시 약 전진
-        /*//Debug.Log("i'm here");
+        *//*//Debug.Log("i'm here");
         float swordCombo_force = 10f;
-        if (transform.rotation.y != 0f) swordCombo_force *= -1f;*/
+        if (transform.rotation.y != 0f) swordCombo_force *= -1f;*//*
         rg.AddForce(new Vector2(transform.right.x * 10f, 0f), ForceMode2D.Impulse);
         //rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Force);
     }
@@ -343,10 +347,10 @@ public class PlayerAttack : MonoBehaviour
         float swordCombo_force = 0.1f;
         if (transform.rotation.y != 0f) swordCombo_force *= -1f;
         rg.AddForce(new Vector2(swordCombo_force, 0f), ForceMode2D.Impulse);
-    }
-    private void BowZAttack()
+    }*/
+    protected virtual void BowZAttack()
     {
-        // 공격동안 움직임 제어
+        /*// 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
 
         animator.SetFloat("Speed_Z", Speed_Z);
@@ -358,11 +362,11 @@ public class PlayerAttack : MonoBehaviour
             animator.ResetTrigger("Combo3");
             animator.ResetTrigger("Combo4");
         }
-        animator.SetTrigger("Combo" + comboCounter);
+        animator.SetTrigger("Combo" + comboCounter);*/
     }
-    private void BowZAttack_Air()
+    protected virtual void BowZAttack_Air()
     {
-        if (rayHit.distance > 3f)
+        /*if (rayHit.distance > 3f)
         {
             // 공격동안 움직임 제어
             gameObject.GetComponent<Player>().canMove = false;
@@ -380,23 +384,23 @@ public class PlayerAttack : MonoBehaviour
             animator.SetBool("IsJumpingDown", true);
             rg.velocity = new Vector2(rg.velocity.x, 0f);
             rg.AddForce(new Vector2(transform.right.x * (-5f), 3f), ForceMode2D.Impulse);
-        }
+        }*/
     }
-    private void ShootArrow()
+    protected virtual void ShootArrow()
     {
-        GameObject arrow = ArrowPool.Instance.GetFromPool();
+        /*GameObject arrow = ArrowPool.Instance.GetFromPool();
         arrow.GetComponent<Bullet>().damage = Mathf.Round(40f * (1 + comboCounter * 0.2f));
         arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
         arrow.GetComponent<Bullet>().isDiagonal = isJumping;
         if (bow_poison_enable) arrow.GetComponent<Bullet>().isPoisoned = true;
         arrow.transform.position = firePoint.position;
         arrow.SetActive(true);
-        /*int rand = Random.Range(0, sword_wind_sound.Count);*/
-        if (bow_shoot_sound[0] != null) bow_shoot_sound[0].PlayOneShot(bow_shoot_sound[0].clip);
+        *//*int rand = Random.Range(0, sword_wind_sound.Count);*//*
+        if (bow_shoot_sound[0] != null) bow_shoot_sound[0].PlayOneShot(bow_shoot_sound[0].clip);*/
     }
-    private void BowXAttack()
+    protected virtual void BowXAttack()
     {
-        // 공격동안 움직임 제어
+        /*// 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
 
         animator.SetFloat("Speed_X", Speed_X);
@@ -404,32 +408,32 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("AttackX");
         isZAttacking = false;
         comboCounter = 0;
-        //Instantiate(ArrowPrefab, firePoint.position, firePoint.rotation);
+        //Instantiate(ArrowPrefab, firePoint.position, firePoint.rotation);*/
     }
-    private void Enable_Bow_Beam()
+    protected virtual void Enable_Bow_Beam()
     {
-        Vector2 damageForce = new Vector2(transform.right.x * 10f, 0f);
+        /*Vector2 damageForce = new Vector2(transform.right.x * 10f, 0f);
         //if (transform.rotation.y != 0f) damageForce.x *= -1f;
         Bow_Beam.GetComponent<Bow_Beam_Collider>().damage = Mathf.Round(111f);
         Bow_Beam.GetComponent<Bow_Beam_Collider>().anim_Speed = Speed_X;
-        Bow_Beam.GetComponent<Bow_Beam_Collider>().damageForce = damageForce;
+        Bow_Beam.GetComponent<Bow_Beam_Collider>().damageForce = damageForce;*/
     }
-    private void Enable_Arrow_Shower()
+    protected virtual void Enable_Arrow_Shower()
     {
-        Vector2 damageForce = new Vector2(transform.right.x * 8f, 0f);
+        /*Vector2 damageForce = new Vector2(transform.right.x * 8f, 0f);
         GameObject arrowshower = ArrowShowerPool.Instance.GetFromPool();
         arrowshower.GetComponent<Arrow_Shower_Collider>().damage = Mathf.Round(11f);
         arrowshower.GetComponent<Arrow_Shower_Collider>().damageForce = damageForce;
         arrowshower.transform.position = arrow_shower_startpoint.transform.position;
         arrowshower.SetActive(true);
-        if (bow_shoot_sound[1] != null) bow_shoot_sound[1].PlayOneShot(bow_shoot_sound[1].clip);
+        if (bow_shoot_sound[1] != null) bow_shoot_sound[1].PlayOneShot(bow_shoot_sound[1].clip);*/
     }
-    private void Arrow_Shower_Startpoint()
+    protected virtual void Arrow_Shower_Startpoint()
     {
-        arrow_shower_startpoint.SetActive(true);
+        /*arrow_shower_startpoint.SetActive(true);*/
     }
 
-    // Hashashin functions
+    /*// Hashashin functions
     private void DaggerZAttack()
     {
         // 공격동안 움직임 제어
@@ -476,7 +480,7 @@ public class PlayerAttack : MonoBehaviour
             Sword_Collider_X[i].GetComponent<Combo_Collider>().damage = Mathf.Round(77f);
             Sword_Collider_X[i].GetComponent<Combo_Collider>().damageForce = damageForce;
         }
-    }
+    }*/
 
     public void PlayerInit()
     {
