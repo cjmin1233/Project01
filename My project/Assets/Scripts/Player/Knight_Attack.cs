@@ -35,13 +35,19 @@ public class Knight_Attack : PlayerAttack
                 else SwordZAttack();
             }
             //  over Z input handle
-            else if (inputZCounter > 0 && !isZAttacking) SwordZAttack();
+            else if (inputZCounter > 0 && !isZAttacking)
+            {
+                SwordZAttack();
+                inputZCounter = 0;
+            }
         }
+
         /*else if (Input.GetButtonDown("AttackZ") && !isJumping && !isXAttacking && !isDashing && comboCounter < 3)
         {
             if (isZAttacking) inputZCounter++;
             else SwordZAttack();
         }*/
+
         if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
         {
             // Z+X ÄÞº¸
@@ -112,6 +118,7 @@ public class Knight_Attack : PlayerAttack
 
         animator.SetFloat("Speed_Z", Speed_Z);
         isZAttacking = true;
+        animator.SetBool("IsZAttacking", isZAttacking);
         animator.SetTrigger("Combo" + comboCounter);
         if (comboCounter == 0)
         {
@@ -150,6 +157,8 @@ public class Knight_Attack : PlayerAttack
 
         animator.SetFloat("Speed_X", Speed_X);
         isXAttacking = true;
+        animator.SetBool("IsXAttacking", isXAttacking);
+
         if (sword_charging_enable)
         {
             animator.SetTrigger("AttackX_Charge_In");
@@ -158,7 +167,7 @@ public class Knight_Attack : PlayerAttack
             chargeCounter = 0;
         }
         else animator.SetTrigger("AttackX");
-        isZAttacking = false;
+
         comboCounter = 0;
 
 

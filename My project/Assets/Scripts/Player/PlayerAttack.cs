@@ -228,12 +228,15 @@ public class PlayerAttack : MonoBehaviour
             comboCounter++;
         }
         isZAttacking = false;
+        animator.SetBool("IsZAttacking", isZAttacking);
     }
     private void Finish_Combo()
     {
         inputZCounter = 0;
         comboCounter = 0;
         isZAttacking = false;
+        animator.SetBool("IsZAttacking", isZAttacking);
+
         gameObject.GetComponent<Player>().canMove = true;
         // 스택 초기화
     }
@@ -246,6 +249,8 @@ public class PlayerAttack : MonoBehaviour
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = true;
 
         isXAttacking = false;
+        animator.SetBool("IsXAttacking", isXAttacking);
+
         comboCounter = 0;
         gameObject.GetComponent<Player>().canMove = true;
         // 스택 초기화
@@ -491,6 +496,9 @@ public class PlayerAttack : MonoBehaviour
 
         isZAttacking = false;
         isXAttacking = false;
+        animator.SetBool("IsZAttacking", isZAttacking);
+        animator.SetBool("IsXAttacking", isXAttacking);
+
         comboCounter = 0;
         inputZCounter = 0;
     }

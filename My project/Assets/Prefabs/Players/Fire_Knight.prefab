@@ -2572,10 +2572,10 @@ GameObject:
   - component: {fileID: 1320270001586724022}
   - component: {fileID: 1320270001586724025}
   - component: {fileID: 1320270001586724018}
-  - component: {fileID: 93130276839440325}
   - component: {fileID: 5485185526310700197}
   - component: {fileID: 4836549205229314277}
   - component: {fileID: 1442349836686189305}
+  - component: {fileID: 1442349836686189297}
   m_Layer: 6
   m_Name: Fire_Knight
   m_TagString: Player
@@ -2750,7 +2750,6 @@ MonoBehaviour:
   - {fileID: 750997739}
   - {fileID: 1525433712}
   - {fileID: 318557325}
-  GroundCheck: {fileID: 1320270000993536621}
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -2764,58 +2763,6 @@ MonoBehaviour:
   Book_UI: {fileID: 0}
   gold: 0
   ground_checker: {fileID: 815865361}
---- !u!114 &93130276839440325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320270001586724024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a1e089bdd81ffc40a94bebbfdcafd6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 1152
-  firePoint: {fileID: 0}
-  ArrowPrefab: {fileID: 5042815222521871823, guid: 10f49b9363481dd4080aebbaec303bdf, type: 3}
-  swordDamage_z: 40
-  swordDamage_x: 100
-  swordDamage_z_multiplier: 1
-  swordDamage_x_multiplier: 1
-  isZAttacking: 0
-  Speed_Z: 1
-  comboCollider:
-  - {fileID: 93130276224028732}
-  - {fileID: 93130276312372353}
-  - {fileID: 93130277039606292}
-  inputZCounter: 0
-  swordwindPrefab: {fileID: 2414716417716098614, guid: c82ee132470215d42af94a4caee3ef23, type: 3}
-  sword_wind_enable: 0
-  sword_storm_enable: 0
-  sword_cursed_enable: 0
-  sword_wind_startpoint: {fileID: 1237311227}
-  sword_wind_sound:
-  - {fileID: 2039482459}
-  - {fileID: 1302699396}
-  bow_shoot_sound:
-  - {fileID: 0}
-  isXAttacking: 0
-  Speed_X: 1
-  Sword_Collider_X:
-  - {fileID: 93130276930052984}
-  Bow_Beam: {fileID: 0}
-  arrow_shower_startpoint: {fileID: 0}
-  sword_charging_enable: 0
-  sword_critical_enable: 0
-  sword_shield_enable: 0
-  Charge_Sound:
-  - {fileID: 237067999}
-  - {fileID: 1825629106}
-  - {fileID: 1301231515}
-  ChargeEffect: {fileID: 31798414}
 --- !u!114 &5485185526310700197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2871,3 +2818,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCollision: 0
+--- !u!114 &1442349836686189297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320270001586724024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d0412b58806134c8ad00cdeba383d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isZAttacking: 0
+  isXAttacking: 0
+  Speed_Z: 1
+  Speed_X: 1
+  playerPower: 100
+  damage_z_multiplier: 1
+  damage_x_multiplier: 1
+  sword_wind_enable: 0
+  sword_storm_enable: 0
+  sword_cursed_enable: 0
+  sword_charging_enable: 0
+  sword_critical_enable: 0
+  sword_shield_enable: 0
+  bow_storm_enable: 0
+  bow_poison_enable: 0
+  bow_air_enable: 0
+  comboCollider:
+  - {fileID: 93130276224028732}
+  - {fileID: 93130276312372353}
+  - {fileID: 93130277039606292}
+  Sword_Collider_X: {fileID: 93130276930052984}
+  swordwindPrefab: {fileID: 2414716417716098614, guid: c82ee132470215d42af94a4caee3ef23, type: 3}
+  sword_wind_startpoint: {fileID: 1237311227}
+  sword_wind_sound:
+  - {fileID: 2039482459}
+  - {fileID: 1302699396}
+  Charge_Sound:
+  - {fileID: 237067999}
+  - {fileID: 1825629106}
+  - {fileID: 1301231515}
+  ChargeEffect: {fileID: 31798414}

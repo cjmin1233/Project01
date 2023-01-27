@@ -91,6 +91,7 @@ public class Ranger_Attack : PlayerAttack
 
         animator.SetFloat("Speed_Z", Speed_Z);
         isZAttacking = true;
+        animator.SetBool("IsZAttacking", isZAttacking);
         if (comboCounter == 0)
         {
             animator.ResetTrigger("Combo1");
@@ -109,6 +110,8 @@ public class Ranger_Attack : PlayerAttack
 
             animator.SetFloat("Speed_Z", Speed_Z);
             isZAttacking = true;
+            animator.SetBool("IsZAttacking", isZAttacking);
+
             if (comboCounter == 0)
             {
                 animator.ResetTrigger("Combo1");
@@ -125,7 +128,7 @@ public class Ranger_Attack : PlayerAttack
     protected override void ShootArrow()
     {
         GameObject arrow = ArrowPool.Instance.GetFromPool();
-        arrow.GetComponent<Bullet>().damage = Mathf.Round(playerPower * damage_z_multiplier * arrow_coef * (1 + comboCounter * 0.2f));
+        arrow.GetComponent<Bullet>().damage = Mathf.Round(playerPower * damage_z_multiplier * arrow_coef * (1 + (comboCounter % 3) * 0.2f));
         arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
         arrow.GetComponent<Bullet>().isDiagonal = isJumping;
         if (bow_poison_enable) arrow.GetComponent<Bullet>().isPoisoned = true;
@@ -141,8 +144,10 @@ public class Ranger_Attack : PlayerAttack
 
         animator.SetFloat("Speed_X", Speed_X);
         isXAttacking = true;
+        animator.SetBool("IsZAttacking", isZAttacking);
+
         animator.SetTrigger("AttackX");
-        isZAttacking = false;
+
         comboCounter = 0;
     }
     protected override void Enable_Bow_Beam()
