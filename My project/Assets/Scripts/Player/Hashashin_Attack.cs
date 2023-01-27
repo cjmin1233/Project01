@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class Hashashin_Attack : PlayerAttack
 {
+    [SerializeField] private GameObject gaugeUI;
     [SerializeField] private GameObject[] comboCollider;
     [SerializeField] private GameObject[] Sword_Collider_X;
 
     private float combo_coef = 0.2f;
-    private float sp_coef = 0.5f;
+    private float sp_coef = 1f;
 
+    private float curGauge = 0f;
+    private float maxGauge = 100f;
+    private float reqGauge = 33f;
+
+    protected override void Start()
+    {
+        base.Start();
+        gaugeUI.SetActive(true);
+    }
     protected override void Update()
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            GetGauge(10f);
+        }
 
         if (!isJumping && !isXAttacking && !isDashing && comboCounter < 3)
         {
@@ -61,19 +75,30 @@ public class Hashashin_Attack : PlayerAttack
     }
     private void DaggerXAttack()
     {
-        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = false;
-        // 공격동안 움직임 제어
-        gameObject.GetComponent<Player>().canMove = false;
+        if (curGauge >= reqGauge)
+        {
+            // 게이지 소비 후 ui 반영
+            curGauge -= reqGauge;
+            gaugeUI.GetComponent<CircleGaugeUI>().curGauge = curGauge;
 
-        animator.SetFloat("Speed_X", Speed_X);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = false;
+            // 공격동안 움직임 제어
+            gameObject.GetComponent<Player>().canMove = false;
 
-        isXAttacking = true;
-        animator.SetBool("IsXAttacking", isXAttacking);
-        animator.SetTrigger("AttackX");
+            animator.SetFloat("Speed_X", Speed_X);
 
-        // after image on
-        gameObject.GetComponent<Player>().AfterImageAvailable = true;
-        comboCounter = 0;
+            isXAttacking = true;
+            animator.SetBool("IsXAttacking", isXAttacking);
+            animator.SetTrigger("AttackX");
+
+            // after image on
+            gameObject.GetComponent<Player>().AfterImageAvailable = true;
+            comboCounter = 0;
+        }
+        else
+        {
+            Debug.Log("게이지가 부족합니다.");
+        }
     }
     private void Enable_Dagger_X_Collider()
     {
@@ -84,5 +109,11 @@ public class Hashashin_Attack : PlayerAttack
             Sword_Collider_X[i].GetComponent<Combo_Collider>().damage = Mathf.Round(playerPower * damage_x_multiplier * sp_coef);
             Sword_Collider_X[i].GetComponent<Combo_Collider>().damageForce = damageForce;
         }
+    }
+    public void GetGauge(float gauge)
+    {
+        curGauge += gauge;
+        if (curGauge > maxGauge) curGauge = maxGauge;
+        gaugeUI.GetComponent<CircleGaugeUI>().curGauge = curGauge;
     }
 }

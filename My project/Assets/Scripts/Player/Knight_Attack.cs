@@ -18,6 +18,11 @@ public class Knight_Attack : PlayerAttack
     private float sp_coef = 1.5f;
     private float wind_coef = 0.2f;
 
+    protected override void Start()
+    {
+        base.Start();
+        isCharging = false;
+    }
     protected override void Update()
     {
         isDashing = animator.GetBool("IsDashing");

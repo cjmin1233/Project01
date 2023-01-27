@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damageForce: {x: 0, y: 0}
+  critical: 0
   audioSource:
   - {fileID: 7599806829277606404}
   - {fileID: 7599806829752757432}
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damageForce: {x: 0, y: 0}
+  critical: 0
   audioSource:
   - {fileID: 7599806829277606404}
   - {fileID: 7599806829752757432}
@@ -328,6 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damageForce: {x: 0, y: 0}
+  critical: 0
   audioSource:
   - {fileID: 7599806829277606404}
   - {fileID: 7599806829752757432}
@@ -408,6 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damageForce: {x: 0, y: 0}
+  critical: 0
   audioSource:
   - {fileID: 7599806830174558573}
   - {fileID: 7599806829337293534}
@@ -576,6 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   damageForce: {x: 0, y: 0}
+  critical: 0
   audioSource:
   - {fileID: 7599806829949364691}
 --- !u!1 &7599806829277606522
@@ -1646,17 +1651,17 @@ GameObject:
   - component: {fileID: 8873633441178558579}
   - component: {fileID: 8873633441178558588}
   - component: {fileID: 8873633441178558583}
-  - component: {fileID: 7511209736751989504}
   - component: {fileID: 2695610154409982048}
   - component: {fileID: 3056026510259641376}
   - component: {fileID: 7113246021913483761}
+  - component: {fileID: 6728484775995997697}
   m_Layer: 6
   m_Name: Wind_Hashashin
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8873633441178558576
 Transform:
   m_ObjectHideFlags: 0
@@ -1824,7 +1829,6 @@ MonoBehaviour:
   - {fileID: 7599806829477276718}
   - {fileID: 7599806829312063925}
   - {fileID: 7599806830518939720}
-  GroundCheck: {fileID: 8873633441783281320}
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
@@ -1833,51 +1837,11 @@ MonoBehaviour:
   MaxHP: 100
   CurHP: 0
   canInvincible: 0
+  damage_shield_sound: {fileID: 0}
   Esc_UI: {fileID: 0}
   Book_UI: {fileID: 0}
   gold: 0
   ground_checker: {fileID: 329048763}
---- !u!114 &7511209736751989504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8873633441178558589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a1e089bdd81ffc40a94bebbfdcafd6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 1152
-  firePoint: {fileID: 0}
-  ArrowPrefab: {fileID: 0}
-  swordDamage_z: 40
-  swordDamage_x: 100
-  swordDamage_z_multiplier: 1
-  swordDamage_x_multiplier: 1
-  comboCounter: 0
-  isZAttacking: 0
-  Speed_Z: 1
-  comboCollider:
-  - {fileID: 1015373028}
-  - {fileID: 416063871}
-  - {fileID: 1834969367}
-  inputZCounter: 0
-  swordwindPrefab: {fileID: 0}
-  sword_wind_enable: 0
-  sword_wind_startpoint: {fileID: 0}
-  sword_wind_sound: []
-  bow_shoot_sound: {fileID: 0}
-  isXAttacking: 0
-  Speed_X: 1
-  Sword_Collider_X:
-  - {fileID: 1184542328}
-  - {fileID: 617688257}
-  Bow_Beam: {fileID: 0}
-  arrow_shower_startpoint: {fileID: 0}
 --- !u!114 &2695610154409982048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,6 +1897,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCollision: 0
+--- !u!114 &6728484775995997697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8873633441178558589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a6761f09a768d43b2efc12d88d3185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isZAttacking: 0
+  isXAttacking: 0
+  Speed_Z: 1
+  Speed_X: 1
+  playerPower: 100
+  damage_z_multiplier: 1
+  damage_x_multiplier: 1
+  sword_wind_enable: 0
+  sword_storm_enable: 0
+  sword_cursed_enable: 0
+  sword_charging_enable: 0
+  sword_critical_enable: 0
+  sword_shield_enable: 0
+  bow_storm_enable: 0
+  bow_poison_enable: 0
+  bow_air_enable: 0
+  comboCollider:
+  - {fileID: 1015373028}
+  - {fileID: 416063871}
+  - {fileID: 1834969367}
+  Sword_Collider_X:
+  - {fileID: 1184542328}
+  - {fileID: 617688257}
 --- !u!1 &8873633441783281321
 GameObject:
   m_ObjectHideFlags: 0
