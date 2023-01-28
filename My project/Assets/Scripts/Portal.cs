@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour
             Player = collision.gameObject;
             //EnterIcon.SetActive(true);
             //EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
-            ToggleTextContainer.Instance.EnableToggleText(4);
+            UI_Container.Instance.EnableToggleText(4);
             isPickUp = true;
         }
     }
@@ -36,7 +36,7 @@ public class Portal : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            ToggleTextContainer.Instance.DisableToggleText(4);
+            UI_Container.Instance.DisableToggleText(4);
             isPickUp = false;
         }
     }
@@ -58,6 +58,6 @@ public class Portal : MonoBehaviour
         else Debug.Log("Choose a weapon");*/
         Debug.Log("This is portal");
         Player.transform.position = destination.position;
-        ToggleTextContainer.Instance.DisableToggleText(4);
+        UI_Container.Instance.DisableToggleText(4);
     }
 }

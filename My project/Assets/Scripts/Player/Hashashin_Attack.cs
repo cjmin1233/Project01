@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Hashashin_Attack : PlayerAttack
 {
-    [SerializeField] private GameObject gaugeUI;
     [SerializeField] private GameObject[] comboCollider;
     [SerializeField] private GameObject[] Sword_Collider_X;
 
@@ -18,7 +17,7 @@ public class Hashashin_Attack : PlayerAttack
     protected override void Start()
     {
         base.Start();
-        gaugeUI.SetActive(true);
+        UI_Container.Instance.updateGauge(curGauge);
     }
     protected override void Update()
     {
@@ -79,7 +78,7 @@ public class Hashashin_Attack : PlayerAttack
         {
             // 게이지 소비 후 ui 반영
             curGauge -= reqGauge;
-            gaugeUI.GetComponent<CircleGaugeUI>().curGauge = curGauge;
+            UI_Container.Instance.updateGauge(curGauge);
 
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = false;
             // 공격동안 움직임 제어
@@ -114,6 +113,6 @@ public class Hashashin_Attack : PlayerAttack
     {
         curGauge += gauge;
         if (curGauge > maxGauge) curGauge = maxGauge;
-        gaugeUI.GetComponent<CircleGaugeUI>().curGauge = curGauge;
+        UI_Container.Instance.updateGauge(curGauge);
     }
 }

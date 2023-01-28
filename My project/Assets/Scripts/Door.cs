@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Player = collision.gameObject;
-            ToggleTextContainer.Instance.EnableToggleText(4);
+            UI_Container.Instance.EnableToggleText(4);
             isPickUp = true;
         }
     }
@@ -32,7 +32,7 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            ToggleTextContainer.Instance.DisableToggleText(4);
+            UI_Container.Instance.DisableToggleText(4);
             isPickUp = false;
         }
     }
@@ -49,7 +49,7 @@ public class Door : MonoBehaviour
             Debug.Log("move to the next scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Player.transform.position = new Vector3(0f, 0f, 0f);
-            ToggleTextContainer.Instance.DisableToggleText(4);
+            UI_Container.Instance.DisableToggleText(4);
         }
         else Debug.Log("Choose a weapon");
 

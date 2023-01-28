@@ -31,7 +31,7 @@ public class Item : MonoBehaviour
             //EquipIcon.gameObject.SetActive(true);
             //EquipIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
             isPickUp = true;
-            ToggleTextContainer.Instance.EnableToggleText(itemIndex);
+            UI_Container.Instance.EnableToggleText(itemIndex);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -40,7 +40,7 @@ public class Item : MonoBehaviour
         {
             //EquipIcon.gameObject.SetActive(false);
             //EquipIcon.GetComponent<Animator>().SetBool("IsEnabled", false);
-            ToggleTextContainer.Instance.DisableToggleText(itemIndex);
+            UI_Container.Instance.DisableToggleText(itemIndex);
             isPickUp = false;
         }
     }

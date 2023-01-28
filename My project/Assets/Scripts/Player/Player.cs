@@ -45,18 +45,18 @@ public class Player : MonoBehaviour
     //const float GroundedRadius = 0.1f;
     [SerializeField] private LayerMask WhatIsGround;
 
-    [SerializeField] private GameObject HP_Bar;
-    [SerializeField] private GameObject Gold_UI;
-    [HideInInspector] public float MaxHP = 100;
-    [HideInInspector] public float CurHP;
+    //[SerializeField] private GameObject HP_Bar;
+    //[SerializeField] private GameObject Gold_UI;
+    private float MaxHP = 100f;
+    private float CurHP;
     [HideInInspector] public bool canInvincible;
     [SerializeField] private AudioSource damage_shield_sound;
     private float damagingTimeLeft = -1f;
     const float damagingTime = 1f;
 
-    [SerializeField] private GameObject Esc_UI;
-    [SerializeField] private GameObject Book_UI;
-    [HideInInspector] public int gold;
+    //[SerializeField] private GameObject Esc_UI;
+    //[SerializeField] private GameObject Book_UI;
+    private int gold;
     [SerializeField] private Player_Ground_Checker ground_checker;
     private void Start()
     {
@@ -73,12 +73,11 @@ public class Player : MonoBehaviour
         groundLayer = LayerMask.NameToLayer("Ground");
 
         gold = 0;
-        Gold_UI.GetComponent<Player_Gold_Manager>().HandleGold(gold);
+        UI_Container.Instance.HandleGold(gold);
+
         CurHP = MaxHP;
-        HP_Bar.GetComponent<Player_HP_Manager>().HandleHP();
+        UI_Container.Instance.HandleHP(CurHP, MaxHP);
         currentSpeed = baseSpeed;
-        //int weaponType = PlayerPrefs.GetInt("weaponType");
-        //animator.SetInteger("WeaponType", weaponType);
     }
 
     private void Update()
@@ -123,7 +122,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // PopUp UI
+        /*// PopUp UI
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Esc_UI.SetActive(true);
@@ -132,7 +131,7 @@ public class Player : MonoBehaviour
         {
             //
             Book_UI.SetActive(true);
-        }
+        }*/
         DamagingCheck();
         FlipPlayer();
         CheckDash();
@@ -312,13 +311,13 @@ public class Player : MonoBehaviour
     {
         MaxHP += 25;
         CurHP += 25;
-        HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
+        UI_Container.Instance.HandleHP(CurHP, MaxHP);
     }
     public void Heal(float heal)
     {
         CurHP += heal;
         if (CurHP > MaxHP) CurHP = MaxHP;
-        HP_Bar.gameObject.GetComponent<Player_HP_Manager>().HandleHP();
+        UI_Container.Instance.HandleHP(CurHP, MaxHP);
     }
     public void IncreaseRunSpeed()
     {
@@ -365,12 +364,12 @@ public class Player : MonoBehaviour
             }
         }
 
-        HP_Bar.GetComponent<Player_HP_Manager>().HandleHP();
+        UI_Container.Instance.HandleHP(CurHP, MaxHP);
     }
     public void GetGold(int get_gold)
     {
         gold += get_gold;
-        Gold_UI.GetComponent<Player_Gold_Manager>().HandleGold(gold);
+        UI_Container.Instance.HandleGold(gold);
     }
     private void DamagingCheck()
     {

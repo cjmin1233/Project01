@@ -8,18 +8,18 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 difValue;
     private Transform player;
     private Vector3 tempPos;
-    [SerializeField] private GameObject[] player_type;
-    [SerializeField] private GameObject[] player_setting;
+    //[SerializeField] private GameObject[] player_type;
+    /*[SerializeField] private GameObject[] player_setting;
     [SerializeField] private GameObject[] knight_setting;
-    [SerializeField] private GameObject[] ranger_setting;
+    [SerializeField] private GameObject[] ranger_setting;*/
     //[SerializeField] private GameObject[] hashashin_setting;
     [HideInInspector] public bool playerFollowing;
 
-    private void Awake()
+    private void OnEnable()
     {
         int weaponType = PlayerPrefs.GetInt("weaponType");
         // 선택된 플레이어 활성화
-        for (int i = 0; i < player_type.Length; i++)
+        /*for (int i = 0; i < player_type.Length; i++)
         {
             if (i + 1 == weaponType)
             {
@@ -27,7 +27,8 @@ public class CameraFollow : MonoBehaviour
                 player = player_type[i].transform;
             }
             else player_type[i].SetActive(false);
-        }
+        }*/
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         tempPos = transform.position;
         tempPos.x = player.position.x;
         tempPos.y = player.position.y;
@@ -37,7 +38,7 @@ public class CameraFollow : MonoBehaviour
         difValue = transform.position - player.position;
         difValue = new Vector3(Mathf.Abs(difValue.x), Mathf.Abs(difValue.y), 0f);
 
-        for (int i = 0; i < player_setting.Length; i++)
+        /*for (int i = 0; i < player_setting.Length; i++)
         {
             player_setting[i].SetActive(true);
         }
@@ -56,7 +57,7 @@ public class CameraFollow : MonoBehaviour
             {
                 ranger_setting[i].SetActive(true);
             }
-        }
+        }*/
         playerFollowing = true;
     }
 

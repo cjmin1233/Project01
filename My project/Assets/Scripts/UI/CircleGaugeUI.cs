@@ -5,17 +5,21 @@ using UnityEngine.UI;
 
 public class CircleGaugeUI : MonoBehaviour
 {
+    public static CircleGaugeUI Instance { get; private set; }
+
     [SerializeField] private Image borderImage;
     [SerializeField] private Image gaugeImage;
     float maxGauge = 100f;
-    public float curGauge;
+    float curGauge;
     [SerializeField] private Color maxColor;
-    private void Start()
+    private void OnEnable()
     {
+        Instance = this;
         curGauge = 0f;
     }
-    private void Update()
+    public void updateGauge(float gauge)
     {
+        curGauge = gauge;
         gaugeImage.fillAmount = curGauge / maxGauge;
         if (curGauge == maxGauge)
         {

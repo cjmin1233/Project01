@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 1834969368}
   - component: {fileID: 1834969369}
   - component: {fileID: 1834969370}
+  - component: {fileID: 1556540250}
   m_Layer: 0
   m_Name: Combo_2
   m_TagString: Untagged
@@ -583,6 +584,18 @@ MonoBehaviour:
   critical: 0
   audioSource:
   - {fileID: 7599806829949364691}
+--- !u!114 &1556540250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834969367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa4cb7306b44b042b54da669e526b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7599806829277606522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,7 +1674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8873633441178558576
 Transform:
   m_ObjectHideFlags: 0
@@ -1925,6 +1938,7 @@ MonoBehaviour:
   bow_storm_enable: 0
   bow_poison_enable: 0
   bow_air_enable: 0
+  gaugeUI: {fileID: 0}
   comboCollider:
   - {fileID: 1015373028}
   - {fileID: 416063871}

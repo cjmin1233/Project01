@@ -8,6 +8,7 @@ public class EscPopupUI : MonoBehaviour
 {
     public void GiveUp()
     {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene(0);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
