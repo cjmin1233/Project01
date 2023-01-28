@@ -57,7 +57,8 @@ public class Item : MonoBehaviour
         }
         else if (this.tag.Equals("Book"))
         {
-            Player.GetComponent<SelectAbility>().RandomAbility();
+            UI_Container.Instance.RandomAbility();
+            //Player.GetComponent<SelectAbility>().RandomAbility();
             //Destroy(gameObject);
         }
         else if (this.tag.Equals("Potion"))
@@ -67,7 +68,8 @@ public class Item : MonoBehaviour
         }
         else if (this.tag.Equals("Upgrade"))
         {
-            Player.GetComponent<SelectAbility>().UpgradeAbility();
+            UI_Container.Instance.UpgradeAbility();
+            //Player.GetComponent<SelectAbility>().UpgradeAbility();
             //Destroy(gameObject);
         }
         else if (this.tag.Equals("Chest"))

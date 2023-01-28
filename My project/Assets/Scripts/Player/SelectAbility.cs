@@ -14,18 +14,6 @@ public class SelectAbility : MonoBehaviour
     int remainAbility;
     int current_weight;
 
-    /*****************
-    //public TestAbility[] abilityBook;   // 어빌리티 저장
-    //public GameObject[] threeChoices;
-
-    //int baseWeight = 1;
-
-    bool isZselected = false;
-    bool isXselected = false;
-    bool canAppearTier2 = false;
-    bool canAppearTier3 = false;
-    Color color;
-    ******************/
 
     private void Start()
     {

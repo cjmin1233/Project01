@@ -10,6 +10,10 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        Instantiate(ui_container);
+    }
+    private void OnEnable()
+    {
+        var gameObject = Instantiate(ui_container);
+        GameManager.Instance.AddToList(gameObject);
     }
 }
