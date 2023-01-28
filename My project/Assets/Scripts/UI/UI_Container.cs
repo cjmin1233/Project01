@@ -308,6 +308,7 @@ public class UI_Container : MonoBehaviour
     {
         //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         GameManager.Instance.ClearObjects();
+        Destroy(GameManager.Instance.gameObject);
         SceneManager.LoadScene(0);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
