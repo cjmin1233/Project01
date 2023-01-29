@@ -13,18 +13,20 @@ public class Bullet : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
     private Animator animator;
-
-    [SerializeField] private new BoxCollider2D collider;
-    [SerializeField] private BoxCollider2D collider_diagonal;
+    private BoxCollider2D arrow_collider;
+    private Vector2 offset;
+    private Vector2 offset_diagonal;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        arrow_collider = GetComponent<BoxCollider2D>();
         anim_Speed = 1.0f;
         isPoisoned = false;
         isDiagonal = false;
-        collider.enabled = true;
+        offset = new Vector2(0.11f, 0f);
+        offset_diagonal = new Vector2(0.08f, -0.08f);
     }
     private void OnEnable()
     {
@@ -39,16 +41,8 @@ public class Bullet : MonoBehaviour
         /*if(isDiagonal) transform.rotation = Quaternion.Euler(0f, 0f, -45f);
         else transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         rb.velocity = transform.right * speed;*/
-        if (isDiagonal)
-        {
-            collider.enabled = false;
-            collider_diagonal.enabled = true;
-        }
-        else
-        {
-            collider.enabled = true;
-            collider_diagonal.enabled = false;
-        }
+        if (isDiagonal)  arrow_collider.offset = offset_diagonal;
+        else arrow_collider.offset = offset;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
