@@ -9,7 +9,7 @@ public class ScrollViewController : MonoBehaviour
     float space = 50f;
     //public GameObject uiPrefab;
     //public List<RectTransform> uiObjects = new List<RectTransform>();
-    public List<GameObject> AbilityList = new List<GameObject>();
+    //public List<GameObject> AbilityList = new List<GameObject>();
     [HideInInspector] public List<GameObject> SelectedAbilityList = new List<GameObject>();
     /*
     void Awake()

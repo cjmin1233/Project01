@@ -26,12 +26,17 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private GameObject Ability_UI;
     [SerializeField] private RectTransform[] buttonLocations;
     [SerializeField] private GameObject[] abilityButtons;
+    [SerializeField] private List<GameObject> availableAbilityList;
+    [SerializeField] private GameObject[] hiddenKnightAbility_Z;
+    [SerializeField] private GameObject[] hiddenKnightAbility_X;
+    [SerializeField] private GameObject[] hiddenRangerAbility_Z;
+    [SerializeField] private GameObject[] hiddenRangerAbility_X;
+    [SerializeField] private GameObject[] hiddenHashashinAbility_Z;
+
     private GameObject player;
     int totalWeight;
     int remainAbility;
     int current_weight;
-
-
 
 
     [SerializeField] private GameObject Esc_UI;

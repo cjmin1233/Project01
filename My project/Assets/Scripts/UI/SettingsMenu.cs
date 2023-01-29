@@ -23,7 +23,6 @@ public class SettingsMenu : MonoBehaviour
     public Slider BgmAudioSlider;
     public Slider EffectAudioSlider;
     
-    //public Dropdown resolutionDropdown;
     public TMP_Dropdown resolutionDropdown;
     public Toggle fullScreenToggle;
     Resolution[] resolutions;
@@ -84,7 +83,6 @@ public class SettingsMenu : MonoBehaviour
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = availableResolutions[resolutionIndex];
-        //Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
     }

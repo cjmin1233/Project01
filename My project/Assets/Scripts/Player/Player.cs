@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     private Animator animator;
     private PlayerAttack playerAttack;
     
-    //public float moveForce = 10f;
     float movementX;
     [Header("Horizontal Movement")][SerializeField] private float baseSpeed = 400f;
     public AudioSource[] dash_sound;
@@ -37,16 +36,11 @@ public class Player : MonoBehaviour
     public AudioSource[] jump_sound;
     private bool jump;
     private bool isGrounded;
-    //private BoxCollider2D player_collider;
     private float prev_vel_y;
-    int playerLayer, groundLayer;
+    //int playerLayer, groundLayer;
 
-    //[SerializeField] private Transform GroundCheck;
-    //const float GroundedRadius = 0.1f;
     [SerializeField] private LayerMask WhatIsGround;
 
-    //[SerializeField] private GameObject HP_Bar;
-    //[SerializeField] private GameObject Gold_UI;
     private float MaxHP = 100f;
     private float CurHP;
     [HideInInspector] public bool canInvincible;
@@ -54,8 +48,6 @@ public class Player : MonoBehaviour
     private float damagingTimeLeft = -1f;
     const float damagingTime = 1f;
 
-    //[SerializeField] private GameObject Esc_UI;
-    //[SerializeField] private GameObject Book_UI;
     private int gold;
     [SerializeField] private Player_Ground_Checker ground_checker;
     private void Start()
@@ -69,8 +61,8 @@ public class Player : MonoBehaviour
         //player_collider = GetComponent<BoxCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
 
-        playerLayer = LayerMask.NameToLayer("Player");
-        groundLayer = LayerMask.NameToLayer("Ground");
+        //playerLayer = LayerMask.NameToLayer("Player");
+        //groundLayer = LayerMask.NameToLayer("Ground");
 
         gold = 0;
         UI_Container.Instance.HandleGold(gold);
