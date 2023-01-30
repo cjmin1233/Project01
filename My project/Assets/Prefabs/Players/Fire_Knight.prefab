@@ -2573,9 +2573,9 @@ GameObject:
   - component: {fileID: 1320270001586724022}
   - component: {fileID: 1320270001586724025}
   - component: {fileID: 1320270001586724018}
-  - component: {fileID: 4836549205229314277}
   - component: {fileID: 1442349836686189305}
   - component: {fileID: 1442349836686189297}
+  - component: {fileID: 4836549205229314277}
   m_Layer: 6
   m_Name: Fire_Knight
   m_TagString: Player
@@ -2756,18 +2756,6 @@ MonoBehaviour:
   canInvincible: 0
   damage_shield_sound: {fileID: 7552273577865189459}
   ground_checker: {fileID: 815865361}
---- !u!114 &4836549205229314277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320270001586724024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03be9ea303106d04696ff111d0480f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1442349836686189305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2824,6 +2812,18 @@ MonoBehaviour:
   - {fileID: 1825629106}
   - {fileID: 1301231515}
   ChargeEffect: {fileID: 31798414}
+--- !u!114 &4836549205229314277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320270001586724024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03be9ea303106d04696ff111d0480f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7711797352877794464
 GameObject:
   m_ObjectHideFlags: 0

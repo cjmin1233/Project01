@@ -25,22 +25,27 @@ public class UI_Container : MonoBehaviour
     // 어빌리티 UI
     [SerializeField] private GameObject Ability_UI;
     [SerializeField] private RectTransform[] buttonLocations;
-    [SerializeField] private GameObject[] abilityButtons;
     [SerializeField] private List<GameObject> availableAbilityList;
+    private List<GameObject> SelectedAbilityList = new List<GameObject>();
     [SerializeField] private GameObject[] hiddenKnightAbility_Z;
     [SerializeField] private GameObject[] hiddenKnightAbility_X;
     [SerializeField] private GameObject[] hiddenRangerAbility_Z;
     [SerializeField] private GameObject[] hiddenRangerAbility_X;
     [SerializeField] private GameObject[] hiddenHashashinAbility_Z;
+    [SerializeField] private GameObject swiftAbility;
 
-    private GameObject player;
+    private GameObject playerObject;
+    private int z_collection = 0;
+    private int x_collection = 0;
     int totalWeight;
-    int remainAbility;
-    int current_weight;
-
 
     [SerializeField] private GameObject Esc_UI;
+
+    // 획득 어빌리티 UI
     [SerializeField] private GameObject Book_UI;
+    private List<GameObject> ScrollViewList = new List<GameObject>();
+    [SerializeField] private ScrollRect scrollRect;
+    float space = 50f;
 
     float MaxHP;
     float CurHP;
@@ -49,10 +54,6 @@ public class UI_Container : MonoBehaviour
         Instance = this;
         if (PlayerPrefs.GetInt("weaponType") == 3) hashshin_gauge_UI.SetActive(true);
         curGauge = 0f;
-        for (int i = 0; i < abilityButtons.Length; i++)
-        {
-            abilityButtons[i].GetComponent<Ability>().index = i;
-        }
     }
     private void Update()
     {
@@ -100,229 +101,342 @@ public class UI_Container : MonoBehaviour
     }
     public void RandomAbility()
     {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+
         totalWeight = 0;
-        remainAbility = 0;
+        // 새로운 리스트에 출현가능한 어빌리티들 복사
+        List<GameObject> selection = new List<GameObject>();
 
-        for (int i = 0; i < abilityButtons.Length; i++)
+        for(int i = 0; i < availableAbilityList.Count; i++)
         {
-            // 남아있는 어빌리티 초기화
-            abilityButtons[i].GetComponent<Ability>().isAppeared = false;
-            current_weight = abilityButtons[i].GetComponent<Ability>().weight;
-            // 가중치 남아있는 것들 개수 세기
-            if (current_weight != 0)
-            {
-                totalWeight += current_weight;
-                remainAbility++;
-            }
+            //availableAbilityList[i].GetComponent<Ability>().isAppeared = false;
+            totalWeight += availableAbilityList[i].GetComponent<Ability>().weight;
+            availableAbilityList[i].SetActive(false);
+            selection.Add(availableAbilityList[i]);
         }
-
-
-        if (remainAbility == 0)
-        {
-            Debug.Log("There's no remain ability");
-        }
+        if (selection.Count == 0) Debug.Log("There's no remain ability");   // 남아있는 어빌리티가 없음
         else
         {
-            //
-            Debug.Log("Remain ability is : " + remainAbility);
-            if (remainAbility > 3) remainAbility = 3;
             Ability_UI.SetActive(true);
 
-            for (int j = 0; j < remainAbility; j++)
+            int idx = 0;
+            int rand, weight;
+            while (selection.Count > 0)
             {
-                int rand = Random.Range(0, totalWeight);
-                int weight = 0;
-
-                for (int i = 0; i < abilityButtons.Length; i++)
+                rand = Random.Range(1, totalWeight + 1);    // 1~totalweight 까지 랜덤
+                weight = 0;
+                // 가중치 기반 selection 리스트에서 하나 뽑기
+                for(int i = 0; i < selection.Count; i++)
                 {
-                    current_weight = abilityButtons[i].GetComponent<Ability>().weight;
-                    if (current_weight == 0 || abilityButtons[i].GetComponent<Ability>().isAppeared)
+                    weight += selection[i].GetComponent<Ability>().weight;
+                    if (rand <= weight)
                     {
-                        continue;
-                    }
-                    else
-                    {
-                        weight += current_weight;
-                        if (rand < weight)
-                        {
-                            rand = i;
-                            Debug.Log("Random index is : " + rand);
-                            break;
-                        }
+                        // 해당 어빌리티 뽑기
+                        rand = i;
+                        break;
                     }
                 }
-                RectTransform rect = abilityButtons[rand].GetComponent<RectTransform>();
-                rect.anchoredPosition = buttonLocations[j].anchoredPosition;
-                //abilityButtons[rand].transform.position = buttonLocations[j].transform.position;
-                abilityButtons[rand].SetActive(true);
-                abilityButtons[rand].GetComponent<Ability>().isAppeared = true;
-                totalWeight -= abilityButtons[rand].GetComponent<Ability>().weight;
-
+                RectTransform rect = selection[rand].GetComponent<RectTransform>();
+                rect.anchoredPosition = buttonLocations[idx].anchoredPosition;
+                selection[rand].SetActive(true);
+                totalWeight -= selection[rand].GetComponent<Ability>().weight;
+                selection.RemoveAt(rand);
+                idx++;
+                // 3개 뽑았으면 break
+                if (idx == 3) break;
             }
         }
-
     }
-    public void GetAbility(Ability SelectedAbility)
+    public void GetAbility(GameObject SelectedAbility)
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        int index = SelectedAbility.index;
-        SelectedAbility.isSelected = true;
-        SelectedAbility.isAppeared = false;
-        SelectedAbility.level++;
-        // 선택된 능력 확인
-        /*Debug.Log("Selected Ability : " + index + "th ability.");
-        Debug.Log("Ability Type : " + SelectedAbility.Type);
-        Debug.Log("Ability Tier : " + SelectedAbility.Tier);
-        Debug.Log("Ability Level : " + SelectedAbility.level);
-        Debug.Log("Ability Weight : " + SelectedAbility.weight);*/
-        //*******************************************
+        Ability ability = SelectedAbility.GetComponent<Ability>();
+        Player player = playerObject.GetComponent<Player>();
+        PlayerAttack playerAttack = playerObject.GetComponent<PlayerAttack>();
 
-        SelectedAbility.weight = 0;    //선택된 능력 출현 확률 0으로
-        float lv = (float)SelectedAbility.level;
-        // Apply ability
-        if (SelectedAbility.index == 0)
+        if (ability.level < 10) ability.level++;
+        SelectedAbility.SetActive(false);
+        if (availableAbilityList.Contains(SelectedAbility))
         {
-            // power up z attack
-            player.GetComponent<PlayerAttack>().damage_z_multiplier = 1f + 0.1f * lv;
-        }
-        else if (SelectedAbility.index == 1)
-        {
-            // power up x attack
-            player.GetComponent<PlayerAttack>().damage_x_multiplier = 1f + 0.1f * lv;
-        }
-        else if (SelectedAbility.index == 2)
-        {
-            // speed up z attack
-            player.GetComponent<PlayerAttack>().Speed_Z = 1f + 0.2f * lv;
-        }
-        else if (SelectedAbility.index == 3)
-        {
-            // speed up z attack
-            player.GetComponent<PlayerAttack>().Speed_X = 1f + 0.2f * lv;
-        }
-        else if (SelectedAbility.index == 5)
-        {
-            // run speed upgrade
-            player.GetComponent<Player>().IncreaseRunSpeed();
-        }
-        else if (SelectedAbility.index == 6)
-        {
-            // 질풍 베기
-            player.GetComponent<PlayerAttack>().sword_wind_enable = true;
-        }
-        else if (SelectedAbility.index == 7)
-        {
-            // 폭풍 베기
-            player.GetComponent<PlayerAttack>().sword_storm_enable = true;
-        }
-        else if (SelectedAbility.index == 8)
-        {
-            // 흡혈
-            player.GetComponent<PlayerAttack>().sword_cursed_enable = true;
-        }
-        else if (SelectedAbility.index == 9)
-        {
-            // 차징
-            player.GetComponent<PlayerAttack>().sword_charging_enable = true;
-        }
-        else if (SelectedAbility.index == 10)
-        {
-            // 치명타
-            player.GetComponent<PlayerAttack>().sword_critical_enable = true;
-        }
-        else if (SelectedAbility.index == 11)
-        {
-            // 뎀감
-            player.GetComponent<PlayerAttack>().sword_shield_enable = true;
+            // 처음 고른 어빌리티
+            availableAbilityList.Remove(SelectedAbility);
+            SelectedAbilityList.Add(SelectedAbility);
         }
 
-        /*
-        if (SelectedAbility.Type == 0)
+        string name = SelectedAbility.name;
+        Debug.Log("Selected ability is : " + name);
+        if (name == "PowerUp_Z")
         {
-            this.gameObject.GetComponent<PlayerAttack>().Speed_Z *= 1.5f;
-        }*/
-        // *************
-        for (int i = 0; i < abilityButtons.Length; i++)
+            playerAttack.damage_z_multiplier = 1f + 0.1f * ability.level;
+        }
+        else if (name == "PowerUp_X")
         {
-            GameObject ability = abilityButtons[i];
-            int type = ability.GetComponent<Ability>().Type;
-            int tier = ability.GetComponent<Ability>().Tier;
-            bool isSelected = ability.GetComponent<Ability>().isSelected;
+            playerAttack.damage_x_multiplier = 1f + 0.1f * ability.level;
+        }
+        else if (name == "SpeedUp_Z")
+        {
+            playerAttack.Speed_Z = 1f + 0.2f * ability.level;
+        }
+        else if (name == "SpeedUp_X")
+        {
+            playerAttack.Speed_X = 1f + 0.2f * ability.level;
+        }
+        else if (name == "PowerUp")
+        {
+            playerAttack.playerPower = 100f * (1f + 0.1f * ability.level);
+        }
+        else if (name == "SpeedUp_Run")
+        {
+            player.moveSpeed_multiplier = 1f + 0.1f * ability.level;
+        }
+        else if (name == "DefenceUp")
+        {
+            player.defence_multiplier = 1f + 0.1f * ability.level;
+        }
+        else if (name == "Dodge")
+        {
 
-            if (type == SelectedAbility.Type && !isSelected && lv == 1)  // 선택된 능력과 타입은 같으나 선택받지 못한 능력일 때
+        }
+        else if (name == "SecondHeart")
+        {
+            player.hpincrease_multiplier = 1.3f;
+        }
+        else if (name == "Recovery")
+        {
+            player.recovery_enable = true;
+        }
+        else if (name == "Guard")
+        {
+
+        }
+        else if (name == "Aura")
+        {
+
+        }
+        else if (name == "GoldRush")
+        {
+            player.gold_multiplier = 1.2f;
+        }
+        else if (name == "Resistance")
+        {
+            player.resistance_enable = true;
+        }
+        else if (name == "SwordWind")
+        {
+            playerAttack.sword_wind_enable = true;
+        }
+        else if (name == "StormSlash")
+        {
+            playerAttack.sword_storm_enable = true;
+        }
+        else if (name == "CursedSlash")
+        {
+            playerAttack.sword_cursed_enable = true;
+        }
+        else if (name == "ChargeSlash")
+        {
+            playerAttack.sword_charging_enable = true;
+        }
+        else if (name == "CriticalSlash")
+        {
+            playerAttack.sword_critical_enable = true;
+        }
+        else if (name == "DefenceSlash")
+        {
+            playerAttack.sword_shield_enable = true;
+        }
+        else if (name == "StormShot")
+        {
+            playerAttack.bow_storm_enable = true;
+        }
+        else if (name == "PoisonShot")
+        {
+            playerAttack.bow_poison_enable = true;
+        }
+        else if (name == "AirShot")
+        {
+            playerAttack.bow_air_enable = true;
+        }
+        else if (name == "ChargeBeam")
+        {
+
+        }
+        else if (name == "PowerBeam")
+        {
+
+        }
+        else if (name == "LongerBeam")
+        {
+
+        }
+        else if (name == "DaggerStorm")
+        {
+
+        }
+        else if (name == "FastWind")
+        {
+
+        }
+        else if (name == "Assassin")
+        {
+
+        }
+        else if (name == "Swift")
+        {
+
+        }
+        AddToBook(SelectedAbility);
+        for (int i = 0; i < availableAbilityList.Count; i++)
+        {
+            availableAbilityList[i].SetActive(false);
+        }
+        for (int i = 0; i < SelectedAbilityList.Count; i++)
+        {
+            SelectedAbilityList[i].SetActive(false);
+        }
+    }
+    public void CollectionZ()
+    {
+        z_collection++;
+        if (z_collection == 2)
+        {
+            int weaponType = PlayerPrefs.GetInt("weaponType");
+            if (weaponType == 1)
             {
-                ability.GetComponent<Ability>().weight += 1;
-                if (tier == SelectedAbility.Tier + 1)
+                // 전사 히든 어빌리티 개방
+                for (int i = 0; i < hiddenKnightAbility_Z.Length; i++)
                 {
-                    ability.GetComponent<Ability>().weight += 1;
+                    availableAbilityList.Add(hiddenKnightAbility_Z[i]);
                 }
             }
-            //if (abilityButtons[i].gameObject.GetComponent<Ability>().appeared) abilityButtons[i].gameObject.GetComponent<Ability>().appeared = false;
-            ability.SetActive(false);
+            else if (weaponType == 2)
+            {
+                // 궁수 히든 어빌리티 개방
+                for (int i = 0; i < hiddenRangerAbility_Z.Length; i++)
+                {
+                    availableAbilityList.Add(hiddenRangerAbility_Z[i]);
+                }
+            }
+            else if (weaponType == 3)
+            {
+                // 도적 히든 어빌리티 개방
+                for (int i = 0; i < hiddenHashashinAbility_Z.Length; i++)
+                {
+                    availableAbilityList.Add(hiddenHashashinAbility_Z[i]);
+                }
+            }
         }
-
+    }
+    public void CollectionX()
+    {
+        x_collection++;
+        if (x_collection == 2)
+        {
+            int weaponType = PlayerPrefs.GetInt("weaponType");
+            if (weaponType == 1)
+            {
+                // 전사 히든 어빌리티 개방
+                for (int i = 0; i < hiddenKnightAbility_X.Length; i++)
+                {
+                    availableAbilityList.Add(hiddenKnightAbility_X[i]);
+                }
+            }
+            else if (weaponType == 2)
+            {
+                // 궁수 히든 어빌리티 개방
+                for (int i = 0; i < hiddenRangerAbility_X.Length; i++)
+                {
+                    availableAbilityList.Add(hiddenRangerAbility_X[i]);
+                }
+            }
+        }
+    }
+    public void UnlockSwift()
+    {
+        // 스위프트가 없으면 추가
+        if (!availableAbilityList.Contains(swiftAbility)) availableAbilityList.Add(swiftAbility);
     }
     public void UpgradeAbility()
     {
-        // 선택된 어빌리티 인덱스 모음
-        List<int> selected_list = new List<int>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        for (int i = 0; i < abilityButtons.Length; i++)
+        List<GameObject> selection = new List<GameObject>();
+        for(int i = 0; i < SelectedAbilityList.Count; i++)
         {
-            // 남아있는 어빌리티 초기화
-            abilityButtons[i].GetComponent<Ability>().isAppeared = false;
-            // 선택된 어빌리티 갯수 세기
-            if (abilityButtons[i].GetComponent<Ability>().isSelected)
-            {
-                selected_list.Add(i);
-            }
+            SelectedAbilityList[i].SetActive(false);
+            // 레벨 10 미만 어빌리티들만 selection 리스트에 추가. 몇몇 어빌리티들은 이미 11레벨로 설정.
+            if (SelectedAbilityList[i].GetComponent<Ability>().level < 10) selection.Add(SelectedAbilityList[i]);
         }
 
-
-        if (selected_list.Count == 0)
-        {
-            Debug.Log("There's no selected ability");
-        }
+        if (selection.Count == 0) Debug.Log("강화가능한 어빌리티가 없습니다.");
         else
         {
-            //
-            Debug.Log("Selected ability is : " + selected_list.Count);
+            Debug.Log("강화가능한 어빌리티 개수 : " + selection.Count);
             Ability_UI.SetActive(true);
-            int howmany = selected_list.Count;
-            if (howmany > 3) howmany = 3;
-
-
-            for (int j = 0; j < howmany; j++)
+            int idx = 0;
+            int rand;
+            while (selection.Count > 0)
             {
-                int rand = Random.Range(0, selected_list.Count);
-                int target_index = selected_list[rand];
+                rand = Random.Range(0, selection.Count);
 
-                // 강화할 어빌리티 출력
-                abilityButtons[target_index].transform.position = buttonLocations[j].transform.position;
-                abilityButtons[target_index].SetActive(true);
-                abilityButtons[target_index].GetComponent<Ability>().isAppeared = true;
+                RectTransform rect = selection[rand].GetComponent<RectTransform>();
+                rect.anchoredPosition = buttonLocations[idx].anchoredPosition;
+                selection[rand].SetActive(true);
 
-                // selected_list에서 뽑힌 것 제외하기
-                selected_list.RemoveAt(rand);
-
+                selection.RemoveAt(rand);
+                idx++;
+                // 3개 뽑았으면 break
+                if (idx == 3) break;
             }
         }
     }
 
     public void GiveUp()
     {
-        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         GameManager.Instance.ClearObjects();
         Destroy(GameManager.Instance.gameObject);
         SceneManager.LoadScene(0);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void QuitGame()
     {
-        //Debug.Log("quit");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
+    }
+    public void AddToBook(GameObject gameObject)
+    {
+        Ability selectedAbility = gameObject.GetComponent<Ability>();
+        if (selectedAbility.level == 1 || selectedAbility.level == 11)
+        {
+            // 첫 획득한 어빌리티
+            var newUi = Instantiate(gameObject, scrollRect.content);
+            newUi.SetActive(true);
+            newUi.name = gameObject.name;
+            newUi.GetComponent<Button>().enabled = false;
+            ScrollViewList.Add(newUi);
+        }
+        else
+        {
+            for(int i = 0; i < ScrollViewList.Count; i++)
+            {
+                if (ScrollViewList[i].name == gameObject.name)
+                {
+                    ScrollViewList[i].GetComponent<Ability>().level = selectedAbility.level;
+                    break;
+                }
+            }
+        }
+        UpdateBook();
+    }
+    private void UpdateBook()
+    {
+        float y = 0f;
+        for(int i = 0; i < ScrollViewList.Count; i++)
+        {
+            RectTransform rectTransform = ScrollViewList[i].GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(0f, -y);
+            y += rectTransform.sizeDelta.y + space;
+        }
+        scrollRect.content.sizeDelta = new Vector2(scrollRect.content.sizeDelta.x, y);
     }
 }

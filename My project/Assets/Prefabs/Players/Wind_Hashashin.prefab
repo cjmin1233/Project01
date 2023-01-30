@@ -1664,10 +1664,9 @@ GameObject:
   - component: {fileID: 8873633441178558579}
   - component: {fileID: 8873633441178558588}
   - component: {fileID: 8873633441178558583}
-  - component: {fileID: 2695610154409982048}
-  - component: {fileID: 3056026510259641376}
   - component: {fileID: 7113246021913483761}
   - component: {fileID: 6728484775995997697}
+  - component: {fileID: 3056026510259641376}
   m_Layer: 6
   m_Name: Wind_Hashashin
   m_TagString: Player
@@ -1848,48 +1847,6 @@ MonoBehaviour:
   canInvincible: 0
   damage_shield_sound: {fileID: 0}
   ground_checker: {fileID: 329048763}
---- !u!114 &2695610154409982048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8873633441178558589}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95bfe4adaafd51e499ab0168de80f296, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Ability_UI: {fileID: 0}
-  abilityButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  buttonLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &3056026510259641376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8873633441178558589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03be9ea303106d04696ff111d0480f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7113246021913483761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1938,6 +1895,18 @@ MonoBehaviour:
   Sword_Collider_X:
   - {fileID: 1184542328}
   - {fileID: 617688257}
+--- !u!114 &3056026510259641376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8873633441178558589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03be9ea303106d04696ff111d0480f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8873633441783281321
 GameObject:
   m_ObjectHideFlags: 0

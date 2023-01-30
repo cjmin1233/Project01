@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Ability : MonoBehaviour
 {
-    public int index;
+    //public int index;
     public int Type;
     public int Tier;
     public int level;
     public int weight;
-    public bool isAppeared = false;
-    public bool isSelected = false;
+    //public bool isAppeared = false;
+    //public bool isSelected = false;
     public void IncreaseLevel()
     {
         level++;

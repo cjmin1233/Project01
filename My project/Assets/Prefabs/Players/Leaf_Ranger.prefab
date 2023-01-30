@@ -1682,9 +1682,9 @@ GameObject:
   - component: {fileID: 1336409127228282685}
   - component: {fileID: 1336409127228282674}
   - component: {fileID: 1336409127228282681}
-  - component: {fileID: 4884070746369977198}
   - component: {fileID: 3258120412469955934}
   - component: {fileID: 8502061942716934611}
+  - component: {fileID: 4884070746369977198}
   m_Layer: 6
   m_Name: Leaf_Ranger
   m_TagString: Player
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701e803b20cedb542965f6b531a11f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 400
+  moveSpeed_multiplier: 1
   dash_sound:
   - {fileID: 61198366319963683}
   - {fileID: 61198367695111568}
@@ -1859,21 +1859,14 @@ MonoBehaviour:
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  defence_multiplier: 1
+  recovery_enable: 0
+  resistance_enable: 0
+  hpincrease_multiplier: 1
   canInvincible: 0
   damage_shield_sound: {fileID: 0}
+  gold_multiplier: 1
   ground_checker: {fileID: 826028325}
---- !u!114 &4884070746369977198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336409127228282675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03be9ea303106d04696ff111d0480f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3258120412469955934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1915,6 +1908,7 @@ MonoBehaviour:
   bow_storm_enable: 0
   bow_poison_enable: 0
   bow_air_enable: 0
+  bow_charge_enable: 0
   firePoint: {fileID: 113635528970764068}
   ArrowPrefab: {fileID: 5042815222521871823, guid: 10f49b9363481dd4080aebbaec303bdf, type: 3}
   bow_shoot_sound:
@@ -1922,6 +1916,20 @@ MonoBehaviour:
   - {fileID: 1677126858}
   Bow_Beam: {fileID: 5547201063702307551}
   arrow_shower_startpoint: {fileID: 4592768121662727962}
+  Charge_Sound: []
+  ChargeEffect: {fileID: 0}
+--- !u!114 &4884070746369977198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336409127228282675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03be9ea303106d04696ff111d0480f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4592768120553382448
 GameObject:
   m_ObjectHideFlags: 0

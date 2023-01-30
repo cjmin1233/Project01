@@ -9,17 +9,22 @@ public class Ranger_Attack : PlayerAttack
     [SerializeField] private AudioSource[] bow_shoot_sound;
     [SerializeField] private GameObject Bow_Beam;
     [SerializeField] private GameObject arrow_shower_startpoint;
+    [SerializeField] private AudioSource[] Charge_Sound;
+    [SerializeField] private GameManager ChargeEffect;
+    private bool isCharging = false;
+    private int chargeCounter = 0;
+
     private RaycastHit2D rayHit;
     private float arrow_coef = 0.5f;
     private float shower_coef = 0.15f;
     private float beam_coef = 0.2f;
-    /*protected override void Start()
+
+    protected override void Start()
     {
         base.Start();
-        bow_storm_enable = false;
-        bow_poison_enable = false;
-        bow_air_enable = false;
-    }*/
+        isCharging = false;
+    }
+
     protected override void Update()
     {
         isDashing = animator.GetBool("IsDashing");
@@ -61,11 +66,11 @@ public class Ranger_Attack : PlayerAttack
             // 일반 X
             else BowXAttack();
         }
-        /*if (Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
+        if (Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
         {
             isCharging = false;
             animator.SetBool("IsCharging", isCharging);
-        }*/
+        }
 
         //  over Z input handle
         if (!isZAttacking && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)
@@ -80,11 +85,21 @@ public class Ranger_Attack : PlayerAttack
         rayHit = Physics2D.Raycast(rb.position, Vector3.down, 10f, LayerMask.GetMask("Ground"));
         //Debug.Log(rayHit.distance);
     }
-    protected override void Finish_Air_Combo()
+    private void Finish_X_Charging()
+    {
+        if (chargeCounter < 3)
+        {
+            // charge sound
+            if (Charge_Sound[chargeCounter] != null) Charge_Sound[chargeCounter].PlayOneShot(Charge_Sound[chargeCounter].clip);
+            ChargeEffect.GetComponent<Animator>().SetTrigger("Enable");
+            chargeCounter++;
+        }
+    }
+    private void Finish_Air_Combo()
     {
         isZAttacking = true;
     }
-    protected override void BowZAttack()
+    private void BowZAttack()
     {
         // 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
@@ -101,7 +116,7 @@ public class Ranger_Attack : PlayerAttack
         }
         animator.SetTrigger("Combo" + comboCounter);
     }
-    protected override void BowZAttack_Air()
+    private void BowZAttack_Air()
     {
         if (rayHit.distance > 3f)
         {
@@ -125,7 +140,7 @@ public class Ranger_Attack : PlayerAttack
             rb.AddForce(new Vector2(transform.right.x * (-5f), 3f), ForceMode2D.Impulse);
         }
     }
-    protected override void ShootArrow()
+    private void ShootArrow()
     {
         GameObject arrow = ArrowPool.Instance.GetFromPool();
         arrow.GetComponent<Bullet>().damage = Mathf.Round(playerPower * damage_z_multiplier * arrow_coef * (1 + (comboCounter % 3) * 0.2f));
@@ -137,7 +152,7 @@ public class Ranger_Attack : PlayerAttack
         /*int rand = Random.Range(0, sword_wind_sound.Count);*/
         if (bow_shoot_sound[0] != null) bow_shoot_sound[0].PlayOneShot(bow_shoot_sound[0].clip);
     }
-    protected override void BowXAttack()
+    private void BowXAttack()
     {
         // 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
@@ -150,15 +165,16 @@ public class Ranger_Attack : PlayerAttack
 
         comboCounter = 0;
     }
-    protected override void Enable_Bow_Beam()
+    private void Enable_Bow_Beam()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 10f, 0f);
-        //if (transform.rotation.y != 0f) damageForce.x *= -1f;
-        Bow_Beam.GetComponent<Bow_Beam_Collider>().damage = Mathf.Round(playerPower * damage_x_multiplier * beam_coef);
+        float damage = 0f;
+        damage = Mathf.Round(playerPower * damage_x_multiplier * beam_coef * (1 + 0.5f * (float)chargeCounter));
+        Bow_Beam.GetComponent<Bow_Beam_Collider>().damage = damage;
         Bow_Beam.GetComponent<Bow_Beam_Collider>().anim_Speed = Speed_X;
         Bow_Beam.GetComponent<Bow_Beam_Collider>().damageForce = damageForce;
     }
-    protected override void Enable_Arrow_Shower()
+    private void Enable_Arrow_Shower()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 8f, 0f);
         GameObject arrowshower = ArrowShowerPool.Instance.GetFromPool();
@@ -168,7 +184,7 @@ public class Ranger_Attack : PlayerAttack
         arrowshower.SetActive(true);
         if (bow_shoot_sound[1] != null) bow_shoot_sound[1].PlayOneShot(bow_shoot_sound[1].clip);
     }
-    protected override void Arrow_Shower_Startpoint()
+    private void Arrow_Shower_Startpoint()
     {
         arrow_shower_startpoint.SetActive(true);
     }

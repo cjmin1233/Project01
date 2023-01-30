@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     private PlayerAttack playerAttack;
     
     float movementX;
-    [Header("Horizontal Movement")][SerializeField] private float baseSpeed = 400f;
+    [Header("Horizontal Movement")] private float baseSpeed = 400f;
+    [HideInInspector] public float moveSpeed_multiplier = 1f;
     public AudioSource[] dash_sound;
     public float dashPower = 5f;
     public float dashTime = 0.2f;
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
     private float dashTimeLeft;
     private float lastImageXpos;
     private float lastDash = -100f;
-    private bool isFacingRight = true;
+    //private bool isFacingRight = true;
     // after image 
     public bool AfterImageAvailable = false;
     private float AfterImageRate = 20f;
@@ -41,6 +42,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private LayerMask WhatIsGround;
 
+    public float defence_multiplier = 1f;
+    public bool recovery_enable = false;
+    public bool resistance_enable = false;
+    public float hpincrease_multiplier = 1f;
     private float MaxHP = 100f;
     private float CurHP;
     [HideInInspector] public bool canInvincible;
@@ -48,6 +53,7 @@ public class Player : MonoBehaviour
     private float damagingTimeLeft = -1f;
     const float damagingTime = 1f;
 
+    [HideInInspector] public float gold_multiplier = 1f;
     private int gold;
     [SerializeField] private Player_Ground_Checker ground_checker;
     private void Start()
@@ -69,7 +75,7 @@ public class Player : MonoBehaviour
 
         CurHP = MaxHP;
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
-        currentSpeed = baseSpeed;
+        currentSpeed = moveSpeed_multiplier * baseSpeed;
     }
 
     private void Update()
@@ -84,6 +90,7 @@ public class Player : MonoBehaviour
             TakeDamage(20f);
         }
         /////////////////////
+        currentSpeed = moveSpeed_multiplier * baseSpeed;
         if (canMove)
         {
             if (!isDashing) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
@@ -113,17 +120,6 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
-        /*// PopUp UI
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Esc_UI.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            //
-            Book_UI.SetActive(true);
-        }*/
         DamagingCheck();
         FlipPlayer();
         CheckDash();
@@ -141,12 +137,12 @@ public class Player : MonoBehaviour
     {
         if (movementX > 0)
         {
-            isFacingRight = true;
+            //isFacingRight = true;
             if (transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else if (movementX < 0)
         {
-            isFacingRight = false;
+            //isFacingRight = false;
             if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
@@ -179,10 +175,9 @@ public class Player : MonoBehaviour
             {
                 // 대쉬 방향 설정
                 animator.SetBool("IsDashing", isDashing);
-                currentSpeed = dashPower * baseSpeed;
+                currentSpeed = dashPower * moveSpeed_multiplier * baseSpeed;
                 movementX = transform.right.x * currentSpeed;
-                /*if (isFacingRight) movementX = currentSpeed;
-                else movementX = (-1f) * currentSpeed;*/
+
 
                 dashTimeLeft -= Time.deltaTime;
 
@@ -197,7 +192,7 @@ public class Player : MonoBehaviour
             {
                 // 대쉬 정지
                 canMove = true;
-                currentSpeed = baseSpeed;
+                currentSpeed = moveSpeed_multiplier * baseSpeed;
                 isDashing = false;
                 animator.SetBool("IsDashing", isDashing);
                 if (damagingTimeLeft <= 0)
@@ -301,8 +296,9 @@ public class Player : MonoBehaviour
     }
     public void IncreaseMaxHP()
     {
-        MaxHP += 25;
-        CurHP += 25;
+        MaxHP += Mathf.Round(25f * hpincrease_multiplier);
+        CurHP += Mathf.Round(25f * hpincrease_multiplier);
+
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
     }
     public void Heal(float heal)
@@ -311,11 +307,11 @@ public class Player : MonoBehaviour
         if (CurHP > MaxHP) CurHP = MaxHP;
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
     }
-    public void IncreaseRunSpeed()
+    /*public void IncreaseRunSpeed()
     {
         baseSpeed *= 1.3f;
         currentSpeed *= 1.3f;
-    }
+    }*/
     public void TakeDamage(float damage)
     {
         if (!canInvincible)
@@ -329,15 +325,18 @@ public class Player : MonoBehaviour
             {
                 // 플레이어 밀침 효과
                 float damageForce = 20.0f;
-                if (isFacingRight) damageForce *= -1.0f;
-                rb.AddForce(new Vector2(damageForce, 0f), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(-1f * transform.right.x * damageForce, 0f), ForceMode2D.Impulse);
+                damage /= defence_multiplier;
 
                 if(playerAttack.sword_shield_enable && playerAttack.isXAttacking)
                 {
-                    damage = Mathf.Round(damage * 0.5f);
+                    damage *= 0.5f;
                     if (damage_shield_sound != null) damage_shield_sound.PlayOneShot(damage_shield_sound.clip);
                 }
-                CurHP -= damage;
+
+                if (resistance_enable && CurHP / MaxHP <= 0.4f) damage *= 0.9f;
+
+                CurHP -= Mathf.Round(damage);
 
                 // 무적 시간 부여
                 canInvincible = true;
@@ -353,6 +352,11 @@ public class Player : MonoBehaviour
                     CurHP = 0;
                     Die();
                 }
+                else if (recovery_enable)
+                {
+                    damage *= 0.3f;
+                    Heal(damage);
+                }
             }
         }
 
@@ -360,6 +364,7 @@ public class Player : MonoBehaviour
     }
     public void GetGold(int get_gold)
     {
+        get_gold = (int)Mathf.Round(get_gold * gold_multiplier);
         gold += get_gold;
         UI_Container.Instance.HandleGold(gold);
     }
@@ -385,10 +390,10 @@ public class Player : MonoBehaviour
     }
     private void Die()
     {
+        Debug.Log("Player Died");
         //animator.SetBool("IsDead", true);
         //GetComponent<Rigidbody2D>().gravityScale = 0;
         //GetComponent<Collider2D>().enabled = false;
-        Debug.Log("Player Died");
         //this.enabled = false;
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(gameObject);
