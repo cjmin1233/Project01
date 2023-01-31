@@ -7,6 +7,9 @@ public class Arrow_Shower_Collider : MonoBehaviour
     [HideInInspector] public float damage;
     //[HideInInspector] public float anim_Speed = 1.0f;
     [HideInInspector] public Vector2 damageForce;
+    [HideInInspector] public bool rain_enable = false;
+    [HideInInspector] public bool slow_enable = false;
+    private float damage_multiplier = 1f;
     //public AudioSource audioSource;
     //private Animator animator;
     //private List<string> hit_list;
@@ -15,24 +18,26 @@ public class Arrow_Shower_Collider : MonoBehaviour
         //animator = GetComponent<Animator>();
         //hit_list = new List<string>();
     }*/
-    /*private void OnEnable()
+    private void OnEnable()
     {
-        //animator.SetFloat("EnableSpeed", anim_Speed);
-        //if (audioSource != null) audioSource.PlayOneShot(audioSource.clip);
-    }*/
+        damage_multiplier = 1f;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.tag;
-        //string name = collision.name;
+        float currDamage = Mathf.Round(damage * damage_multiplier);
         if (tag == "Enemy")
         {
-            //Debug.Log("hit " + collision.name);
-            collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);
+            collision.GetComponent<Enemy>().TakeDamage(currDamage, damageForce);
         }
         else if (tag == "Boss")
         {
-            collision.GetComponent<Boss>().TakeDamage(damage);
+            collision.GetComponent<Boss>().TakeDamage(currDamage);
+        }
+        if(tag=="Enemy" || tag == "Boss")
+        {
+            if (damage_multiplier < 1.6f && rain_enable) damage_multiplier += 0.1f;
         }
     }
     private void Disable_Sword_Collider()

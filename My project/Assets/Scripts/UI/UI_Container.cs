@@ -166,23 +166,36 @@ public class UI_Container : MonoBehaviour
         Debug.Log("Selected ability is : " + name);
         if (name == "PowerUp_Z")
         {
-            playerAttack.damage_z_multiplier = 1f + 0.1f * ability.level;
+            //playerAttack.damage_z_multiplier = 1f + 0.1f * ability.level;
+            if (!playerAttack.damage_z_buffer.ContainsKey("PowerUp_Z")) playerAttack.damage_z_buffer.Add("PowerUp_Z", 0.2f * ability.level);
+            else playerAttack.damage_z_buffer["PowerUp_Z"] = 0.2f * ability.level;
+
         }
         else if (name == "PowerUp_X")
         {
-            playerAttack.damage_x_multiplier = 1f + 0.1f * ability.level;
+            //playerAttack.damage_x_multiplier = 1f + 0.1f * ability.level;
+            if (!playerAttack.damage_x_buffer.ContainsKey("PowerUp_X")) playerAttack.damage_x_buffer.Add("PowerUp_X", 0.2f * ability.level);
+            else playerAttack.damage_x_buffer["PowerUp_X"] = 0.2f * ability.level;
+
         }
         else if (name == "SpeedUp_Z")
         {
-            playerAttack.Speed_Z = 1f + 0.2f * ability.level;
+            //playerAttack.Speed_Z = 1f + 0.2f * ability.level;
+            if (!playerAttack.speed_z_buffer.ContainsKey("SpeedUp_Z")) playerAttack.speed_z_buffer.Add("SpeedUp_Z", 0.2f * ability.level);
+            else playerAttack.speed_z_buffer["SpeedUp_Z"] = 0.2f * ability.level;
         }
         else if (name == "SpeedUp_X")
         {
-            playerAttack.Speed_X = 1f + 0.2f * ability.level;
+            //playerAttack.Speed_X = 1f + 0.2f * ability.level;
+            if (!playerAttack.speed_x_buffer.ContainsKey("SpeedUp_X")) playerAttack.speed_x_buffer.Add("SpeedUp_X", 0.2f * ability.level);
+            else playerAttack.speed_x_buffer["SpeedUp_X"] = 0.2f * ability.level;
+
         }
         else if (name == "PowerUp")
         {
-            playerAttack.playerPower = 100f * (1f + 0.1f * ability.level);
+            //playerAttack.playerPower = 100f * (1f + 0.1f * ability.level);
+            if (!playerAttack.power_buffer.ContainsKey("PowerUp")) playerAttack.power_buffer.Add("PowerUp", 0.1f * ability.level);
+            else playerAttack.power_buffer["PowerUp"] = 0.1f * ability.level;
         }
         else if (name == "SpeedUp_Run")
         {
@@ -256,29 +269,35 @@ public class UI_Container : MonoBehaviour
         {
             playerAttack.bow_air_enable = true;
         }
-        else if (name == "ChargeBeam")
+        else if (name == "ArrowRain")
         {
-
+            playerAttack.bow_rain_enable = true;
         }
-        else if (name == "PowerBeam")
+        else if (name == "HardPlant")
         {
-
+            playerAttack.bow_slow_enable = true;
         }
-        else if (name == "LongerBeam")
+        else if (name == "QuickShower")
         {
-
+            playerAttack.bow_fast_enable = true;
         }
         else if (name == "DaggerStorm")
         {
-
+            playerAttack.dagger_storm_enable = true;
+            availableAbilityList.Remove(hiddenHashashinAbility_Z[1]);
+            availableAbilityList.Remove(hiddenHashashinAbility_Z[2]);
         }
-        else if (name == "FastWind")
+        else if (name == "QuickWind")
         {
-
+            playerAttack.quick_wind_enable = true;
+            availableAbilityList.Remove(hiddenHashashinAbility_Z[0]);
         }
         else if (name == "Assassin")
         {
-
+            playerAttack.assassin_enable = true;
+            availableAbilityList.Remove(hiddenHashashinAbility_Z[0]);
+            playerAttack.speed_x_buffer.Add("Assassin", 0.5f);
+            playerAttack.damage_x_buffer.Add("Assassin", 0.5f);
         }
         else if (name == "Swift")
         {

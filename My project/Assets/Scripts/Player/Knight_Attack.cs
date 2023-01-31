@@ -59,8 +59,11 @@ public class Knight_Attack : PlayerAttack
             if (comboCounter == 3)
             {
                 gameObject.GetComponent<Player>().canMove = false;
-                animator.SetFloat("Speed_X", Speed_X);
+
+                animator.SetFloat("Speed_X", X_SpeedCalculation());
                 isXAttacking = true;
+                animator.SetBool("IsXAttacking", isXAttacking);
+
                 animator.SetTrigger("Combo3");
 
                 rb.AddForce(new Vector2(transform.right.x * 1f, 0f), ForceMode2D.Impulse);
@@ -98,7 +101,9 @@ public class Knight_Attack : PlayerAttack
     {
         Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
         int count = comboCounter % 3;
-        comboCollider[count].GetComponent<Combo_Collider>().damage = Mathf.Round(playerPower * damage_z_multiplier * combo_coef * (1 + (float)count * 0.2f));
+        //comboCollider[count].GetComponent<Combo_Collider>().damage = Mathf.Round(playerPower * damage_z_multiplier * combo_coef * (1 + (float)count * 0.2f));
+        //comboCollider[count].GetComponent<Combo_Collider>().damage = Mathf.Round(PlayerPowerCalculation() * damage_z_multiplier * combo_coef * (1 + (float)count * 0.2f));
+        comboCollider[count].GetComponent<Combo_Collider>().damage = Mathf.Round(PlayerPowerCalculation() * Z_DamageCalculation() * combo_coef * (1 + (float)count * 0.2f));
         comboCollider[count].GetComponent<Combo_Collider>().damageForce = damageForce;
     }
     private void ShootSwordWind()
@@ -107,8 +112,8 @@ public class Knight_Attack : PlayerAttack
         {
             GameObject swordwind = SwordWindPool.Instance.GetFromPool();
 
-            swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(playerPower * damage_z_multiplier * wind_coef * (1 + (float)(comboCounter % 3) * 0.2f));
-            swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Speed_Z;
+            swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(PlayerPowerCalculation() * Z_DamageCalculation() * wind_coef * (1 + (float)(comboCounter % 3) * 0.2f));
+            swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Z_SpeedCalculation();
 
             swordwind.transform.position = sword_wind_startpoint.position;
             swordwind.SetActive(true);
@@ -121,7 +126,7 @@ public class Knight_Attack : PlayerAttack
         // 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
 
-        animator.SetFloat("Speed_Z", Speed_Z);
+        animator.SetFloat("Speed_Z", Z_SpeedCalculation());
         isZAttacking = true;
         animator.SetBool("IsZAttacking", isZAttacking);
         animator.SetTrigger("Combo" + comboCounter);
@@ -140,18 +145,18 @@ public class Knight_Attack : PlayerAttack
     {
         Vector2 damageForce = new Vector2(transform.right.x * 20f, 0f);
         float damage = 0f;
-        damage = Mathf.Round(playerPower * damage_x_multiplier * sp_coef * (1 + 0.5f * (float)chargeCounter));
+        damage = PlayerPowerCalculation() * X_DamageCalculation() * sp_coef * (1 + 0.5f * (float)chargeCounter);
         if (sword_critical_enable)
         {
             int rand = Random.Range(1, 101);
             if (rand <= 40)
             {
                 Sword_Collider_X.GetComponent<Combo_Collider>().critical = true;
-                damage = Mathf.Round(damage * 1.5f);
+                damage *= 1.5f;
             }
             else Sword_Collider_X.GetComponent<Combo_Collider>().critical = false;
         }
-        Sword_Collider_X.GetComponent<Combo_Collider>().damage = damage;
+        Sword_Collider_X.GetComponent<Combo_Collider>().damage = Mathf.Round(damage);
         Sword_Collider_X.GetComponent<Combo_Collider>().damageForce = damageForce;
         
     }
@@ -160,7 +165,7 @@ public class Knight_Attack : PlayerAttack
         // 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
 
-        animator.SetFloat("Speed_X", Speed_X);
+        animator.SetFloat("Speed_X", X_SpeedCalculation());
         isXAttacking = true;
         animator.SetBool("IsXAttacking", isXAttacking);
 

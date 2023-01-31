@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [HideInInspector] public float damage;
-    [HideInInspector] public float anim_Speed;
+    //[HideInInspector] public float anim_Speed;
     [HideInInspector] public bool isPoisoned;
     [HideInInspector] public bool isDiagonal;
     private float speed = 25f;
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         arrow_collider = GetComponent<BoxCollider2D>();
-        anim_Speed = 1.0f;
+        //anim_Speed = 1.0f;
         isPoisoned = false;
         isDiagonal = false;
         offset = new Vector2(0.11f, 0f);

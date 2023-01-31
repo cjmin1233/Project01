@@ -8,6 +8,8 @@ public class PlayerAttack : MonoBehaviour
     public bool isXAttacking = false;
     public float Speed_Z = 1.0f;
     public float Speed_X = 1.0f;
+    public Dictionary<string, float> speed_z_buffer = new Dictionary<string, float>();
+    public Dictionary<string, float> speed_x_buffer = new Dictionary<string, float>();
 
     protected Rigidbody2D rb;
     protected Animator animator;
@@ -16,8 +18,12 @@ public class PlayerAttack : MonoBehaviour
     protected int inputZCounter = 0;
 
     public float playerPower = 100f;
-    public float damage_z_multiplier = 1.0f;
-    public float damage_x_multiplier = 1.0f;
+    //public float damage_z_multiplier = 1.0f;
+    //public float damage_x_multiplier = 1.0f;
+
+    public Dictionary<string, float> power_buffer = new Dictionary<string, float>();
+    public Dictionary<string, float> damage_z_buffer = new Dictionary<string, float>();
+    public Dictionary<string, float> damage_x_buffer = new Dictionary<string, float>();
 
 
     public bool sword_wind_enable;
@@ -30,7 +36,13 @@ public class PlayerAttack : MonoBehaviour
     public bool bow_storm_enable;
     public bool bow_poison_enable;
     public bool bow_air_enable;
-    public bool bow_charge_enable;
+    public bool bow_rain_enable;
+    public bool bow_slow_enable;
+    public bool bow_fast_enable;
+
+    public bool dagger_storm_enable;
+    public bool quick_wind_enable;
+    public bool assassin_enable;
 
     protected bool isJumping;
     protected bool isDashing;
@@ -54,16 +66,21 @@ public class PlayerAttack : MonoBehaviour
         bow_storm_enable = false;
         bow_poison_enable = false;
         bow_air_enable = false;
-        bow_charge_enable = false;
+        bow_rain_enable = false;
+        bow_slow_enable = false;
+        bow_fast_enable = false;
+
+        dagger_storm_enable = false;
+        quick_wind_enable = false;
+        assassin_enable = false;
 
         isJumping = false;
         isDashing = false;
     }
-    protected virtual void Update()
-    { }
+    protected virtual void Update() { }
     private void Start_Combo()
     {
-        if (comboCounter == 1 && (sword_storm_enable || bow_storm_enable)) comboCounter = 4;
+        if (comboCounter == 1 && (sword_storm_enable || bow_storm_enable || dagger_storm_enable)) comboCounter = 4;
         else if (comboCounter < 3)
         {
             comboCounter++;
@@ -108,5 +125,55 @@ public class PlayerAttack : MonoBehaviour
 
         comboCounter = 0;
         inputZCounter = 0;
+    }
+    protected float Z_SpeedCalculation()
+    {
+        float z_multiplier = 1f;
+        foreach (float value in speed_z_buffer.Values)
+        {
+            z_multiplier += value;
+        }
+
+        return z_multiplier;
+    }
+    protected float X_SpeedCalculation()
+    {
+        float x_multiplier = 1f;
+        foreach (float value in speed_x_buffer.Values)
+        {
+            x_multiplier += value;
+        }
+
+        return x_multiplier;
+    }
+    protected float PlayerPowerCalculation()
+    {
+        float full_power = 1f;
+        foreach (float value in power_buffer.Values)
+        {
+            full_power += value;
+        }
+
+        return playerPower * full_power;
+    }
+    protected float Z_DamageCalculation()
+    {
+        float z_multiplier = 1f;
+        foreach (float value in damage_z_buffer.Values)
+        {
+            z_multiplier += value;
+        }
+
+        return z_multiplier;
+    }
+    protected float X_DamageCalculation()
+    {
+        float x_multiplier = 1f;
+        foreach (float value in damage_x_buffer.Values)
+        {
+            x_multiplier += value;
+        }
+
+        return x_multiplier;
     }
 }

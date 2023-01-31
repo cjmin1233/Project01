@@ -7,23 +7,23 @@ public class Ranger_Attack : PlayerAttack
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject ArrowPrefab;
     [SerializeField] private AudioSource[] bow_shoot_sound;
-    [SerializeField] private GameObject Bow_Beam;
+    //[SerializeField] private GameObject Bow_Beam;
     [SerializeField] private GameObject arrow_shower_startpoint;
-    [SerializeField] private AudioSource[] Charge_Sound;
-    [SerializeField] private GameManager ChargeEffect;
-    private bool isCharging = false;
-    private int chargeCounter = 0;
+    //[SerializeField] private AudioSource[] Charge_Sound;
+    //[SerializeField] private GameManager ChargeEffect;
+    //private bool isCharging = false;
+    //private int chargeCounter = 0;
 
     private RaycastHit2D rayHit;
     private float arrow_coef = 0.5f;
     private float shower_coef = 0.15f;
-    private float beam_coef = 0.2f;
+    //private float beam_coef = 0.2f;
 
-    protected override void Start()
+    /*protected override void Start()
     {
         base.Start();
-        isCharging = false;
-    }
+        //isCharging = false;
+    }*/
 
     protected override void Update()
     {
@@ -54,23 +54,13 @@ public class Ranger_Attack : PlayerAttack
 
         if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
         {
-            // Z+X 콤보
-            if (comboCounter == 3)
-            {
-                gameObject.GetComponent<Player>().canMove = false;
-                arrow_shower_startpoint.GetComponent<Arrow_Shower_Startpoint>().anim_Speed = Speed_X;
-                animator.SetFloat("Speed_X", Speed_X);
-                isXAttacking = true;
-                animator.SetTrigger("Combo3");
-            }
-            // 일반 X
-            else BowXAttack();
+            if (comboCounter == 3 || bow_fast_enable) BowXAttack();
         }
-        if (Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
+        /*if (Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
         {
             isCharging = false;
             animator.SetBool("IsCharging", isCharging);
-        }
+        }*/
 
         //  over Z input handle
         if (!isZAttacking && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)
@@ -85,16 +75,6 @@ public class Ranger_Attack : PlayerAttack
         rayHit = Physics2D.Raycast(rb.position, Vector3.down, 10f, LayerMask.GetMask("Ground"));
         //Debug.Log(rayHit.distance);
     }
-    private void Finish_X_Charging()
-    {
-        if (chargeCounter < 3)
-        {
-            // charge sound
-            if (Charge_Sound[chargeCounter] != null) Charge_Sound[chargeCounter].PlayOneShot(Charge_Sound[chargeCounter].clip);
-            ChargeEffect.GetComponent<Animator>().SetTrigger("Enable");
-            chargeCounter++;
-        }
-    }
     private void Finish_Air_Combo()
     {
         isZAttacking = true;
@@ -104,7 +84,7 @@ public class Ranger_Attack : PlayerAttack
         // 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
 
-        animator.SetFloat("Speed_Z", Speed_Z);
+        animator.SetFloat("Speed_Z", Z_SpeedCalculation());
         isZAttacking = true;
         animator.SetBool("IsZAttacking", isZAttacking);
         if (comboCounter == 0)
@@ -123,7 +103,7 @@ public class Ranger_Attack : PlayerAttack
             // 공격동안 움직임 제어
             gameObject.GetComponent<Player>().canMove = false;
 
-            animator.SetFloat("Speed_Z", Speed_Z);
+            animator.SetFloat("Speed_Z", Z_SpeedCalculation());
             isZAttacking = true;
             animator.SetBool("IsZAttacking", isZAttacking);
 
@@ -143,8 +123,8 @@ public class Ranger_Attack : PlayerAttack
     private void ShootArrow()
     {
         GameObject arrow = ArrowPool.Instance.GetFromPool();
-        arrow.GetComponent<Bullet>().damage = Mathf.Round(playerPower * damage_z_multiplier * arrow_coef * (1 + (comboCounter % 3) * 0.2f));
-        arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
+        arrow.GetComponent<Bullet>().damage = Mathf.Round(PlayerPowerCalculation() * Z_DamageCalculation() * arrow_coef * (1 + (comboCounter % 3) * 0.2f));
+        //arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
         arrow.GetComponent<Bullet>().isDiagonal = isJumping;
         if (bow_poison_enable) arrow.GetComponent<Bullet>().isPoisoned = true;
         arrow.transform.position = firePoint.position;
@@ -157,15 +137,17 @@ public class Ranger_Attack : PlayerAttack
         // 공격동안 움직임 제어
         gameObject.GetComponent<Player>().canMove = false;
 
-        animator.SetFloat("Speed_X", Speed_X);
+        float speed_x = X_SpeedCalculation();
+        animator.SetFloat("Speed_X", speed_x);
+        arrow_shower_startpoint.GetComponent<Arrow_Shower_Startpoint>().anim_Speed = speed_x;
         isXAttacking = true;
-        animator.SetBool("IsZAttacking", isZAttacking);
+        animator.SetBool("IsXAttacking", isXAttacking);
 
         animator.SetTrigger("AttackX");
 
         comboCounter = 0;
     }
-    private void Enable_Bow_Beam()
+    /*private void Enable_Bow_Beam()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 10f, 0f);
         float damage = 0f;
@@ -173,13 +155,14 @@ public class Ranger_Attack : PlayerAttack
         Bow_Beam.GetComponent<Bow_Beam_Collider>().damage = damage;
         Bow_Beam.GetComponent<Bow_Beam_Collider>().anim_Speed = Speed_X;
         Bow_Beam.GetComponent<Bow_Beam_Collider>().damageForce = damageForce;
-    }
+    }*/
     private void Enable_Arrow_Shower()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 8f, 0f);
         GameObject arrowshower = ArrowShowerPool.Instance.GetFromPool();
-        arrowshower.GetComponent<Arrow_Shower_Collider>().damage = Mathf.Round(playerPower * damage_x_multiplier * shower_coef);
+        arrowshower.GetComponent<Arrow_Shower_Collider>().damage = Mathf.Round(PlayerPowerCalculation() * X_DamageCalculation() * shower_coef);
         arrowshower.GetComponent<Arrow_Shower_Collider>().damageForce = damageForce;
+        arrowshower.GetComponent<Arrow_Shower_Collider>().rain_enable = bow_rain_enable;
         arrowshower.transform.position = arrow_shower_startpoint.transform.position;
         arrowshower.SetActive(true);
         if (bow_shoot_sound[1] != null) bow_shoot_sound[1].PlayOneShot(bow_shoot_sound[1].clip);
