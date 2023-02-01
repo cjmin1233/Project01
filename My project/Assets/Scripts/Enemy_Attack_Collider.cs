@@ -5,8 +5,8 @@ using UnityEngine;
 public class Enemy_Attack_Collider : MonoBehaviour
 {
     public float damage;
-    //public float anim_Speed = 1.0f;
     public AudioSource audioSource;
+    //public float anim_Speed = 1.0f;
 
     //private Animator animator;
     /*private void Awake()
@@ -28,9 +28,5 @@ public class Enemy_Attack_Collider : MonoBehaviour
             collision.GetComponent<Player>().TakeDamage(damage);
         }
         //else Debug.Log("We hit " + collision.name);
-    }
-    private void Disable_Collider()
-    {
-        gameObject.SetActive(false);
     }
 }

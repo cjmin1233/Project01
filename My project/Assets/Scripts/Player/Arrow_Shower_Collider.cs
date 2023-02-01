@@ -29,7 +29,7 @@ public class Arrow_Shower_Collider : MonoBehaviour
         float currDamage = Mathf.Round(damage * damage_multiplier);
         if (tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().TakeDamage(currDamage, damageForce);
+            collision.GetComponent<Enemy_Default>().TakeDamage(currDamage, damageForce);
         }
         else if (tag == "Boss")
         {

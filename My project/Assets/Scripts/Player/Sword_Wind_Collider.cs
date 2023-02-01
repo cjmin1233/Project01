@@ -55,7 +55,7 @@ public class Sword_Wind_Collider : MonoBehaviour
             if (tag == "Enemy")
             {
                 //Debug.Log("hit " + collision.name);
-                collision.GetComponent<Enemy>().TakeDamage(damage, Vector2.zero);
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero);
             }
             else if (tag == "Boss")
             {

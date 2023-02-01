@@ -16,12 +16,13 @@ public class Enemy_Default : MonoBehaviour
 
     [HideInInspector] public bool playerInRange;
     [HideInInspector] public bool detectPlayer;
-    private bool canMove;
+    //private bool canMove;
 
     // 공격
     private bool isAttacking;
     [SerializeField] private float attackRate = 0.5f;
     private float lastAttackTime = 0f;
+    private bool superArmor = false;
 
     // hp
     [SerializeField] private float maxHP;
@@ -42,7 +43,7 @@ public class Enemy_Default : MonoBehaviour
         if (maxHP > 0) curHP = maxHP;
         healthbar.SetHealth(curHP, maxHP);
 
-        canMove = true;
+        //canMove = true;
         isAttacking = false;
         playerInRange = false;
     }
@@ -58,7 +59,9 @@ public class Enemy_Default : MonoBehaviour
             else if (!playerInRange)
             {
                 // 플레이어를 발견했고 공격범위 안에 없는 경우 플레이어를 추격한다.
-                canMove = true;
+                //canMove = true;
+                //
+                movementX = baseSpeed;
                 player = GameObject.FindGameObjectWithTag("Player");
                 if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
                 Move();
@@ -66,7 +69,8 @@ public class Enemy_Default : MonoBehaviour
             else if (Time.time >= lastAttackTime + 1 / attackRate)
             {
                 // 플레이어를 발견했고 공격범위 안에 있는 경우, 공격 속도에 맞게 공격 액션을 취한다.
-
+                Attack();
+                lastAttackTime = Time.time;
             }
         }
         Flip();
@@ -74,11 +78,13 @@ public class Enemy_Default : MonoBehaviour
     private void Init()
     {
         isAttacking = false;
-        canMove = true;
+        animator.SetBool("IsAttacking", isAttacking);
+
+        //canMove = true;
     }
     private void Stop()
     {
-        canMove = false;
+        //canMove = false;
         rb.velocity = Vector2.zero;
         animator.SetFloat("Speed", 0);
     }
@@ -103,17 +109,32 @@ public class Enemy_Default : MonoBehaviour
 
         animator.SetTrigger("Attack");
         isAttacking = true;
+        animator.SetBool("IsAttacking", isAttacking);
 
         Stop();
     }
+    private void OnSuperArmor()
+    {
+        superArmor = true;
+        //
+    }
+    private void OffSuperArmor()
+    {
+        superArmor = false;
+        //
+    }
+
     public void TakeDamage(float damage, Vector2 damageForce)
     {
         if (!animator.GetBool("IsDead"))
         {
-            int rand = Random.Range(0, damage_sound.Length);
-            if (damage_sound[rand] != null) damage_sound[rand].PlayOneShot(damage_sound[rand].clip);
+            if (damage_sound.Length > 0)
+            {
+                int rand = Random.Range(0, damage_sound.Length);
+                if (damage_sound[rand] != null) damage_sound[rand].PlayOneShot(damage_sound[rand].clip);
+            }
 
-            rb.AddForce(damageForce, ForceMode2D.Impulse);
+            if (!superArmor) rb.AddForce(damageForce, ForceMode2D.Impulse);
 
             if (!isAttacking) animator.SetTrigger("Hit");
 

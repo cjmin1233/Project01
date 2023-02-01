@@ -38,7 +38,8 @@ public class Combo_Collider : MonoBehaviour
             
             if (tag == "Enemy")
             {
-                collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);
+                //collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce);
             }
             else if (tag == "Boss")
             {

@@ -49,8 +49,8 @@ public class Bullet : MonoBehaviour
         string tag = collision.tag;
         if (tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().TakeDamage(damage, Vector2.zero);
-            if (isPoisoned) collision.GetComponent<Enemy>().TakeDamage(1f, Vector2.zero);
+            collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero);
+            if (isPoisoned) collision.GetComponent<Enemy_Default>().TakeDamage(1f, Vector2.zero);
 
         }
         else if (tag == "Boss")
