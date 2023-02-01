@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    GameObject player;
+    private GameObject player;
+    private Rigidbody2D rb;
+    private Animator animator;
+
     [SerializeField] private GameObject spell_1;
     [SerializeField] private GameObject spell_2;
-    SpriteRenderer sr;
-    Rigidbody2D rb;
-    Animator animator;
+    //SpriteRenderer sr;
 
     private float movementX = 200f;
 
@@ -39,7 +40,7 @@ public class Boss : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        //sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //isActing = false;
 
@@ -55,17 +56,6 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
-        /*if (!isActing) timer += Time.deltaTime;
-        if (timer > waitTime)
-        {
-            int random = Random.Range(0, 2);
-            nextAction = random;
-            if (player.transform.position.x < gameObject.transform.position.x) movementX = -200.0f;
-            else movementX = 200f;
-
-            isActing = true;
-            timer = 0f;
-        }*/
         if (!isAttacking)
         {
             if (!playerInRange) canMove = true;
@@ -171,20 +161,23 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        GameObject dmgText = Instantiate(DamageText);
-        dmgText.transform.position = damagePoint.transform.position;
-        dmgText.GetComponent<DamageText>().damage = damage;
-        currentHealth -= damage;
-        healthbar.SetHealth(currentHealth, maxHealth);
-        if (currentHealth <= 0)
+        if (!animator.GetBool("IsDead"))
         {
-            Die();
+            GameObject dmgText = Instantiate(DamageText);
+            dmgText.transform.position = damagePoint.transform.position;
+            dmgText.GetComponent<DamageText>().damage = damage;
+            currentHealth -= damage;
+            healthbar.SetHealth(currentHealth, maxHealth);
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
     private void Die()
     {
-        Debug.Log("Boss Dead. Congratulations!");
         animator.SetBool("IsDead", true);
+        Debug.Log("Boss Dead. Congratulations!");
         BossStop();
         Time.timeScale = 0.5f;
     }

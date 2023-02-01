@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    GameObject player;
+    private GameObject player;
+    private Rigidbody2D rb;
+    private Animator animator;
 
     public float maxHealth = 100;
     private float currentHealth;
-    private Animator animator;
-    private Rigidbody2D rb;
     [SerializeField] private Transform damagePoint;
     public GameObject DamageText;
     public Enemy_Healthbar healthbar;
@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
 
     [Header("Audio Source")] [SerializeField] private AudioSource die_sound;
     [SerializeField] private AudioSource[] damage_sound;
+
+    private bool superArmor = false;
 
     private void Start()
     {
@@ -78,6 +80,7 @@ public class Enemy : MonoBehaviour
 
         animator.SetTrigger("Attack");
         isAttacking = true;
+        animator.SetBool("IsAttacking", isAttacking);
         canMove = false;
         rb.velocity = Vector2.zero;
         animator.SetFloat("Speed", 0);
@@ -91,6 +94,8 @@ public class Enemy : MonoBehaviour
     private void EnemyInit()
     {
         isAttacking = false;
+        animator.SetBool("IsAttacking", isAttacking);
+
         canMove = true;
     }
     private void Flip()
@@ -106,26 +111,39 @@ public class Enemy : MonoBehaviour
             if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
+    private void OnSuperArmor()
+    {
+        superArmor = true;
+        //
+    }
+    private void OffSuperArmor()
+    {
+        superArmor = false;
+        //
+    }
     public void TakeDamage(float damage, Vector2 damageForce)
     {
-        int rand = Random.Range(0, 3);
-        if (damage_sound[rand] != null) damage_sound[rand].PlayOneShot(damage_sound[rand].clip);
-        EnemyInit();
-        // 데미지 입을시 밀려나기
-        //float damageForce = 20.0f;
-        //if (transform.rotation.y == 0f) damageForce *= -1.0f;
-        rb.AddForce(damageForce, ForceMode2D.Impulse);
-
-        if (doAttack) canMove = false;
-        animator.SetTrigger("Hit");
-        GameObject dmgText = Instantiate(DamageText);
-        dmgText.transform.position = damagePoint.transform.position;
-        dmgText.GetComponent<DamageText>().damage = damage;
-        currentHealth -= damage;
-        healthbar.SetHealth(currentHealth, maxHealth);
-        if (currentHealth <= 0)
+        if (!animator.GetBool("IsDead"))
         {
-            Die();
+            int rand = Random.Range(0, 3);
+            if (damage_sound[rand] != null) damage_sound[rand].PlayOneShot(damage_sound[rand].clip);
+            //EnemyInit();
+            // 데미지 입을시 밀려나기
+            //float damageForce = 20.0f;
+            //if (transform.rotation.y == 0f) damageForce *= -1.0f;
+            if(!superArmor) rb.AddForce(damageForce, ForceMode2D.Impulse);
+
+            if (doAttack) canMove = false;
+            if (!isAttacking) animator.SetTrigger("Hit");
+            GameObject dmgText = Instantiate(DamageText);
+            dmgText.transform.position = damagePoint.transform.position;
+            dmgText.GetComponent<DamageText>().damage = damage;
+            currentHealth -= damage;
+            healthbar.SetHealth(currentHealth, maxHealth);
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
     private void Die()
@@ -133,8 +151,8 @@ public class Enemy : MonoBehaviour
         if (die_sound != null) die_sound.PlayOneShot(die_sound.clip);
         animator.SetBool("IsDead", true);
         rb.velocity = Vector2.zero;
-        rb.gravityScale = 0;
-        GetComponent<Collider2D>().enabled = false;
+        //rb.gravityScale = 0;
+        //GetComponent<Collider2D>().enabled = false;
         //this.enabled = false;
         //Instantiate(deathEffect, transform.position, Quaternion.identity);
         //Destroy(gameObject);

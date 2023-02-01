@@ -840,7 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ed5c30cb540db47bb37cf680e71999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10000
   damagePoint: {fileID: 746579986558271365}
   DamageText: {fileID: 6674314837059719366, guid: 3d35f64ec99d80d46bcc0b56e141f284, type: 3}
   healthbar: {fileID: 746579986673758239}
@@ -1083,7 +1083,6 @@ GameObject:
   m_Component:
   - component: {fileID: 746579986368302311}
   - component: {fileID: 746579986368302310}
-  - component: {fileID: 746579986368302304}
   - component: {fileID: 746579986368302305}
   m_Layer: 0
   m_Name: Attack_Collider
@@ -1147,25 +1146,6 @@ PolygonCollider2D:
       - {x: 0.24919605, y: -0.055554625}
       - {x: 0.29694366, y: -0.018691976}
       - {x: 0.32802296, y: 0.04099518}
---- !u!95 &746579986368302304
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 746579986368302308}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d35a2fd5f2b729943be1c0dfc1b14bc0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &746579986368302305
 MonoBehaviour:
   m_ObjectHideFlags: 0

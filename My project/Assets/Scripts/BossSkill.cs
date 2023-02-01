@@ -5,12 +5,12 @@ using UnityEngine;
 public class BossSkill : MonoBehaviour
 {
     //public GameObject target;
-    GameObject player;
+    //GameObject player;
     public int damage;
-    private void Awake()
+    /*private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-    }
+    }*/
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
