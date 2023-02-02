@@ -9,7 +9,12 @@ public class Enemy_Healthbar : MonoBehaviour
     public Color Low;
     public Color High;
     public Vector3 Offset;
+    //[HideInInspector] public Transform enemyTransform;
 
+    private void OnEnable()
+    {
+        Slider = GetComponent<Slider>();
+    }
     public void SetHealth(float currentHealth, float maxHealth)
     {
         Slider.gameObject.SetActive(currentHealth < maxHealth);
@@ -18,8 +23,8 @@ public class Enemy_Healthbar : MonoBehaviour
 
         Slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, Slider.normalizedValue);
     }
-    void Update()
+    /*void Update()
     {
-        Slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + Offset);
-    }
+        Slider.transform.position = Camera.main.WorldToScreenPoint(enemyTransform.position + Offset);
+    }*/
 }

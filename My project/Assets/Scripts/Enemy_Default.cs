@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy_Default : MonoBehaviour
 {
@@ -28,8 +29,10 @@ public class Enemy_Default : MonoBehaviour
     [SerializeField] private float maxHP;
     private float curHP;
     [SerializeField] private Transform damagePoint;
-    [SerializeField] private GameObject DamageText;
-    [SerializeField] private Enemy_Healthbar healthbar;
+    //[SerializeField] private GameObject DamageText;
+    //[SerializeField] private Enemy_Healthbar healthbar;
+    private GameObject healthbar;
+    [SerializeField] private Vector3 Offset;
 
     // 소리
     [Header("Audio Source")] [SerializeField] private AudioSource die_sound;
@@ -41,7 +44,10 @@ public class Enemy_Default : MonoBehaviour
         animator = GetComponent<Animator>();
 
         if (maxHP > 0) curHP = maxHP;
-        healthbar.SetHealth(curHP, maxHP);
+        healthbar = UI_Container.Instance.GetFromEnemySliderPool();
+        //healthbar.GetComponent<Enemy_Healthbar>().enemyTransform = transform;
+        healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
+        //healthbar.SetHealth(curHP, maxHP);
 
         //canMove = true;
         isAttacking = false;
@@ -49,6 +55,8 @@ public class Enemy_Default : MonoBehaviour
     }
     protected virtual void FixedUpdate()
     {
+        // 체력바 이동
+        healthbar.GetComponent<Slider>().transform.position = Camera.main.WorldToScreenPoint(transform.position + Offset);
         if (!isAttacking && !animator.GetBool("IsDead"))
         {
             if (!detectPlayer)
@@ -143,12 +151,12 @@ public class Enemy_Default : MonoBehaviour
             dmgText.GetComponent<DamageText>().damage = damage;
             dmgText.SetActive(true);
             curHP -= damage;
+            healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
             if (curHP <= 0)
             {
                 curHP = 0;
                 Die();
             }
-            healthbar.SetHealth(curHP, maxHP);
         }
     }
     protected virtual void Die()
@@ -160,6 +168,9 @@ public class Enemy_Default : MonoBehaviour
         // 골드 생성
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Player>().GetGold(100);
+
+        // 체력바 반납
+        UI_Container.Instance.AddToEnemySliderPool(healthbar);
     }
     private void destoryObject()
     {

@@ -10,6 +10,8 @@ public class UI_Container : MonoBehaviour
     public static UI_Container Instance { get; private set; }
     [SerializeField] private Slider HP_UI;
     [SerializeField] private TextMeshProUGUI HP_Text;
+    float MaxHP;
+    float CurHP;
 
     [SerializeField] private TextMeshProUGUI Gold_Text;
 
@@ -47,13 +49,18 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     float space = 50f;
 
-    float MaxHP;
-    float CurHP;
+    // 적 체력바 UI
+    [SerializeField] private GameObject Enemy_UI;
+    [SerializeField] private GameObject enemyHpSlider;
+    private Queue<GameObject> enemySliderQueue = new Queue<GameObject>();
     private void OnEnable()
     {
         Instance = this;
         if (PlayerPrefs.GetInt("weaponType") == 3) hashshin_gauge_UI.SetActive(true);
         curGauge = 0f;
+
+        // 적 체력바 준비
+        GrowEnemySliderPool();
     }
     private void Update()
     {
@@ -457,5 +464,27 @@ public class UI_Container : MonoBehaviour
             y += rectTransform.sizeDelta.y + space;
         }
         scrollRect.content.sizeDelta = new Vector2(scrollRect.content.sizeDelta.x, y);
+    }
+
+    private void GrowEnemySliderPool()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            var instanceToAdd = Instantiate(enemyHpSlider);
+            instanceToAdd.transform.SetParent(Enemy_UI.transform);
+            AddToEnemySliderPool(instanceToAdd);
+        }
+    }
+    public void AddToEnemySliderPool(GameObject instance)
+    {
+        Debug.Log("Hello");
+        instance.SetActive(false);
+        enemySliderQueue.Enqueue(instance);
+    }
+    public GameObject GetFromEnemySliderPool()
+    {
+        if (enemySliderQueue.Count == 0) GrowEnemySliderPool();
+        var instance = enemySliderQueue.Dequeue();
+        return instance;
     }
 }
