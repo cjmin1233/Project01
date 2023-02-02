@@ -9,6 +9,7 @@ public class StarterManager : MonoBehaviour
     [SerializeField] private GameObject[] players;
     [SerializeField] private GameObject startCamera;
     [SerializeField] private GameObject PlayerAfterImagePool;
+    [SerializeField] private GameObject DamageTextPool;
     [SerializeField] private GameObject SwordWindPool;
     [SerializeField] private GameObject ArrowPool;
     [SerializeField] private GameObject ArrowShowerPool;
@@ -41,9 +42,10 @@ public class StarterManager : MonoBehaviour
         }*/
         var cam = Instantiate(startCamera);
         GameManager.Instance.AddToList(cam);
-        var image_pool_obj = Instantiate(PlayerAfterImagePool);
-        GameManager.Instance.AddToList(image_pool_obj);
-
+        var obj = Instantiate(PlayerAfterImagePool);
+        GameManager.Instance.AddToList(obj);
+        obj = Instantiate(DamageTextPool);
+        GameManager.Instance.AddToList(obj);
         /*        GameManager.Instance.objects.Add(Instantiate(startCamera));
                 GameManager.Instance.objects.Add(Instantiate(PlayerAfterImagePool));
         */

@@ -14,25 +14,28 @@ public class DamageText : MonoBehaviour
     Color alpha;
     public float damage;
 
-    // Start is called before the first frame update
-    void Start()
+    private Color startColor;
+    private void Awake()
     {
         text = GetComponent<TextMeshPro>();
-        //text = GetComponent<Text>();
+        startColor = new Color(255f, 255f, 255f, 255f);
+    }
+    private void OnEnable()
+    {        
         text.text = damage.ToString();
-        alpha = text.color;
-        Invoke("DestroyObject", 1);
+        alpha = startColor;
+        Invoke("Disable_Object", 1f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         transform.Translate(new Vector3(0, floatingSpeed * Time.deltaTime, 0));
         alpha.a = Mathf.Lerp(alpha.a, 0, Time.deltaTime * alphaSpeed);
         text.color = alpha;
     }
-    private void DestroyObject()
+    private void Disable_Object()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        DamageTextPool.Instance.AddToPool(gameObject);
     }
 }

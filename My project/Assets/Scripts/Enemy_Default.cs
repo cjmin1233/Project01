@@ -138,9 +138,10 @@ public class Enemy_Default : MonoBehaviour
 
             if (!isAttacking) animator.SetTrigger("Hit");
 
-            GameObject dmgText = Instantiate(DamageText);
+            GameObject dmgText = DamageTextPool.Instance.GetFromPool();
             dmgText.transform.position = damagePoint.transform.position;
             dmgText.GetComponent<DamageText>().damage = damage;
+            dmgText.SetActive(true);
             curHP -= damage;
             if (curHP <= 0)
             {
