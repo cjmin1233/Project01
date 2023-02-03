@@ -12,8 +12,8 @@ public class Enemy_Default : MonoBehaviour
     // 이동 관련
     [SerializeField] protected float baseSpeed = 100f;
     protected float movementX;
-    private Vector3 m_Velocity = Vector3.zero;
-    private float m_MovementSmoothing = 0.05f;
+    protected Vector3 m_Velocity = Vector3.zero;
+    protected float m_MovementSmoothing = 0.05f;
 
     public bool[] range;
     [HideInInspector] public bool playerInRange;
@@ -85,13 +85,18 @@ public class Enemy_Default : MonoBehaviour
     {
         isAttacking = false;
         animator.SetBool("IsAttacking", isAttacking);
-
         //canMove = true;
     }
     protected void Stop()
     {
         //canMove = false;
-        rb.velocity = Vector2.zero;
+        //rb.velocity = Vector2.zero;
+        //animator.SetFloat("Speed", 0);
+
+        Vector3 targetVelocity;
+
+        targetVelocity = new Vector2(0f, 0f);
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         animator.SetFloat("Speed", 0);
     }
     protected void Flip()
@@ -99,7 +104,7 @@ public class Enemy_Default : MonoBehaviour
         if (movementX >= 0 && transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         else if (movementX < 0 && transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }
-    protected void Move()
+    protected virtual void Move()
     {
         Vector3 targetVelocity;
 

@@ -430,7 +430,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.035553917, y: -0.0070248544}
+  m_Offset: {x: 0.04738081, y: -0.03812921}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -441,7 +441,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2772074, y: 0.5086184}
+  m_Size: {x: 0.2338419, y: 0.35783118}
   m_EdgeRadius: 0
 --- !u!50 &5149094981950290640
 Rigidbody2D:
@@ -476,14 +476,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a672414459c6d4abe746dd57377bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 150
+  baseSpeed: 100
   range: 000000
   playerInRange: 0
   detectPlayer: 0
   attackRate: 0.5
   maxHP: 5000
   damagePoint: {fileID: 5149094981063909157}
-  Offset: {x: 0, y: 0, z: 0}
+  Offset: {x: 0, y: 1, z: 0}
   die_sound: {fileID: 0}
   damage_sound: []
 --- !u!1 &6803391778406631080
@@ -602,7 +602,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.309317, y: 0.03032665}
+  m_Offset: {x: 0.43392712, y: 0.03032665}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -613,7 +613,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.89644086, y: 0.47218683}
+  m_Size: {x: 1.145661, y: 0.47218683}
   m_EdgeRadius: 0
 --- !u!114 &5803902556110647198
 MonoBehaviour:
