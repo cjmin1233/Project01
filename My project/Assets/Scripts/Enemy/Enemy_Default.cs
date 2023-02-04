@@ -101,7 +101,7 @@ public class Enemy_Default : MonoBehaviour
     }
     protected void Flip()
     {
-        if (movementX >= 0 && transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        if (movementX > 0 && transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         else if (movementX < 0 && transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }
     protected virtual void Move()

@@ -17,7 +17,7 @@ public class Enemy_Fly : Enemy_Default
             if (!detectPlayer) Stop();
             else
             {
-                InRange = false;
+                //InRange = false;
                 // 플레이어 발견
                 player = GameObject.FindGameObjectWithTag("Player");
 
@@ -26,7 +26,7 @@ public class Enemy_Fly : Enemy_Default
                     if (range[i])
                     {
                         InRange = true;
-                        //movementX = 0;
+                        movementX = 0;
                         movementY = 0;
                         if (Time.time >= lastAttackTime + 1 / attackRate)
                         {
@@ -36,7 +36,7 @@ public class Enemy_Fly : Enemy_Default
                         break;
                     }
                 }
-                if (!InRange)
+                if (!range[1] && !isAttacking)
                 {
                     Vector3 playerCenter = player.GetComponent<BoxCollider2D>().bounds.center;
                     // 플레이어 발견했지만 공격범위 아닐 때
@@ -46,49 +46,13 @@ public class Enemy_Fly : Enemy_Default
                     float dist_y = Mathf.Abs(playerCenter.y - transform.position.y);
 
 
-                    if ((playerCenter.x < transform.position.x && movementX > 0) || (playerCenter.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
-                    if ((playerCenter.y < transform.position.y && movementY > 0) || (playerCenter.y < player.transform.position.y && movementY < 0)) movementY *= -1f;
+                    if ((playerCenter.x < transform.position.x && movementX > 0) || (transform.position.x < playerCenter.x && movementX < 0)) movementX *= -1f;
+                    if ((playerCenter.y < transform.position.y && movementY > 0) || (transform.position.y < playerCenter.y && movementY < 0)) movementY *= -1f;
                     if (dist_x <= 0.1f) movementX = 0;
                     if (dist_y <= 0.1f) movementY = 0;
-                    Move(); 
-
                 }
-
+                Move(); 
             }
-            /*else
-            {
-                //InRange = false;
-                if (Time.time >= lastAttackTime + 1 / attackRate)
-                {
-                    for (int i = 0; i < range.Length; i++)
-                    {
-                        if (range[i])
-                        {
-                            //InRange = true;
-                            Fly_Attack(i);
-                            lastAttackTime = Time.time;
-                            break;
-                        }
-                    }
-                }
-                else if (!range[1])
-                {
-                    player = GameObject.FindGameObjectWithTag("Player");
-                    movementX = baseSpeed;
-                    if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
-
-                    Move();
-                }
-                *//*if (!InRange)
-                {
-                    movementX = baseSpeed;
-                    player = GameObject.FindGameObjectWithTag("Player");
-                    if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
-                    Move();
-                }*//*
-            }*/
-            
-
         }
         Flip();
     }
@@ -105,7 +69,7 @@ public class Enemy_Fly : Enemy_Default
     private void Fly_Attack(int idx)
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
+        //if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
 
         animator.SetTrigger("Attack" + idx);
         isAttacking = true;
