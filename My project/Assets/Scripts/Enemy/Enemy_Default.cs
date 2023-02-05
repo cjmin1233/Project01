@@ -57,12 +57,31 @@ public class Enemy_Default : MonoBehaviour
         healthbar.GetComponent<Slider>().transform.position = Camera.main.WorldToScreenPoint(transform.position + Offset);
         if (!isAttacking && !animator.GetBool("IsDead"))
         {
-            if (!detectPlayer)
+            if (!detectPlayer) Stop();
+            else
             {
-                // 플레이어를 발견하지 못한 경우 행동하지 않는다.
-                Stop();
+                for(int i = 0; i < range.Length; i++)
+                {
+                    if (range[i])
+                    {
+                        Stop();
+                        if (Time.time >= lastAttackTime + 1 / attackRate)
+                        {
+                            Attack(i);
+                            lastAttackTime = Time.time;
+                        }
+                        break;
+                    }
+                }
+                if(!range[1] && !isAttacking)
+                {
+                    movementX = baseSpeed;
+                    player = GameObject.FindGameObjectWithTag("Player");
+                    if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
+                    Move();
+                }
             }
-            else if (!playerInRange)
+            /*else if (!playerInRange)
             {
                 // 플레이어를 발견했고 공격범위 안에 없는 경우 플레이어를 추격한다.
                 //canMove = true;
@@ -77,7 +96,7 @@ public class Enemy_Default : MonoBehaviour
                 // 플레이어를 발견했고 공격범위 안에 있는 경우, 공격 속도에 맞게 공격 액션을 취한다.
                 Attack();
                 lastAttackTime = Time.time;
-            }
+            }*/
         }
         Flip();
     }
@@ -90,13 +109,13 @@ public class Enemy_Default : MonoBehaviour
     protected void Stop()
     {
         //canMove = false;
-        //rb.velocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
         //animator.SetFloat("Speed", 0);
 
-        Vector3 targetVelocity;
+        //Vector3 targetVelocity;
 
-        targetVelocity = new Vector2(0f, 0f);
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
+        //targetVelocity = new Vector2(0f, 0f);
+        //rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         animator.SetFloat("Speed", 0);
     }
     protected void Flip()
@@ -112,17 +131,17 @@ public class Enemy_Default : MonoBehaviour
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
         animator.SetFloat("Speed", Mathf.Abs(movementX));
     }
-    protected virtual void Attack()
+    protected virtual void Attack(int idx)
     {
         // 방향 전환
         player = GameObject.FindGameObjectWithTag("Player");
         if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
 
-        animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack" + idx);
         isAttacking = true;
         animator.SetBool("IsAttacking", isAttacking);
 
-        Stop();
+        //Stop();
     }
     private void OnSuperArmor()
     {
@@ -147,7 +166,7 @@ public class Enemy_Default : MonoBehaviour
 
             if (!superArmor) rb.AddForce(damageForce, ForceMode2D.Impulse);
 
-            if (!isAttacking) animator.SetTrigger("Hit");
+            animator.SetTrigger("Hit");
 
             GameObject dmgText = DamageTextPool.Instance.GetFromPool();
             dmgText.transform.position = damagePoint.transform.position;
@@ -175,6 +194,17 @@ public class Enemy_Default : MonoBehaviour
         // 체력바 반납
         UI_Container.Instance.AddToEnemySliderPool(healthbar);
     }
+    private void Dash_1()
+    {
+        Vector2 force = new Vector2(transform.right.x * 5f, 0f);
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
+    private void Dash_2()
+    {
+        Vector2 force = new Vector2(transform.right.x * 10f, 0f);
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
+
     private void destoryObject()
     {
         Destroy(gameObject);

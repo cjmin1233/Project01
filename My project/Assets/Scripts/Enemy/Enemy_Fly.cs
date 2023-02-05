@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class Enemy_Fly : Enemy_Default
 {
-    private bool InRange = false;
+    //private bool InRange = false;
     private float movementY;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform firePoint;
     protected override void FixedUpdate()
     {
         // 체력바 이동
@@ -25,9 +27,9 @@ public class Enemy_Fly : Enemy_Default
                 {
                     if (range[i])
                     {
-                        InRange = true;
+                        //InRange = true;
                         movementX = 0;
-                        movementY = 0;
+                        //movementY = 0;
                         if (Time.time >= lastAttackTime + 1 / attackRate)
                         {
                             Fly_Attack(i);
@@ -77,14 +79,12 @@ public class Enemy_Fly : Enemy_Default
 
         //Stop();
     }
-    private void Dash_1()
+    private void Shoot()
     {
-        Vector2 force = new Vector2(transform.right.x * 5f, 0f);
-        rb.AddForce(force, ForceMode2D.Impulse);
-    }
-    private void Dash_2()
-    {
-        Vector2 force = new Vector2(transform.right.x * 10f, 0f);
-        rb.AddForce(force, ForceMode2D.Impulse);
+        GameObject gameObject = EnemyBulletPool.Instance.GetFromPool();
+        gameObject.GetComponent<Enemy_Bullet>().damage = 10f;
+        gameObject.transform.position = firePoint.position;
+        gameObject.transform.rotation = transform.rotation;
+        gameObject.SetActive(true);
     }
 }
