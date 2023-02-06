@@ -5,17 +5,38 @@ using UnityEngine;
 public class Enemy_Bullet : MonoBehaviour
 {
     [HideInInspector] public float damage;
+    [HideInInspector] public int type;
     private float speed = 5f;
     private Rigidbody2D rb;
     private Animator animator;
+    private BoxCollider2D boxCollider2D;
+    [SerializeField] private LayerMask playerLayer;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        type = 0;
     }
     private void OnEnable()
     {
-        rb.velocity = new Vector2(transform.right.x * speed, 0f);
+        animator.SetInteger("Type", type);
+        rb.gravityScale = 0f;
+        if (type == 0)
+        {
+            boxCollider2D.isTrigger = true;
+            boxCollider2D.offset = Vector2.zero;
+            boxCollider2D.size = new Vector2(0.16f, 0.16f);
+            rb.velocity = new Vector2(transform.right.x * speed, 0f);
+        }
+        else if (type == 1)
+        {
+            boxCollider2D.isTrigger = false;
+            boxCollider2D.offset = new Vector2(0.025f, -0.02f);
+            boxCollider2D.size = new Vector2(0.16f, 0.16f);
+            rb.gravityScale = 1f;
+            rb.velocity = new Vector2(transform.right.x * speed, 5f);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,8 +48,20 @@ public class Enemy_Bullet : MonoBehaviour
         animator.SetTrigger("Hit");
         rb.velocity = Vector2.zero;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        animator.SetTrigger("Hit");
+        rb.velocity = Vector2.zero;
+    }
     private void Disable_Bullet()
     {
         EnemyBulletPool.Instance.AddToPool(gameObject);
+    }
+    private void Bomb_Explosion()
+    {
+        boxCollider2D.isTrigger = true;
+        boxCollider2D.size = new Vector2(0.4f, 0.4f);
+        rb.gravityScale = 0f;
+        rb.velocity = Vector2.zero;
     }
 }

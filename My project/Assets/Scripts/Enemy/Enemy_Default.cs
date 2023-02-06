@@ -178,6 +178,11 @@ public class Enemy_Default : MonoBehaviour
         // Ã¼·Â¹Ù ¹Ý³³
         UI_Container.Instance.AddToEnemySliderPool(healthbar);
     }
+    private void BackStep()
+    {
+        Vector2 force = new Vector2(transform.right.x * (-20f), 0f);
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
     private void Dash_1()
     {
         Vector2 force = new Vector2(transform.right.x * 15f, 0f);
@@ -192,6 +197,15 @@ public class Enemy_Default : MonoBehaviour
     {
         Vector2 force = new Vector2(transform.right.x * 60f, 0f);
         rb.AddForce(force, ForceMode2D.Impulse);
+    }
+    private void ThrowBomb()
+    {
+        GameObject gameObject = EnemyBulletPool.Instance.GetFromPool();
+        gameObject.GetComponent<Enemy_Bullet>().damage = 10f;
+        gameObject.GetComponent<Enemy_Bullet>().type = 1;
+        gameObject.transform.position = transform.position + new Vector3(0.1f, 0.1f, 0f);
+        gameObject.transform.rotation = transform.rotation;
+        gameObject.SetActive(true);
     }
     private void destoryObject()
     {
