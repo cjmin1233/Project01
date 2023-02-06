@@ -10,7 +10,9 @@ public class Enemy_Default : MonoBehaviour
     protected Animator animator;
 
     // 이동 관련
+    protected float currentSpeed;
     [SerializeField] protected float baseSpeed = 100f;
+    [HideInInspector] public float moveSpeed_multiplier = 1f;
     protected float movementX;
     protected Vector3 m_Velocity = Vector3.zero;
     protected float m_MovementSmoothing = 0.05f;
@@ -18,7 +20,7 @@ public class Enemy_Default : MonoBehaviour
     public bool[] range;
     [HideInInspector] public bool playerInRange;
     [HideInInspector] public bool detectPlayer;
-    //private bool canMove;
+    protected bool canMove;
 
     // 공격
     protected bool isAttacking;
@@ -46,77 +48,67 @@ public class Enemy_Default : MonoBehaviour
         healthbar = UI_Container.Instance.GetFromEnemySliderPool();
         healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
 
-        //canMove = true;
+        canMove = true;
         isAttacking = false;
         playerInRange = false;
         for (int i = 0; i < range.Length; i++) range[i] = false;
+        currentSpeed = moveSpeed_multiplier * baseSpeed;
     }
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
         // 체력바 이동
         healthbar.GetComponent<Slider>().transform.position = Camera.main.WorldToScreenPoint(transform.position + Offset);
-        if (!isAttacking && !animator.GetBool("IsDead"))
+        if (!animator.GetBool("IsDead"))
         {
-            if (!detectPlayer) Stop();
+            if (!detectPlayer) canMove = false;
             else
             {
-                for(int i = 0; i < range.Length; i++)
+                for (int i = 0; i < range.Length; i++)
                 {
                     if (range[i])
                     {
-                        Stop();
+                        canMove = false;
                         if (Time.time >= lastAttackTime + 1 / attackRate)
                         {
+                            LookPlayer();
                             Attack(i);
                             lastAttackTime = Time.time;
                         }
                         break;
                     }
                 }
-                if(!range[1] && !isAttacking)
-                {
-                    movementX = baseSpeed;
-                    player = GameObject.FindGameObjectWithTag("Player");
-                    if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
-                    Move();
-                }
             }
-            /*else if (!playerInRange)
+
+            currentSpeed = moveSpeed_multiplier * baseSpeed;
+            if (canMove)
             {
-                // 플레이어를 발견했고 공격범위 안에 없는 경우 플레이어를 추격한다.
-                //canMove = true;
-                //
-                movementX = baseSpeed;
-                player = GameObject.FindGameObjectWithTag("Player");
-                if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
-                Move();
+                movementX = currentSpeed;
+                LookPlayer();
             }
-            else if (Time.time >= lastAttackTime + 1 / attackRate)
+            else
             {
-                // 플레이어를 발견했고 공격범위 안에 있는 경우, 공격 속도에 맞게 공격 액션을 취한다.
-                Attack();
-                lastAttackTime = Time.time;
-            }*/
+                movementX = 0f;
+            }
+            animator.SetFloat("Speed", Mathf.Abs(movementX));
+
+            Flip();
         }
-        Flip();
+    }
+    protected virtual void FixedUpdate()
+    {
+        Move();
     }
     private void Init()
     {
         isAttacking = false;
         animator.SetBool("IsAttacking", isAttacking);
-        //canMove = true;
+        canMove = true;
+        superArmor = false;
     }
-    protected void Stop()
+    protected virtual void LookPlayer()
     {
-        //canMove = false;
-        rb.velocity = Vector2.zero;
-        //animator.SetFloat("Speed", 0);
-
-        //Vector3 targetVelocity;
-
-        //targetVelocity = new Vector2(0f, 0f);
-        //rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-        animator.SetFloat("Speed", 0);
+        player = GameObject.FindGameObjectWithTag("Player");
+        if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
     }
     protected void Flip()
     {
@@ -129,29 +121,20 @@ public class Enemy_Default : MonoBehaviour
 
         targetVelocity = new Vector2(movementX * Time.fixedDeltaTime, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
-        animator.SetFloat("Speed", Mathf.Abs(movementX));
     }
     protected virtual void Attack(int idx)
     {
-        // 방향 전환
-        player = GameObject.FindGameObjectWithTag("Player");
-        if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
-
         animator.SetTrigger("Attack" + idx);
         isAttacking = true;
         animator.SetBool("IsAttacking", isAttacking);
-
-        //Stop();
     }
     private void OnSuperArmor()
     {
         superArmor = true;
-        //
     }
     private void OffSuperArmor()
     {
         superArmor = false;
-        //
     }
 
     public void TakeDamage(float damage, Vector2 damageForce)
@@ -164,9 +147,10 @@ public class Enemy_Default : MonoBehaviour
                 if (damage_sound[rand] != null) damage_sound[rand].PlayOneShot(damage_sound[rand].clip);
             }
 
+            // 수퍼아머가 아니라면 밀려남
             if (!superArmor) rb.AddForce(damageForce, ForceMode2D.Impulse);
-
-            animator.SetTrigger("Hit");
+            // 밀치는 힘이 있다면 타격 애니메이션
+            if (damageForce.x != 0f) animator.SetTrigger("Hit");
 
             GameObject dmgText = DamageTextPool.Instance.GetFromPool();
             dmgText.transform.position = damagePoint.transform.position;
@@ -185,7 +169,7 @@ public class Enemy_Default : MonoBehaviour
     {
         if (die_sound != null) die_sound.PlayOneShot(die_sound.clip);
         animator.SetBool("IsDead", true);
-        Stop();
+        canMove = false;
 
         // 골드 생성
         player = GameObject.FindGameObjectWithTag("Player");
@@ -196,15 +180,19 @@ public class Enemy_Default : MonoBehaviour
     }
     private void Dash_1()
     {
-        Vector2 force = new Vector2(transform.right.x * 5f, 0f);
+        Vector2 force = new Vector2(transform.right.x * 15f, 0f);
         rb.AddForce(force, ForceMode2D.Impulse);
     }
     private void Dash_2()
     {
-        Vector2 force = new Vector2(transform.right.x * 10f, 0f);
+        Vector2 force = new Vector2(transform.right.x * 30f, 0f);
         rb.AddForce(force, ForceMode2D.Impulse);
     }
-
+    private void Dash_3()
+    {
+        Vector2 force = new Vector2(transform.right.x * 60f, 0f);
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
     private void destoryObject()
     {
         Destroy(gameObject);

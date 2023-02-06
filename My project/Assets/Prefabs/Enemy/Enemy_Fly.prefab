@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 5149094980804917331}
   - component: {fileID: 5149094980804917340}
   m_Layer: 0
-  m_Name: AttackRange
+  m_Name: AttackRange0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -508,6 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 100
+  moveSpeed_multiplier: 1
   range: 000000
   playerInRange: 0
   detectPlayer: 0
@@ -531,7 +532,7 @@ GameObject:
   - component: {fileID: 7403034504842153489}
   - component: {fileID: 6526481920729953816}
   m_Layer: 0
-  m_Name: AttackRange (2)
+  m_Name: AttackRange2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -564,7 +565,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.5114588, y: 0.007749051}
+  m_Offset: {x: 1.5785483, y: 0.007749051}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -575,7 +576,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0829175, y: 0.28890997}
+  m_Size: {x: 2.9487383, y: 0.08}
   m_EdgeRadius: 0
 --- !u!114 &6526481920729953816
 MonoBehaviour:
@@ -602,7 +603,7 @@ GameObject:
   - component: {fileID: 6576775867850282123}
   - component: {fileID: 5803902556110647198}
   m_Layer: 0
-  m_Name: AttackRange (1)
+  m_Name: AttackRange1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
