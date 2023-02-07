@@ -18,7 +18,6 @@ public class Enemy_Default : MonoBehaviour
     protected float m_MovementSmoothing = 0.05f;
 
     public bool[] range;
-    [HideInInspector] public bool playerInRange;
     [HideInInspector] public bool detectPlayer;
     protected bool canMove;
 
@@ -29,15 +28,15 @@ public class Enemy_Default : MonoBehaviour
     private bool superArmor = false;
 
     // hp
-    [SerializeField] private float maxHP;
-    private float curHP;
-    [SerializeField] private Transform damagePoint;
+    [SerializeField] protected float maxHP;
+    protected float curHP;
+    [SerializeField] protected Transform damagePoint;
     protected GameObject healthbar;
     [SerializeField] protected Vector3 Offset;
 
     // ¼Ò¸®
     [Header("Audio Source")] [SerializeField] private AudioSource die_sound;
-    [SerializeField] private AudioSource[] damage_sound;
+    [SerializeField] protected AudioSource[] damage_sound;
     protected virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -50,7 +49,6 @@ public class Enemy_Default : MonoBehaviour
 
         canMove = true;
         isAttacking = false;
-        playerInRange = false;
         for (int i = 0; i < range.Length; i++) range[i] = false;
         currentSpeed = moveSpeed_multiplier * baseSpeed;
     }
@@ -68,7 +66,7 @@ public class Enemy_Default : MonoBehaviour
                     if (range[i])
                     {
                         canMove = false;
-                        if (Time.time >= lastAttackTime + 1 / attackRate)
+                        if (Time.time >= lastAttackTime + 1 / attackRate && !isAttacking)
                         {
                             LookPlayer();
                             Attack(i);
@@ -137,7 +135,7 @@ public class Enemy_Default : MonoBehaviour
         superArmor = false;
     }
 
-    public void TakeDamage(float damage, Vector2 damageForce)
+    public virtual void TakeDamage(float damage, Vector2 damageForce)
     {
         if (!animator.GetBool("IsDead"))
         {

@@ -10,16 +10,20 @@ public class Enemy_Bullet : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private BoxCollider2D boxCollider2D;
+    private CircleCollider2D circleCollider2D;
     [SerializeField] private LayerMask playerLayer;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
         type = 0;
     }
     private void OnEnable()
     {
+        circleCollider2D.enabled = false;
+        boxCollider2D.enabled = true;
         animator.SetInteger("Type", type);
         rb.gravityScale = 0f;
         if (type == 0)
@@ -59,8 +63,10 @@ public class Enemy_Bullet : MonoBehaviour
     }
     private void Bomb_Explosion()
     {
-        boxCollider2D.isTrigger = true;
-        boxCollider2D.size = new Vector2(0.4f, 0.4f);
+        //boxCollider2D.isTrigger = true;
+        //boxCollider2D.size = new Vector2(0.4f, 0.4f);
+        boxCollider2D.enabled = false;
+        circleCollider2D.enabled = true;
         rb.gravityScale = 0f;
         rb.velocity = Vector2.zero;
     }

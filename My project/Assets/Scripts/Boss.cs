@@ -118,13 +118,6 @@ public class Boss : MonoBehaviour
         rb.velocity = Vector2.zero;
         animator.SetFloat("Speed", 0);
     }
-    /*private void Fin_Act()
-    {
-        isActing = false;
-        animator.SetBool("Skill_FireWall", false);
-        rb.velocity = Vector3.zero;
-        animator.SetFloat("Speed", 0);
-    }*/
     private void Fin_Skill()
     {
         actionCounter++;

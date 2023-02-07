@@ -43,7 +43,8 @@ public class Combo_Collider : MonoBehaviour
             }
             else if (tag == "Boss")
             {
-                collision.GetComponent<Boss>().TakeDamage(damage);
+                //collision.GetComponent<Boss>().TakeDamage(damage);
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce);
             }
             if ((tag == "Enemy" || tag == "Boss") && playerAttack.sword_cursed_enable)
             {
