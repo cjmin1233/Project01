@@ -28,6 +28,7 @@ public class Boss_Default : Enemy_Default
     {
         if (!animator.GetBool("IsDead"))
         {
+            canMove = false;
             if (actionCounter < 3)
             {
                 for (int i = 0; i < range.Length; i++)

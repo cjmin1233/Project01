@@ -52,25 +52,15 @@ public class Sword_Wind_Collider : MonoBehaviour
         if (!hit_list.Contains(name))
         {
             hit_list.Add(name);
-            if (tag == "Enemy")
+            if (tag == "Enemy" || tag == "Boss")
             {
-                //Debug.Log("hit " + collision.name);
                 collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero);
             }
-            else if (tag == "Boss")
-            {
-                collision.GetComponent<Boss>().TakeDamage(damage);
-            }
-            //else Debug.Log("We hit " + collision.name);
         }
     }
     private void Disable_Sword_Collider()
     {
-        //gameObject.SetActive(false);
         hit_list.Clear();
-        //Destroy(gameObject);
-        // Add pool
         SwordWindPool.Instance.AddToPool(gameObject);
-
     }
 }

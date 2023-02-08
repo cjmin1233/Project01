@@ -424,6 +424,7 @@ public class UI_Container : MonoBehaviour
     }
     public void QuitGame()
     {
+        DataManager.Instance.SaveGameData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif

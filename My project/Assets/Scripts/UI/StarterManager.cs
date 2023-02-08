@@ -20,6 +20,8 @@ public class StarterManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        DataManager.Instance.LoadGameData();
+
         int weaponType = PlayerPrefs.GetInt("weaponType");
         //if (weaponType > 0) Instantiate(players[weaponType - 1]);
 
@@ -27,6 +29,8 @@ public class StarterManager : MonoBehaviour
         {
             var player = Instantiate(players[weaponType - 1]);
             GameManager.Instance.AddToList(player);
+            DataManager.Instance.data.weaponType = weaponType;
+            DataManager.Instance.SaveGameData();
         }
 
         /*Instantiate(startCamera);

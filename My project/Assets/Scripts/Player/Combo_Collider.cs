@@ -36,7 +36,12 @@ public class Combo_Collider : MonoBehaviour
         {
             hit_list.Add(name);
             
-            if (tag == "Enemy")
+            if(tag=="Enemy" || tag == "Boss")
+            {
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce);
+                if (playerAttack.sword_cursed_enable) player.Heal(2f);
+            }
+            /*if (tag == "Enemy")
             {
                 //collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);
                 collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce);
@@ -49,8 +54,7 @@ public class Combo_Collider : MonoBehaviour
             if ((tag == "Enemy" || tag == "Boss") && playerAttack.sword_cursed_enable)
             {
                 player.Heal(2f);
-            }
-            //else Debug.Log("We hit " + collision.name);
+            }*/
         }
     }
     private void OnDisable()

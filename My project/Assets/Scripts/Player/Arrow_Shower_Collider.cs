@@ -26,17 +26,10 @@ public class Arrow_Shower_Collider : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.tag;
-        float currDamage = Mathf.Round(damage * damage_multiplier);
-        if (tag == "Enemy")
+        float curDamage = Mathf.Round(damage * damage_multiplier);
+        if (tag == "Enemy" || tag == "Boss")
         {
-            collision.GetComponent<Enemy_Default>().TakeDamage(currDamage, damageForce);
-        }
-        else if (tag == "Boss")
-        {
-            collision.GetComponent<Boss>().TakeDamage(currDamage);
-        }
-        if(tag=="Enemy" || tag == "Boss")
-        {
+            collision.GetComponent<Enemy_Default>().TakeDamage(curDamage, damageForce);
             if (damage_multiplier < 1.6f && rain_enable) damage_multiplier += 0.1f;
         }
     }

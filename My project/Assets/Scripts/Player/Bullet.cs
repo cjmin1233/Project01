@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     private BoxCollider2D arrow_collider;
     private Vector2 offset;
     private Vector2 offset_diagonal;
-
+    private List<string> hit_list;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,40 +27,34 @@ public class Bullet : MonoBehaviour
         isDiagonal = false;
         offset = new Vector2(0.11f, 0f);
         offset_diagonal = new Vector2(0.08f, -0.08f);
+        hit_list = new List<string>();
     }
     private void OnEnable()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        //transform.position = player.position;
         transform.rotation = player.rotation;
         animator.SetBool("IsPoisoned", isPoisoned);
         animator.SetBool("IsDiagonal", isDiagonal);
-        //animator.SetFloat("EnableSpeed", anim_Speed);
         if (isDiagonal) rb.velocity = new Vector2(transform.right.x * speed, transform.up.y * (-speed));
         else rb.velocity = transform.right * speed;
-        /*if(isDiagonal) transform.rotation = Quaternion.Euler(0f, 0f, -45f);
-        else transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        rb.velocity = transform.right * speed;*/
         if (isDiagonal)  arrow_collider.offset = offset_diagonal;
         else arrow_collider.offset = offset;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.tag;
-        if (tag == "Enemy")
+        string name = collision.name;
+        if (!hit_list.Contains(name))
         {
-            collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero);
-            if (isPoisoned) collision.GetComponent<Enemy_Default>().TakeDamage(1f, Vector2.zero);
-
-        }
-        else if (tag == "Boss")
-        {
-            collision.GetComponent<Boss>().TakeDamage(damage);
-            if (isPoisoned) collision.GetComponent<Boss>().TakeDamage(1f);
+            hit_list.Add(name);
+            if (tag == "Enemy" || tag == "Boss")
+            {
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero);
+                if (isPoisoned) collision.GetComponent<Enemy_Default>().TakeDamage(1f, Vector2.zero);
+            }
         }
         animator.SetTrigger("Hit");
         rb.velocity = Vector2.zero;
-        //transform.SetParent(collision.gameObject.transform);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -73,6 +67,7 @@ public class Bullet : MonoBehaviour
     }
     private void Disable_Arrow()
     {
+        hit_list.Clear();
         ArrowPool.Instance.AddToPool(gameObject);
     }
 }
