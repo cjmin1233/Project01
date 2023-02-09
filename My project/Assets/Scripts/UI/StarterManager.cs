@@ -21,45 +21,46 @@ public class StarterManager : MonoBehaviour
     private void OnEnable()
     {
         DataManager.Instance.LoadGameData();
+        Data gameData = DataManager.Instance.data;
+        int weaponType;
+        bool newGame = true;
+        if (gameData.weaponType > 0)
+        {
+            // 게임 데이터가 존재하는 경우
+            weaponType = gameData.weaponType;
+            PlayerPrefs.SetInt("weaponType", weaponType);
+            newGame = false;
+        }
+        // 이전 게임 데이터가 없거나 새로운 게임인 경우
+        else weaponType = PlayerPrefs.GetInt("weaponType");
 
-        int weaponType = PlayerPrefs.GetInt("weaponType");
+        //int weaponType = PlayerPrefs.GetInt("weaponType");
         //if (weaponType > 0) Instantiate(players[weaponType - 1]);
 
-        if (weaponType > 0)
+        var player = Instantiate(players[weaponType - 1]);
+        GameManager.Instance.AddToList(player);
+        if (!newGame)
         {
-            var player = Instantiate(players[weaponType - 1]);
-            GameManager.Instance.AddToList(player);
-            DataManager.Instance.data.weaponType = weaponType;
-            DataManager.Instance.SaveGameData();
+            // 게임 데이터가 존재하는 경우 이전 위치좌표에 플레이어 생성.
+            Vector3 pos = new Vector3();
+            pos.x = gameData.position[0];
+            pos.y = gameData.position[1];
+            pos.z = gameData.position[2];
+            player.transform.position = pos;
         }
+        DataManager.Instance.SaveGameData();
 
-        /*Instantiate(startCamera);
-        Instantiate(PlayerAfterImagePool);
-        if (weaponType == 1)
-        {
-            Instantiate(SwordWindPool);
-        }
-        else if (weaponType == 2)
-        {
-            Instantiate(ArrowPool);
-            Instantiate(ArrowShowerPool);
-        }*/
         var cam = Instantiate(startCamera);
         GameManager.Instance.AddToList(cam);
         var obj = Instantiate(PlayerAfterImagePool);
         GameManager.Instance.AddToList(obj);
         obj = Instantiate(DamageTextPool);
         GameManager.Instance.AddToList(obj);
-        /*        GameManager.Instance.objects.Add(Instantiate(startCamera));
-                GameManager.Instance.objects.Add(Instantiate(PlayerAfterImagePool));
-        */
 
         if (weaponType == 1)
         {
             var wind_pool = Instantiate(SwordWindPool);
             GameManager.Instance.AddToList(wind_pool);
-
-            //GameManager.Instance.objects.Add(Instantiate(SwordWindPool));
         }
         else if (weaponType == 2)
         {
@@ -67,9 +68,6 @@ public class StarterManager : MonoBehaviour
             GameManager.Instance.AddToList(arrow_pool);
             var shower_pool = Instantiate(ArrowShowerPool);
             GameManager.Instance.AddToList(shower_pool);
-
-            /*GameManager.Instance.objects.Add(Instantiate(ArrowPool));
-            GameManager.Instance.objects.Add(Instantiate(ArrowShowerPool));*/
         }
 
     }

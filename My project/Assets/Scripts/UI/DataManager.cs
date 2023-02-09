@@ -38,6 +38,11 @@ public class DataManager : MonoBehaviour
     }
     public void SaveGameData()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        data.position[0] = player.transform.position.x;
+        data.position[1] = player.transform.position.y;
+        data.position[2] = player.transform.position.z;
+
         string ToJsonData = JsonUtility.ToJson(data, true);
         string filePath = Application.persistentDataPath + "/" + GameDataFileName;
 

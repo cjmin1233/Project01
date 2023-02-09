@@ -420,10 +420,14 @@ public class UI_Container : MonoBehaviour
     {
         GameManager.Instance.ClearObjects();
         Destroy(GameManager.Instance.gameObject);
+        DataManager.Instance.data.weaponType = -1;
+        DataManager.Instance.SaveGameData();
+
         SceneManager.LoadScene(0);
     }
     public void QuitGame()
     {
+        DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
         DataManager.Instance.SaveGameData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -478,7 +482,6 @@ public class UI_Container : MonoBehaviour
     }
     public void AddToEnemySliderPool(GameObject instance)
     {
-        Debug.Log("Hello");
         instance.SetActive(false);
         enemySliderQueue.Enqueue(instance);
     }
