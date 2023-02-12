@@ -11,18 +11,17 @@ public class Item : MonoBehaviour
     bool isPickUp;
     float theta;
     float floatingAmplitude=.2f;
-    void Awake()
+    private void Awake()
     {
         //EquipIcon.gameObject.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (isPickUp && Input.GetKeyDown(KeyCode.E)) PickUp();
         Floating();
-;   }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
@@ -46,7 +45,7 @@ public class Item : MonoBehaviour
     }
     void PickUp()
     {
-        if (this.tag.Equals("Sword"))
+        /*if (this.tag.Equals("Sword"))
         {
             Player.GetComponent<Animator>().SetInteger("WeaponType", 1);
         }
@@ -54,8 +53,8 @@ public class Item : MonoBehaviour
         {
             Player.GetComponent<Animator>().SetInteger("WeaponType", 2);
             //Player.GetComponent<SelectAbility>().RandomAbility();
-        }
-        else if (this.tag.Equals("Book"))
+        }*/
+        if (this.tag.Equals("Book"))
         {
             UI_Container.Instance.RandomAbility();
             //Player.GetComponent<SelectAbility>().RandomAbility();

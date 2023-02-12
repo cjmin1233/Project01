@@ -368,6 +368,15 @@ public class Player : MonoBehaviour
         gold += get_gold;
         UI_Container.Instance.HandleGold(gold);
     }
+    public int CheckGold()
+    {
+        return gold;
+    }
+    public void Purchase(int price)
+    {
+        gold -= price;
+        UI_Container.Instance.HandleGold(gold);
+    }
     private void DamagingCheck()
     {
         if (damagingTimeLeft > 0)
