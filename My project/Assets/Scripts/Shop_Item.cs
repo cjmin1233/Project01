@@ -21,6 +21,7 @@ public class Shop_Item : MonoBehaviour
             //EquipIcon.gameObject.SetActive(true);
             //EquipIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
             isPickUp = true;
+            UI_Container.Instance.EnablePurchaseText(price);
             //UI_Container.Instance.EnableToggleText(itemIndex);
         }
     }
@@ -32,6 +33,7 @@ public class Shop_Item : MonoBehaviour
             //EquipIcon.GetComponent<Animator>().SetBool("IsEnabled", false);
             //UI_Container.Instance.DisableToggleText(itemIndex);
             isPickUp = false;
+            UI_Container.Instance.DisablePurchaseText();
         }
     }
     private void Purchase()

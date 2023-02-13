@@ -16,6 +16,7 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private TextMeshProUGUI Gold_Text;
 
     [SerializeField] private GameObject[] toggleText;
+    [SerializeField] private GameObject purchaseText;
 
     [SerializeField] private GameObject hashshin_gauge_UI;
     [SerializeField] private Image borderImage;
@@ -95,6 +96,16 @@ public class UI_Container : MonoBehaviour
     {
         //Debug.Log("Disable toggle text : " + idx);
         toggleText[idx].GetComponent<Animator>().SetBool("IsEnabled", false);
+    }
+    public void EnablePurchaseText(int price)
+    {
+        purchaseText.GetComponent<Animator>().SetBool("IsEnabled", true);
+        purchaseText.GetComponentInChildren<TextMeshProUGUI>().text = "Purchase " + price.ToString() + "G";
+    }
+    public void DisablePurchaseText()
+    {
+        purchaseText.GetComponent<Animator>().SetBool("IsEnabled", false);
+
     }
     public void updateGauge(float gauge)
     {
