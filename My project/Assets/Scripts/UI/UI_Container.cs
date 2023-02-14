@@ -28,8 +28,10 @@ public class UI_Container : MonoBehaviour
     // 어빌리티 UI
     [SerializeField] private GameObject Ability_UI;
     [SerializeField] private RectTransform[] buttonLocations;
+    [SerializeField] private GameObject[] Ability_Array;
     [SerializeField] private List<GameObject> availableAbilityList;
     private List<GameObject> SelectedAbilityList = new List<GameObject>();
+    private List<int> SelectLog = new List<int>();
     [SerializeField] private GameObject[] hiddenKnightAbility_Z;
     [SerializeField] private GameObject[] hiddenKnightAbility_X;
     [SerializeField] private GameObject[] hiddenRangerAbility_Z;
@@ -59,6 +61,14 @@ public class UI_Container : MonoBehaviour
         Instance = this;
         if (PlayerPrefs.GetInt("weaponType") == 3) hashshin_gauge_UI.SetActive(true);
         curGauge = 0f;
+
+        // 어빌리티 세팅
+        for(int i = 0; i < Ability_Array.Length; i++)
+        {
+            Ability ability = Ability_Array[i].GetComponent<Ability>();
+            ability.index = i;
+            if (!ability.hidden) availableAbilityList.Add(Ability_Array[i]);
+        }
 
         // 적 체력바 준비
         GrowEnemySliderPool();
@@ -187,27 +197,28 @@ public class UI_Container : MonoBehaviour
             //playerAttack.damage_z_multiplier = 1f + 0.1f * ability.level;
             if (!playerAttack.damage_z_buffer.ContainsKey("PowerUp_Z")) playerAttack.damage_z_buffer.Add("PowerUp_Z", 0.2f * ability.level);
             else playerAttack.damage_z_buffer["PowerUp_Z"] = 0.2f * ability.level;
-
+            CollectionZ();
         }
         else if (name == "PowerUp_X")
         {
             //playerAttack.damage_x_multiplier = 1f + 0.1f * ability.level;
             if (!playerAttack.damage_x_buffer.ContainsKey("PowerUp_X")) playerAttack.damage_x_buffer.Add("PowerUp_X", 0.2f * ability.level);
             else playerAttack.damage_x_buffer["PowerUp_X"] = 0.2f * ability.level;
-
+            CollectionX();
         }
         else if (name == "SpeedUp_Z")
         {
             //playerAttack.Speed_Z = 1f + 0.2f * ability.level;
             if (!playerAttack.speed_z_buffer.ContainsKey("SpeedUp_Z")) playerAttack.speed_z_buffer.Add("SpeedUp_Z", 0.2f * ability.level);
             else playerAttack.speed_z_buffer["SpeedUp_Z"] = 0.2f * ability.level;
+            CollectionZ();
         }
         else if (name == "SpeedUp_X")
         {
             //playerAttack.Speed_X = 1f + 0.2f * ability.level;
             if (!playerAttack.speed_x_buffer.ContainsKey("SpeedUp_X")) playerAttack.speed_x_buffer.Add("SpeedUp_X", 0.2f * ability.level);
             else playerAttack.speed_x_buffer["SpeedUp_X"] = 0.2f * ability.level;
-
+            CollectionX();
         }
         else if (name == "PowerUp")
         {
@@ -218,6 +229,7 @@ public class UI_Container : MonoBehaviour
         else if (name == "SpeedUp_Run")
         {
             player.moveSpeed_multiplier = 1f + 0.1f * ability.level;
+            if (ability.level == 1) UnlockSwift();
         }
         else if (name == "DefenceUp")
         {
@@ -430,7 +442,8 @@ public class UI_Container : MonoBehaviour
     public void GiveUp()
     {
         GameManager.Instance.ClearObjects();
-        Destroy(GameManager.Instance.gameObject);
+        //Destroy(GameManager.Instance.gameObject);
+        //
         DataManager.Instance.data.weaponType = -1;
         DataManager.Instance.SaveGameData();
 
@@ -439,6 +452,8 @@ public class UI_Container : MonoBehaviour
     public void QuitGame()
     {
         DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
+        int[] arr = new int[10];
+        DataManager.Instance.data.test_arr = arr;
         DataManager.Instance.SaveGameData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

@@ -33,6 +33,10 @@ public class DataManager : MonoBehaviour
         {
             string FromJsonData = File.ReadAllText(filePath);
             data = JsonUtility.FromJson<Data>(FromJsonData);
+            /*for(int i = 0; i < data.test_arr.Length; i++)
+            {
+                print($"{i}번 test_arr : " + data.test_arr[i]);
+            }*/
             print("불러오기 완료");
         }
     }
@@ -49,9 +53,5 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePath, ToJsonData);
 
         print("저장 완료");
-        for(int i = 0; i < data.ability.Length; i++)
-        {
-            print($"{i}번 어빌리티 잠금 해제 여부 : " + data.ability[i]);
-        }
     }
 }

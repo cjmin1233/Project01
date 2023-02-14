@@ -9,4 +9,5 @@ public class Data
     public float maxHP;
     public float[] position = new float[3];
     public bool[] ability = new bool[10];
+    public int[] test_arr = new int[5];
 }

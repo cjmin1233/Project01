@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &397143906687987175
@@ -322,8 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &736299738662218381
@@ -560,8 +560,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &1086228414304903750
@@ -1130,18 +1130,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1759081849171130612}
-        m_TargetAssemblyTypeName: UI_Container, Assembly-CSharp
-        m_MethodName: CollectionX
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1759081848402153127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,8 +1142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 1
+  index: 0
+  hidden: 0
   level: 0
   weight: 1
 --- !u!1 &1759081848420187099
@@ -1451,8 +1439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
-  Tier: 1
+  index: 0
+  hidden: 0
   level: 0
   weight: 1
 --- !u!1 &1759081848479057325
@@ -3367,18 +3355,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1759081849171130612}
-        m_TargetAssemblyTypeName: UI_Container, Assembly-CSharp
-        m_MethodName: CollectionZ
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1759081848909813898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,8 +3367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
-  Tier: 1
+  index: 0
+  hidden: 0
   level: 0
   weight: 1
 --- !u!1 &1759081848923979035
@@ -4762,7 +4738,7 @@ MonoBehaviour:
   - {fileID: 1759081848842112607}
   - {fileID: 1759081849554244750}
   - {fileID: 1759081849953453134}
-  availableAbilityList:
+  Ability_Array:
   - {fileID: 1759081850217777507}
   - {fileID: 1759081848402153126}
   - {fileID: 1759081848909813893}
@@ -4777,6 +4753,23 @@ MonoBehaviour:
   - {fileID: 7683864645428251406}
   - {fileID: 7732003324319489471}
   - {fileID: 5352741144161565725}
+  - {fileID: 773733390928081226}
+  - {fileID: 5442223788515830811}
+  - {fileID: 4902946134628146937}
+  - {fileID: 3154954790943206869}
+  - {fileID: 3994788221794348762}
+  - {fileID: 6643992769145887726}
+  - {fileID: 397143906687987175}
+  - {fileID: 7670259385247266936}
+  - {fileID: 2444440562381364634}
+  - {fileID: 8982967789492118089}
+  - {fileID: 2675863902806392288}
+  - {fileID: 5150152355950587769}
+  - {fileID: 9011123690580260955}
+  - {fileID: 7823379676284067172}
+  - {fileID: 191312895888316519}
+  - {fileID: 1759081849676034063}
+  availableAbilityList: []
   hiddenKnightAbility_Z:
   - {fileID: 773733390928081226}
   - {fileID: 5442223788515830811}
@@ -6743,8 +6736,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 0
   level: 11
   weight: 1
 --- !u!1 &1759081849607117881
@@ -7371,8 +7364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &1759081849676251527
@@ -8991,18 +8984,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1759081849171130612}
-        m_TargetAssemblyTypeName: UI_Container, Assembly-CSharp
-        m_MethodName: CollectionX
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1759081849986408360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9015,8 +8996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 1
+  index: 0
+  hidden: 0
   level: 0
   weight: 1
 --- !u!1 &1759081850026904663
@@ -9334,8 +9315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 0
   level: 11
   weight: 1
 --- !u!1 &1759081850076829347
@@ -9967,8 +9948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 0
   level: 11
   weight: 1
 --- !u!1 &1759081850188728463
@@ -10489,18 +10470,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1759081849171130612}
-        m_TargetAssemblyTypeName: UI_Container, Assembly-CSharp
-        m_MethodName: CollectionZ
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1759081850217777504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10513,8 +10482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
-  Tier: 1
+  index: 0
+  hidden: 0
   level: 0
   weight: 1
 --- !u!1 &1759081850221001801
@@ -11058,8 +11027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
-  Tier: 2
+  index: 0
+  hidden: 0
   level: 11
   weight: 1
 --- !u!1 &1759081850301496765
@@ -11221,8 +11190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
-  Tier: 2
+  index: 0
+  hidden: 0
   level: 0
   weight: 1
 --- !u!1 &1759081850318147220
@@ -11372,18 +11341,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1759081849171130612}
-        m_TargetAssemblyTypeName: UI_Container, Assembly-CSharp
-        m_MethodName: UnlockSwift
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1759081850318147221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11396,8 +11353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
-  Tier: 1
+  index: 0
+  hidden: 0
   level: 0
   weight: 1
 --- !u!1 &1759081850386313027
@@ -13287,8 +13244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &2675863902806392288
@@ -13450,8 +13407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &3062116474368793644
@@ -13822,8 +13779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &3229505536532829989
@@ -14444,8 +14401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &4028393159148161492
@@ -15314,8 +15271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &5150152355950587769
@@ -15477,8 +15434,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &5165206369561475556
@@ -15776,8 +15733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 0
   level: 11
   weight: 1
 --- !u!1 &5434571388056929116
@@ -16014,8 +15971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &5584998180164306390
@@ -16860,8 +16817,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &7039247129285820496
@@ -17444,8 +17401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &7683864645428251406
@@ -17607,8 +17564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 0
   level: 11
   weight: 1
 --- !u!1 &7693488061135522270
@@ -17905,8 +17862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 0
   level: 11
   weight: 1
 --- !u!1 &7768092415902657626
@@ -18204,8 +18161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &7845436229646816113
@@ -18996,8 +18953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1
 --- !u!1 &9011123690580260955
@@ -19159,7 +19116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ac61101c6819c4db092c9313fb49db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Tier: 2
+  index: 0
+  hidden: 1
   level: 11
   weight: 1

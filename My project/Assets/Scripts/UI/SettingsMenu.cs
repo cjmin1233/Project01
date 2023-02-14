@@ -27,6 +27,8 @@ public class SettingsMenu : MonoBehaviour
     public Toggle fullScreenToggle;
     Resolution[] resolutions;
     List<Resolution> availableResolutions;
+
+    public GameObject LoadButton;
     private void Start()
     {
         fullScreenToggle.isOn = Screen.fullScreen;
@@ -79,6 +81,16 @@ public class SettingsMenu : MonoBehaviour
         if (!PlayerPrefs.HasKey("ResolutionIndex")) PlayerPrefs.SetInt("ResolutionIndex", currentResolutionIndex);
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
         resolutionDropdown.RefreshShownValue();
+
+        // 게임 데이터 로드 후 이어하기 버튼 활성화
+        DataManager.Instance.LoadGameData();
+        Data gameData = DataManager.Instance.data;
+        if (gameData.weaponType > 0)
+        {
+            // 데이터가 남아있는 경우
+            LoadButton.GetComponent<Button>().interactable = true;
+            LoadButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(255f, 255f, 255f);
+        }
     }
     public void SetResolution(int resolutionIndex)
     {
