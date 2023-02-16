@@ -31,13 +31,15 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private GameObject[] Ability_Array;
     [SerializeField] private List<GameObject> availableAbilityList;
     private List<GameObject> SelectedAbilityList = new List<GameObject>();
-    private List<int> SelectLog = new List<int>();
+
     [SerializeField] private GameObject[] hiddenKnightAbility_Z;
     [SerializeField] private GameObject[] hiddenKnightAbility_X;
     [SerializeField] private GameObject[] hiddenRangerAbility_Z;
     [SerializeField] private GameObject[] hiddenRangerAbility_X;
     [SerializeField] private GameObject[] hiddenHashashinAbility_Z;
     [SerializeField] private GameObject swiftAbility;
+
+    [HideInInspector] public List<int> SelectLog = new List<int>();
 
     private GameObject playerObject;
     private int z_collection = 0;
@@ -85,7 +87,16 @@ public class UI_Container : MonoBehaviour
             Book_UI.SetActive(true);
         }
     }
+    public void Initialize_Ability()
+    {
+        int[] select_log = DataManager.Instance.data.select_log;
+        for(int i = 0; i < select_log.Length; i++)
+        {
+            SelectLog.Add(select_log[i]);
+            GetAbility(Ability_Array[select_log[i]]);
+        }
 
+    }
     public void HandleHP(float cur, float max)
     {
         MaxHP = max;
@@ -333,7 +344,9 @@ public class UI_Container : MonoBehaviour
         {
 
         }
+
         AddToBook(SelectedAbility);
+
         for (int i = 0; i < availableAbilityList.Count; i++)
         {
             availableAbilityList[i].SetActive(false);
@@ -342,6 +355,10 @@ public class UI_Container : MonoBehaviour
         {
             SelectedAbilityList[i].SetActive(false);
         }
+    }
+    public void SelectLogUpdate(Ability ability)
+    {
+        SelectLog.Add(ability.index);
     }
     public void CollectionZ()
     {
@@ -452,8 +469,13 @@ public class UI_Container : MonoBehaviour
     public void QuitGame()
     {
         DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
-        int[] arr = new int[10];
-        DataManager.Instance.data.test_arr = arr;
+        int length = SelectLog.Count;
+        int[] arr = new int[length];
+        for(int i = 0; i < length; i++)
+        {
+            arr[i] = SelectLog[i];
+        }
+        DataManager.Instance.data.select_log = arr;
         DataManager.Instance.SaveGameData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

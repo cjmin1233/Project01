@@ -46,8 +46,8 @@ public class Player : MonoBehaviour
     public bool recovery_enable = false;
     public bool resistance_enable = false;
     public float hpincrease_multiplier = 1f;
-    private float MaxHP = 100f;
-    private float CurHP;
+    [HideInInspector] public float MaxHP = 100f;
+    [HideInInspector] public float CurHP;
     [HideInInspector] public bool canInvincible;
     [SerializeField] private AudioSource damage_shield_sound;
     private float damagingTimeLeft = -1f;

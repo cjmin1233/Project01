@@ -102,6 +102,8 @@ public class GameManager : MonoBehaviour
             pos.y = gameData.position[1];
             pos.z = gameData.position[2];
             gameObject.transform.position = pos;
+            gameObject.GetComponent<Player>().MaxHP = gameData.maxHP;
+            gameObject.GetComponent<Player>().CurHP = gameData.curHP;
         }
         DataManager.Instance.SaveGameData();
 
@@ -127,6 +129,11 @@ public class GameManager : MonoBehaviour
 
         gameObject = Instantiate(ui_container);
         AddToList(gameObject);
+
+        if (!newGame)
+        {
+            UI_Container.Instance.Initialize_Ability();
+        }
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }

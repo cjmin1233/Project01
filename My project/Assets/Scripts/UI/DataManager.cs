@@ -46,6 +46,9 @@ public class DataManager : MonoBehaviour
         data.position[0] = player.transform.position.x;
         data.position[1] = player.transform.position.y;
         data.position[2] = player.transform.position.z;
+        data.curHP = player.GetComponent<Player>().CurHP;
+        data.maxHP = player.GetComponent<Player>().MaxHP;
+
 
         string ToJsonData = JsonUtility.ToJson(data, true);
         string filePath = Application.persistentDataPath + "/" + GameDataFileName;
