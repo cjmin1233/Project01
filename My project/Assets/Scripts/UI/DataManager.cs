@@ -48,6 +48,7 @@ public class DataManager : MonoBehaviour
         data.position[2] = player.transform.position.z;
         data.curHP = player.GetComponent<Player>().CurHP;
         data.maxHP = player.GetComponent<Player>().MaxHP;
+        data.gold = player.GetComponent<Player>().CheckGold();
 
 
         string ToJsonData = JsonUtility.ToJson(data, true);

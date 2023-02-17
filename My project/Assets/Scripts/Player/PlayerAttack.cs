@@ -47,10 +47,7 @@ public class PlayerAttack : MonoBehaviour
     protected bool isJumping;
     protected bool isDashing;
 
-    //int weaponType;
-
-
-    protected virtual void Start()
+    protected virtual void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();

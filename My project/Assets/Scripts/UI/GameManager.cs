@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
 
         if (!newGame)
         {
-            UI_Container.Instance.Initialize_Ability();
+            UI_Container.Instance.Data_Recovery();
         }
 
         SceneManager.sceneLoaded -= OnSceneLoaded;

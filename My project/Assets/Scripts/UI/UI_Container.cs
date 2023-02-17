@@ -61,8 +61,12 @@ public class UI_Container : MonoBehaviour
     private void OnEnable()
     {
         Instance = this;
-        if (PlayerPrefs.GetInt("weaponType") == 3) hashshin_gauge_UI.SetActive(true);
-        curGauge = 0f;
+        if (PlayerPrefs.GetInt("weaponType") == 3)
+        {
+            hashshin_gauge_UI.SetActive(true);
+            curGauge = 0f;
+            updateGauge(curGauge);
+        }
 
         // 어빌리티 세팅
         for(int i = 0; i < Ability_Array.Length; i++)
@@ -87,8 +91,16 @@ public class UI_Container : MonoBehaviour
             Book_UI.SetActive(true);
         }
     }
-    public void Initialize_Ability()
+    public void Data_Recovery()
     {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        Data gameData = DataManager.Instance.data;
+        Player player_script = playerObject.GetComponent<Player>();
+        player_script.MaxHP = gameData.maxHP;
+        player_script.CurHP = gameData.curHP;
+        HandleHP(gameData.curHP, gameData.maxHP);
+        player_script.GetGold(gameData.gold);
+
         int[] select_log = DataManager.Instance.data.select_log;
         for(int i = 0; i < select_log.Length; i++)
         {
@@ -188,6 +200,8 @@ public class UI_Container : MonoBehaviour
     }
     public void GetAbility(GameObject SelectedAbility)
     {
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+
         Ability ability = SelectedAbility.GetComponent<Ability>();
         Player player = playerObject.GetComponent<Player>();
         PlayerAttack playerAttack = playerObject.GetComponent<PlayerAttack>();
@@ -460,7 +474,7 @@ public class UI_Container : MonoBehaviour
     {
         GameManager.Instance.ClearObjects();
         //Destroy(GameManager.Instance.gameObject);
-        //
+        // 포기한 상태로 표시
         DataManager.Instance.data.weaponType = -1;
         DataManager.Instance.SaveGameData();
 
@@ -476,6 +490,7 @@ public class UI_Container : MonoBehaviour
             arr[i] = SelectLog[i];
         }
         DataManager.Instance.data.select_log = arr;
+        DataManager.Instance.data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
         DataManager.Instance.SaveGameData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

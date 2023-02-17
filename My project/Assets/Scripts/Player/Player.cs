@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     const float damagingTime = 1f;
 
     [HideInInspector] public float gold_multiplier = 1f;
-    private int gold;
+    private int gold = 0;
     [SerializeField] private Player_Ground_Checker ground_checker;
     private void Start()
     {
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         //playerLayer = LayerMask.NameToLayer("Player");
         //groundLayer = LayerMask.NameToLayer("Ground");
 
-        gold = 0;
+        //gold = 0;
         UI_Container.Instance.HandleGold(gold);
 
         CurHP = MaxHP;

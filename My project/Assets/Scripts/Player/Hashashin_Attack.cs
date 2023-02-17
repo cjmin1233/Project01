@@ -15,9 +15,9 @@ public class Hashashin_Attack : PlayerAttack
     private float reqGauge = 33f;
 
 
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         UI_Container.Instance.updateGauge(curGauge);
     }
     protected override void Update()
