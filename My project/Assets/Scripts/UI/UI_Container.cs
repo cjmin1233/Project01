@@ -93,13 +93,13 @@ public class UI_Container : MonoBehaviour
     }
     public void Data_Recovery()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
+        /*playerObject = GameObject.FindGameObjectWithTag("Player");
         Data gameData = DataManager.Instance.data;
         Player player_script = playerObject.GetComponent<Player>();
         player_script.MaxHP = gameData.maxHP;
         player_script.CurHP = gameData.curHP;
         HandleHP(gameData.curHP, gameData.maxHP);
-        player_script.GetGold(gameData.gold);
+        player_script.GetGold(gameData.gold);*/
 
         int[] select_log = DataManager.Instance.data.select_log;
         for(int i = 0; i < select_log.Length; i++)

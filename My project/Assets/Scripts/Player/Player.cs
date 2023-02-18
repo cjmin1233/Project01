@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     public bool recovery_enable = false;
     public bool resistance_enable = false;
     public float hpincrease_multiplier = 1f;
-    [HideInInspector] public float MaxHP = 100f;
+    [HideInInspector] public float MaxHP;
     [HideInInspector] public float CurHP;
     [HideInInspector] public bool canInvincible;
     [SerializeField] private AudioSource damage_shield_sound;
@@ -71,9 +71,20 @@ public class Player : MonoBehaviour
         //groundLayer = LayerMask.NameToLayer("Ground");
 
         //gold = 0;
+        if (!GameManager.Instance.newGame)
+        {
+            Data gameData = DataManager.Instance.data;
+            MaxHP = gameData.maxHP;
+            CurHP = gameData.curHP;
+            Debug.Log("hp is : " + MaxHP.ToString() + ", " + CurHP.ToString());
+            gold = gameData.gold;
+        }
+        else
+        {
+            gold = 0;
+            CurHP = MaxHP;
+        }
         UI_Container.Instance.HandleGold(gold);
-
-        CurHP = MaxHP;
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
         currentSpeed = moveSpeed_multiplier * baseSpeed;
     }

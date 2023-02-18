@@ -15,11 +15,11 @@ public class Hashashin_Attack : PlayerAttack
     private float reqGauge = 33f;
 
 
-    protected override void OnEnable()
+    /*protected override void OnEnable()
     {
         base.OnEnable();
-        UI_Container.Instance.updateGauge(curGauge);
-    }
+        //UI_Container.Instance.updateGauge(curGauge);
+    }*/
     protected override void Update()
     {
         isDashing = animator.GetBool("IsDashing");

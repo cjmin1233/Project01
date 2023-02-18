@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject ArrowShowerPool;
     [SerializeField] private GameObject ui_container;
     int weaponType;
-    bool newGame;
+    [HideInInspector] public bool newGame;
     Data gameData;
     private void Awake()
     {
@@ -102,10 +102,8 @@ public class GameManager : MonoBehaviour
             pos.y = gameData.position[1];
             pos.z = gameData.position[2];
             gameObject.transform.position = pos;
-            gameObject.GetComponent<Player>().MaxHP = gameData.maxHP;
-            gameObject.GetComponent<Player>().CurHP = gameData.curHP;
         }
-        DataManager.Instance.SaveGameData();
+        //DataManager.Instance.SaveGameData();
 
         gameObject = Instantiate(startCamera);
         AddToList(gameObject);
