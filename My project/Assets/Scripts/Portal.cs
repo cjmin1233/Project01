@@ -7,7 +7,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     //[SerializeField] private GameObject EnterIcon;
-    [SerializeField] private Transform destination;
+    [SerializeField] private Transform[] destination;
     //[SerializeField] private int toggleTextIndex;
     private GameObject Player;
     bool isPickUp;
@@ -19,7 +19,6 @@ public class Portal : MonoBehaviour
     void Update()
     {
         if (isPickUp && Input.GetKeyDown(KeyCode.E)) PickUp();
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,22 +41,9 @@ public class Portal : MonoBehaviour
     }
     void PickUp()
     {
-        /*int weapontype = Player.GetComponent<Animator>().GetInteger("WeaponType");
-
-        if (weapontype > 0)
-        {
-
-            *//*PlayerPrefs.SetInt("weaponType", weapontype);
-            Scene scene = SceneManager.GetActiveScene();
-            Debug.Log("Active Scene is '" + scene.name + "'.");
-            Debug.Log("move to the next scene");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Player.transform.position = new Vector3(0f, 0f, 0f);
-            EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", false);*//*
-        }
-        else Debug.Log("Choose a weapon");*/
         Debug.Log("This is portal");
-        Player.transform.position = destination.position;
+        int rand = Random.Range(0, destination.Length);
+        Player.transform.position = destination[rand].position;
         UI_Container.Instance.DisableToggleText(4);
     }
 }

@@ -38,20 +38,12 @@ public class Door : MonoBehaviour
     }
     void PickUp()
     {
-        int weapontype = Player.GetComponent<Animator>().GetInteger("WeaponType");
-
-        if (weapontype > 0)
-        {
-
-            PlayerPrefs.SetInt("weaponType", weapontype);
-            Scene scene = SceneManager.GetActiveScene();
-            Debug.Log("Active Scene is '" + scene.name + "'.");
-            Debug.Log("move to the next scene");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Player.transform.position = new Vector3(0f, 0f, 0f);
-            UI_Container.Instance.DisableToggleText(4);
-        }
-        else Debug.Log("Choose a weapon");
+        Scene scene = SceneManager.GetActiveScene();
+        Debug.Log("Active Scene is '" + scene.name + "'.");
+        Debug.Log("move to the next scene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Player.transform.position = new Vector3(0f, 0f, 0f);
+        UI_Container.Instance.DisableToggleText(4);
 
     }
 }
