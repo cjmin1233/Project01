@@ -87,6 +87,8 @@ public class Player : MonoBehaviour
         UI_Container.Instance.HandleGold(gold);
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
         currentSpeed = moveSpeed_multiplier * baseSpeed;
+
+        DataManager.Instance.SaveGameData();
     }
 
     private void Update()
