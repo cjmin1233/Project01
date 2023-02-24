@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private GameObject EnterIcon;
+    //[SerializeField] private GameObject EnterIcon;
     private GameObject Player;
     bool isPickUp;
-    void Awake()
+    /*void Awake()
     {
-        EnterIcon.gameObject.SetActive(false);
-    }
+        EnterIcon.SetActive(false);
+    }*/
     // Update is called once per frame
     void Update()
     {
@@ -24,8 +24,7 @@ public class Door : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Player = collision.gameObject;
-            EnterIcon.gameObject.SetActive(true);
-            EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
+            UI_Container.Instance.EnableToggleText(4);
             isPickUp = true;
         }
     }
@@ -33,25 +32,18 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", false);
+            UI_Container.Instance.DisableToggleText(4);
             isPickUp = false;
         }
     }
     void PickUp()
     {
-        int weapontype = Player.GetComponent<Animator>().GetInteger("WeaponType");
-
-        if (weapontype > 0)
-        {
-
-            PlayerPrefs.SetInt("weaponType", weapontype);
-            Scene scene = SceneManager.GetActiveScene();
-            Debug.Log("Active Scene is '" + scene.name + "'.");
-            Debug.Log("move to the next scene");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Player.gameObject.transform.position = new Vector3(0f, 0f, 0f);
-        }
-        else Debug.Log("Choose a weapon");
+        Scene scene = SceneManager.GetActiveScene();
+        Debug.Log("Active Scene is '" + scene.name + "'.");
+        Debug.Log("move to the next scene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Player.transform.position = new Vector3(0f, 0f, 0f);
+        UI_Container.Instance.DisableToggleText(4);
 
     }
 }

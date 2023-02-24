@@ -4,35 +4,45 @@ using UnityEngine;
 
 public class Sword_Combo_Collider : MonoBehaviour
 {
-    public float damage;
-    public float anim_Speed = 1.0f;
-
+    [HideInInspector] public float damage;
+    [HideInInspector] public float anim_Speed = 1.0f;
+    [HideInInspector] public Vector2 damageForce;
+    public AudioSource audioSource;
     private Animator animator;
+    private List<string> hit_list;
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        hit_list = new List<string>();
     }
     private void OnEnable()
     {        
         animator.SetFloat("EnableSpeed", anim_Speed);
+        if (audioSource!=null) audioSource.PlayOneShot(audioSource.clip);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.tag;
-        if (tag == "Enemy")
+        string name = collision.name;
+        if (!hit_list.Contains(name))
         {
-            Debug.Log("hit " + collision.name);
-            collision.GetComponent<Enemy>().TakeDamage(damage);
+            hit_list.Add(name);
+            if (tag == "Enemy")
+            {
+                //Debug.Log("hit " + collision.name);
+                collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);
+            }
+            else if (tag == "Boss")
+            {
+                collision.GetComponent<Boss>().TakeDamage(damage);
+            }
+            //else Debug.Log("We hit " + collision.name);
         }
-        else if (tag == "Boss")
-        {
-            collision.GetComponent<Boss>().TakeDamage(damage);
-        }
-        else Debug.Log("We hit " + collision.name);
     }
     private void Disable_Sword_Collider()
     {
         gameObject.SetActive(false);
+        hit_list.Clear();
     }
 }
