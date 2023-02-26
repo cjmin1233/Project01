@@ -11,10 +11,10 @@ public class Portal : MonoBehaviour
     //[SerializeField] private int toggleTextIndex;
     private GameObject Player;
     bool isPickUp;
-    void Awake()
+    /*void Awake()
     {
         //EnterIcon.SetActive(false);
-    }
+    }*/
     // Update is called once per frame
     void Update()
     {
@@ -41,9 +41,11 @@ public class Portal : MonoBehaviour
     }
     void PickUp()
     {
+        UI_Container.Instance.StartFadeFlow();
         Debug.Log("This is portal");
         int rand = Random.Range(0, destination.Length);
         Player.transform.position = destination[rand].position;
         UI_Container.Instance.DisableToggleText(4);
+        UI_Container.Instance.fade_in_start = true;
     }
 }

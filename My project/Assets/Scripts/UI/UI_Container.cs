@@ -58,6 +58,10 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private GameObject Enemy_UI;
     [SerializeField] private GameObject enemyHpSlider;
     private Queue<GameObject> enemySliderQueue = new Queue<GameObject>();
+
+    // ÆäÀÌµå UI
+    [SerializeField] private GameObject Fade_UI;
+    [HideInInspector] public bool fade_in_start;
     private void OnEnable()
     {
         Instance = this;
@@ -553,5 +557,70 @@ public class UI_Container : MonoBehaviour
         if (enemySliderQueue.Count == 0) GrowEnemySliderPool();
         var instance = enemySliderQueue.Dequeue();
         return instance;
+    }
+    public void StartFadeIn()
+    {
+        StartCoroutine("FadeInStart");
+    }
+    public void StartFadeOut()
+    {
+        StartCoroutine("FadeOutStart");
+    }
+    public void StartFadeFlow()
+    {
+        StartCoroutine(FadeFlow());
+    }
+    public IEnumerator FadeInStart()
+    {
+        Debug.Log("Hello fadein");
+        Fade_UI.SetActive(true);
+        for(float f = 1f; f > 0; f -= 0.02f)
+        {
+            Color c = Fade_UI.GetComponent<Image>().color;
+            c.a = f;
+            Fade_UI.GetComponent<Image>().color = c;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.1f);
+        Fade_UI.SetActive(false);
+    }
+    public IEnumerator FadeOutStart()
+    {
+        Debug.Log("Hello fadeout");
+
+        Fade_UI.SetActive(true);
+        for(float f = 0f; f < 1; f += 0.02f)
+        {
+            Color c = Fade_UI.GetComponent<Image>().color;
+            c.a = f;
+            Fade_UI.GetComponent<Image>().color = c;
+            yield return null;
+        }
+    }
+    IEnumerator FadeFlow()
+    {
+        Fade_UI.SetActive(true);
+        for (float f = 0f; f < 1; f += 0.02f)
+        {
+            Color c = Fade_UI.GetComponent<Image>().color;
+            c.a = f;
+            Fade_UI.GetComponent<Image>().color = c;
+            yield return null;
+        }
+        while (!fade_in_start)
+        {
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.5f);
+        for (float f = 1f; f > 0; f -= 0.02f)
+        {
+            Color c = Fade_UI.GetComponent<Image>().color;
+            c.a = f;
+            Fade_UI.GetComponent<Image>().color = c;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.1f);
+        Fade_UI.SetActive(false);
+
     }
 }

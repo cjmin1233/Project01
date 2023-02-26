@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    static GameObject container;
+    //static GameObject container;
     public static GameManager Instance;
     /*public static GameManager Instance
     {
