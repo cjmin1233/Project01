@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     int weaponType;
     [HideInInspector] public bool newGame;
     Data gameData;
+
+    // 페이드인 효과
+    [HideInInspector] public bool faded = false;
     private void Awake()
     {
         if (Instance == null)
@@ -136,5 +139,17 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    /*public void PlayerTransport(Vector3 dest)
+    {
+        UI_Container.Instance.StartFadeFlow();
+    }*/
+    public IEnumerator TransportFlow(Vector3 destination)
+    {
+        StartCoroutine(UI_Container.Instance.FadeFlow());
+        yield return new WaitUntil(() => faded);
+
+        GameObject.FindGameObjectWithTag("Player").transform.position = destination;
+        UI_Container.Instance.fade_in_start = true;
     }
 }

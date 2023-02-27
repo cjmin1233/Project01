@@ -27,7 +27,10 @@ public class CameraFollow : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        tempPos = Vector3.Lerp(this.transform.position, player.position + difValue, speed);
-        this.transform.position = new Vector3(tempPos.x, tempPos.y, -10f);
+        if (playerFollowing)
+        {
+            tempPos = Vector3.Lerp(this.transform.position, player.position + difValue, speed);
+            this.transform.position = new Vector3(tempPos.x, tempPos.y, -10f);
+        }
     }
 }

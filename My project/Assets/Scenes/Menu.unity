@@ -1283,6 +1283,7 @@ MonoBehaviour:
   ArrowPool: {fileID: 3678687341321294657, guid: 5a5ba8df415f4d24ea2577519503d2e4, type: 3}
   ArrowShowerPool: {fileID: 2165219369552474133, guid: 65bdecd67aaefd8468274a22d1637590, type: 3}
   ui_container: {fileID: 1759081849171130609, guid: 021267dd0a08514408bd4aea1ad63154, type: 3}
+  newGame: 0
 --- !u!4 &256106931
 Transform:
   m_ObjectHideFlags: 0
@@ -2073,7 +2074,6 @@ GameObject:
   m_Component:
   - component: {fileID: 316158529}
   - component: {fileID: 316158528}
-  - component: {fileID: 316158527}
   m_Layer: 0
   m_Name: Background_2 (1)
   m_TagString: Untagged
@@ -2081,19 +2081,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &316158527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316158526}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f7b3b3576aa9c4d832a6ef8e327c98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: 0.0001
 --- !u!212 &316158528
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8654,7 +8641,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1412456001}
   - component: {fileID: 1412456000}
-  - component: {fileID: 1412456002}
   m_Layer: 0
   m_Name: Background_2
   m_TagString: Untagged
@@ -8727,19 +8713,6 @@ Transform:
   m_Father: {fileID: 840483840}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1412456002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1412455999}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f7b3b3576aa9c4d832a6ef8e327c98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: 0.0001
 --- !u!1 &1418089823
 GameObject:
   m_ObjectHideFlags: 0

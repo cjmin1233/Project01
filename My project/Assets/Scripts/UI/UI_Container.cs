@@ -558,19 +558,19 @@ public class UI_Container : MonoBehaviour
         var instance = enemySliderQueue.Dequeue();
         return instance;
     }
-    public void StartFadeIn()
+    /*public void StartFadeIn()
     {
         StartCoroutine("FadeInStart");
     }
     public void StartFadeOut()
     {
         StartCoroutine("FadeOutStart");
-    }
-    public void StartFadeFlow()
+    }*/
+    /*public void StartFadeFlow()
     {
         StartCoroutine(FadeFlow());
-    }
-    public IEnumerator FadeInStart()
+    }*/
+    /*public IEnumerator FadeInStart()
     {
         Debug.Log("Hello fadein");
         Fade_UI.SetActive(true);
@@ -596,8 +596,8 @@ public class UI_Container : MonoBehaviour
             Fade_UI.GetComponent<Image>().color = c;
             yield return null;
         }
-    }
-    IEnumerator FadeFlow()
+    }*/
+    public IEnumerator FadeFlow()
     {
         Fade_UI.SetActive(true);
         for (float f = 0f; f < 1; f += 0.02f)
@@ -607,10 +607,8 @@ public class UI_Container : MonoBehaviour
             Fade_UI.GetComponent<Image>().color = c;
             yield return null;
         }
-        while (!fade_in_start)
-        {
-            yield return null;
-        }
+        GameManager.Instance.faded = true;
+        yield return new WaitUntil(() => fade_in_start);
         yield return new WaitForSeconds(0.5f);
         for (float f = 1f; f > 0; f -= 0.02f)
         {
@@ -621,6 +619,5 @@ public class UI_Container : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         Fade_UI.SetActive(false);
-
     }
 }
