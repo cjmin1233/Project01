@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -62,6 +63,12 @@ public class UI_Container : MonoBehaviour
     // 페이드 UI
     [SerializeField] private GameObject Fade_UI;
     [HideInInspector] public bool fade_in_start;
+
+    // 옵션 UI
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Slider MasterAudioSlider;
+    [SerializeField] private Slider BgmAudioSlider;
+    [SerializeField] private Slider EffectAudioSlider;
     private void OnEnable()
     {
         Instance = this;
@@ -82,6 +89,14 @@ public class UI_Container : MonoBehaviour
 
         // 적 체력바 준비
         GrowEnemySliderPool();
+
+        // 볼륨 슬라이더 세팅
+        if (!PlayerPrefs.HasKey("MasterVolume")) PlayerPrefs.SetFloat("MasterVolume", 1f);
+        MasterAudioSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        if (!PlayerPrefs.HasKey("BgmVolume")) PlayerPrefs.SetFloat("BgmVolume", 0.75f);
+        BgmAudioSlider.value = PlayerPrefs.GetFloat("BgmVolume");
+        if (!PlayerPrefs.HasKey("EffectVolume")) PlayerPrefs.SetFloat("EffectVolume", 0.75f);
+        EffectAudioSlider.value = PlayerPrefs.GetFloat("EffectVolume");
     }
     private void Update()
     {
@@ -596,5 +611,20 @@ public class UI_Container : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Fade_UI.SetActive(false);
         GameManager.Instance.faded = false;
+    }
+    public void SetMasterVolume(float volume)
+    {
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("MasterVolume", volume);
+    }
+    public void SetBgmVolume(float volume)
+    {
+        audioMixer.SetFloat("BgmVolume", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("BgmVolume", volume);
+    }
+    public void SetEffectVolume(float volume)
+    {
+        audioMixer.SetFloat("EffectVolume", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("EffectVolume", volume);
     }
 }

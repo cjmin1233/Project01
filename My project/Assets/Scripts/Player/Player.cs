@@ -81,8 +81,9 @@ public class Player : MonoBehaviour
         }
         else
         {
-            gold = 0;
+            MaxHP = 100f;
             CurHP = MaxHP;
+            gold = 0;
         }
         UI_Container.Instance.HandleGold(gold);
         UI_Container.Instance.HandleHP(CurHP, MaxHP);

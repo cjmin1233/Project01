@@ -2735,7 +2735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701e803b20cedb542965f6b531a11f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 400
+  moveSpeed_multiplier: 1
   dash_sound:
   - {fileID: 108242344}
   - {fileID: 1416318491}
@@ -2753,8 +2753,15 @@ MonoBehaviour:
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  defence_multiplier: 1
+  recovery_enable: 0
+  resistance_enable: 0
+  hpincrease_multiplier: 1
+  MaxHP: 0
+  CurHP: 0
   canInvincible: 0
   damage_shield_sound: {fileID: 7552273577865189459}
+  gold_multiplier: 1
   ground_checker: {fileID: 815865361}
 --- !u!114 &1442349836686189305
 MonoBehaviour:
@@ -2786,8 +2793,6 @@ MonoBehaviour:
   Speed_Z: 1
   Speed_X: 1
   playerPower: 100
-  damage_z_multiplier: 1
-  damage_x_multiplier: 1
   sword_wind_enable: 0
   sword_storm_enable: 0
   sword_cursed_enable: 0
@@ -2797,6 +2802,12 @@ MonoBehaviour:
   bow_storm_enable: 0
   bow_poison_enable: 0
   bow_air_enable: 0
+  bow_rain_enable: 0
+  bow_slow_enable: 0
+  bow_fast_enable: 0
+  dagger_storm_enable: 0
+  quick_wind_enable: 0
+  assassin_enable: 0
   comboCollider:
   - {fileID: 93130276224028732}
   - {fileID: 93130276312372353}

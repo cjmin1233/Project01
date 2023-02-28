@@ -636,7 +636,7 @@ AudioSource:
   m_GameObject: {fileID: 7599806829277606522}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5785616702313311339, guid: e72b5eae7b8a3ef4393eaf82a4d94475, type: 2}
   m_audioClip: {fileID: 8300000, guid: 599498881f31bd642a1f88dbc2b918c3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -763,7 +763,7 @@ AudioSource:
   m_GameObject: {fileID: 7599806829312063915}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5785616702313311339, guid: e72b5eae7b8a3ef4393eaf82a4d94475, type: 2}
   m_audioClip: {fileID: 8300000, guid: a33bf28e4d26c3e4280c0e8d3f58825c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -890,7 +890,7 @@ AudioSource:
   m_GameObject: {fileID: 7599806829337293532}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5785616702313311339, guid: e72b5eae7b8a3ef4393eaf82a4d94475, type: 2}
   m_audioClip: {fileID: 8300000, guid: a9b8c5c0b7d007446a2d94cbf60b8d88, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1017,7 +1017,7 @@ AudioSource:
   m_GameObject: {fileID: 7599806829477276716}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5785616702313311339, guid: e72b5eae7b8a3ef4393eaf82a4d94475, type: 2}
   m_audioClip: {fileID: 8300000, guid: e1734bdb9e750c642a206fba8584c133, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1182,7 +1182,7 @@ AudioSource:
   m_GameObject: {fileID: 7599806829752757438}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5785616702313311339, guid: e72b5eae7b8a3ef4393eaf82a4d94475, type: 2}
   m_audioClip: {fileID: 8300000, guid: 17929c6557991164488a2ec0ed4e7a84, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1309,7 +1309,7 @@ AudioSource:
   m_GameObject: {fileID: 7599806829949364689}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5785616702313311339, guid: e72b5eae7b8a3ef4393eaf82a4d94475, type: 2}
   m_audioClip: {fileID: 8300000, guid: ac059faf7b5ec2f44850d19dbde77a4e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1436,7 +1436,7 @@ AudioSource:
   m_GameObject: {fileID: 7599806830174558563}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5785616702313311339, guid: e72b5eae7b8a3ef4393eaf82a4d94475, type: 2}
   m_audioClip: {fileID: 8300000, guid: afbff65848d79d946a91b13e874e6ad3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1563,7 +1563,7 @@ AudioSource:
   m_GameObject: {fileID: 7599806830518939726}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5785616702313311339, guid: e72b5eae7b8a3ef4393eaf82a4d94475, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7db64d5c4b33b914099d68cd02b426b3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.2
@@ -1826,7 +1826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701e803b20cedb542965f6b531a11f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 400
+  moveSpeed_multiplier: 1
   dash_sound:
   - {fileID: 7599806830174558573}
   - {fileID: 7599806829337293534}
@@ -1844,8 +1844,15 @@ MonoBehaviour:
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  defence_multiplier: 1
+  recovery_enable: 0
+  resistance_enable: 0
+  hpincrease_multiplier: 1
+  MaxHP: 0
+  CurHP: 0
   canInvincible: 0
   damage_shield_sound: {fileID: 0}
+  gold_multiplier: 1
   ground_checker: {fileID: 329048763}
 --- !u!114 &7113246021913483761
 MonoBehaviour:
@@ -1877,8 +1884,6 @@ MonoBehaviour:
   Speed_Z: 1
   Speed_X: 1
   playerPower: 100
-  damage_z_multiplier: 1
-  damage_x_multiplier: 1
   sword_wind_enable: 0
   sword_storm_enable: 0
   sword_cursed_enable: 0
@@ -1888,6 +1893,12 @@ MonoBehaviour:
   bow_storm_enable: 0
   bow_poison_enable: 0
   bow_air_enable: 0
+  bow_rain_enable: 0
+  bow_slow_enable: 0
+  bow_fast_enable: 0
+  dagger_storm_enable: 0
+  quick_wind_enable: 0
+  assassin_enable: 0
   comboCollider:
   - {fileID: 1015373028}
   - {fileID: 416063871}
