@@ -619,5 +619,6 @@ public class UI_Container : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         Fade_UI.SetActive(false);
+        GameManager.Instance.faded = false;
     }
 }

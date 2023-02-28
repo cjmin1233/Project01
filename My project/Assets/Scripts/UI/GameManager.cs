@@ -144,12 +144,20 @@ public class GameManager : MonoBehaviour
     {
         UI_Container.Instance.StartFadeFlow();
     }*/
-    public IEnumerator TransportFlow(Vector3 destination)
+    public IEnumerator TransportFlow(Vector3 destination, bool loadScene)
     {
         StartCoroutine(UI_Container.Instance.FadeFlow());
         yield return new WaitUntil(() => faded);
 
         GameObject.FindGameObjectWithTag("Player").transform.position = destination;
+        //if (loadScene) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (loadScene)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+
+            yield return new WaitUntil(() => asyncLoad.isDone);
+        }
+
         UI_Container.Instance.fade_in_start = true;
     }
 }
