@@ -5,22 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //static GameObject container;
-    public static GameManager Instance;
-    /*public static GameManager Instance
+    private GameManager() { }
+
+    private static GameManager instance;
+
+    public static GameManager Instance
     {
         get
         {
-            if (!instance)
+            if (instance == null)
             {
-                container = new GameObject();
-                container.name = "GameManager";
-                instance = container.AddComponent(typeof(GameManager)) as GameManager;
-                DontDestroyOnLoad(container);
+                var obj = FindObjectOfType<GameManager>();
+                if (obj != null)
+                {
+                    instance = obj;
+                }
+                else
+                {
+                    var newObj = new GameObject().AddComponent<GameManager>();
+                    instance = newObj;
+                }
             }
             return instance;
         }
-    }*/
+    }
     public List<GameObject> objects;
     [SerializeField] private GameObject[] players;
     [SerializeField] private GameObject startCamera;
@@ -38,13 +46,20 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool faded = false;
     private void Awake()
     {
-        if (Instance == null)
+        /*if (Instance == null)
         {
             Instance = this;
         }
         else if (Instance != this)
         {
             Destroy(Instance.gameObject);
+            Debug.Log("중복된 gamemanager 발견");
+        }*/
+        var objs = FindObjectsOfType<GameManager>();
+        if (objs.Length != 1)
+        {
+            Destroy(gameObject);
+            return;
         }
         DontDestroyOnLoad(this.gameObject);
         objects = new List<GameObject>();
@@ -68,11 +83,10 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if(!newGame) SceneManager.LoadScene(gameData.sceneNumber);
         else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void QuitGame()
+    public void CloseGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -140,10 +154,6 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    /*public void PlayerTransport(Vector3 dest)
-    {
-        UI_Container.Instance.StartFadeFlow();
-    }*/
     public IEnumerator TransportFlow(Vector3 destination, bool loadScene)
     {
         StartCoroutine(UI_Container.Instance.FadeFlow());
@@ -159,5 +169,28 @@ public class GameManager : MonoBehaviour
         }
 
         UI_Container.Instance.fade_in_start = true;
+    }
+    public IEnumerator GiveUpFlow()
+    {
+        ClearObjects();
+        // 포기한 상태로 표시
+        DataManager.Instance.data.weaponType = -1;
+        DataManager.Instance.SaveGameData();
+
+        //SceneManager.LoadScene(0);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(0);
+        yield return new WaitUntil(() => asyncOperation.isDone);
+    }
+    public IEnumerator QuitGameFlow()
+    {
+        ClearObjects();
+
+        DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
+        
+        DataManager.Instance.data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
+        DataManager.Instance.SaveGameData();
+
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(0);
+        yield return new WaitUntil(() => asyncOperation.isDone);
     }
 }

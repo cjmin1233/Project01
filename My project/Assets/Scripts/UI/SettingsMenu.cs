@@ -121,4 +121,12 @@ public class SettingsMenu : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }*/
+    public void PlayGame(int selected)
+    {
+        GameManager.Instance.PlayGame(selected);
+    }
+    public void CloseGame()
+    {
+        GameManager.Instance.CloseGame();
+    }
 }

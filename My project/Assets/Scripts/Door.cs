@@ -38,7 +38,6 @@ public class Door : MonoBehaviour
     }
     void PickUp()
     {
-        UI_Container.Instance.DisableToggleText(4);
         //UI_Container.Instance.StartFadeFlow();
 
         Scene scene = SceneManager.GetActiveScene();
@@ -48,5 +47,6 @@ public class Door : MonoBehaviour
         StartCoroutine(GameManager.Instance.TransportFlow(new Vector3(0f, 0f, 0f), true));
         //Player.transform.position = new Vector3(0f, 0f, 0f);
         //UI_Container.Instance.fade_in_start = true;
+        UI_Container.Instance.DisableToggleText(4);
     }
 }

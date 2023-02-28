@@ -476,16 +476,29 @@ public class UI_Container : MonoBehaviour
 
     public void GiveUp()
     {
-        GameManager.Instance.ClearObjects();
+        StartCoroutine(GameManager.Instance.GiveUpFlow());
+        /*GameManager.Instance.ClearObjects();
         //Destroy(GameManager.Instance.gameObject);
         // 포기한 상태로 표시
         DataManager.Instance.data.weaponType = -1;
         DataManager.Instance.SaveGameData();
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);*/
     }
     public void QuitGame()
     {
+        int length = SelectLog.Count;
+        int[] arr = new int[length];
+        for (int i = 0; i < length; i++)
+        {
+            arr[i] = SelectLog[i];
+        }
+        DataManager.Instance.data.select_log = arr;
+
+        StartCoroutine(GameManager.Instance.QuitGameFlow());
+
+/*        GameManager.Instance.ClearObjects();
+
         DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
         int length = SelectLog.Count;
         int[] arr = new int[length];
@@ -496,10 +509,12 @@ public class UI_Container : MonoBehaviour
         DataManager.Instance.data.select_log = arr;
         DataManager.Instance.data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
         DataManager.Instance.SaveGameData();
-#if UNITY_EDITOR
+
+        SceneManager.LoadScene(0);
+*//*#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
-        Application.Quit();
+        Application.Quit();*/
     }
     public void AddToBook(GameObject gameObject)
     {
@@ -558,45 +573,6 @@ public class UI_Container : MonoBehaviour
         var instance = enemySliderQueue.Dequeue();
         return instance;
     }
-    /*public void StartFadeIn()
-    {
-        StartCoroutine("FadeInStart");
-    }
-    public void StartFadeOut()
-    {
-        StartCoroutine("FadeOutStart");
-    }*/
-    /*public void StartFadeFlow()
-    {
-        StartCoroutine(FadeFlow());
-    }*/
-    /*public IEnumerator FadeInStart()
-    {
-        Debug.Log("Hello fadein");
-        Fade_UI.SetActive(true);
-        for(float f = 1f; f > 0; f -= 0.02f)
-        {
-            Color c = Fade_UI.GetComponent<Image>().color;
-            c.a = f;
-            Fade_UI.GetComponent<Image>().color = c;
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.1f);
-        Fade_UI.SetActive(false);
-    }
-    public IEnumerator FadeOutStart()
-    {
-        Debug.Log("Hello fadeout");
-
-        Fade_UI.SetActive(true);
-        for(float f = 0f; f < 1; f += 0.02f)
-        {
-            Color c = Fade_UI.GetComponent<Image>().color;
-            c.a = f;
-            Fade_UI.GetComponent<Image>().color = c;
-            yield return null;
-        }
-    }*/
     public IEnumerator FadeFlow()
     {
         Fade_UI.SetActive(true);
