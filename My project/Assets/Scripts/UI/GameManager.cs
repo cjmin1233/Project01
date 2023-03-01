@@ -42,8 +42,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool newGame;
     Data gameData;
 
-    // 페이드인 효과
+    // 페이드인 효과, 로딩화면
     [HideInInspector] public bool faded = false;
+    [HideInInspector] public bool loadingFinished = false;
+
     private void Awake()
     {
         /*if (Instance == null)
@@ -156,18 +158,23 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator TransportFlow(Vector3 destination, bool loadScene)
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(UI_Container.Instance.FadeFlow());
         yield return new WaitUntil(() => faded);
 
-        GameObject.FindGameObjectWithTag("Player").transform.position = destination;
         //if (loadScene) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if (loadScene)
         {
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-
-            yield return new WaitUntil(() => asyncLoad.isDone);
+            loadingFinished = false;
+            LoadingSceneController.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+            //yield return new WaitUntil(() => asyncLoad.isDone);
+            yield return new WaitUntil(() => loadingFinished);
+            Transform spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+            if (spawnPoint != null) player.transform.position = spawnPoint.position;
         }
-
+        else player.transform.position = destination;
+        //GameObject.FindGameObjectWithTag("Player").transform.position = destination;
         UI_Container.Instance.fade_in_start = true;
     }
     public IEnumerator GiveUpFlow()
