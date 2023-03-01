@@ -37,9 +37,9 @@ public class DataManager : MonoBehaviour
             {
                 print($"{i}번 test_arr : " + data.test_arr[i]);
             }*/
-            print("curHP:" + data.curHP);
+            /*print("curHP:" + data.curHP);
             print("maxHP:" + data.maxHP);
-            print("gold:" + data.gold);
+            print("gold:" + data.gold);*/
             print("불러오기 완료");
         }
     }

@@ -43,7 +43,6 @@ public class Portal : MonoBehaviour
     {
         //StartCoroutine(UI_Container.Instance.FadeFlow());
         //UI_Container.Instance.StartFadeFlow();
-        Debug.Log("This is portal");
         int rand = Random.Range(0, destination.Length);
         StartCoroutine(GameManager.Instance.TransportFlow(destination[rand].position, false));
         //GameManager.Instance.PlayerTransport(destination[rand].position);

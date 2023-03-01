@@ -38,15 +38,8 @@ public class Door : MonoBehaviour
     }
     void PickUp()
     {
-        //UI_Container.Instance.StartFadeFlow();
-
-        Scene scene = SceneManager.GetActiveScene();
-        Debug.Log("Active Scene is '" + scene.name + "'.");
-        Debug.Log("move to the next scene");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        StartCoroutine(GameManager.Instance.TransportFlow(new Vector3(0f, 0f, 0f), true));
-        //Player.transform.position = new Vector3(0f, 0f, 0f);
-        //UI_Container.Instance.fade_in_start = true;
+        isPickUp = false;
+        StartCoroutine(GameManager.Instance.TransportFlow(Vector3.zero, true));
         UI_Container.Instance.DisableToggleText(4);
     }
 }

@@ -62,6 +62,7 @@ public class UI_Container : MonoBehaviour
 
     // 페이드 UI
     [SerializeField] private GameObject Fade_UI;
+    [SerializeField] private Image progressBar;
     [HideInInspector] public bool fade_in_start;
 
     // 옵션 UI
@@ -514,13 +515,13 @@ public class UI_Container : MonoBehaviour
 
 /*        GameManager.Instance.ClearObjects();
 
-        DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
         int length = SelectLog.Count;
         int[] arr = new int[length];
         for(int i = 0; i < length; i++)
         {
             arr[i] = SelectLog[i];
         }
+        DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
         DataManager.Instance.data.select_log = arr;
         DataManager.Instance.data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
         DataManager.Instance.SaveGameData();
@@ -591,27 +592,35 @@ public class UI_Container : MonoBehaviour
     public IEnumerator FadeFlow()
     {
         Fade_UI.SetActive(true);
-        for (float f = 0f; f < 1; f += 0.02f)
+        for (float f = 0f; f < 1f; f += 0.02f)
         {
             Color c = Fade_UI.GetComponent<Image>().color;
             c.a = f;
             Fade_UI.GetComponent<Image>().color = c;
             yield return null;
         }
+
         GameManager.Instance.faded = true;
+        fade_in_start = false;
         yield return new WaitUntil(() => fade_in_start);
+
+
         yield return new WaitForSeconds(0.5f);
-        for (float f = 1f; f > 0; f -= 0.02f)
+        Debug.Log("페이드인 시작");
+        for (float f = 1f; f > 0f; f -= 0.02f)
         {
             Color c = Fade_UI.GetComponent<Image>().color;
             c.a = f;
             Fade_UI.GetComponent<Image>().color = c;
             yield return null;
         }
-        yield return new WaitForSeconds(0.1f);
+        //yield return new WaitForSeconds(0.1f);
         Fade_UI.SetActive(false);
         GameManager.Instance.faded = false;
+        Debug.Log("페이드 끝");
+        yield break;
     }
+
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);

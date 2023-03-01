@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -43,9 +44,9 @@ public class GameManager : MonoBehaviour
     Data gameData;
 
     // 페이드인 효과, 로딩화면
-    [HideInInspector] public bool faded = false;
-    [HideInInspector] public bool loadingFinished = false;
-
+    public bool faded;
+    public bool loadingFinished;
+    
     private void Awake()
     {
         /*if (Instance == null)
@@ -65,6 +66,9 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         objects = new List<GameObject>();
+
+        faded = false;
+        loadingFinished = false;
     }
     public void PlayGame(int selected)
     {
@@ -106,13 +110,13 @@ public class GameManager : MonoBehaviour
     }
     public void AddToList(GameObject instance)
     {
-        Debug.Log(instance.name);
+        //Debug.Log(instance.name);
         objects.Add(instance);
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnScenceLoaded : " + scene.name);
-        Debug.Log(mode);
+        //Debug.Log("OnScenceLoaded : " + scene.name);
+        //Debug.Log(mode);
         var gameObject = Instantiate(players[weaponType - 1]);
         AddToList(gameObject);
         if (!newGame)
@@ -159,23 +163,36 @@ public class GameManager : MonoBehaviour
     public IEnumerator TransportFlow(Vector3 destination, bool loadScene)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        faded = false;
+        /*IEnumerator fadeflow = UI_Container.Instance.FadeFlow();
+        StartCoroutine(fadeflow);*/
         StartCoroutine(UI_Container.Instance.FadeFlow());
-        yield return new WaitUntil(() => faded);
 
+        yield return new WaitUntil(() => faded);
+        Debug.Log("페이드 완료");
         //if (loadScene) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if (loadScene)
         {
             loadingFinished = false;
+            //SceneManager.LoadScene("LoadingScene");
+            //
             LoadingSceneController.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            //AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-            //yield return new WaitUntil(() => asyncLoad.isDone);
-            yield return new WaitUntil(() => loadingFinished);
-            Transform spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
-            if (spawnPoint != null) player.transform.position = spawnPoint.position;
+            Debug.Log("로딩 기다리는중..");
+            //yield return StartCoroutine(UI_Container.Instance.LoadSceneProcess(SceneManager.GetActiveScene().buildIndex + 1));
+            //yield return new WaitUntil(() => loadingFinished == true);
+            while (!loadingFinished)
+            {
+                yield return null;
+            }
+            //yield return null;
+            Debug.Log("플레이어 전송");
+            player.transform.position = destination;
         }
         else player.transform.position = destination;
         //GameObject.FindGameObjectWithTag("Player").transform.position = destination;
         UI_Container.Instance.fade_in_start = true;
+        Debug.Log("플레이어 전송 끝");
+        yield break;
     }
     public IEnumerator GiveUpFlow()
     {
@@ -186,18 +203,34 @@ public class GameManager : MonoBehaviour
 
         //SceneManager.LoadScene(0);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(0);
-        yield return new WaitUntil(() => asyncOperation.isDone);
+        yield break;
     }
     public IEnumerator QuitGameFlow()
     {
         ClearObjects();
 
         DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
-        
         DataManager.Instance.data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
         DataManager.Instance.SaveGameData();
 
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(0);
-        yield return new WaitUntil(() => asyncOperation.isDone);
+        asyncOperation.allowSceneActivation = false;
+        while (!asyncOperation.isDone)
+        {
+            
+            float progress = Mathf.Clamp01(asyncOperation.progress / 0.9f);
+
+            Debug.Log("진행도 : " + progress * 100f);
+            if (progress >= 0.9f)
+            {
+                Debug.Log("hey");
+                asyncOperation.allowSceneActivation = true;
+            }
+            else Debug.Log("isDone? : " + asyncOperation.isDone);
+            yield return null;
+        }
+        //SceneManager.LoadScene(0);
+        Debug.Log("게임중단 완료");
+        yield break;
     }
 }
