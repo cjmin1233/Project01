@@ -162,35 +162,37 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator TransportFlow(Vector3 destination, bool loadScene)
     {
+        yield return null;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         faded = false;
-        /*IEnumerator fadeflow = UI_Container.Instance.FadeFlow();
-        StartCoroutine(fadeflow);*/
         StartCoroutine(UI_Container.Instance.FadeFlow());
 
         yield return new WaitUntil(() => faded);
-        Debug.Log("페이드 완료");
-        //if (loadScene) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         if (loadScene)
         {
             loadingFinished = false;
-            //SceneManager.LoadScene("LoadingScene");
-            //
             LoadingSceneController.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Debug.Log("로딩 기다리는중..");
-            //yield return StartCoroutine(UI_Container.Instance.LoadSceneProcess(SceneManager.GetActiveScene().buildIndex + 1));
-            //yield return new WaitUntil(() => loadingFinished == true);
-            while (!loadingFinished)
-            {
-                yield return null;
-            }
-            //yield return null;
-            Debug.Log("플레이어 전송");
-            player.transform.position = destination;
+            yield return null;
+            Debug.Log("로딩 기다리는중.." + loadingFinished);
         }
-        else player.transform.position = destination;
-        //GameObject.FindGameObjectWithTag("Player").transform.position = destination;
+        else loadingFinished = true;
+
+        /*while (!loadingFinished)
+        {
+            yield return null;
+            Debug.Log(loadingFinished);
+        }*/
+        Debug.Log(loadingFinished);
+        //yield return new WaitUntil(() => loadingFinished);
+        while (true)
+        {
+            yield return null;
+            Debug.Log("로딩 기다리는 중...." + loadingFinished);
+            if (loadingFinished) break;
+        }
         UI_Container.Instance.fade_in_start = true;
+        player.transform.position = destination;
+        
         Debug.Log("플레이어 전송 끝");
         yield break;
     }

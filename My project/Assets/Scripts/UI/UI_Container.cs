@@ -63,7 +63,7 @@ public class UI_Container : MonoBehaviour
     // 페이드 UI
     [SerializeField] private GameObject Fade_UI;
     [SerializeField] private Image progressBar;
-    [HideInInspector] public bool fade_in_start;
+    public bool fade_in_start;
 
     // 옵션 UI
     [SerializeField] private AudioMixer audioMixer;
@@ -605,7 +605,7 @@ public class UI_Container : MonoBehaviour
         yield return new WaitUntil(() => fade_in_start);
 
 
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         Debug.Log("페이드인 시작");
         for (float f = 1f; f > 0f; f -= 0.02f)
         {
