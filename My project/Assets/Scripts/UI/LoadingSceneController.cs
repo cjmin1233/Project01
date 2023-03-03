@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class LoadingSceneController : MonoBehaviour
 {
-    static int nextScene;
     public static LoadingSceneController instance;
+    static int nextScene;
+    static int loadingType;
     [SerializeField] Image progressBar;
 
-    public static void LoadScene(int sceneIndex)
+    public static void LoadScene(int sceneIndex, int loading_type)
     {
         nextScene = sceneIndex;
+        loadingType = loading_type;
         Debug.Log("로딩씬 로드");
         SceneManager.LoadScene("LoadingScene");
     }
@@ -41,24 +43,6 @@ public class LoadingSceneController : MonoBehaviour
             yield return null;
             timer += Time.unscaledDeltaTime;
 
-            /*if (op.progress < 0.9f)
-            {
-                progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, op.progress, timer);
-                if (progressBar.fillAmount >= op.progress)
-                {
-                    timer = 0f;
-                }
-            }
-            else
-            {
-                progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, 1f, timer);
-                if (progressBar.fillAmount == 1.0f)
-                {
-                    op.allowSceneActivation = true;
-                    GameManager.Instance.loadingFinished = true;
-                    yield break;
-                }
-            }*/
             if (op.progress < 0.9f)
             {
                 progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, op.progress, timer);
@@ -67,21 +51,18 @@ public class LoadingSceneController : MonoBehaviour
             else
             {
                 progressBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
-                if (progressBar.fillAmount >= 1f)
+                if (progressBar.fillAmount >= 1f && !op.allowSceneActivation)
                 {
-                    //GameManager.Instance.loadingFinished = true;
                     op.allowSceneActivation = true;
+                    GameManager.Instance.loadingType = loadingType;
                     Debug.Log("로딩 완료?" + timer);
-                    Debug.Log("is Done ? : " + op.isDone);
-                    GameManager.Instance.TransportFinish();
-                    gameObject.SetActive(false);
-                    yield break;
                 }
             }
         }
-        /*Debug.Log("로딩 완료 : " + op.isDone);
-        progressBar.fillAmount = 1f;
-        yield break;*/
-        //Destroy(gameObject);
+        //Debug.Log("is done : " + op.isDone);
+        //Debug.Log("현재 씬 : " + SceneManager.GetActiveScene().name);
+        //GameManager.Instance.TransportFinish();
+        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

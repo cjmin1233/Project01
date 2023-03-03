@@ -41,13 +41,8 @@ public class Portal : MonoBehaviour
     }
     void PickUp()
     {
-        //StartCoroutine(UI_Container.Instance.FadeFlow());
-        //UI_Container.Instance.StartFadeFlow();
         int rand = Random.Range(0, destination.Length);
         StartCoroutine(GameManager.Instance.TransportFlow(destination[rand].position, false));
-        //GameManager.Instance.PlayerTransport(destination[rand].position);
-        //Player.transform.position = destination[rand].position;
         UI_Container.Instance.DisableToggleText(4);
-        //UI_Container.Instance.fade_in_start = true;
     }
 }

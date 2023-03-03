@@ -85,7 +85,8 @@ public class Hashashin_Attack : PlayerAttack
             curGauge -= reqGauge;
             UI_Container.Instance.updateGauge(curGauge);
 
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = false;
+            GameManager.Instance.playerFollowing = false;
+            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = false;
             // 공격동안 움직임 제어
             gameObject.GetComponent<Player>().canMove = false;
 

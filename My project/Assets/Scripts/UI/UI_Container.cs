@@ -62,7 +62,6 @@ public class UI_Container : MonoBehaviour
 
     // 페이드 UI
     [SerializeField] private GameObject Fade_UI;
-    [SerializeField] private Image progressBar;
     public bool fade_in_start;
 
     // 옵션 UI
@@ -113,21 +112,12 @@ public class UI_Container : MonoBehaviour
     }
     public void Data_Recovery()
     {
-        /*playerObject = GameObject.FindGameObjectWithTag("Player");
-        Data gameData = DataManager.Instance.data;
-        Player player_script = playerObject.GetComponent<Player>();
-        player_script.MaxHP = gameData.maxHP;
-        player_script.CurHP = gameData.curHP;
-        HandleHP(gameData.curHP, gameData.maxHP);
-        player_script.GetGold(gameData.gold);*/
-
         int[] select_log = DataManager.Instance.data.select_log;
         for(int i = 0; i < select_log.Length; i++)
         {
             SelectLog.Add(select_log[i]);
             GetAbility(Ability_Array[select_log[i]]);
         }
-
     }
     public void HandleHP(float cur, float max)
     {
@@ -493,13 +483,6 @@ public class UI_Container : MonoBehaviour
     public void GiveUp()
     {
         StartCoroutine(GameManager.Instance.GiveUpFlow());
-        /*GameManager.Instance.ClearObjects();
-        //Destroy(GameManager.Instance.gameObject);
-        // 포기한 상태로 표시
-        DataManager.Instance.data.weaponType = -1;
-        DataManager.Instance.SaveGameData();
-
-        SceneManager.LoadScene(0);*/
     }
     public void QuitGame()
     {
@@ -512,25 +495,6 @@ public class UI_Container : MonoBehaviour
         DataManager.Instance.data.select_log = arr;
 
         StartCoroutine(GameManager.Instance.QuitGameFlow());
-
-/*        GameManager.Instance.ClearObjects();
-
-        int length = SelectLog.Count;
-        int[] arr = new int[length];
-        for(int i = 0; i < length; i++)
-        {
-            arr[i] = SelectLog[i];
-        }
-        DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
-        DataManager.Instance.data.select_log = arr;
-        DataManager.Instance.data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        DataManager.Instance.SaveGameData();
-
-        SceneManager.LoadScene(0);
-*//*#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
-        Application.Quit();*/
     }
     public void AddToBook(GameObject gameObject)
     {

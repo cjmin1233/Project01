@@ -414,11 +414,5 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player Died");
-        //animator.SetBool("IsDead", true);
-        //GetComponent<Rigidbody2D>().gravityScale = 0;
-        //GetComponent<Collider2D>().enabled = false;
-        //this.enabled = false;
-        //Instantiate(deathEffect, transform.position, Quaternion.identity);
-        //Destroy(gameObject);
     }
 }
