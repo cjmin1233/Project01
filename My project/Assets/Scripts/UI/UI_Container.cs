@@ -603,9 +603,7 @@ public class UI_Container : MonoBehaviour
         GameManager.Instance.faded = true;
         fade_in_start = false;
         yield return new WaitUntil(() => fade_in_start);
-
-
-        //yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
         Debug.Log("페이드인 시작");
         for (float f = 1f; f > 0f; f -= 0.02f)
         {

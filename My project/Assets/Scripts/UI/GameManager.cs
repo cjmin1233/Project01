@@ -45,7 +45,9 @@ public class GameManager : MonoBehaviour
 
     // 페이드인 효과, 로딩화면
     public bool faded;
-    public bool loadingFinished;
+    //public bool loadingFinished;
+    public Vector3 destination;
+    private GameObject player;
     
     private void Awake()
     {
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
         objects = new List<GameObject>();
 
         faded = false;
-        loadingFinished = false;
+        //loadingFinished = false;
     }
     public void PlayGame(int selected)
     {
@@ -119,6 +121,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log(mode);
         var gameObject = Instantiate(players[weaponType - 1]);
         AddToList(gameObject);
+        player = gameObject;
         if (!newGame)
         {
             // 게임 데이터가 존재하는 경우 이전 위치좌표에 플레이어 생성.
@@ -160,41 +163,28 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    public IEnumerator TransportFlow(Vector3 destination, bool loadScene)
+    public IEnumerator TransportFlow(Vector3 dest, bool loadScene)
     {
-        yield return null;
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        destination = dest;
         faded = false;
         StartCoroutine(UI_Container.Instance.FadeFlow());
 
         yield return new WaitUntil(() => faded);
         if (loadScene)
         {
-            loadingFinished = false;
+            //loadingFinished = false;
             LoadingSceneController.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            yield return null;
-            Debug.Log("로딩 기다리는중.." + loadingFinished);
+            Debug.Log("로딩 기다리는중..");
         }
-        else loadingFinished = true;
-
-        /*while (!loadingFinished)
-        {
-            yield return null;
-            Debug.Log(loadingFinished);
-        }*/
-        Debug.Log(loadingFinished);
-        //yield return new WaitUntil(() => loadingFinished);
-        while (true)
-        {
-            yield return null;
-            Debug.Log("로딩 기다리는 중...." + loadingFinished);
-            if (loadingFinished) break;
-        }
-        UI_Container.Instance.fade_in_start = true;
-        player.transform.position = destination;
-        
-        Debug.Log("플레이어 전송 끝");
+        else TransportFinish();
         yield break;
+    }
+    public void TransportFinish()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = destination;
+        UI_Container.Instance.fade_in_start = true;
+        Debug.Log("플레이어 전송 끝");
     }
     public IEnumerator GiveUpFlow()
     {

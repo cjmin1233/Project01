@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -70,17 +69,19 @@ public class LoadingSceneController : MonoBehaviour
                 progressBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
                 if (progressBar.fillAmount >= 1f)
                 {
-                    GameManager.Instance.loadingFinished = true;
+                    //GameManager.Instance.loadingFinished = true;
                     op.allowSceneActivation = true;
-                    Debug.Log("로딩 완료?");
+                    Debug.Log("로딩 완료?" + timer);
+                    Debug.Log("is Done ? : " + op.isDone);
+                    GameManager.Instance.TransportFinish();
+                    gameObject.SetActive(false);
+                    yield break;
                 }
             }
         }
-        Debug.Log("is Done ? : " + op.isDone);
         /*Debug.Log("로딩 완료 : " + op.isDone);
         progressBar.fillAmount = 1f;
         yield break;*/
         //Destroy(gameObject);
-        gameObject.SetActive(false);
     }
 }
