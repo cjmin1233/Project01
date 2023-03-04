@@ -111,7 +111,6 @@ public class UI_Container : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.B))
             {
-                //
                 Book_UI.SetActive(true);
             }
         }
