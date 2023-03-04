@@ -63,6 +63,7 @@ public class UI_Container : MonoBehaviour
     // 페이드 UI
     [SerializeField] private GameObject Fade_UI;
     public bool fade_in_start;
+    private bool faded;
 
     // 옵션 UI
     [SerializeField] private AudioMixer audioMixer;
@@ -97,17 +98,22 @@ public class UI_Container : MonoBehaviour
         BgmAudioSlider.value = PlayerPrefs.GetFloat("BgmVolume");
         if (!PlayerPrefs.HasKey("EffectVolume")) PlayerPrefs.SetFloat("EffectVolume", 0.75f);
         EffectAudioSlider.value = PlayerPrefs.GetFloat("EffectVolume");
+
+        faded = false;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!faded)
         {
-            Esc_UI.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            //
-            Book_UI.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Esc_UI.SetActive(true);
+            }
+            else if (Input.GetKeyDown(KeyCode.B))
+            {
+                //
+                Book_UI.SetActive(true);
+            }
         }
     }
     public void Data_Recovery()
@@ -556,7 +562,8 @@ public class UI_Container : MonoBehaviour
     public IEnumerator FadeFlow()
     {
         Fade_UI.SetActive(true);
-        for (float f = 0f; f < 1f; f += 0.02f)
+        faded = true;
+        for (float f = 0f; f < 1f; f += Time.deltaTime * 2)
         {
             Color c = Fade_UI.GetComponent<Image>().color;
             c.a = f;
@@ -569,7 +576,7 @@ public class UI_Container : MonoBehaviour
         yield return new WaitUntil(() => fade_in_start);
         yield return new WaitForSecondsRealtime(0.5f);
         Debug.Log("페이드인 시작");
-        for (float f = 1f; f > 0f; f -= 0.02f)
+        for (float f = 1f; f > 0f; f -= Time.deltaTime * 2)
         {
             Color c = Fade_UI.GetComponent<Image>().color;
             c.a = f;
@@ -578,6 +585,7 @@ public class UI_Container : MonoBehaviour
         }
         //yield return new WaitForSeconds(0.1f);
         Fade_UI.SetActive(false);
+        faded = false;
         GameManager.Instance.faded = false;
         Debug.Log("페이드 끝");
         yield break;
