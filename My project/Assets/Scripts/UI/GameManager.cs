@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
+        #region 객체 직렬화
         var objs = FindObjectsOfType<GameManager>();
         if (objs.Length != 1)
         {
@@ -64,6 +65,9 @@ public class GameManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this.gameObject);
+        #endregion
+
+        #region 초기 세팅
         objects = new List<GameObject>();
 
         playerFollowing = true;
@@ -75,6 +79,7 @@ public class GameManager : MonoBehaviour
         MainCamera = cam_obj;
         MainCamera.name = startCamera.name;
         Camera_Background_Container = MainCamera.transform.GetChild(0).gameObject;
+        #endregion
     }
     private void FixedUpdate()
     {
@@ -82,6 +87,7 @@ public class GameManager : MonoBehaviour
         {
             if (playerFollowing)
             {
+                // 플레이어 추적 카메라
                 tempPos = Vector3.Lerp(MainCamera.transform.position, player.transform.position + difValue, speed);
                 MainCamera.transform.position = new Vector3(tempPos.x, tempPos.y, -10f);
             }
@@ -89,6 +95,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayGame(int selected)
     {
+        // 메인 메뉴에서 플레이 버튼 클릭시 호출
         gameData = DataManager.Instance.data;
         newGame = true;
         if (selected > 0)
@@ -104,10 +111,14 @@ public class GameManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("weaponType", weaponType);
 
-        SceneManager.sceneLoaded += TestSceneLoaded;
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        if(!newGame) SceneManager.LoadScene(gameData.sceneNumber);
-        else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.sceneLoaded += AfterLoading;
+        //SceneManager.sceneLoaded += OnFirstSceneLoaded;
+
+        //if(!newGame) SceneManager.LoadScene(gameData.sceneNumber);
+        //else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        if(!newGame) LoadingSceneController.LoadScene(gameData.sceneNumber, 3);
+        else LoadingSceneController.LoadScene(1, 3);
     }
     public void CloseGame()
     {
@@ -129,14 +140,15 @@ public class GameManager : MonoBehaviour
     {
         objects.Add(instance);
     }
-    private void TestSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void AfterLoading(Scene scene, LoadSceneMode mode)
     {
+        // 로딩 완료후 어두운 화면에서 항상 호출되는 함수
         Debug.Log("씬이 로드되었습니다.");
         Debug.Log("씬 이름은 " + scene.name + "이며");
         Debug.Log("로드 타입은 " + loadingType + "입니다.");
         if (loadingType == 1)
         {
-            // 다음 씬으로 이동
+            // 다음 씬에서 플레이어 이동
             TransportFinish();
         }
         else if (loadingType == 2)
@@ -144,10 +156,17 @@ public class GameManager : MonoBehaviour
             // 메인메뉴로 이동
             StartCoroutine(ToMainMenu());
         }
+        else if (loadingType == 3)
+        {
+            // 첫 씬 로딩 후 세팅
+            OnFirstSceneLoaded();
+        }
         else Debug.Log("아무것도 안합니다");
+
         loadingType = 0;
     }
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //Scene scene, LoadSceneMode mode
+    private void OnFirstSceneLoaded()
     {
         var gameObject = Instantiate(players[weaponType - 1]);
         AddToList(gameObject);
@@ -163,12 +182,6 @@ public class GameManager : MonoBehaviour
             pos.z = gameData.position[2];
             player.transform.position = pos;
         }
-        //DataManager.Instance.SaveGameData();
-
-        //gameObject = Instantiate(startCamera);
-        //AddToList(gameObject);
-        //MainCamera = gameObject;    // 카메라 오브젝트 할당
-
         #region 카메라 위치 초기화
         tempPos = MainCamera.transform.position;
         tempPos.x = player.transform.position.x;
@@ -179,11 +192,12 @@ public class GameManager : MonoBehaviour
         difValue = MainCamera.transform.position - player.transform.position;
         difValue = new Vector3(Mathf.Abs(difValue.x), Mathf.Abs(difValue.y), 0f);
         #endregion
-        
 
+        #region 초기 오브젝트 생성과정
         gameObject = Instantiate(PlayerAfterImagePool);
         gameObject.name = PlayerAfterImagePool.name;
         AddToList(gameObject);
+
         gameObject = Instantiate(DamageTextPool);
         gameObject.name = DamageTextPool.name;
         AddToList(gameObject);
@@ -192,25 +206,23 @@ public class GameManager : MonoBehaviour
         {
             gameObject = Instantiate(SwordWindPool);
             gameObject.name = SwordWindPool.name;
-
             AddToList(gameObject);
         }
         else if (weaponType == 2)
         {
             gameObject = Instantiate(ArrowPool);
             gameObject.name = ArrowPool.name;
-
             AddToList(gameObject);
+
             gameObject = Instantiate(ArrowShowerPool);
             gameObject.name = ArrowShowerPool.name;
-
             AddToList(gameObject);
         }
 
         gameObject = Instantiate(ui_container);
         gameObject.name = ui_container.name;
-
         AddToList(gameObject);
+        #endregion
 
         if (!newGame)
         {
@@ -220,27 +232,27 @@ public class GameManager : MonoBehaviour
 
         isPlaying = true;
         Camera_Background_Container.SetActive(true);
-
-        SceneManager.sceneLoaded -= OnSceneLoaded;
+        StartCoroutine(UI_Container.Instance.FadeInStart());
     }
     public IEnumerator TransportFlow(Vector3 dest, bool loadScene)
     {
         destination = dest;
         faded = false;
-        StartCoroutine(UI_Container.Instance.FadeFlow());
+        //StartCoroutine(UI_Container.Instance.FadeFlow());
+        StartCoroutine(UI_Container.Instance.FadeOutStart());
         // 페이드 완료시까지 대기
         yield return new WaitUntil(() => faded);
         isPlaying = false;
         if (loadScene)
         {
-            //loadingType = 1;
             Debug.Log("로딩 기다리는중..");
             LoadingSceneController.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, 1);
         }
         else
         {
             player.transform.position = destination;
-            UI_Container.Instance.fade_in_start = true;
+            //UI_Container.Instance.fade_in_start = true;
+            StartCoroutine(UI_Container.Instance.FadeInStart());
             isPlaying = true;
         }
 
@@ -251,45 +263,49 @@ public class GameManager : MonoBehaviour
         GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
         player.transform.position = destination;
         if (spawnPoint != null) player.transform.position = spawnPoint.transform.position;
-        
+
         // 화면 밝게
-        UI_Container.Instance.fade_in_start = true;
+        //UI_Container.Instance.fade_in_start = true;
+        StartCoroutine(UI_Container.Instance.FadeInStart());
         isPlaying = true;
         Debug.Log("플레이어 전송 끝");
     }
     public IEnumerator GiveUpFlow()
     {
-        faded = false;
-        StartCoroutine(UI_Container.Instance.FadeFlow());
         // 페이드 완료시까지 대기
+        faded = false;
+        //StartCoroutine(UI_Container.Instance.FadeFlow());
+        StartCoroutine(UI_Container.Instance.FadeOutStart());
         yield return new WaitUntil(() => faded);
+
         isPlaying = false;
-        Vector3 Origin = Vector3.zero;
-        Origin.z = -10f;
-        MainCamera.transform.position = Origin;
+        MainCamera.transform.position = new Vector3(0f, 0f, -10f);
+
         // 포기한 상태로 표시
         DataManager.Instance.data.weaponType = -1;
         DataManager.Instance.SaveGameData();
 
+        // 로딩씬 호출
         LoadingSceneController.LoadScene(0, 2);
-        //ClearObjects();
         yield break;
     }
     public IEnumerator QuitGameFlow()
     {
-        faded = false;
-        StartCoroutine(UI_Container.Instance.FadeFlow());
         // 페이드 완료시까지 대기
+        faded = false;
+        //StartCoroutine(UI_Container.Instance.FadeFlow());
+        StartCoroutine(UI_Container.Instance.FadeOutStart());
         yield return new WaitUntil(() => faded);
+
         isPlaying = false;
-        Vector3 Origin = Vector3.zero;
-        Origin.z = -10f;
-        MainCamera.transform.position = Origin;
+        MainCamera.transform.position = new Vector3(0f, 0f, -10f);
+
         //데이터 저장
         DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
         DataManager.Instance.data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
         DataManager.Instance.SaveGameData();
 
+        // 로딩씬 호출
         LoadingSceneController.LoadScene(0, 2);
         yield break;
     }
@@ -297,10 +313,11 @@ public class GameManager : MonoBehaviour
     {
         // 화면 밝게
         Camera_Background_Container.SetActive(false);
-        UI_Container.Instance.fade_in_start = true;
+        // base UI 비활성화
         UI_Container.Instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        //UI_Container.Instance.fade_in_start = true;
+        StartCoroutine(UI_Container.Instance.FadeInStart());
         yield return new WaitUntil(() => !faded);
         ClearObjects();
-        Debug.Log("플레이어 전송 끝");
     }
 }

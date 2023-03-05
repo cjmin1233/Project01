@@ -589,7 +589,43 @@ public class UI_Container : MonoBehaviour
         Debug.Log("페이드 끝");
         yield break;
     }
+    public IEnumerator FadeOutStart()
+    {
+        Fade_UI.SetActive(true);
+        Image fadeImage = Fade_UI.GetComponent<Image>();
+        for(float f = 0f; f < 1f; f += Time.deltaTime * 2)
+        {
+            Color c = fadeImage.color;
+            c.a = f;
+            fadeImage.color = c;
+            yield return null;
+        }
+        GameManager.Instance.faded = true;
+        yield break;
+    }
+    public IEnumerator FadeInStart()
+    {
+        Debug.Log("페이드인 시작");
+        Fade_UI.SetActive(true);
+        Image fadeImage = Fade_UI.GetComponent<Image>();
 
+        Color temp = fadeImage.color;
+        temp.a = 1f;
+        fadeImage.color = temp;
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        for (float f = 1f; f > 0f; f -= Time.deltaTime * 2)
+        {
+            Color c = fadeImage.color;
+            c.a = f;
+            fadeImage.color = c;
+            yield return null;
+        }
+        Fade_UI.SetActive(false);
+        GameManager.Instance.faded = false;
+        Debug.Log("페이드 끝");
+        yield break;
+    }
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);

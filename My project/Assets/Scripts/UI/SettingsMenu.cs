@@ -29,8 +29,12 @@ public class SettingsMenu : MonoBehaviour
     List<Resolution> availableResolutions;
 
     public GameObject LoadButton;
+
+    [SerializeField] private GameObject Fade_UI;
+
     private void Start()
     {
+        #region 초기 옵션 세팅
         fullScreenToggle.isOn = Screen.fullScreen;
 
         if (!PlayerPrefs.HasKey("MasterVolume")) PlayerPrefs.SetFloat("MasterVolume", 1f);
@@ -81,13 +85,14 @@ public class SettingsMenu : MonoBehaviour
         if (!PlayerPrefs.HasKey("ResolutionIndex")) PlayerPrefs.SetInt("ResolutionIndex", currentResolutionIndex);
         resolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
         resolutionDropdown.RefreshShownValue();
+        #endregion
 
         // 게임 데이터 로드 후 이어하기 버튼 활성화
         DataManager.Instance.LoadGameData();
         Data gameData = DataManager.Instance.data;
         if (gameData.weaponType > 0)
         {
-            // 데이터가 남아있는 경우
+            // 데이터가 남아있는 경우 '이어하기' 활성화
             LoadButton.GetComponent<Button>().interactable = true;
             LoadButton.GetComponentInChildren<TextMeshProUGUI>().color = new Color(255f, 255f, 255f);
         }
@@ -123,10 +128,25 @@ public class SettingsMenu : MonoBehaviour
     }*/
     public void PlayGame(int selected)
     {
-        GameManager.Instance.PlayGame(selected);
+        //GameManager.Instance.PlayGame(selected);
+        StartCoroutine(FadeFlow(selected));
     }
     public void CloseGame()
     {
         GameManager.Instance.CloseGame();
     }
+    public IEnumerator FadeFlow(int selected)
+    {
+        Fade_UI.SetActive(true);
+        Image fadeImage = Fade_UI.GetComponent<Image>();
+        for (float f = 0f; f < 1f; f += Time.deltaTime * 2)
+        {
+            Color c = fadeImage.color;
+            c.a = f;
+            fadeImage.color = c;
+            yield return null;
+        }
+        GameManager.Instance.PlayGame(selected);
+    }
+
 }

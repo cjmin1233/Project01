@@ -46,6 +46,7 @@ public class DataManager : MonoBehaviour
     public void SaveGameData()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        // 플레이어 위치, 체력, 최대체력, 골드 저장
         data.position[0] = player.transform.position.x;
         data.position[1] = player.transform.position.y;
         data.position[2] = player.transform.position.z;

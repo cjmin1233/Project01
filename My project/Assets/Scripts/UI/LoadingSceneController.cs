@@ -8,7 +8,7 @@ public class LoadingSceneController : MonoBehaviour
 {
     public static LoadingSceneController instance;
     static int nextScene;
-    static int loadingType;
+    static int loadingType; // 로딩 완료 후 할일
     [SerializeField] Image progressBar;
 
     public static void LoadScene(int sceneIndex, int loading_type)
@@ -16,7 +16,7 @@ public class LoadingSceneController : MonoBehaviour
         nextScene = sceneIndex;
         loadingType = loading_type;
         Debug.Log("로딩씬 로드");
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene("LoadingScene"); // Start() 에서 코루틴 LoadSceneProcess 시작
     }
     private void Awake()
     {
@@ -54,14 +54,12 @@ public class LoadingSceneController : MonoBehaviour
                 if (progressBar.fillAmount >= 1f && !op.allowSceneActivation)
                 {
                     op.allowSceneActivation = true;
+                    // 로딩 완료 후 행동 지정
                     GameManager.Instance.loadingType = loadingType;
                     Debug.Log("로딩 완료?" + timer);
                 }
             }
         }
-        //Debug.Log("is done : " + op.isDone);
-        //Debug.Log("현재 씬 : " + SceneManager.GetActiveScene().name);
-        //GameManager.Instance.TransportFinish();
         gameObject.SetActive(false);
         Destroy(gameObject);
     }
