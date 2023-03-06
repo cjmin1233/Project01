@@ -25,8 +25,6 @@ public class PlayerAfterimage : MonoBehaviour
         playerSR = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
 
         alpha = alphaSet;
-        //alpha = playerSR.color.a;
-        //Debug.Log(alpha);
         sr.sprite = playerSR.sprite;
         transform.position = player.position;
         transform.rotation = player.rotation;

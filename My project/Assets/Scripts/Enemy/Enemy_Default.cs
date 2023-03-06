@@ -39,6 +39,7 @@ public class Enemy_Default : MonoBehaviour
     [SerializeField] protected AudioSource[] damage_sound;
     protected virtual void Start()
     {
+        #region 초기 세팅
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -51,6 +52,7 @@ public class Enemy_Default : MonoBehaviour
         isAttacking = false;
         for (int i = 0; i < range.Length; i++) range[i] = false;
         currentSpeed = moveSpeed_multiplier * baseSpeed;
+        #endregion
     }
     protected virtual void Update()
     {
