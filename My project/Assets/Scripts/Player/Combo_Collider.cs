@@ -25,7 +25,10 @@ public class Combo_Collider : MonoBehaviour
     {
         rand = Random.Range(0, audioSource.Length);
         if (audioSource[rand] != null) audioSource[rand].PlayOneShot(audioSource[rand].clip);
-        //if (critical) Debug.Log("Critical!");
+    }
+    private void OnDisable()
+    {
+        hit_list.Clear();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,29 +44,15 @@ public class Combo_Collider : MonoBehaviour
                 collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce);
                 if (playerAttack.sword_cursed_enable) player.Heal(2f);
             }
-            /*if (tag == "Enemy")
-            {
-                //collision.GetComponent<Enemy>().TakeDamage(damage, damageForce);
-                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce);
-            }
-            else if (tag == "Boss")
-            {
-                //collision.GetComponent<Boss>().TakeDamage(damage);
-                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce);
-            }
-            if ((tag == "Enemy" || tag == "Boss") && playerAttack.sword_cursed_enable)
-            {
-                player.Heal(2f);
-            }*/
         }
     }
-    private void OnDisable()
+/*    public void PlayAudio()
+    {
+        rand = Random.Range(0, audioSource.Length);
+        if (audioSource[rand] != null) audioSource[rand].PlayOneShot(audioSource[rand].clip);
+    }
+    public void OnColliderDisable()
     {
         hit_list.Clear();
     }
-    /*private void Disable_Sword_Collider()
-    {
-        gameObject.SetActive(false);
-        hit_list.Clear();
-    }*/
-}
+*/}
