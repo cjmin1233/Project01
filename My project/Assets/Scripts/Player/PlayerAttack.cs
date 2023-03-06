@@ -97,7 +97,6 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Finish_X()
     {
-        //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = true;
         GameManager.Instance.playerFollowing = true;
         isXAttacking = false;
         animator.SetBool("IsXAttacking", isXAttacking);
@@ -113,7 +112,6 @@ public class PlayerAttack : MonoBehaviour
         // after image off
         gameObject.GetComponent<Player>().AfterImageAvailable = false;
         GetComponent<Player>().canMove = true;
-        //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = true;
         GameManager.Instance.playerFollowing = true;
         isZAttacking = false;
         isXAttacking = false;

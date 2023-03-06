@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1095675524660080399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3493042525456928063}
+  - component: {fileID: 4521661931274241778}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3493042525456928063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095675524660080399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3733984750571583817}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4521661931274241778
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095675524660080399}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00073075294, y: -0.08181813}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16385317, y: 0.34752172}
+  m_EdgeRadius: 0
 --- !u!1 &3733984749293690043
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +248,7 @@ GameObject:
   - component: {fileID: 3733984750571583819}
   - component: {fileID: 3733984750571583818}
   - component: {fileID: 3733984750571583821}
-  - component: {fileID: 304620918283348385}
+  - component: {fileID: 1810325838156632489}
   m_Layer: 7
   m_Name: "\uD5C8\uC218\uC544\uBE44"
   m_TagString: Enemy
@@ -214,6 +271,7 @@ Transform:
   - {fileID: 3733984749632502395}
   - {fileID: 3733984749767637658}
   - {fileID: 810074877345847984}
+  - {fileID: 3493042525456928063}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -334,7 +392,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!114 &304620918283348385
+--- !u!114 &1810325838156632489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -343,7 +401,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3733984750571583823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0961aea40627aba4ab47362cacdaba8a, type: 3}
+  m_Script: {fileID: 11500000, guid: f1574e8ea722f884d906b33390909f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 0
@@ -353,7 +411,7 @@ MonoBehaviour:
   attackRate: 0.5
   maxHP: 50000
   damagePoint: {fileID: 3733984749293690040}
-  Offset: {x: 0, y: 1, z: 0}
+  Offset: {x: 0, y: 0.5, z: 0}
   die_sound: {fileID: 0}
   damage_sound: []
 --- !u!1 &4678651191867051851

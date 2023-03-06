@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Enemy_Healthbar : MonoBehaviour
 {
-    public Slider Slider;
+    private Slider Slider;
     public Color Low;
     public Color High;
-    public Vector3 Offset;
+    //public Vector3 Offset;
     //[HideInInspector] public Transform enemyTransform;
 
     private void OnEnable()

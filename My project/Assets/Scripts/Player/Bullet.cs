@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
             if (tag == "Enemy" || tag == "Boss")
             {
                 collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType);
-                if (isPoisoned) collision.GetComponent<Enemy_Default>().TakeDamage(1f, Vector2.zero, fxType);
+                if (isPoisoned) collision.GetComponent<Enemy_Default>().TakeDamage(1f, Vector2.zero, fxType + 1);
             }
         }
         animator.SetTrigger("Hit");
