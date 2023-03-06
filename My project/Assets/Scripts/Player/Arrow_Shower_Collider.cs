@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow_Shower_Collider : MonoBehaviour
 {
+    public int fxType;
     [HideInInspector] public float damage;
     //[HideInInspector] public float anim_Speed = 1.0f;
     [HideInInspector] public Vector2 damageForce;
@@ -29,7 +30,7 @@ public class Arrow_Shower_Collider : MonoBehaviour
         float curDamage = Mathf.Round(damage * damage_multiplier);
         if (tag == "Enemy" || tag == "Boss")
         {
-            collision.GetComponent<Enemy_Default>().TakeDamage(curDamage, damageForce);
+            collision.GetComponent<Enemy_Default>().TakeDamage(curDamage, damageForce, fxType);
             if (damage_multiplier < 1.6f && rain_enable) damage_multiplier += 0.1f;
         }
     }

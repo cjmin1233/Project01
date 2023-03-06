@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public int fxType;
     [HideInInspector] public float damage;
     //[HideInInspector] public float anim_Speed;
     [HideInInspector] public bool isPoisoned;
@@ -49,8 +50,8 @@ public class Bullet : MonoBehaviour
             hit_list.Add(name);
             if (tag == "Enemy" || tag == "Boss")
             {
-                collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero);
-                if (isPoisoned) collision.GetComponent<Enemy_Default>().TakeDamage(1f, Vector2.zero);
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType);
+                if (isPoisoned) collision.GetComponent<Enemy_Default>().TakeDamage(1f, Vector2.zero, fxType);
             }
         }
         animator.SetTrigger("Hit");

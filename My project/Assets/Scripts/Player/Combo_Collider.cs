@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Combo_Collider : MonoBehaviour
 {
+    public int fxType;
     [HideInInspector] public float damage;
     [HideInInspector] public Vector2 damageForce;
     [HideInInspector] public bool critical;
@@ -41,7 +42,7 @@ public class Combo_Collider : MonoBehaviour
             
             if(tag=="Enemy" || tag == "Boss")
             {
-                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce);
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, fxType);
                 if (playerAttack.sword_cursed_enable) player.Heal(2f);
             }
         }

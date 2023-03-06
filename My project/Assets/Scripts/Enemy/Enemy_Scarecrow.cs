@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Enemy_Scarecrow : Enemy_Default
 {
-    private BoxCollider2D boxCollider2D;
-    protected override void Start()
-    {
-        base.Start();
-        boxCollider2D = GetComponent<BoxCollider2D>();
-    }
-    public override void TakeDamage(float damage, Vector2 damageForce)
+    /*public override void TakeDamage(float damage, Vector2 damageForce)
     {
         if (!animator.GetBool("IsDead"))
         {
@@ -43,5 +37,5 @@ public class Enemy_Scarecrow : Enemy_Default
                 Die();
             }
         }
-    }
+    }*/
 }

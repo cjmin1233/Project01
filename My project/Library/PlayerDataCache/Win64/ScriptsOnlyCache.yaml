@@ -30,10 +30,13 @@ ScriptsOnlyBuild:
     - Enemy_Fly
     - Enemy_Healthbar
     - Enemy_PlayerFinder
+    - Enemy_Scarecrow
     - GameManager
     - GaugeAbsorber
     - Hashashin_Attack
     - Hashashin_Enemy_Finder
+    - HitFx
+    - HitFxPool
     - Item
     - Knight_Attack
     - LoadingSceneController
@@ -162,17 +165,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2978}
     - Class: 114
-      Script: {instanceID: 3418}
+      Script: {instanceID: 3420}
     - Class: 114
-      Script: {instanceID: 3750}
+      Script: {instanceID: 3754}
     - Class: 114
-      Script: {instanceID: 4144}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 4640}
+      Script: {instanceID: 4646}
     - Class: 114
-      Script: {instanceID: 5438}
+      Script: {instanceID: 5444}
     - Class: 114
-      Script: {instanceID: 5776}
+      Script: {instanceID: 5782}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -227,7 +230,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2978}
     - Class: 114
-      Script: {instanceID: 3418}
+      Script: {instanceID: 3420}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -276,9 +279,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 650}
     - Class: 114
-      Script: {instanceID: 5304}
+      Script: {instanceID: 5310}
     - Class: 114
-      Script: {instanceID: 5438}
+      Script: {instanceID: 5444}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -377,63 +380,67 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2978}
     - Class: 114
-      Script: {instanceID: 3172}
+      Script: {instanceID: 3028}
     - Class: 114
-      Script: {instanceID: 3214}
+      Script: {instanceID: 3174}
     - Class: 114
-      Script: {instanceID: 3418}
+      Script: {instanceID: 3216}
     - Class: 114
-      Script: {instanceID: 3428}
+      Script: {instanceID: 3420}
     - Class: 114
-      Script: {instanceID: 3432}
+      Script: {instanceID: 3430}
     - Class: 114
-      Script: {instanceID: 3540}
+      Script: {instanceID: 3434}
     - Class: 114
-      Script: {instanceID: 3556}
+      Script: {instanceID: 3542}
     - Class: 114
-      Script: {instanceID: 3954}
+      Script: {instanceID: 3558}
     - Class: 114
-      Script: {instanceID: 4110}
+      Script: {instanceID: 3640}
     - Class: 114
-      Script: {instanceID: 4134}
+      Script: {instanceID: 3960}
     - Class: 114
-      Script: {instanceID: 4144}
+      Script: {instanceID: 4116}
     - Class: 114
-      Script: {instanceID: 4388}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 4628}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 4684}
+      Script: {instanceID: 4394}
     - Class: 114
-      Script: {instanceID: 4804}
+      Script: {instanceID: 4634}
     - Class: 114
-      Script: {instanceID: 4842}
+      Script: {instanceID: 4690}
     - Class: 114
-      Script: {instanceID: 4902}
+      Script: {instanceID: 4810}
     - Class: 114
-      Script: {instanceID: 4982}
+      Script: {instanceID: 4848}
     - Class: 114
-      Script: {instanceID: 5292}
+      Script: {instanceID: 4908}
     - Class: 114
-      Script: {instanceID: 5294}
+      Script: {instanceID: 4988}
     - Class: 114
-      Script: {instanceID: 5314}
+      Script: {instanceID: 5298}
     - Class: 114
-      Script: {instanceID: 5348}
+      Script: {instanceID: 5300}
     - Class: 114
-      Script: {instanceID: 5358}
+      Script: {instanceID: 5320}
     - Class: 114
-      Script: {instanceID: 5392}
+      Script: {instanceID: 5354}
     - Class: 114
-      Script: {instanceID: 5548}
+      Script: {instanceID: 5364}
     - Class: 114
-      Script: {instanceID: 5610}
+      Script: {instanceID: 5398}
     - Class: 114
-      Script: {instanceID: 5776}
+      Script: {instanceID: 5554}
     - Class: 114
-      Script: {instanceID: 5880}
+      Script: {instanceID: 5616}
     - Class: 114
-      Script: {instanceID: 5952}
+      Script: {instanceID: 5782}
+    - Class: 114
+      Script: {instanceID: 5886}
+    - Class: 114
+      Script: {instanceID: 5958}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -494,8 +501,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2306}
     - Class: 114
-      Script: {instanceID: 2582}
-    - Class: 114
       Script: {instanceID: 2596}
     - Class: 114
       Script: {instanceID: 2652}
@@ -506,25 +511,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2966}
     - Class: 114
-      Script: {instanceID: 3418}
+      Script: {instanceID: 3420}
     - Class: 114
-      Script: {instanceID: 3544}
+      Script: {instanceID: 3546}
     - Class: 114
-      Script: {instanceID: 3900}
+      Script: {instanceID: 3770}
     - Class: 114
-      Script: {instanceID: 4100}
+      Script: {instanceID: 3906}
     - Class: 114
-      Script: {instanceID: 4596}
+      Script: {instanceID: 4106}
     - Class: 114
-      Script: {instanceID: 4838}
+      Script: {instanceID: 4602}
     - Class: 114
-      Script: {instanceID: 5304}
+      Script: {instanceID: 4844}
     - Class: 114
-      Script: {instanceID: 5576}
+      Script: {instanceID: 5310}
     - Class: 114
-      Script: {instanceID: 5736}
+      Script: {instanceID: 5582}
     - Class: 114
-      Script: {instanceID: 5838}
+      Script: {instanceID: 5742}
+    - Class: 114
+      Script: {instanceID: 5844}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -852,6 +859,12 @@ ScriptsOnlyBuild:
     className: PlayerAttack
   - hash:
       serializedVersion: 2
+      Hash: e2652e03cf04cba2b19a59a5ff99d52e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HitFx
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestRunner.Utils
@@ -966,6 +979,12 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
+      Hash: ecc66e2461c74dc13403e4269e6f1c16
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HitFxPool
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -988,6 +1007,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ScrollViewController
+  - hash:
+      serializedVersion: 2
+      Hash: acdce59cf17b463f26071c9fdcd5e2b4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Enemy_Scarecrow
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -1302,7 +1327,7 @@ ScriptsOnlyBuild:
     className: Door
   - hash:
       serializedVersion: 2
-      Hash: 41843317bd2c274477100024932833cc
+      Hash: ebcebdbead568dd08deeca1c1bd85f28
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager

@@ -15,6 +15,7 @@ public class Boss_Default : Enemy_Default
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
 
         if (maxHP > 0) curHP = maxHP;
         boss_healthbar.SetHealth(curHP, maxHP);
@@ -88,7 +89,7 @@ public class Boss_Default : Enemy_Default
         spell_2.SetActive(true);
     }
 
-    public override void TakeDamage(float damage, Vector2 damageForce)
+    public override void TakeDamage(float damage, Vector2 damageForce, int fxType)
     {
         if (!animator.GetBool("IsDead"))
         {
@@ -100,10 +101,23 @@ public class Boss_Default : Enemy_Default
 
             if (damageForce.x != 0f && !isAttacking) animator.SetTrigger("Hit");
 
+            #region 데미지 텍스트 생성
             GameObject dmgText = DamageTextPool.Instance.GetFromPool();
             dmgText.transform.position = damagePoint.transform.position;
             dmgText.GetComponent<DamageText>().damage = damage;
             dmgText.SetActive(true);
+            #endregion
+
+            #region 타격 이펙트 생성
+            GameObject hit_effect = HitFxPool.Instance.GetFromPool();
+            float x_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.x, boxCollider2D.bounds.extents.x);
+            float y_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.y, boxCollider2D.bounds.extents.y);
+            Vector3 temp = new Vector3(boxCollider2D.bounds.center.x + x_rand, boxCollider2D.bounds.center.y + y_rand, 0);
+            hit_effect.transform.position = temp;
+            hit_effect.GetComponent<HitFx>().fxType = fxType;
+            hit_effect.SetActive(true);
+            #endregion
+
             curHP -= damage;
             boss_healthbar.SetHealth(curHP, maxHP);
             if (curHP <= 0)

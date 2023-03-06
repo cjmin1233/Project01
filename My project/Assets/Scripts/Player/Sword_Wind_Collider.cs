@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Sword_Wind_Collider : MonoBehaviour
 {
+    public int fxType;
     [HideInInspector] public float damage;
     /*[HideInInspector] */
     public float anim_Speed;
@@ -54,7 +55,7 @@ public class Sword_Wind_Collider : MonoBehaviour
             hit_list.Add(name);
             if (tag == "Enemy" || tag == "Boss")
             {
-                collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero);
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType);
             }
         }
     }

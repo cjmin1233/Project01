@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject startCamera;
     [SerializeField] private GameObject PlayerAfterImagePool;
     [SerializeField] private GameObject DamageTextPool;
+    [SerializeField] private GameObject HitFxPool;
     [SerializeField] private GameObject SwordWindPool;
     [SerializeField] private GameObject ArrowPool;
     [SerializeField] private GameObject ArrowShowerPool;
@@ -200,6 +201,10 @@ public class GameManager : MonoBehaviour
 
         gameObject = Instantiate(DamageTextPool);
         gameObject.name = DamageTextPool.name;
+        AddToList(gameObject);
+
+        gameObject = Instantiate(HitFxPool);
+        gameObject.name = HitFxPool.name;
         AddToList(gameObject);
 
         if (weaponType == 1)

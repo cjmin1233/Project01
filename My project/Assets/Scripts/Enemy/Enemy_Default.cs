@@ -8,6 +8,7 @@ public class Enemy_Default : MonoBehaviour
     protected GameObject player;
     protected Rigidbody2D rb;
     protected Animator animator;
+    protected BoxCollider2D boxCollider2D;
 
     // 이동 관련
     protected float currentSpeed;
@@ -43,6 +44,7 @@ public class Enemy_Default : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
 
         if (maxHP > 0) curHP = maxHP;
         healthbar = UI_Container.Instance.GetFromEnemySliderPool();
@@ -137,7 +139,7 @@ public class Enemy_Default : MonoBehaviour
         superArmor = false;
     }
 
-    public virtual void TakeDamage(float damage, Vector2 damageForce)
+    public virtual void TakeDamage(float damage, Vector2 damageForce, int fxType)
     {
         if (!animator.GetBool("IsDead"))
         {
@@ -152,10 +154,23 @@ public class Enemy_Default : MonoBehaviour
             // 밀치는 힘이 있다면 타격 애니메이션
             if (damageForce.x != 0f) animator.SetTrigger("Hit");
 
+            #region 데미지 텍스트 생성
             GameObject dmgText = DamageTextPool.Instance.GetFromPool();
             dmgText.transform.position = damagePoint.transform.position;
             dmgText.GetComponent<DamageText>().damage = damage;
             dmgText.SetActive(true);
+            #endregion
+
+            #region 타격 이펙트 생성
+            GameObject hit_effect = HitFxPool.Instance.GetFromPool();
+            float x_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.x, boxCollider2D.bounds.extents.x);
+            float y_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.y, boxCollider2D.bounds.extents.y);
+            Vector3 temp = new Vector3(boxCollider2D.bounds.center.x + x_rand, boxCollider2D.bounds.center.y + y_rand, 0);
+            hit_effect.transform.position = temp;
+            hit_effect.GetComponent<HitFx>().fxType = fxType;
+            hit_effect.SetActive(true);
+            #endregion
+
             curHP -= damage;
             healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
             if (curHP <= 0)
