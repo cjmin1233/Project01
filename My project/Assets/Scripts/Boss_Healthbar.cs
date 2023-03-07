@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class Boss_Healthbar : MonoBehaviour
 {
-    public Slider Slider;
-    public Color Low;
-    public Color High;
-
+    private Slider Slider;
+    [SerializeField] private Color Low;
+    [SerializeField] private Color High;
+    private void OnEnable()
+    {
+        Slider = GetComponent<Slider>();
+    }
     public void SetHealth(float currentHealth, float maxHealth)
     {
         Slider.maxValue = maxHealth;

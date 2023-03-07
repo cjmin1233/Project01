@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     int weaponType;
     Data gameData;
     private GameObject player;
+    private GameObject boss;
     private GameObject MainCamera;
     private GameObject Camera_Background_Container;
     private Vector3 tempPos;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Vector3 difValue;
 
     public bool playerFollowing;
+    public bool bossFollowing;
     public bool isPlaying;
     public int loadingType;
 
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
         objects = new List<GameObject>();
 
         playerFollowing = true;
+        bossFollowing = false;
         isPlaying = false;
         faded = false;
         loadingType = 0;
@@ -86,9 +89,18 @@ public class GameManager : MonoBehaviour
     {
         if (isPlaying)
         {
-            if (playerFollowing)
+            float _size = MainCamera.GetComponent<Camera>().orthographicSize;
+            if (bossFollowing)
+            {
+                MainCamera.GetComponent<Camera>().orthographicSize = _size > 3f ? _size - Time.deltaTime * 2f : 3f;
+                if (boss == null) boss = GameObject.FindGameObjectWithTag("Boss");
+                tempPos = Vector3.Lerp(MainCamera.transform.position, boss.transform.position + difValue, speed);
+                MainCamera.transform.position = new Vector3(tempPos.x, tempPos.y, -10f);
+            }
+            else if (playerFollowing)
             {
                 // 플레이어 추적 카메라
+                MainCamera.GetComponent<Camera>().orthographicSize = _size < 5f ? _size + Time.deltaTime * 2f : 5f;
                 tempPos = Vector3.Lerp(MainCamera.transform.position, player.transform.position + difValue, speed);
                 MainCamera.transform.position = new Vector3(tempPos.x, tempPos.y, -10f);
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boss_Default : Enemy_Default
 {
-    [SerializeField] private Boss_Healthbar boss_healthbar;
+    [SerializeField] private GameObject boss_healthbar;
     [SerializeField] private GameObject spell_1;
     [SerializeField] private GameObject spell_2;
 
@@ -18,7 +18,8 @@ public class Boss_Default : Enemy_Default
         boxCollider2D = GetComponent<BoxCollider2D>();
 
         if (maxHP > 0) curHP = maxHP;
-        boss_healthbar.SetHealth(curHP, maxHP);
+        boss_healthbar.GetComponent<Boss_Healthbar>().SetHealth(curHP, maxHP);
+        debuff_container = boss_healthbar.transform.Find("Debuff_Container").gameObject;
 
         canMove = true;
         isAttacking = false;
@@ -123,7 +124,7 @@ public class Boss_Default : Enemy_Default
             #endregion
 
             curHP -= damage;
-            boss_healthbar.SetHealth(curHP, maxHP);
+            boss_healthbar.GetComponent<Boss_Healthbar>().SetHealth(curHP, maxHP);
             if (curHP <= 0)
             {
                 curHP = 0;
@@ -135,13 +136,16 @@ public class Boss_Default : Enemy_Default
     protected override void Die()
     {
         animator.SetBool("IsDead", true);
+        GameManager.Instance.bossFollowing = true;
         Debug.Log("Boss Dead. Congratulations!");
         canMove = false;
-
-        Time.timeScale = 0.5f;
+        baseSpeed = 0f;
+        Time.timeScale = 0.3f;
     }
     private void Die_Fin()
     {
+        GameManager.Instance.bossFollowing = false;
+        boss_healthbar.SetActive(false);
         Time.timeScale = 1f;
         Destroy(gameObject);
     }

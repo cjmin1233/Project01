@@ -195,7 +195,7 @@ public class Enemy_Default : MonoBehaviour
         if (die_sound != null) die_sound.PlayOneShot(die_sound.clip);
         animator.SetBool("IsDead", true);
         canMove = false;
-
+        baseSpeed = 0f;
         // °ñµå »ý¼º
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Player>().GetGold(100);
@@ -273,12 +273,16 @@ public class Enemy_Default : MonoBehaviour
             if (debuffer["Slow"] > 0f)
             {
                 debuffer["Slow"] -= Time.deltaTime;
-
+                moveSpeed_multiplier = 0.5f;
             }
-            else debuffer["Slow"] = 0f;
+            else
+            {
+                debuffer["Slow"] = 0f;
+                moveSpeed_multiplier = 1f;
+            }
         }
         //
-        debuff_container.GetComponent<Debuff_Container>().UpdateDebuffIcon(debuffer);
+        if(debuff_container!=null) debuff_container.GetComponent<Debuff_Container>().UpdateDebuffIcon(debuffer);
     }
     private void Poisoned()
     {

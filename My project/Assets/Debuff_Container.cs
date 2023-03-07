@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Debuff_Container : MonoBehaviour
 {
-    [SerializeField] private float space = 3f;
+    [SerializeField] private float space;
     private Dictionary<string, float> maxDebuffDuration = new Dictionary<string, float>();
     public void UpdateDebuffIcon(Dictionary<string, float> debuffer)
     {
