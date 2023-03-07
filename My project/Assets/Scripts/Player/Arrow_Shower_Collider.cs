@@ -32,6 +32,7 @@ public class Arrow_Shower_Collider : MonoBehaviour
         {
             collision.GetComponent<Enemy_Default>().TakeDamage(curDamage, damageForce, fxType);
             if (damage_multiplier < 1.6f && rain_enable) damage_multiplier += 0.1f;
+            if (slow_enable) collision.GetComponent<Enemy_Default>().Debuff("Slow", 5f);
         }
     }
     private void Disable_Sword_Collider()

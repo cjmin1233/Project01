@@ -34,6 +34,7 @@ public class Enemy_Default : MonoBehaviour
     protected float curHP;
     [SerializeField] protected Transform damagePoint;
     protected GameObject healthbar;
+    protected GameObject debuff_container;
     [SerializeField] protected Vector3 Offset;
 
     // 소리
@@ -53,6 +54,7 @@ public class Enemy_Default : MonoBehaviour
         if (maxHP > 0) curHP = maxHP;
         healthbar = UI_Container.Instance.GetFromEnemySliderPool();
         healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
+        debuff_container= healthbar.transform.Find("Debuff_Container").gameObject;
 
         canMove = true;
         isAttacking = false;
@@ -234,12 +236,12 @@ public class Enemy_Default : MonoBehaviour
     {
         if (debuffer.ContainsKey(name)) debuffer[name] = activeTime;
         else debuffer.Add(name, activeTime);
-        Debug.Log("현재 디버프는");
+        /*Debug.Log("현재 디버프는");
         foreach (KeyValuePair<string,float> debuff in debuffer)
         {
             Debug.Log(debuff.Key + ", 지속시간 : " + debuff.Value);
         }
-        Debug.Log("입니다.");
+        Debug.Log("입니다.");*/
     }
     protected void DebuffChecker()
     {
@@ -265,6 +267,18 @@ public class Enemy_Default : MonoBehaviour
             }
             else debuffer["Poison"] = 0f;
         }
+        // 다른 디버프
+        if (debuffer.ContainsKey("Slow"))
+        {
+            if (debuffer["Slow"] > 0f)
+            {
+                debuffer["Slow"] -= Time.deltaTime;
+
+            }
+            else debuffer["Slow"] = 0f;
+        }
+        //
+        debuff_container.GetComponent<Debuff_Container>().UpdateDebuffIcon(debuffer);
     }
     private void Poisoned()
     {

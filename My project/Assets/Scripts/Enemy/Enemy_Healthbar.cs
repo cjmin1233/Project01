@@ -23,8 +23,4 @@ public class Enemy_Healthbar : MonoBehaviour
 
         Slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, Slider.normalizedValue);
     }
-    /*void Update()
-    {
-        Slider.transform.position = Camera.main.WorldToScreenPoint(enemyTransform.position + Offset);
-    }*/
 }

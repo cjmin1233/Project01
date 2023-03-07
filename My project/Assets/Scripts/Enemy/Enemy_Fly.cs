@@ -14,6 +14,7 @@ public class Enemy_Fly : Enemy_Default
         healthbar.GetComponent<Slider>().transform.position = Camera.main.WorldToScreenPoint(transform.position + Offset);
         if (!animator.GetBool("IsDead"))
         {
+            DebuffChecker();
             if (!detectPlayer) canMove = false;
             else
             {

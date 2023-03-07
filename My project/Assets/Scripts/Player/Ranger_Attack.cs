@@ -126,7 +126,7 @@ public class Ranger_Attack : PlayerAttack
         arrow.GetComponent<Bullet>().damage = Mathf.Round(PlayerPowerCalculation() * Z_DamageCalculation() * arrow_coef * (1 + (comboCounter % 3) * 0.2f));
         //arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
         arrow.GetComponent<Bullet>().isDiagonal = isJumping;
-        if (bow_poison_enable) arrow.GetComponent<Bullet>().isPoisoned = true;
+        arrow.GetComponent<Bullet>().isPoisoned = bow_poison_enable;
         arrow.transform.position = firePoint.position;
         arrow.SetActive(true);
         /*int rand = Random.Range(0, sword_wind_sound.Count);*/
@@ -163,6 +163,7 @@ public class Ranger_Attack : PlayerAttack
         arrowshower.GetComponent<Arrow_Shower_Collider>().damage = Mathf.Round(PlayerPowerCalculation() * X_DamageCalculation() * shower_coef);
         arrowshower.GetComponent<Arrow_Shower_Collider>().damageForce = damageForce;
         arrowshower.GetComponent<Arrow_Shower_Collider>().rain_enable = bow_rain_enable;
+        arrowshower.GetComponent<Arrow_Shower_Collider>().slow_enable = bow_slow_enable;
         arrowshower.transform.position = arrow_shower_startpoint.transform.position;
         arrowshower.SetActive(true);
         if (bow_shoot_sound[1] != null) bow_shoot_sound[1].PlayOneShot(bow_shoot_sound[1].clip);
