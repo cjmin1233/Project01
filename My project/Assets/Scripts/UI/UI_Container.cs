@@ -528,7 +528,7 @@ public class UI_Container : MonoBehaviour
     }
     private void UpdateBook()
     {
-        float y = 0f;
+        float y = 150f;
         for(int i = 0; i < ScrollViewList.Count; i++)
         {
             RectTransform rectTransform = ScrollViewList[i].GetComponent<RectTransform>();

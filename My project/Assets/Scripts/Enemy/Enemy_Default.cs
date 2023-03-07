@@ -14,6 +14,7 @@ public class Enemy_Default : MonoBehaviour
     protected float currentSpeed;
     [SerializeField] protected float baseSpeed = 100f;
     [HideInInspector] public float moveSpeed_multiplier = 1f;
+    public Dictionary<string, float> debuffer = new Dictionary<string, float>();
     protected float movementX;
     protected Vector3 m_Velocity = Vector3.zero;
     protected float m_MovementSmoothing = 0.05f;
@@ -38,6 +39,9 @@ public class Enemy_Default : MonoBehaviour
     // 소리
     [Header("Audio Source")] [SerializeField] private AudioSource die_sound;
     [SerializeField] protected AudioSource[] damage_sound;
+
+    // 독뎀
+    private float lastPoisonDamageTime = 0f;
     protected virtual void Start()
     {
         #region 초기 세팅
@@ -62,6 +66,7 @@ public class Enemy_Default : MonoBehaviour
         healthbar.GetComponent<Slider>().transform.position = Camera.main.WorldToScreenPoint(transform.position + Offset);
         if (!animator.GetBool("IsDead"))
         {
+            DebuffChecker();
             if (!detectPlayer) canMove = false;
             else
             {
@@ -162,13 +167,16 @@ public class Enemy_Default : MonoBehaviour
             #endregion
 
             #region 타격 이펙트 생성
-            GameObject hit_effect = HitFxPool.Instance.GetFromPool();
-            float x_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.x, boxCollider2D.bounds.extents.x);
-            float y_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.y, boxCollider2D.bounds.extents.y);
-            Vector3 temp = new Vector3(boxCollider2D.bounds.center.x + x_rand, boxCollider2D.bounds.center.y + y_rand, 0);
-            hit_effect.transform.position = temp;
-            hit_effect.GetComponent<HitFx>().fxType = fxType;
-            hit_effect.SetActive(true);
+            if (fxType >= 0)
+            {
+                GameObject hit_effect = HitFxPool.Instance.GetFromPool();
+                float x_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.x, boxCollider2D.bounds.extents.x);
+                float y_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.y, boxCollider2D.bounds.extents.y);
+                Vector3 temp = new Vector3(boxCollider2D.bounds.center.x + x_rand, boxCollider2D.bounds.center.y + y_rand, 0);
+                hit_effect.transform.position = temp;
+                hit_effect.GetComponent<HitFx>().fxType = fxType;
+                hit_effect.SetActive(true);
+            }
             #endregion
 
             curHP -= damage;
@@ -221,6 +229,51 @@ public class Enemy_Default : MonoBehaviour
         gameObject.transform.position = transform.position + new Vector3(0.1f, 0.1f, 0f);
         gameObject.transform.rotation = transform.rotation;
         gameObject.SetActive(true);
+    }
+    public void Debuff(string name, float activeTime)
+    {
+        if (debuffer.ContainsKey(name)) debuffer[name] = activeTime;
+        else debuffer.Add(name, activeTime);
+        Debug.Log("현재 디버프는");
+        foreach (KeyValuePair<string,float> debuff in debuffer)
+        {
+            Debug.Log(debuff.Key + ", 지속시간 : " + debuff.Value);
+        }
+        Debug.Log("입니다.");
+    }
+    protected void DebuffChecker()
+    {
+        /*foreach(string debuffName in debuffer.Keys)
+        {
+            if (debuffer[debuffName] > 0f)
+            {
+                debuffer[debuffName] -= Time.deltaTime;
+                if (debuffName == "Poison")
+                {
+                    // 독뎀
+                    Poisoned();
+                }
+            }
+            else debuffer[debuffName] = 0f;
+        }*/
+        if (debuffer.ContainsKey("Poison"))
+        {
+            if (debuffer["Poison"] > 0f)
+            {
+                debuffer["Poison"] -= Time.deltaTime;
+                Poisoned();
+            }
+            else debuffer["Poison"] = 0f;
+        }
+    }
+    private void Poisoned()
+    {
+        if (Time.time - lastPoisonDamageTime >= 1f)
+        {
+            lastPoisonDamageTime = Time.time;
+            TakeDamage(10f, Vector2.zero, -1);
+            Debug.Log("<color=purple>독 데미지</color>");
+        }
     }
     private void destoryObject()
     {

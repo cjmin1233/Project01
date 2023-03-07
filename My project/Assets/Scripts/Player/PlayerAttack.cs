@@ -18,8 +18,6 @@ public class PlayerAttack : MonoBehaviour
     protected int inputZCounter = 0;
 
     public float playerPower = 100f;
-    //public float damage_z_multiplier = 1.0f;
-    //public float damage_x_multiplier = 1.0f;
 
     public Dictionary<string, float> power_buffer = new Dictionary<string, float>();
     public Dictionary<string, float> damage_z_buffer = new Dictionary<string, float>();
@@ -51,7 +49,6 @@ public class PlayerAttack : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        //weaponType = animator.GetInteger("WeaponType");
 
         sword_wind_enable = false;
         sword_storm_enable = false;
@@ -123,7 +120,7 @@ public class PlayerAttack : MonoBehaviour
     }
     protected float Z_SpeedCalculation()
     {
-        float z_multiplier = 1f;
+        float z_multiplier = Speed_Z;
         foreach (float value in speed_z_buffer.Values)
         {
             z_multiplier += value;
@@ -133,7 +130,7 @@ public class PlayerAttack : MonoBehaviour
     }
     protected float X_SpeedCalculation()
     {
-        float x_multiplier = 1f;
+        float x_multiplier = Speed_X;
         foreach (float value in speed_x_buffer.Values)
         {
             x_multiplier += value;

@@ -29,6 +29,7 @@ public class Boss_Default : Enemy_Default
     {
         if (!animator.GetBool("IsDead"))
         {
+            DebuffChecker();
             canMove = false;
             if (actionCounter < 3)
             {
@@ -109,13 +110,16 @@ public class Boss_Default : Enemy_Default
             #endregion
 
             #region 타격 이펙트 생성
-            GameObject hit_effect = HitFxPool.Instance.GetFromPool();
-            float x_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.x, boxCollider2D.bounds.extents.x);
-            float y_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.y, boxCollider2D.bounds.extents.y);
-            Vector3 temp = new Vector3(boxCollider2D.bounds.center.x + x_rand, boxCollider2D.bounds.center.y + y_rand, 0);
-            hit_effect.transform.position = temp;
-            hit_effect.GetComponent<HitFx>().fxType = fxType;
-            hit_effect.SetActive(true);
+            if (fxType >= 0)
+            {
+                GameObject hit_effect = HitFxPool.Instance.GetFromPool();
+                float x_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.x, boxCollider2D.bounds.extents.x);
+                float y_rand = 0.5f * Random.Range((-1f) * boxCollider2D.bounds.extents.y, boxCollider2D.bounds.extents.y);
+                Vector3 temp = new Vector3(boxCollider2D.bounds.center.x + x_rand, boxCollider2D.bounds.center.y + y_rand, 0);
+                hit_effect.transform.position = temp;
+                hit_effect.GetComponent<HitFx>().fxType = fxType;
+                hit_effect.SetActive(true);
+            }
             #endregion
 
             curHP -= damage;

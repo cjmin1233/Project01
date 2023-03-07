@@ -50,8 +50,13 @@ public class Bullet : MonoBehaviour
             hit_list.Add(name);
             if (tag == "Enemy" || tag == "Boss")
             {
-                collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType);
-                if (isPoisoned) collision.GetComponent<Enemy_Default>().TakeDamage(1f, Vector2.zero, fxType + 1);
+                if (isPoisoned)
+                {
+                    collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType + 1);
+                    collision.GetComponent<Enemy_Default>().Debuff("Poison", 10f);
+                }
+                else collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType);
+
             }
         }
         animator.SetTrigger("Hit");
