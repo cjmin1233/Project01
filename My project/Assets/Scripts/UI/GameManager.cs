@@ -277,10 +277,17 @@ public class GameManager : MonoBehaviour
     }
     private void TransportFinish()
     {
-        GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        if (spawnPoints.Length > 0)
+        {
+            int rand = Random.Range(0, spawnPoints.Length);
+            player.transform.position = spawnPoints[rand].transform.position;
+        }
+        else player.transform.position = destination;
+/*        GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
         player.transform.position = destination;
         if (spawnPoint != null) player.transform.position = spawnPoint.transform.position;
-
+*/
         // È­¸é ¹à°Ô
         //UI_Container.Instance.fade_in_start = true;
         StartCoroutine(UI_Container.Instance.FadeInStart());
