@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     private float dashTimeLeft;
     private float lastImageXpos;
     private float lastDash = -100f;
-    //private bool isFacingRight = true;
+
     // after image 
     public bool AfterImageAvailable = false;
     private float AfterImageRate = 20f;
@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
     private bool jump;
     private bool isGrounded;
     private float prev_vel_y;
-    //int playerLayer, groundLayer;
 
     [SerializeField] private LayerMask WhatIsGround;
 
@@ -64,13 +63,8 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        //player_collider = GetComponent<BoxCollider2D>();
         playerAttack = GetComponent<PlayerAttack>();
 
-        //playerLayer = LayerMask.NameToLayer("Player");
-        //groundLayer = LayerMask.NameToLayer("Ground");
-
-        //gold = 0;
         if (!GameManager.Instance.newGame)
         {
             Data gameData = DataManager.Instance.data;
@@ -145,24 +139,20 @@ public class Player : MonoBehaviour
         HorizontalMove();
         VerticalMove();
     }
-
-
     private void FlipPlayer()
     {
         if (movementX > 0)
         {
-            //isFacingRight = true;
             if (transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else if (movementX < 0)
         {
-            //isFacingRight = false;
             if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
     }
     private void AttemptToDash()
     {
-        gameObject.GetComponent<PlayerAttack>().PlayerInit();
+        playerAttack.PlayerInit();
         // 대쉬 효과음
         int rand = Random.Range(0, 2);
         if (dash_sound[rand]!=null) dash_sound[rand].PlayOneShot(dash_sound[rand].clip);
@@ -171,12 +161,6 @@ public class Player : MonoBehaviour
         isDashing = true;
         dashTimeLeft = dashTime;
         lastDash = Time.time;
-
-        /*canInvincible = true;
-        if (invincibleTimeLeft < dashTimeLeft)
-        {
-            invincibleTimeLeft = dashTimeLeft;
-        }*/
 
         AfterimagePool.Instance.GetFromPool();
         lastImageXpos = transform.position.x;
@@ -298,15 +282,13 @@ public class Player : MonoBehaviour
         {
             isGrounded = false;
             animator.SetBool("IsJumping", true);
-            gameObject.GetComponent<PlayerAttack>().PlayerInit();
+            playerAttack.PlayerInit();
 
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             int rand = Random.Range(0, 3);
             if (jump_sound[rand]!=null) jump_sound[rand].PlayOneShot(jump_sound[rand].clip);
         }
         jump = false;
-
-
     }
     public void IncreaseMaxHP()
     {
@@ -321,11 +303,6 @@ public class Player : MonoBehaviour
         if (CurHP > MaxHP) CurHP = MaxHP;
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
     }
-    /*public void IncreaseRunSpeed()
-    {
-        baseSpeed *= 1.3f;
-        currentSpeed *= 1.3f;
-    }*/
     public void TakeDamage(float damage)
     {
         if (!canInvincible)
@@ -373,7 +350,6 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
     }
     public void GetGold(int get_gold)

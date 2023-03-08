@@ -13,22 +13,11 @@ public class Hashashin_Attack : PlayerAttack
     private float curGauge = 0f;
     private float maxGauge = 100f;
     private float reqGauge = 33f;
-
-
-    /*protected override void OnEnable()
-    {
-        base.OnEnable();
-        //UI_Container.Instance.updateGauge(curGauge);
-    }*/
     protected override void Update()
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
 
-        /*if (Input.GetKeyDown(KeyCode.S))
-        {
-            GetGauge(10f);
-        }*/
         if (dagger_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
         {
             DaggerZAttack();
@@ -86,7 +75,6 @@ public class Hashashin_Attack : PlayerAttack
             UI_Container.Instance.updateGauge(curGauge);
 
             GameManager.Instance.playerFollowing = false;
-            //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().playerFollowing = false;
             // 공격동안 움직임 제어
             gameObject.GetComponent<Player>().canMove = false;
 
@@ -103,6 +91,7 @@ public class Hashashin_Attack : PlayerAttack
         else
         {
             Debug.Log("게이지가 부족합니다.");
+            UI_Container.Instance.AlermTextEnable("게이지가 부족합니다.");
         }
     }
     private void Enable_Dagger_X_Collider()

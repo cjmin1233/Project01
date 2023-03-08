@@ -10,8 +10,6 @@ public class Hashashin_Enemy_Finder : MonoBehaviour
     private Vector3 player_collider_offset;
     private void Awake()
     {
-        //Debug.Log("this is awake ");
-        //gameObject.SetActive(false);
         player_collider = player.GetComponent<BoxCollider2D>();
         player_scale = player.transform.lossyScale;
         player_collider_offset = player_collider.offset;

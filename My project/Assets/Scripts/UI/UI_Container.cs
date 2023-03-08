@@ -70,6 +70,9 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private Slider MasterAudioSlider;
     [SerializeField] private Slider BgmAudioSlider;
     [SerializeField] private Slider EffectAudioSlider;
+
+    // ¾Ë¶÷ UI
+    [SerializeField] private GameObject AlermText;
     private void OnEnable()
     {
         Instance = this;
@@ -640,5 +643,11 @@ public class UI_Container : MonoBehaviour
     {
         audioMixer.SetFloat("EffectVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("EffectVolume", volume);
+    }
+    public void AlermTextEnable(string text)
+    {
+        AlermText.GetComponent<TextMeshProUGUI>().text = text;
+        AlermText.GetComponent<Animator>().ResetTrigger("AlermTrigger");
+        AlermText.GetComponent<Animator>().SetTrigger("AlermTrigger");
     }
 }
