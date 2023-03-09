@@ -102,7 +102,7 @@ public class UI_Container : MonoBehaviour
         if (!PlayerPrefs.HasKey("EffectVolume")) PlayerPrefs.SetFloat("EffectVolume", 0.75f);
         EffectAudioSlider.value = PlayerPrefs.GetFloat("EffectVolume");
 
-        faded = false;
+        faded = true;
     }
     private void Update()
     {
@@ -595,6 +595,7 @@ public class UI_Container : MonoBehaviour
     public IEnumerator FadeOutStart()
     {
         Fade_UI.SetActive(true);
+        faded = true;
         Image fadeImage = Fade_UI.GetComponent<Image>();
         for(float f = 0f; f < 1f; f += Time.deltaTime * 2)
         {
@@ -625,6 +626,7 @@ public class UI_Container : MonoBehaviour
             yield return null;
         }
         Fade_UI.SetActive(false);
+        faded = false;
         GameManager.Instance.faded = false;
         Debug.Log("페이드 끝");
         yield break;
