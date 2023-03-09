@@ -10,7 +10,7 @@ public class CameraBackgroundMover : MonoBehaviour
 
     private void Start()
     {
-        origin = target.transform.position;
+        SettingOrigin();
     }
 
     private void FixedUpdate()
@@ -19,5 +19,11 @@ public class CameraBackgroundMover : MonoBehaviour
         float y_dif = target.transform.position.y - origin.y;
 
         transform.localPosition = new Vector3(offset * x_dif, offset * y_dif, 10f);
+    }
+    public void SettingOrigin()
+    {
+        Transform player_pos = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player_pos != null) origin = player_pos.position;
+        else origin = target.transform.position;
     }
 }

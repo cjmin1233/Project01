@@ -268,7 +268,15 @@ public class GameManager : MonoBehaviour
         else
         {
             player.transform.position = destination;
-            //UI_Container.Instance.fade_in_start = true;
+            for (int i = 0; i < Camera_Background_Container.transform.childCount; i++)
+            {
+                var cam_background = Camera_Background_Container.transform.GetChild(i).gameObject;
+                CameraBackgroundMover backgroundMover = cam_background.GetComponent<CameraBackgroundMover>();
+                if (backgroundMover != null)
+                {
+                    backgroundMover.SettingOrigin();
+                }
+            }
             StartCoroutine(UI_Container.Instance.FadeInStart());
             isPlaying = true;
         }
@@ -284,12 +292,16 @@ public class GameManager : MonoBehaviour
             player.transform.position = spawnPoints[rand].transform.position;
         }
         else player.transform.position = destination;
-/*        GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
-        player.transform.position = destination;
-        if (spawnPoint != null) player.transform.position = spawnPoint.transform.position;
-*/
-        // 화면 밝게
-        //UI_Container.Instance.fade_in_start = true;
+
+        for(int i = 0; i < Camera_Background_Container.transform.childCount; i++)
+        {
+            var cam_background = Camera_Background_Container.transform.GetChild(i).gameObject;
+            CameraBackgroundMover backgroundMover = cam_background.GetComponent<CameraBackgroundMover>();
+            if (backgroundMover != null)
+            {
+                backgroundMover.SettingOrigin();
+            }
+        }
         StartCoroutine(UI_Container.Instance.FadeInStart());
         isPlaying = true;
         Debug.Log("플레이어 전송 끝");
