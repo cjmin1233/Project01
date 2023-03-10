@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject ArrowPool;
     [SerializeField] private GameObject ArrowShowerPool;
     [SerializeField] private GameObject ui_container;
+    [SerializeField] private GameObject eventSystem;
     [HideInInspector] public bool newGame;
     int weaponType;
     Data gameData;
@@ -56,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     // 페이드인 효과, 로딩화면
     public bool faded;
-    public Vector3 destination;
+    private Vector3 destination;
     
     private void Awake()
     {
@@ -78,6 +79,9 @@ public class GameManager : MonoBehaviour
         isPlaying = false;
         faded = false;
         loadingType = 0;
+
+        var event_system = Instantiate(eventSystem);
+        event_system.name = eventSystem.name;
 
         var cam_obj = Instantiate(startCamera);
         MainCamera = cam_obj;
