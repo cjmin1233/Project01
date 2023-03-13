@@ -52,6 +52,10 @@ public class Enemy_Fly : Enemy_Default
             Flip();
         }
     }
+    protected override void FixedUpdate()
+    {
+        Move();
+    }
     protected override void LookPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player");

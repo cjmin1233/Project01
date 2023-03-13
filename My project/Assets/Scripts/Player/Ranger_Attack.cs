@@ -7,23 +7,11 @@ public class Ranger_Attack : PlayerAttack
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject ArrowPrefab;
     [SerializeField] private AudioSource[] bow_shoot_sound;
-    //[SerializeField] private GameObject Bow_Beam;
     [SerializeField] private GameObject arrow_shower_startpoint;
-    //[SerializeField] private AudioSource[] Charge_Sound;
-    //[SerializeField] private GameManager ChargeEffect;
-    //private bool isCharging = false;
-    //private int chargeCounter = 0;
 
     private RaycastHit2D rayHit;
     private float arrow_coef = 0.5f;
     private float shower_coef = 0.15f;
-    //private float beam_coef = 0.2f;
-
-    /*protected override void Start()
-    {
-        base.Start();
-        //isCharging = false;
-    }*/
 
     protected override void Update()
     {
@@ -56,11 +44,6 @@ public class Ranger_Attack : PlayerAttack
         {
             if (comboCounter == 3 || bow_fast_enable) BowXAttack();
         }
-        /*if (Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
-        {
-            isCharging = false;
-            animator.SetBool("IsCharging", isCharging);
-        }*/
 
         //  over Z input handle
         if (!isZAttacking && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)

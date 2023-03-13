@@ -39,8 +39,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 888711100878916610}
-  - component: {fileID: 888711100878916608}
   - component: {fileID: 888711100878916609}
+  - component: {fileID: 888711100878916608}
   m_Layer: 0
   m_Name: PlayerFinder
   m_TagString: Untagged
@@ -62,18 +62,6 @@ Transform:
   m_Father: {fileID: 888711101817868080}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &888711100878916608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888711100878916611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6e1c25db5ed494081041a1b4ba58c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &888711100878916609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -100,6 +88,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &888711100878916608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888711100878916611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6e1c25db5ed494081041a1b4ba58c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &888711100944076218
 GameObject:
   m_ObjectHideFlags: 0

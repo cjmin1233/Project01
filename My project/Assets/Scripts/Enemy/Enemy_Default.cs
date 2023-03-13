@@ -43,6 +43,11 @@ public class Enemy_Default : MonoBehaviour
 
     // 독뎀
     private float lastPoisonDamageTime = 0f;
+
+    // 추락 방지
+    private RaycastHit2D FrontRayHit;
+    private RaycastHit2D BackRayHit;
+    private Vector3 safePos;
     protected virtual void Start()
     {
         #region 초기 세팅
@@ -88,23 +93,45 @@ public class Enemy_Default : MonoBehaviour
                 }
             }
 
-            currentSpeed = moveSpeed_multiplier * baseSpeed;
-            if (canMove)
+            if (FrontRayHit.collider != null)
             {
-                movementX = currentSpeed;
-                LookPlayer();
+                currentSpeed = moveSpeed_multiplier * baseSpeed;
+                if (canMove)
+                {
+                    movementX = currentSpeed;
+                    LookPlayer();
+                }
+                else
+                {
+                    movementX = 0f;
+                }
+                //Flip();
             }
             else
             {
+                rb.velocity = Vector2.zero;
+                LookPlayer();
                 movementX = 0f;
             }
             animator.SetFloat("Speed", Mathf.Abs(movementX));
-
-            Flip();
         }
     }
     protected virtual void FixedUpdate()
     {
+        FrontRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x + transform.right.x * boxCollider2D.bounds.extents.x,
+            boxCollider2D.bounds.min.y), Vector3.down, 0.2f, LayerMask.GetMask("Ground"));
+        BackRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x - transform.right.x * boxCollider2D.bounds.extents.x,
+            boxCollider2D.bounds.min.y), Vector3.down, 0.2f, LayerMask.GetMask("Ground"));
+        if (FrontRayHit.collider == null) Debug.Log("<color=red>멈춰!!</color>");
+        if (BackRayHit.collider == null) Debug.Log("<color=yellow>그만때려!!!</color>");
+
+        //
+        float vel_x = rb.velocity.x;
+        if (BackRayHit.collider == null)
+        {
+            // 추락 방지
+            rb.velocity = Vector2.zero;
+        }
         Move();
     }
     private void Init()
@@ -117,7 +144,9 @@ public class Enemy_Default : MonoBehaviour
     protected virtual void LookPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
+        if (transform.position.x < player.transform.position.x) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        else transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        //if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
     }
     protected void Flip()
     {
@@ -128,7 +157,7 @@ public class Enemy_Default : MonoBehaviour
     {
         Vector3 targetVelocity;
 
-        targetVelocity = new Vector2(movementX * Time.fixedDeltaTime, rb.velocity.y);
+        targetVelocity = new Vector2(movementX * Time.fixedDeltaTime * transform.right.x, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
     }
     protected virtual void Attack(int idx)
