@@ -45,9 +45,10 @@ public class Enemy_Default : MonoBehaviour
     private float lastPoisonDamageTime = 0f;
 
     // 추락 방지
-    private RaycastHit2D FrontRayHit;
-    private RaycastHit2D BackRayHit;
-    private Vector3 safePos;
+/*    private RaycastHit2D FrontRayHit;
+    private RaycastHit2D BackRayHit;*/
+    private RaycastHit2D GroundRayHit;
+    public Vector3 safePos;
     protected virtual void Start()
     {
         #region 초기 세팅
@@ -92,25 +93,14 @@ public class Enemy_Default : MonoBehaviour
                     }
                 }
             }
-
-            if (FrontRayHit.collider != null)
+            currentSpeed = moveSpeed_multiplier * baseSpeed;
+            if (canMove)
             {
-                currentSpeed = moveSpeed_multiplier * baseSpeed;
-                if (canMove)
-                {
-                    movementX = currentSpeed;
-                    LookPlayer();
-                }
-                else
-                {
-                    movementX = 0f;
-                }
-                //Flip();
+                movementX = currentSpeed;
+                LookPlayer();
             }
             else
             {
-                rb.velocity = Vector2.zero;
-                LookPlayer();
                 movementX = 0f;
             }
             animator.SetFloat("Speed", Mathf.Abs(movementX));
@@ -118,18 +108,36 @@ public class Enemy_Default : MonoBehaviour
     }
     protected virtual void FixedUpdate()
     {
-        FrontRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x + transform.right.x * boxCollider2D.bounds.extents.x,
-            boxCollider2D.bounds.min.y), Vector3.down, 0.2f, LayerMask.GetMask("Ground"));
-        BackRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x - transform.right.x * boxCollider2D.bounds.extents.x,
-            boxCollider2D.bounds.min.y), Vector3.down, 0.2f, LayerMask.GetMask("Ground"));
-
-        //
-        float vel_x = rb.velocity.x;
-        if (BackRayHit.collider == null)
+        GroundRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x, boxCollider2D.bounds.min.y), Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
+        if (GroundRayHit.collider != null)
         {
-            // 추락 방지
-            rb.velocity = Vector2.zero;
+            Debug.Log("Touching ground");
+            safePos = transform.position;
+            rb.gravityScale = 1f;
         }
+        else if (safePos != Vector3.zero)
+        {
+            Debug.Log("<color=yellow>추락중</color>");
+            transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
+            rb.gravityScale = 0f;
+        }
+
+/*        if (boxCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            Debug.Log("Touching ground");
+            safePos = transform.position;
+            rb.gravityScale = 1f;
+        }
+        else if (safePos != Vector3.zero)
+        {
+            Debug.Log("<color=yellow>추락중</color>");
+            transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
+            rb.gravityScale = 0f;
+        }
+*/        /*else if (safePos != null)
+        {
+            transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
+        }*/
         Move();
     }
     private void Init()
@@ -237,27 +245,18 @@ public class Enemy_Default : MonoBehaviour
     }
     private void Dash_1()
     {
-        if (FrontRayHit.collider != null)
-        {
-            Vector2 force = new Vector2(transform.right.x * 15f, 0f);
-            rb.AddForce(force, ForceMode2D.Impulse);
-        }
+        Vector2 force = new Vector2(transform.right.x * 15f, 0f);
+        rb.AddForce(force, ForceMode2D.Impulse);
     }
     private void Dash_2()
     {
-        if (FrontRayHit.collider != null)
-        {
-            Vector2 force = new Vector2(transform.right.x * 30f, 0f);
-            rb.AddForce(force, ForceMode2D.Impulse);
-        }
+        Vector2 force = new Vector2(transform.right.x * 30f, 0f);
+        rb.AddForce(force, ForceMode2D.Impulse);
     }
     private void Dash_3()
     {
-        if (FrontRayHit.collider != null)
-        {
-            Vector2 force = new Vector2(transform.right.x * 60f, 0f);
-            rb.AddForce(force, ForceMode2D.Impulse);
-        }
+        Vector2 force = new Vector2(transform.right.x * 60f, 0f);
+        rb.AddForce(force, ForceMode2D.Impulse);
     }
     private void ThrowBomb()
     {
