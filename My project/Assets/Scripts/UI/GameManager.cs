@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PlayerAfterImagePool;
     [SerializeField] private GameObject DamageTextPool;
     [SerializeField] private GameObject HitFxPool;
+    [SerializeField] private GameObject EnemyBulletPool;
     [SerializeField] private GameObject SwordWindPool;
     [SerializeField] private GameObject ArrowPool;
     [SerializeField] private GameObject ArrowShowerPool;
@@ -221,6 +222,10 @@ public class GameManager : MonoBehaviour
 
         gameObject = Instantiate(HitFxPool);
         gameObject.name = HitFxPool.name;
+        AddToList(gameObject);
+
+        gameObject = Instantiate(EnemyBulletPool);
+        gameObject.name = EnemyBulletPool.name;
         AddToList(gameObject);
 
         if (weaponType == 1)
