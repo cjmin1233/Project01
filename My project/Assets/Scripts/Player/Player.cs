@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public float gold_multiplier = 1f;
     private int gold = 0;
     [SerializeField] private Player_Ground_Checker ground_checker;
-    private void Start()
+    private void OnEnable()
     {
         canInvincible = false;
         damagingTimeLeft = -1f;
@@ -79,11 +79,7 @@ public class Player : MonoBehaviour
             CurHP = MaxHP;
             gold = 0;
         }
-        UI_Container.Instance.HandleGold(gold);
-        UI_Container.Instance.HandleHP(CurHP, MaxHP);
         currentSpeed = moveSpeed_multiplier * baseSpeed;
-
-        DataManager.Instance.SaveGameData();
     }
 
     private void Update()

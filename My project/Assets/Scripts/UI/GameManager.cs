@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     public bool playerFollowing;
     public bool bossFollowing;
     public bool isPlaying;
+    public bool stageCleared;
     public int loadingType;
 
     // 페이드인 효과, 로딩화면
@@ -129,6 +130,7 @@ public class GameManager : MonoBehaviour
             newGame = false;
         }
         PlayerPrefs.SetInt("weaponType", weaponType);
+        DataManager.Instance.data.weaponType = weaponType;
 
         SceneManager.sceneLoaded += AfterLoading;
         //SceneManager.sceneLoaded += OnFirstSceneLoaded;
@@ -184,7 +186,6 @@ public class GameManager : MonoBehaviour
 
         loadingType = 0;
     }
-    //Scene scene, LoadSceneMode mode
     private void OnFirstSceneLoaded()
     {
         var gameObject = Instantiate(players[weaponType - 1]);
@@ -265,12 +266,13 @@ public class GameManager : MonoBehaviour
         isPlaying = true;
         Camera_Background_Container.SetActive(true);
         StartCoroutine(UI_Container.Instance.FadeInStart());
+        //DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
+        DataManager.Instance.SaveGameData();
     }
     public IEnumerator TransportFlow(Vector3 dest, bool loadScene)
     {
         destination = dest;
         faded = false;
-        //StartCoroutine(UI_Container.Instance.FadeFlow());
         StartCoroutine(UI_Container.Instance.FadeOutStart());
         // 페이드 완료시까지 대기
         yield return new WaitUntil(() => faded);
@@ -325,7 +327,6 @@ public class GameManager : MonoBehaviour
     {
         // 페이드 완료시까지 대기
         faded = false;
-        //StartCoroutine(UI_Container.Instance.FadeFlow());
         StartCoroutine(UI_Container.Instance.FadeOutStart());
         yield return new WaitUntil(() => faded);
 
@@ -344,17 +345,11 @@ public class GameManager : MonoBehaviour
     {
         // 페이드 완료시까지 대기
         faded = false;
-        //StartCoroutine(UI_Container.Instance.FadeFlow());
         StartCoroutine(UI_Container.Instance.FadeOutStart());
         yield return new WaitUntil(() => faded);
 
         isPlaying = false;
         MainCamera.transform.position = new Vector3(0f, 0f, -10f);
-
-        //데이터 저장
-        DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
-        DataManager.Instance.data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        DataManager.Instance.SaveGameData();
 
         // 로딩씬 호출
         LoadingSceneController.LoadScene(0, 2);
@@ -366,7 +361,6 @@ public class GameManager : MonoBehaviour
         Camera_Background_Container.SetActive(false);
         // base UI 비활성화
         UI_Container.Instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        //UI_Container.Instance.fade_in_start = true;
         StartCoroutine(UI_Container.Instance.FadeInStart());
         yield return new WaitUntil(() => !faded);
         ClearObjects();

@@ -28,6 +28,9 @@ public class EnemyGenerator : MonoBehaviour
                 enemy.SetActive(true);
             }
             isStarted = true;
+            GameManager.Instance.stageCleared = false;
+            DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
+            DataManager.Instance.SaveGameData();
         }
     }
     private void Update()
@@ -39,6 +42,7 @@ public class EnemyGenerator : MonoBehaviour
                 enable_objective[i].SetActive(true);
             }
             // 스테이지 클리어 표시
+            isStarted = false;
         }
     }
 }

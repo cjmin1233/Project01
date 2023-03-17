@@ -76,6 +76,7 @@ public class UI_Container : MonoBehaviour
     private void OnEnable()
     {
         Instance = this;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
         if (PlayerPrefs.GetInt("weaponType") == 3)
         {
             hashshin_gauge_UI.SetActive(true);
@@ -101,6 +102,11 @@ public class UI_Container : MonoBehaviour
         BgmAudioSlider.value = PlayerPrefs.GetFloat("BgmVolume");
         if (!PlayerPrefs.HasKey("EffectVolume")) PlayerPrefs.SetFloat("EffectVolume", 0.75f);
         EffectAudioSlider.value = PlayerPrefs.GetFloat("EffectVolume");
+
+        // 플레이어 세팅
+        Player _player = playerObject.GetComponent<Player>();
+        HandleGold(_player.CheckGold());
+        HandleHP(_player.CurHP, _player.MaxHP);
 
         faded = true;
     }
@@ -170,8 +176,6 @@ public class UI_Container : MonoBehaviour
     }
     public void RandomAbility()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-
         totalWeight = 0;
         // 새로운 리스트에 출현가능한 어빌리티들 복사
         List<GameObject> selection = new List<GameObject>();
@@ -218,8 +222,6 @@ public class UI_Container : MonoBehaviour
     }
     public void GetAbility(GameObject SelectedAbility)
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-
         Ability ability = SelectedAbility.GetComponent<Ability>();
         Player player = playerObject.GetComponent<Player>();
         PlayerAttack playerAttack = playerObject.GetComponent<PlayerAttack>();
@@ -455,8 +457,6 @@ public class UI_Container : MonoBehaviour
     }
     public void UpgradeAbility()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-
         List<GameObject> selection = new List<GameObject>();
         for(int i = 0; i < SelectedAbilityList.Count; i++)
         {

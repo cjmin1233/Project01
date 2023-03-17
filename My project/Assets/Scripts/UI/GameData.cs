@@ -10,4 +10,5 @@ public class Data
     public float maxHP;
     public float[] position = new float[3];
     public int[] select_log = new int[1];
+    public bool stageCleared;
 }
