@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject SwordWindPool;
     [SerializeField] private GameObject ArrowPool;
     [SerializeField] private GameObject ArrowShowerPool;
+    [SerializeField] private GameObject EnemyPool;
     [SerializeField] private GameObject ui_container;
     [SerializeField] private GameObject eventSystem;
     [HideInInspector] public bool newGame;
@@ -248,6 +249,11 @@ public class GameManager : MonoBehaviour
         gameObject = Instantiate(ui_container);
         gameObject.name = ui_container.name;
         AddToList(gameObject);
+
+        gameObject = Instantiate(EnemyPool);
+        gameObject.name = EnemyPool.name;
+        AddToList(gameObject);
+
         #endregion
 
         if (!newGame)

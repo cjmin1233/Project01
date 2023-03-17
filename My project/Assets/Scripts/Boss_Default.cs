@@ -10,7 +10,7 @@ public class Boss_Default : Enemy_Default
 
     private int actionCounter;
     private int random;
-    protected override void Start()
+    protected override void OnEnable()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();

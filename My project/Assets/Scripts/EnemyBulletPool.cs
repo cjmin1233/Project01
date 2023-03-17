@@ -6,7 +6,6 @@ public class EnemyBulletPool : MonoBehaviour
 {
     [SerializeField] private GameObject Prefab;
     private Queue<GameObject> availableObjects = new Queue<GameObject>();
-
     public static EnemyBulletPool Instance { get; private set; }
 
     private void OnEnable()

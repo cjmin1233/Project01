@@ -364,7 +364,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5149094981950290642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.68, y: -0.962, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 5149094981063909157}
@@ -510,7 +510,6 @@ MonoBehaviour:
   baseSpeed: 100
   moveSpeed_multiplier: 1
   range: 000000
-  playerInRange: 0
   detectPlayer: 0
   attackRate: 0.5
   maxHP: 5000
@@ -518,6 +517,7 @@ MonoBehaviour:
   Offset: {x: 0, y: 1, z: 0}
   die_sound: {fileID: 0}
   damage_sound: []
+  safePos: {x: 0, y: 0, z: 0}
   bullet: {fileID: 2906917620047034965, guid: 8244be6735928e34687f971417a5ee4a, type: 3}
   firePoint: {fileID: 2100436216}
 --- !u!1 &6803391778406631080

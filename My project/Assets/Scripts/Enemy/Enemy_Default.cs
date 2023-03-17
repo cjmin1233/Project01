@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Enemy_Default : MonoBehaviour
 {
+    [Header("EnemyType")] public int enemyType;
     protected GameObject player;
     protected Rigidbody2D rb;
     protected Animator animator;
@@ -49,7 +50,7 @@ public class Enemy_Default : MonoBehaviour
     private RaycastHit2D BackRayHit;*/
     private RaycastHit2D GroundRayHit;
     public Vector3 safePos;
-    protected virtual void Start()
+    protected virtual void OnEnable()
     {
         #region 초기 세팅
         player = GameObject.FindGameObjectWithTag("Player");
@@ -111,13 +112,13 @@ public class Enemy_Default : MonoBehaviour
         GroundRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x, boxCollider2D.bounds.min.y), Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
         if (GroundRayHit.collider != null)
         {
-            Debug.Log("Touching ground");
+            //Debug.Log("Touching ground");
             safePos = transform.position;
             rb.gravityScale = 1f;
         }
         else if (safePos != Vector3.zero)
         {
-            Debug.Log("<color=yellow>추락중</color>");
+            //Debug.Log("<color=yellow>추락중</color>");
             transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
             rb.gravityScale = 0f;
         }
@@ -230,7 +231,7 @@ public class Enemy_Default : MonoBehaviour
         if (die_sound != null) die_sound.PlayOneShot(die_sound.clip);
         animator.SetBool("IsDead", true);
         canMove = false;
-        baseSpeed = 0f;
+        rb.velocity = Vector2.zero;
         // 골드 생성
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Player>().GetGold(100);
@@ -330,6 +331,7 @@ public class Enemy_Default : MonoBehaviour
     }
     private void destoryObject()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        EnemyPool.Instance.AddToPool(enemyType, gameObject);
     }
 }
