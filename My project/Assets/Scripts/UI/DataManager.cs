@@ -46,6 +46,8 @@ public class DataManager : MonoBehaviour
     }
     public void SaveGameData()
     {
+        StartCoroutine(UI_Container.Instance.StartSaving());
+        
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         // 플레이어 위치, 체력, 최대체력, 골드 저장
         data.position[0] = player.transform.position.x;
@@ -64,5 +66,6 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePath, ToJsonData);
 
         print("저장 완료");
+        UI_Container.Instance.saveDone = true;
     }
 }

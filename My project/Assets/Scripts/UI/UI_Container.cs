@@ -73,6 +73,10 @@ public class UI_Container : MonoBehaviour
 
     // 알람 UI
     [SerializeField] private GameObject AlermText;
+
+    // 저장중 UI
+    [SerializeField] private GameObject RotatingCircleUI;
+    [HideInInspector] public bool saveDone;
     private void OnEnable()
     {
         Instance = this;
@@ -651,5 +655,28 @@ public class UI_Container : MonoBehaviour
         AlermText.GetComponent<TextMeshProUGUI>().text = text;
         AlermText.GetComponent<Animator>().ResetTrigger("AlermTrigger");
         AlermText.GetComponent<Animator>().SetTrigger("AlermTrigger");
+    }
+    public IEnumerator StartSaving()
+    {
+        GameObject textObj = RotatingCircleUI.transform.GetChild(0).gameObject;
+        GameObject imageObj = RotatingCircleUI.transform.GetChild(1).gameObject;
+        if (textObj == null || imageObj == null) yield break;
+        textObj.SetActive(true);
+        imageObj.SetActive(true);
+        TextMeshProUGUI text = textObj.GetComponent<TextMeshProUGUI>();
+        Image image = imageObj.GetComponent<Image>();
+        saveDone = false;
+        yield return new WaitUntil(() => saveDone);
+
+        for (float _alpha = 1f; _alpha > 0f; _alpha -= Time.deltaTime * 0.3f)
+        {
+            Color c = image.color;
+            c.a = _alpha;
+            image.color = c;
+            text.color = c;
+            yield return null;
+        }
+        textObj.SetActive(false);
+        imageObj.SetActive(false);
     }
 }
