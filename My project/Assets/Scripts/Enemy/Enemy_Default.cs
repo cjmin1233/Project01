@@ -333,5 +333,6 @@ public class Enemy_Default : MonoBehaviour
     {
         //Destroy(gameObject);
         EnemyPool.Instance.AddToPool(enemyType, gameObject);
+        EnemyPool.Instance.remainEnemies--;
     }
 }

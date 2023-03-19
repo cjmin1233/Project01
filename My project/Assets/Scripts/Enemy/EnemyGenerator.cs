@@ -21,22 +21,23 @@ public class EnemyGenerator : MonoBehaviour
         if (collision.tag == "Player" && !isEntered)
         {
             isEntered = true;
-            for(int i = 0; i < enemies_type.Length; i++)
-            {
-                var enemy = EnemyPool.Instance.GetFromPool(enemies_type[i]);
-                enemy.transform.position = enemies_trasform[i].position;
-                enemy.SetActive(true);
-            }
-            isStarted = true;
-            //GameManager.Instance.stageCleared = false;
-
             StartCoroutine(UI_Container.Instance.StartSaving());
 
             DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
             DataManager.Instance.SaveGameData();
-
-
+            Invoke(nameof(EnemySpawn), 2f);
         }
+    }
+    private void EnemySpawn()
+    {
+        for (int i = 0; i < enemies_type.Length; i++)
+        {
+            var enemy = EnemyPool.Instance.GetFromPool(enemies_type[i]);
+            enemy.transform.position = enemies_trasform[i].position;
+            enemy.SetActive(true);
+        }
+        isStarted = true;
+        //GameManager.Instance.stageCleared = false;
     }
     private void Update()
     {

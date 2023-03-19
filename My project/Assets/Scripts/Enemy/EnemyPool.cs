@@ -31,6 +31,7 @@ public class EnemyPool : MonoBehaviour
         }
     }
     [SerializeField] private GameObject[] enemyPrefab;
+    private int[] enemy_id_counter;
     private MultiQueue<GameObject> enemyQueue;
     public int remainEnemies;
     public static EnemyPool Instance { get; private set; }
@@ -41,8 +42,11 @@ public class EnemyPool : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         //
         enemyQueue = new MultiQueue<GameObject>(enemyPrefab.Length);
+        enemy_id_counter = new int[enemyPrefab.Length];
+
         for(int i = 0; i < enemyPrefab.Length; i++)
         {
+            enemy_id_counter[i] = 0;
             GrowPool(i);
         }
         remainEnemies = -1;
@@ -52,6 +56,7 @@ public class EnemyPool : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             var instanceToAdd = Instantiate(enemyPrefab[index]);
+            instanceToAdd.name = enemyPrefab[index].name + "_" + (enemy_id_counter[index]++).ToString();
             instanceToAdd.transform.SetParent(transform);
             AddToPool(index, instanceToAdd);
         }
@@ -68,7 +73,6 @@ public class EnemyPool : MonoBehaviour
         instance.GetComponent<Enemy_Default>().enemyType = index;
         instance.SetActive(false);
         enemyQueue.Enqueue(index, instance);
-        remainEnemies--;
         //mushroomQueue.Enqueue(instance);
     }
 

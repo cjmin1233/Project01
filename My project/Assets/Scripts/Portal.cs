@@ -44,5 +44,6 @@ public class Portal : MonoBehaviour
         int rand = Random.Range(0, destination.Length);
         StartCoroutine(GameManager.Instance.TransportFlow(destination[rand].position, false));
         UI_Container.Instance.DisableToggleText(4);
+        this.enabled = false;
     }
 }
