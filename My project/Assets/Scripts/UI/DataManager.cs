@@ -45,9 +45,7 @@ public class DataManager : MonoBehaviour
         }
     }
     public void SaveGameData()
-    {
-        StartCoroutine(UI_Container.Instance.StartSaving());
-        
+    {       
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         // 플레이어 위치, 체력, 최대체력, 골드 저장
         data.position[0] = player.transform.position.x;
@@ -57,7 +55,7 @@ public class DataManager : MonoBehaviour
         data.maxHP = player.GetComponent<Player>().MaxHP;
         data.gold = player.GetComponent<Player>().CheckGold();
         data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        data.stageCleared = GameManager.Instance.stageCleared;
+        //data.stageCleared = GameManager.Instance.stageCleared;
 
 
         string ToJsonData = JsonUtility.ToJson(data, true);

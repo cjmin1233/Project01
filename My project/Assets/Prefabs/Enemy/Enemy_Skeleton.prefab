@@ -502,12 +502,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1574e8ea722f884d906b33390909f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   baseSpeed: 100
   moveSpeed_multiplier: 1
   range: 0000
   detectPlayer: 0
-  attackRate: 1
-  maxHP: 5000
+  attackRate: 0.7
+  maxHP: 2000
   damagePoint: {fileID: 3434231281544050719}
   Offset: {x: 0, y: 1, z: 0}
   die_sound: {fileID: 0}

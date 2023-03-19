@@ -28,9 +28,14 @@ public class EnemyGenerator : MonoBehaviour
                 enemy.SetActive(true);
             }
             isStarted = true;
-            GameManager.Instance.stageCleared = false;
+            //GameManager.Instance.stageCleared = false;
+
+            StartCoroutine(UI_Container.Instance.StartSaving());
+
             DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
             DataManager.Instance.SaveGameData();
+
+
         }
     }
     private void Update()

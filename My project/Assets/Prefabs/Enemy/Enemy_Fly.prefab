@@ -458,7 +458,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.04738081, y: -0.03812921}
@@ -507,12 +507,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a672414459c6d4abe746dd57377bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   baseSpeed: 100
   moveSpeed_multiplier: 1
   range: 000000
   detectPlayer: 0
   attackRate: 0.5
-  maxHP: 5000
+  maxHP: 500
   damagePoint: {fileID: 5149094981063909157}
   Offset: {x: 0, y: 1, z: 0}
   die_sound: {fileID: 0}

@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
     public bool playerFollowing;
     public bool bossFollowing;
     public bool isPlaying;
-    public bool stageCleared;
     public int loadingType;
+    //public bool stageCleared;
 
     // 페이드인 효과, 로딩화면
     public bool faded;

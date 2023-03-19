@@ -419,16 +419,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1574e8ea722f884d906b33390909f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   baseSpeed: 100
   moveSpeed_multiplier: 1
   range: 0000
   detectPlayer: 0
-  attackRate: 0.5
-  maxHP: 5000
+  attackRate: 0.3
+  maxHP: 1500
   damagePoint: {fileID: 888711100666211009}
   Offset: {x: 0, y: 0.5, z: 0}
   die_sound: {fileID: 0}
   damage_sound: []
+  safePos: {x: 0, y: 0, z: 0}
 --- !u!1 &2387028911118821136
 GameObject:
   m_ObjectHideFlags: 0

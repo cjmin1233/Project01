@@ -17,13 +17,13 @@ public class Combo_Collider : MonoBehaviour
     private void Awake()
     {
         //animator = GetComponent<Animator>();
-        hit_list = new List<string>();
         playerAttack = transform.parent.GetComponent<PlayerAttack>();
         player = transform.parent.GetComponent<Player>();
         critical = false;
     }
     private void OnEnable()
     {
+        hit_list = new List<string>();
         rand = Random.Range(0, audioSource.Length);
         if (audioSource[rand] != null) audioSource[rand].PlayOneShot(audioSource[rand].clip);
     }
