@@ -45,45 +45,36 @@ public class Item : MonoBehaviour
     }
     void PickUp()
     {
-        /*if (this.tag.Equals("Sword"))
-        {
-            Player.GetComponent<Animator>().SetInteger("WeaponType", 1);
-        }
-        else if (this.tag.Equals("Bow"))
-        {
-            Player.GetComponent<Animator>().SetInteger("WeaponType", 2);
-            //Player.GetComponent<SelectAbility>().RandomAbility();
-        }*/
-        if (this.tag.Equals("Book"))
+        if (CompareTag("Book"))
         {
             UI_Container.Instance.RandomAbility();
             //Player.GetComponent<SelectAbility>().RandomAbility();
             //Destroy(gameObject);
         }
-        else if (this.tag.Equals("Potion"))
+        else if (CompareTag("Potion"))
         {
             Player.GetComponent<Player>().IncreaseMaxHP();
             Destroy(gameObject);
         }
-        else if (this.tag.Equals("Upgrade"))
+        else if (CompareTag("Upgrade"))
         {
             UI_Container.Instance.UpgradeAbility();
             //Player.GetComponent<SelectAbility>().UpgradeAbility();
             //Destroy(gameObject);
         }
-        else if (this.tag.Equals("Chest"))
+        else if (CompareTag("Chest"))
         {
             gameObject.GetComponent<Chest>().OpenChest();
             //Player.GetComponent<SelectAbility>().UpgradeAbility();
             //Destroy(gameObject);
             this.enabled = false;
         }
-        else if (this.tag.Equals("Coin"))
+        else if (CompareTag("Coin"))
         {
             Player.GetComponent<Player>().GetGold(100);
             Destroy(gameObject);
         }
-        else if (this.tag.Equals("Food"))
+        else if (CompareTag("Food"))
         {
             Player.GetComponent<Player>().Heal(50);
             Destroy(gameObject);

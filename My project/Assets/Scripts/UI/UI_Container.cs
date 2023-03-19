@@ -180,6 +180,7 @@ public class UI_Container : MonoBehaviour
     }
     public void RandomAbility()
     {
+        if (Ability_UI.activeSelf) return;
         totalWeight = 0;
         // 새로운 리스트에 출현가능한 어빌리티들 복사
         List<GameObject> selection = new List<GameObject>();
@@ -461,6 +462,8 @@ public class UI_Container : MonoBehaviour
     }
     public void UpgradeAbility()
     {
+        if (Ability_UI.activeSelf) return;
+
         List<GameObject> selection = new List<GameObject>();
         for(int i = 0; i < SelectedAbilityList.Count; i++)
         {
