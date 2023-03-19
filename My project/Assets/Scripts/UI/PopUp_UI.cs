@@ -6,10 +6,10 @@ public class PopUp_UI : MonoBehaviour
 {
     private void OnEnable()
     {
-        Time.timeScale = 0;
+        UI_Container.Instance.popup_ui_counter++;
     }
     private void OnDisable()
     {
-        Time.timeScale = 1;
+        UI_Container.Instance.popup_ui_counter--;
     }
 }

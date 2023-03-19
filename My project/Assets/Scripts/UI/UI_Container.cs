@@ -77,6 +77,9 @@ public class UI_Container : MonoBehaviour
     // 저장중 UI
     [SerializeField] private GameObject RotatingCircleUI;
     [HideInInspector] public bool saveDone;
+
+    // UI 카운터
+    public int popup_ui_counter = 0;
     private void OnEnable()
     {
         Instance = this;
@@ -122,10 +125,14 @@ public class UI_Container : MonoBehaviour
             {
                 Esc_UI.SetActive(true);
             }
-            else if (Input.GetKeyDown(KeyCode.B))
+            else if (Input.GetKeyDown(KeyCode.B) && !Esc_UI.activeSelf)
             {
                 Book_UI.SetActive(true);
             }
+
+            // 
+            if (popup_ui_counter > 0) Time.timeScale = 0f;
+            else Time.timeScale = 1f;
         }
     }
     public void Data_Recovery()
@@ -497,10 +504,12 @@ public class UI_Container : MonoBehaviour
 
     public void GiveUp()
     {
+        Time.timeScale = 1f;
         StartCoroutine(GameManager.Instance.GiveUpFlow());
     }
     public void QuitGame()
     {
+        Time.timeScale = 1f;
         int length = SelectLog.Count;
         int[] arr = new int[length];
         for (int i = 0; i < length; i++)
@@ -671,7 +680,7 @@ public class UI_Container : MonoBehaviour
         saveDone = false;
         yield return new WaitUntil(() => saveDone);
 
-        for (float _alpha = 1f; _alpha > 0f; _alpha -= Time.deltaTime * 0.3f)
+        for (float _alpha = 1f; _alpha > 0f; _alpha -= Time.unscaledDeltaTime * 0.4f)
         {
             Color c = image.color;
             c.a = _alpha;
