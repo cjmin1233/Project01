@@ -8,13 +8,14 @@ public class Portal : MonoBehaviour
 {
     //[SerializeField] private GameObject EnterIcon;
     [SerializeField] private Transform[] destination;
+    private BoxCollider2D boxCollider2D;
     //[SerializeField] private int toggleTextIndex;
     private GameObject Player;
     bool isPickUp;
-    /*void Awake()
+    private void Awake()
     {
-        //EnterIcon.SetActive(false);
-    }*/
+        boxCollider2D = GetComponent<BoxCollider2D>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -35,15 +36,16 @@ public class Portal : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            UI_Container.Instance.DisableToggleText(4);
             isPickUp = false;
+            UI_Container.Instance.DisableToggleText(4);
         }
     }
     void PickUp()
     {
+        isPickUp = false;
+        UI_Container.Instance.DisableToggleText(4);
         int rand = Random.Range(0, destination.Length);
         StartCoroutine(GameManager.Instance.TransportFlow(destination[rand].position, false));
-        UI_Container.Instance.DisableToggleText(4);
-        this.enabled = false;
+        //this.enabled = false;
     }
 }

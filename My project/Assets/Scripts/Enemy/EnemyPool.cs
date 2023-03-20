@@ -60,12 +60,6 @@ public class EnemyPool : MonoBehaviour
             instanceToAdd.transform.SetParent(transform);
             AddToPool(index, instanceToAdd);
         }
-        /*for (int i = 0; i < 3; i++)
-        {
-            var instanceToAdd = Instantiate(mushroomPrefab);
-            instanceToAdd.transform.SetParent(transform);
-            AddToPool(instanceToAdd);
-        }*/
     }
 
     public void AddToPool(int index, GameObject instance)
@@ -73,7 +67,6 @@ public class EnemyPool : MonoBehaviour
         instance.GetComponent<Enemy_Default>().enemyType = index;
         instance.SetActive(false);
         enemyQueue.Enqueue(index, instance);
-        //mushroomQueue.Enqueue(instance);
     }
 
     public GameObject GetFromPool(int index)
