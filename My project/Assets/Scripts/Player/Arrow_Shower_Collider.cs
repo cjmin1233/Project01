@@ -30,7 +30,7 @@ public class Arrow_Shower_Collider : MonoBehaviour
         float curDamage = Mathf.Round(damage * damage_multiplier);
         if (tag == "Enemy" || tag == "Boss")
         {
-            collision.GetComponent<Enemy_Default>().TakeDamage(curDamage, damageForce, fxType);
+            collision.GetComponent<Enemy_Default>().TakeDamage(curDamage, damageForce, false, Color.green, fxType);
             if (damage_multiplier < 1.6f && rain_enable) damage_multiplier += 0.1f;
             if (slow_enable) collision.GetComponent<Enemy_Default>().Debuff("Slow", 5f);
         }

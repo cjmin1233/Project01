@@ -182,7 +182,7 @@ public class Enemy_Default : MonoBehaviour
         superArmor = false;
     }
 
-    public virtual void TakeDamage(float damage, Vector2 damageForce, int fxType)
+    public virtual void TakeDamage(float damage, Vector2 damageForce, bool isCrit, Color damageColor, int fxType)
     {
         if (!animator.GetBool("IsDead"))
         {
@@ -195,12 +195,13 @@ public class Enemy_Default : MonoBehaviour
             // 수퍼아머가 아니라면 밀려남
             if (!superArmor) rb.AddForce(damageForce, ForceMode2D.Impulse);
             // 밀치는 힘이 있다면 타격 애니메이션
-            if (damageForce.x != 0f) animator.SetTrigger("Hit");
-
+            if (Mathf.Abs(damageForce.x) > 0.01f) animator.SetTrigger("Hit");
             #region 데미지 텍스트 생성
             GameObject dmgText = DamageTextPool.Instance.GetFromPool();
             dmgText.transform.position = damagePoint.transform.position;
             dmgText.GetComponent<DamageText>().damage = damage;
+            dmgText.GetComponent<DamageText>().x_dir = damageForce.normalized.x;
+            dmgText.GetComponent<DamageText>().textColor = damageColor;
             dmgText.SetActive(true);
             #endregion
 
@@ -325,7 +326,7 @@ public class Enemy_Default : MonoBehaviour
         if (Time.time - lastPoisonDamageTime >= 1f)
         {
             lastPoisonDamageTime = Time.time;
-            TakeDamage(10f, Vector2.zero, -1);
+            TakeDamage(10f, Vector2.zero, false, Color.magenta, -1);
             Debug.Log("<color=purple>독 데미지</color>");
         }
     }

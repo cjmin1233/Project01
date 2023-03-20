@@ -42,18 +42,10 @@ public class Combo_Collider : MonoBehaviour
             
             if(tag=="Enemy" || tag == "Boss")
             {
-                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, fxType);
+                if (critical) collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, critical, Color.yellow, 5);
+                else collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, critical, Color.white, fxType);
                 if (playerAttack.sword_cursed_enable) player.Heal(2f);
             }
         }
     }
-/*    public void PlayAudio()
-    {
-        rand = Random.Range(0, audioSource.Length);
-        if (audioSource[rand] != null) audioSource[rand].PlayOneShot(audioSource[rand].clip);
-    }
-    public void OnColliderDisable()
-    {
-        hit_list.Clear();
-    }
-*/}
+}

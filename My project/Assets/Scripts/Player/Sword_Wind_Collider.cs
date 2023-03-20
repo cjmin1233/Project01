@@ -6,13 +6,10 @@ public class Sword_Wind_Collider : MonoBehaviour
 {
     public int fxType;
     [HideInInspector] public float damage;
-    /*[HideInInspector] */
-    public float anim_Speed;
-    //[HideInInspector] public Vector2 damageForce;
-    //public Transform start_point;
+    [HideInInspector] public Vector2 damageForce;
+    [HideInInspector] public float anim_Speed;
     private Transform player;
 
-    //public List<AudioSource> audioSource;
     private Animator animator;
     private Rigidbody2D rb;
     private List<string> hit_list;
@@ -29,23 +26,12 @@ public class Sword_Wind_Collider : MonoBehaviour
     {
         //
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        //transform.position = player.position;
         transform.rotation = player.rotation;
         //
         animator.SetFloat("EnableSpeed", anim_Speed);
 
         rb.velocity = 10f * anim_Speed * transform.right;
     }
-    /*public void Init()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        transform.rotation = player.rotation;
-
-        animator.SetFloat("EnableSpeed", anim_Speed);
-        rb.velocity = 10f * anim_Speed * transform.right;
-        Debug.Log("current speed is : " + anim_Speed);
-    }*/
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.tag;
@@ -55,7 +41,7 @@ public class Sword_Wind_Collider : MonoBehaviour
             hit_list.Add(name);
             if (tag == "Enemy" || tag == "Boss")
             {
-                collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType);
+                collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, false, Color.red, fxType);
             }
         }
     }

@@ -7,35 +7,44 @@ using TMPro;
 
 public class DamageText : MonoBehaviour
 {
-    public float floatingSpeed;
-    public float alphaSpeed;
-    //Text text_tmp;
-    TextMeshPro text;
-    Color alpha;
-    public float damage;
-
-    private Color startColor;
+    [SerializeField] private float x_speed;
+    [SerializeField] private float y_speed;
+    [SerializeField] private float ver_ac;
+    [SerializeField] private float alphaSpeed;
+    private float hor_speed;
+    private float ver_speed;
+    private TextMeshPro text;
+    private float alpha;
+    
+    [HideInInspector] public float damage;
+    [HideInInspector] public float x_dir;
+    [HideInInspector] public Color textColor;
+    //private Color startColor;
     private void Awake()
     {
         text = GetComponent<TextMeshPro>();
-        startColor = new Color(255f, 255f, 255f, 255f);
     }
     private void OnEnable()
-    {        
+    {
         text.text = damage.ToString();
-        alpha = startColor;
-        Invoke("Disable_Object", 1f);
+        alpha = 1f;
+        ver_speed = Random.Range(0.5f * y_speed, y_speed);
+        text.color = textColor;
     }
 
     private void Update()
     {
-        transform.Translate(new Vector3(0, floatingSpeed * Time.deltaTime, 0));
-        alpha.a = Mathf.Lerp(alpha.a, 0, Time.deltaTime * alphaSpeed);
-        text.color = alpha;
+        hor_speed = Random.Range(0.5f * x_speed, x_speed);
+        ver_speed -= ver_ac * Time.deltaTime;
+        transform.Translate(new Vector3(hor_speed * x_dir * Time.deltaTime, ver_speed * Time.deltaTime, 0));
+        alpha -= Time.deltaTime;
+        textColor = text.color;
+        textColor.a = alpha;
+        text.color = textColor;
+        if (alpha <= 0f) Disable_Object();
     }
     private void Disable_Object()
     {
-        //Destroy(gameObject);
         DamageTextPool.Instance.AddToPool(gameObject);
     }
 }

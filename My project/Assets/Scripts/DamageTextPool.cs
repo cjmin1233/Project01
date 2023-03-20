@@ -15,10 +15,12 @@ public class DamageTextPool : MonoBehaviour
     {
         Instance = this;
         GrowPool();
+        DontDestroyOnLoad(gameObject);
     }
     private void GrowPool()
     {
-        for (int i = 0; i < 10; i++)
+        Debug.Log("그로우풀");
+        for (int i = 0; i < 50; i++)
         {
             var instanceToAdd = Instantiate(damageTextPrefab);
             instanceToAdd.transform.SetParent(transform);

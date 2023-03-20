@@ -59,7 +59,9 @@ public class GameManager : MonoBehaviour
     //public bool stageCleared;
 
     // 페이드인 효과, 로딩화면
+    public string gameState;
     public bool faded;
+    public string fadeState;
     private Vector3 destination;
     
     private void Awake()
@@ -80,7 +82,7 @@ public class GameManager : MonoBehaviour
         playerFollowing = true;
         bossFollowing = false;
         isPlaying = false;
-        faded = false;
+        //faded = false;
         loadingType = 0;
 
         var event_system = Instantiate(eventSystem);
@@ -99,6 +101,8 @@ public class GameManager : MonoBehaviour
             float _size = MainCamera.GetComponent<Camera>().orthographicSize;
             if (bossFollowing)
             {
+                Time.timeScale = 0.3f;
+
                 MainCamera.GetComponent<Camera>().orthographicSize = _size > 3f ? _size - Time.deltaTime * 2f : 3f;
                 if (boss == null) boss = GameObject.FindGameObjectWithTag("Boss");
                 tempPos = Vector3.Lerp(MainCamera.transform.position, boss.transform.position + difValue, speed);
@@ -106,6 +110,8 @@ public class GameManager : MonoBehaviour
             }
             else if (playerFollowing)
             {
+                Time.timeScale = 1f;
+
                 // 플레이어 추적 카메라
                 MainCamera.GetComponent<Camera>().orthographicSize = _size < 5f ? _size + Time.deltaTime * 2f : 5f;
                 tempPos = Vector3.Lerp(MainCamera.transform.position, player.transform.position + difValue, speed);
@@ -133,10 +139,6 @@ public class GameManager : MonoBehaviour
         DataManager.Instance.data.weaponType = weaponType;
 
         SceneManager.sceneLoaded += AfterLoading;
-        //SceneManager.sceneLoaded += OnFirstSceneLoaded;
-
-        //if(!newGame) SceneManager.LoadScene(gameData.sceneNumber);
-        //else SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
         if(!newGame) LoadingSceneController.LoadScene(gameData.sceneNumber, 3);
         else LoadingSceneController.LoadScene(1, 3);
@@ -266,20 +268,23 @@ public class GameManager : MonoBehaviour
         isPlaying = true;
         Camera_Background_Container.SetActive(true);
         StartCoroutine(UI_Container.Instance.FadeInStart());
-        //DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
+        StartCoroutine(UI_Container.Instance.StartSaving());
+
+        DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
         DataManager.Instance.SaveGameData();
     }
     public IEnumerator TransportFlow(Vector3 dest, bool loadScene)
     {
         destination = dest;
-        faded = false;
+        //faded = false;
         StartCoroutine(UI_Container.Instance.FadeOutStart());
         // 페이드 완료시까지 대기
-        yield return new WaitUntil(() => faded);
+        //yield return new WaitUntil(() => faded);
+        //yield return new WaitUntil(() => gameState == "faded");
+        yield return new WaitUntil(() => fadeState == "faded");
         isPlaying = false;
         if (loadScene)
         {
-            Debug.Log("로딩 기다리는중..");
             LoadingSceneController.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, 1);
         }
         else
@@ -326,9 +331,11 @@ public class GameManager : MonoBehaviour
     public IEnumerator GiveUpFlow()
     {
         // 페이드 완료시까지 대기
-        faded = false;
+        //faded = false;
         StartCoroutine(UI_Container.Instance.FadeOutStart());
-        yield return new WaitUntil(() => faded);
+        //yield return new WaitUntil(() => faded);
+        //yield return new WaitUntil(() => gameState == "faded");
+        yield return new WaitUntil(() => fadeState == "faded");
 
         isPlaying = false;
         MainCamera.transform.position = new Vector3(0f, 0f, -10f);
@@ -344,9 +351,11 @@ public class GameManager : MonoBehaviour
     public IEnumerator QuitGameFlow()
     {
         // 페이드 완료시까지 대기
-        faded = false;
+        //faded = false;
         StartCoroutine(UI_Container.Instance.FadeOutStart());
-        yield return new WaitUntil(() => faded);
+        //yield return new WaitUntil(() => faded);
+        //yield return new WaitUntil(() => gameState == "faded");
+        yield return new WaitUntil(() => fadeState == "faded");
 
         isPlaying = false;
         MainCamera.transform.position = new Vector3(0f, 0f, -10f);
@@ -362,7 +371,10 @@ public class GameManager : MonoBehaviour
         // base UI 비활성화
         UI_Container.Instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         StartCoroutine(UI_Container.Instance.FadeInStart());
-        yield return new WaitUntil(() => !faded);
+        //yield return new WaitUntil(() => !faded);
+        //yield return new WaitUntil(() => gameState == "playing");
+        yield return new WaitUntil(() => fadeState == "clear");
+
         ClearObjects();
     }
 }

@@ -105,9 +105,10 @@ public class Ranger_Attack : PlayerAttack
     }
     private void ShootArrow()
     {
+        Vector2 damageForce = new Vector2(transform.right.x * 0.01f, 0f);
         GameObject arrow = ArrowPool.Instance.GetFromPool();
         arrow.GetComponent<Bullet>().damage = Mathf.Round(PlayerPowerCalculation() * Z_DamageCalculation() * arrow_coef * (1 + (comboCounter % 3) * 0.2f));
-        //arrow.GetComponent<Bullet>().anim_Speed = Speed_Z;
+        arrow.GetComponent<Bullet>().damageForce = damageForce;
         arrow.GetComponent<Bullet>().isDiagonal = isJumping;
         arrow.GetComponent<Bullet>().isPoisoned = bow_poison_enable;
         arrow.transform.position = firePoint.position;
@@ -130,15 +131,6 @@ public class Ranger_Attack : PlayerAttack
 
         comboCounter = 0;
     }
-    /*private void Enable_Bow_Beam()
-    {
-        Vector2 damageForce = new Vector2(transform.right.x * 10f, 0f);
-        float damage = 0f;
-        damage = Mathf.Round(playerPower * damage_x_multiplier * beam_coef * (1 + 0.5f * (float)chargeCounter));
-        Bow_Beam.GetComponent<Bow_Beam_Collider>().damage = damage;
-        Bow_Beam.GetComponent<Bow_Beam_Collider>().anim_Speed = Speed_X;
-        Bow_Beam.GetComponent<Bow_Beam_Collider>().damageForce = damageForce;
-    }*/
     private void Enable_Arrow_Shower()
     {
         Vector2 damageForce = new Vector2(transform.right.x * 8f, 0f);

@@ -1596,7 +1596,6 @@ GameObject:
   - component: {fileID: 1291945829}
   - component: {fileID: 1291945826}
   - component: {fileID: 1291945825}
-  - component: {fileID: 1291945824}
   - component: {fileID: 1291945830}
   m_Layer: 10
   m_Name: Boss
@@ -1605,24 +1604,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1291945824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291945823}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e6f5d7136f4014b8afbe89844e6944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spell_1: {fileID: 385315664}
-  spell_2: {fileID: 1465309014}
-  playerInRange: 0
-  damagePoint: {fileID: 2141164180}
-  DamageText: {fileID: 6674314837059719366, guid: 3d35f64ec99d80d46bcc0b56e141f284, type: 3}
-  healthbar: {fileID: 0}
 --- !u!50 &1291945825
 Rigidbody2D:
   serializedVersion: 4
@@ -1772,6 +1753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b64ad8fbff4c044816b64c24c93a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   baseSpeed: 100
   moveSpeed_multiplier: 1
   range: 0000
@@ -1782,6 +1764,7 @@ MonoBehaviour:
   Offset: {x: 0, y: 1, z: 0}
   die_sound: {fileID: 0}
   damage_sound: []
+  safePos: {x: 0, y: 0, z: 0}
   boss_healthbar: {fileID: 1792875495}
   spell_1: {fileID: 385315664}
   spell_2: {fileID: 1465309014}

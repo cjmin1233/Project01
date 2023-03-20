@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public int fxType;
     [HideInInspector] public float damage;
-    //[HideInInspector] public float anim_Speed;
+    [HideInInspector] public Vector2 damageForce;
     [HideInInspector] public bool isPoisoned;
     [HideInInspector] public bool isDiagonal;
     private float speed = 25f;
@@ -52,10 +52,10 @@ public class Bullet : MonoBehaviour
             {
                 if (isPoisoned)
                 {
-                    collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType + 1);
+                    collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, false, Color.magenta, fxType + 1);
                     collision.GetComponent<Enemy_Default>().Debuff("Poison", 10f);
                 }
-                else collision.GetComponent<Enemy_Default>().TakeDamage(damage, Vector2.zero, fxType);
+                else collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, false, Color.green, fxType);
 
             }
         }

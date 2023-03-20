@@ -93,6 +93,8 @@ public class Knight_Attack : PlayerAttack
         {
             // charge sound
             if (Charge_Sound[chargeCounter] != null) Charge_Sound[chargeCounter].PlayOneShot(Charge_Sound[chargeCounter].clip);
+            float chargeScale = 0.5f + 0.2f * chargeCounter;
+            ChargeEffect.transform.localScale = new Vector3(chargeScale, chargeScale, 1f);
             ChargeEffect.GetComponent<Animator>().SetTrigger("Enable");
             chargeCounter++;
         }
@@ -108,10 +110,12 @@ public class Knight_Attack : PlayerAttack
     {
         if (sword_wind_enable)
         {
+            Vector2 damageForce = new Vector2(transform.right.x * 0.01f, 0f);
             GameObject swordwind = SwordWindPool.Instance.GetFromPool();
 
             swordwind.GetComponent<Sword_Wind_Collider>().damage = Mathf.Round(PlayerPowerCalculation() * Z_DamageCalculation() * wind_coef * (1 + (float)(comboCounter % 3) * 0.2f));
             swordwind.GetComponent<Sword_Wind_Collider>().anim_Speed = Z_SpeedCalculation();
+            swordwind.GetComponent<Sword_Wind_Collider>().damageForce = damageForce;
 
             swordwind.transform.position = sword_wind_startpoint.position;
             swordwind.SetActive(true);

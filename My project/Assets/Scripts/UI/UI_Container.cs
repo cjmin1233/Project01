@@ -577,7 +577,7 @@ public class UI_Container : MonoBehaviour
         var instance = enemySliderQueue.Dequeue();
         return instance;
     }
-    public IEnumerator FadeFlow()
+    /*public IEnumerator FadeFlow()
     {
         Fade_UI.SetActive(true);
         faded = true;
@@ -607,11 +607,13 @@ public class UI_Container : MonoBehaviour
         GameManager.Instance.faded = false;
         Debug.Log("페이드 끝");
         yield break;
-    }
+    }*/
     public IEnumerator FadeOutStart()
     {
         Fade_UI.SetActive(true);
         faded = true;
+        //GameManager.Instance.gameState = "fading";
+        GameManager.Instance.fadeState = "fading";
         Image fadeImage = Fade_UI.GetComponent<Image>();
         for(float f = 0f; f < 1f; f += Time.deltaTime * 2)
         {
@@ -620,13 +622,16 @@ public class UI_Container : MonoBehaviour
             fadeImage.color = c;
             yield return null;
         }
-        GameManager.Instance.faded = true;
+        //GameManager.Instance.faded = true;
+        //GameManager.Instance.gameState = "faded";
+        GameManager.Instance.fadeState = "faded";
         yield break;
     }
     public IEnumerator FadeInStart()
     {
-        Debug.Log("페이드인 시작");
         Fade_UI.SetActive(true);
+        //GameManager.Instance.gameState = "fading";
+        GameManager.Instance.fadeState = "fading";
         Image fadeImage = Fade_UI.GetComponent<Image>();
 
         Color temp = fadeImage.color;
@@ -643,8 +648,9 @@ public class UI_Container : MonoBehaviour
         }
         Fade_UI.SetActive(false);
         faded = false;
-        GameManager.Instance.faded = false;
-        Debug.Log("페이드 끝");
+        //GameManager.Instance.faded = false;
+        //GameManager.Instance.gameState = "playing";
+        GameManager.Instance.fadeState = "clear";
         yield break;
     }
     public void SetMasterVolume(float volume)
