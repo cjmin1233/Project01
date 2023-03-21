@@ -12,12 +12,13 @@ public class Boss_Default : Enemy_Default
     private int random;
     protected override void OnEnable()
     {
+        #region 초기 세팅
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
 
-        if (maxHP > 0) curHP = maxHP;
+        curHP = maxHP;
         boss_healthbar.GetComponent<Boss_Healthbar>().SetHealth(curHP, maxHP);
         debuff_container = boss_healthbar.transform.Find("Debuff_Container").gameObject;
 
@@ -25,6 +26,7 @@ public class Boss_Default : Enemy_Default
         isAttacking = false;
         actionCounter = 0;
         currentSpeed = moveSpeed_multiplier * baseSpeed;
+        #endregion
     }
     protected override void Update()
     {
@@ -42,9 +44,11 @@ public class Boss_Default : Enemy_Default
                         if (Time.time >= lastAttackTime + 1 / attackRate && !isAttacking)
                         {
                             LookPlayer();
+                            // 일반 패턴. 거리에 따른 우선도
                             animator.SetTrigger("Skill" + i);
                             isAttacking = true;
                             animator.SetBool("IsAttacking", isAttacking);
+                            //
                             lastAttackTime = Time.time;
                         }
                         break;
@@ -59,9 +63,13 @@ public class Boss_Default : Enemy_Default
                 animator.SetTrigger("Main_Skill" + random);
                 isAttacking = true;
                 animator.SetBool("IsAttacking", isAttacking);
+                //
+
                 lastAttackTime = Time.time;
             }
+            ////////////////////////////////////////수정 필요?
             if (!range[0] && !range[1] && !isAttacking) canMove = true;
+
             currentSpeed = moveSpeed_multiplier * baseSpeed;
             if (canMove)
             {
@@ -70,7 +78,6 @@ public class Boss_Default : Enemy_Default
             }
             else movementX = 0f;
             animator.SetFloat("Speed", Mathf.Abs(movementX));
-            Flip();
         }
     }
     private void Fin_Skill()
@@ -139,7 +146,6 @@ public class Boss_Default : Enemy_Default
     {
         animator.SetBool("IsDead", true);
         GameManager.Instance.bossFollowing = true;
-        Debug.Log("Boss Dead. Congratulations!");
         canMove = false;
         baseSpeed = 0f;
     }

@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     public bool faded;
     public string fadeState;
     private Vector3 destination;
-    
+
     private void Awake()
     {
         #region 객체 직렬화
@@ -104,6 +104,9 @@ public class GameManager : MonoBehaviour
                 if (UI_Container.Instance.popup_ui_counter > 0) Time.timeScale = 0f;
                 else if (bossFollowing) Time.timeScale = 0.3f;
                 else if (playerFollowing) Time.timeScale = 1f;
+
+                // cheat key
+                if (Input.GetKeyDown(KeyCode.C)) StartCoroutine(TransportFlow(Vector3.zero, true));
             }
         }
     }
@@ -131,7 +134,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayGame(int selected)
     {
-        // 메인 메뉴에서 플레이 버튼 클릭시 호출
+        // 메인메뉴에서 플레이 버튼 클릭시 호출
         gameData = DataManager.Instance.data;
         newGame = true;
         if (selected > 0)
@@ -150,7 +153,7 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += AfterLoading;
 
-        if(!newGame) LoadingSceneController.LoadScene(gameData.sceneNumber, 3);
+        if (!newGame) LoadingSceneController.LoadScene(gameData.sceneNumber, 3);
         else LoadingSceneController.LoadScene(1, 3);
     }
     public void CloseGame()
@@ -163,7 +166,7 @@ public class GameManager : MonoBehaviour
 
     public void ClearObjects()
     {
-        for(int i = 0; i < objects.Count; i++)
+        for (int i = 0; i < objects.Count; i++)
         {
             Destroy(objects[i]);
         }
@@ -177,8 +180,8 @@ public class GameManager : MonoBehaviour
     {
         // 로딩 완료후 어두운 화면에서 항상 호출되는 함수
         Debug.Log("씬이 로드되었습니다.");
-        Debug.Log("씬 이름은 " + scene.name + "이며");
-        Debug.Log("로드 타입은 " + loadingType + "입니다.");
+        Debug.Log("씬 이름은" + scene.name + "이며");
+        Debug.Log("로드 타입은" + loadingType + "입니다.");
         if (loadingType == 1)
         {
             // 다음 씬에서 플레이어 이동
@@ -323,7 +326,7 @@ public class GameManager : MonoBehaviour
         }
         else player.transform.position = destination;
 
-        for(int i = 0; i < Camera_Background_Container.transform.childCount; i++)
+        for (int i = 0; i < Camera_Background_Container.transform.childCount; i++)
         {
             var cam_background = Camera_Background_Container.transform.GetChild(i).gameObject;
             CameraBackgroundMover backgroundMover = cam_background.GetComponent<CameraBackgroundMover>();

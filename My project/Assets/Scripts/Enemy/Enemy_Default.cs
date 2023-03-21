@@ -46,8 +46,6 @@ public class Enemy_Default : MonoBehaviour
     private float lastPoisonDamageTime = 0f;
 
     // 추락 방지
-/*    private RaycastHit2D FrontRayHit;
-    private RaycastHit2D BackRayHit;*/
     private RaycastHit2D GroundRayHit;
     public Vector3 safePos;
     protected virtual void OnEnable()
@@ -61,7 +59,7 @@ public class Enemy_Default : MonoBehaviour
         if (maxHP > 0) curHP = maxHP;
         healthbar = UI_Container.Instance.GetFromEnemySliderPool();
         healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
-        debuff_container= healthbar.transform.Find("Debuff_Container").gameObject;
+        debuff_container = healthbar.transform.Find("Debuff_Container").gameObject;
 
         canMove = true;
         isAttacking = false;
@@ -118,27 +116,9 @@ public class Enemy_Default : MonoBehaviour
         }
         else if (safePos != Vector3.zero)
         {
-            //Debug.Log("<color=yellow>추락중</color>");
             transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
             rb.gravityScale = 0f;
         }
-
-/*        if (boxCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
-            Debug.Log("Touching ground");
-            safePos = transform.position;
-            rb.gravityScale = 1f;
-        }
-        else if (safePos != Vector3.zero)
-        {
-            Debug.Log("<color=yellow>추락중</color>");
-            transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
-            rb.gravityScale = 0f;
-        }
-*/        /*else if (safePos != null)
-        {
-            transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
-        }*/
         Move();
     }
     private void Init()
@@ -192,7 +172,7 @@ public class Enemy_Default : MonoBehaviour
                 if (damage_sound[rand] != null) damage_sound[rand].PlayOneShot(damage_sound[rand].clip);
             }
 
-            // 수퍼아머가 아니라면 밀려남
+            // 슈퍼아머가 아니라면 밀려남
             if (!superArmor) rb.AddForce(damageForce, ForceMode2D.Impulse);
             // 밀치는 힘이 있다면 타격 애니메이션
             if (Mathf.Abs(damageForce.x) > 0.01f) animator.SetTrigger("Hit");
@@ -273,28 +253,9 @@ public class Enemy_Default : MonoBehaviour
     {
         if (debuffer.ContainsKey(name)) debuffer[name] = activeTime;
         else debuffer.Add(name, activeTime);
-        /*Debug.Log("현재 디버프는");
-        foreach (KeyValuePair<string,float> debuff in debuffer)
-        {
-            Debug.Log(debuff.Key + ", 지속시간 : " + debuff.Value);
-        }
-        Debug.Log("입니다.");*/
     }
     protected void DebuffChecker()
     {
-        /*foreach(string debuffName in debuffer.Keys)
-        {
-            if (debuffer[debuffName] > 0f)
-            {
-                debuffer[debuffName] -= Time.deltaTime;
-                if (debuffName == "Poison")
-                {
-                    // 독뎀
-                    Poisoned();
-                }
-            }
-            else debuffer[debuffName] = 0f;
-        }*/
         if (debuffer.ContainsKey("Poison"))
         {
             if (debuffer["Poison"] > 0f)
@@ -319,7 +280,7 @@ public class Enemy_Default : MonoBehaviour
             }
         }
         //
-        if(debuff_container!=null) debuff_container.GetComponent<Debuff_Container>().UpdateDebuffIcon(debuffer);
+        if (debuff_container != null) debuff_container.GetComponent<Debuff_Container>().UpdateDebuffIcon(debuffer);
     }
     private void Poisoned()
     {

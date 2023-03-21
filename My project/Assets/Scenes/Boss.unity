@@ -473,7 +473,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 365456818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501d8747c6cac174b930138d339f6f66, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d68eee926ab85047b9bfdc48e75e283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 1
@@ -706,8 +706,8 @@ RectTransform:
   m_Children:
   - {fileID: 1801461146}
   - {fileID: 1792875496}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1291945828}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -917,7 +917,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &907031048
 GameObject:
@@ -1522,7 +1522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1258809753}
   - component: {fileID: 1258809754}
-  - component: {fileID: 1258809756}
+  - component: {fileID: 1258809755}
   m_Layer: 0
   m_Name: AttackRange0
   m_TagString: Untagged
@@ -1570,7 +1570,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.819241, y: 0.9650891}
   m_EdgeRadius: 0
---- !u!114 &1258809756
+--- !u!114 &1258809755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1579,7 +1579,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258809752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 501d8747c6cac174b930138d339f6f66, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d68eee926ab85047b9bfdc48e75e283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 0
@@ -1719,6 +1719,7 @@ Transform:
   - {fileID: 1732843677}
   - {fileID: 604177520}
   - {fileID: 907031049}
+  - {fileID: 550198530}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1750,7 +1751,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1291945823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b64ad8fbff4c044816b64c24c93a1d, type: 3}
+  m_Script: {fileID: 11500000, guid: a2fc8ea27a86ee2409912471d7ae0ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
@@ -1758,8 +1759,8 @@ MonoBehaviour:
   moveSpeed_multiplier: 1
   range: 0000
   detectPlayer: 0
-  attackRate: 0.3
-  maxHP: 2000
+  attackRate: 0.5
+  maxHP: 3000
   damagePoint: {fileID: 2141164180}
   Offset: {x: 0, y: 1, z: 0}
   die_sound: {fileID: 0}
