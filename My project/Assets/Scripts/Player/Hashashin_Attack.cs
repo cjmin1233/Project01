@@ -90,7 +90,6 @@ public class Hashashin_Attack : PlayerAttack
         }
         else
         {
-            Debug.Log("게이지가 부족합니다.");
             UI_Container.Instance.AlermTextEnable("게이지가 부족합니다.");
         }
     }

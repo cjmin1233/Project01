@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
     public bool bossFollowing;
     public bool isPlaying;
     public int loadingType;
-    //public bool stageCleared;
 
     // 페이드인 효과, 로딩화면
     public string gameState;
@@ -94,15 +93,28 @@ public class GameManager : MonoBehaviour
         Camera_Background_Container = MainCamera.transform.GetChild(0).gameObject;
         #endregion
     }
+    private void Update()
+    {
+        if (isPlaying)
+        {
+            if (fadeState == "clear")
+            {
+                // 페이딩 없는 화면일 때
+                UI_Container.Instance.PopUpControl();
+                if (UI_Container.Instance.popup_ui_counter > 0) Time.timeScale = 0f;
+                else if (bossFollowing) Time.timeScale = 0.3f;
+                else if (playerFollowing) Time.timeScale = 1f;
+            }
+        }
+    }
     private void FixedUpdate()
     {
         if (isPlaying)
         {
             float _size = MainCamera.GetComponent<Camera>().orthographicSize;
+            //int popup_counter = UI_Container.Instance.popup_ui_counter;
             if (bossFollowing)
             {
-                Time.timeScale = 0.3f;
-
                 MainCamera.GetComponent<Camera>().orthographicSize = _size > 3f ? _size - Time.deltaTime * 2f : 3f;
                 if (boss == null) boss = GameObject.FindGameObjectWithTag("Boss");
                 tempPos = Vector3.Lerp(MainCamera.transform.position, boss.transform.position + difValue, speed);
@@ -110,8 +122,6 @@ public class GameManager : MonoBehaviour
             }
             else if (playerFollowing)
             {
-                Time.timeScale = 1f;
-
                 // 플레이어 추적 카메라
                 MainCamera.GetComponent<Camera>().orthographicSize = _size < 5f ? _size + Time.deltaTime * 2f : 5f;
                 tempPos = Vector3.Lerp(MainCamera.transform.position, player.transform.position + difValue, speed);
@@ -279,8 +289,6 @@ public class GameManager : MonoBehaviour
         //faded = false;
         StartCoroutine(UI_Container.Instance.FadeOutStart());
         // 페이드 완료시까지 대기
-        //yield return new WaitUntil(() => faded);
-        //yield return new WaitUntil(() => gameState == "faded");
         yield return new WaitUntil(() => fadeState == "faded");
         isPlaying = false;
         if (loadScene)
@@ -331,10 +339,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator GiveUpFlow()
     {
         // 페이드 완료시까지 대기
-        //faded = false;
         StartCoroutine(UI_Container.Instance.FadeOutStart());
-        //yield return new WaitUntil(() => faded);
-        //yield return new WaitUntil(() => gameState == "faded");
         yield return new WaitUntil(() => fadeState == "faded");
 
         isPlaying = false;
@@ -351,10 +356,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator QuitGameFlow()
     {
         // 페이드 완료시까지 대기
-        //faded = false;
         StartCoroutine(UI_Container.Instance.FadeOutStart());
-        //yield return new WaitUntil(() => faded);
-        //yield return new WaitUntil(() => gameState == "faded");
         yield return new WaitUntil(() => fadeState == "faded");
 
         isPlaying = false;
@@ -371,8 +373,6 @@ public class GameManager : MonoBehaviour
         // base UI 비활성화
         UI_Container.Instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         StartCoroutine(UI_Container.Instance.FadeInStart());
-        //yield return new WaitUntil(() => !faded);
-        //yield return new WaitUntil(() => gameState == "playing");
         yield return new WaitUntil(() => fadeState == "clear");
 
         ClearObjects();

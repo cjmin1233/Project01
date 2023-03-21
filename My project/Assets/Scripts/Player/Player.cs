@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        DamagingCheck();
+        //DamagingCheck();
         FlipPlayer();
         CheckDash();
         CheckAfterImage();
@@ -328,10 +328,11 @@ public class Player : MonoBehaviour
                 // 무적 시간 부여
                 canInvincible = true;
                 damagingTimeLeft = damagingTime;
+                StartCoroutine(Damaging_Check());
 
-                // 스프라이트 이미지 어둡게
+                /*// 스프라이트 이미지 어둡게
                 Color invincibleColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
-                sr.color = invincibleColor;
+                sr.color = invincibleColor;*/
 
                 if (CurHP <= 0)
                 {
@@ -363,7 +364,7 @@ public class Player : MonoBehaviour
         gold -= price;
         UI_Container.Instance.HandleGold(gold);
     }
-    private void DamagingCheck()
+    /*private void DamagingCheck()
     {
         if (damagingTimeLeft > 0)
         {
@@ -371,9 +372,30 @@ public class Player : MonoBehaviour
             if (damagingTimeLeft <= 0)
             {
                 canInvincible = false;
-                sr.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                sr.color = Color.white;
             }
         }
+    }*/
+    private IEnumerator Damaging_Check()
+    {
+        float counter = 0;
+        Color c = Color.white;
+        while (damagingTimeLeft > 0f)
+        {
+            damagingTimeLeft -= Time.deltaTime;
+            counter += Time.deltaTime;
+            if (counter >= 0.125f)
+            {
+                counter = 0f;
+                if (sr.color.a > 0f) c.a = 0f;
+                else c.a = 1f;
+                sr.color = c;
+            }
+
+            yield return null;
+        }
+        canInvincible = false;
+        sr.color = Color.white;
     }
     public void Invincible_ON()
     {

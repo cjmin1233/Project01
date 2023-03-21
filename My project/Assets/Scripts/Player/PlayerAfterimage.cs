@@ -20,9 +20,9 @@ public class PlayerAfterimage : MonoBehaviour
 
     private void OnEnable()
     {
-        sr = GetComponent<SpriteRenderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerSR = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
 
         //alpha = alphaSet;
         sr.sprite = playerSR.sprite;
@@ -31,23 +31,15 @@ public class PlayerAfterimage : MonoBehaviour
         //timeActivated = Time.time;
         StartCoroutine(StartAfterImage());
     }
-/*    private void Update()
-    {
-        alpha -= alphaSubtracter;
-        color = new Color(0.2f, 0.2f, 0.2f, alpha);
-        sr.color = color;
-
-        if (Time.time >= (timeActivated + activeTime))
-        {
-            // Add pool
-            AfterimagePool.Instance.AddToPool(gameObject);
-        }
-    }*/
     private IEnumerator StartAfterImage()
     {
+        color = new Color(1f, 1f, 1f, 1f);
         for (alpha = 1f; alpha > 0.2f; alpha -= Time.smoothDeltaTime * 2f)
         {
-            color = new Color(0.2f, 0.2f, 0.2f, alpha);
+            color.r = alpha;
+            color.g = alpha;
+            color.b = alpha;
+            //color.a = alpha;
             sr.color = color;
             yield return null;
         }

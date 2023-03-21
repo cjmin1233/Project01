@@ -23,21 +23,21 @@ public class PlayerAttack : MonoBehaviour
     public Dictionary<string, float> damage_z_buffer = new Dictionary<string, float>();
     public Dictionary<string, float> damage_x_buffer = new Dictionary<string, float>();
 
-
+    [Header("Knight")]
     public bool sword_wind_enable;
     public bool sword_storm_enable;
     public bool sword_cursed_enable;
     public bool sword_charging_enable;
     public bool sword_critical_enable;
     public bool sword_shield_enable;
-
+    [Header("Ranger")]
     public bool bow_storm_enable;
     public bool bow_poison_enable;
     public bool bow_air_enable;
     public bool bow_rain_enable;
     public bool bow_slow_enable;
     public bool bow_fast_enable;
-
+    [Header("Hashashin")]
     public bool dagger_storm_enable;
     public bool quick_wind_enable;
     public bool assassin_enable;

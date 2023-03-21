@@ -63,7 +63,7 @@ public class UI_Container : MonoBehaviour
     // 페이드 UI
     [SerializeField] private GameObject Fade_UI;
     public bool fade_in_start;
-    private bool faded;
+    //private bool faded;
 
     // 옵션 UI
     [SerializeField] private AudioMixer audioMixer;
@@ -114,26 +114,6 @@ public class UI_Container : MonoBehaviour
         Player _player = playerObject.GetComponent<Player>();
         HandleGold(_player.CheckGold());
         HandleHP(_player.CurHP, _player.MaxHP);
-
-        faded = true;
-    }
-    private void Update()
-    {
-        if (!faded)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Esc_UI.SetActive(true);
-            }
-            else if (Input.GetKeyDown(KeyCode.B) && !Esc_UI.activeSelf)
-            {
-                Book_UI.SetActive(true);
-            }
-
-            // 
-            if (popup_ui_counter > 0) Time.timeScale = 0f;
-            else Time.timeScale = 1f;
-        }
     }
     public void Data_Recovery()
     {
@@ -157,12 +137,10 @@ public class UI_Container : MonoBehaviour
     }
     public void EnableToggleText(int idx)
     {
-        //Debug.Log("Enable toggle text : " + idx);
         toggleText[idx].GetComponent<Animator>().SetBool("IsEnabled", true);
     }
     public void DisableToggleText(int idx)
     {
-        //Debug.Log("Disable toggle text : " + idx);
         toggleText[idx].GetComponent<Animator>().SetBool("IsEnabled", false);
     }
     public void EnablePurchaseText(int price)
@@ -194,12 +172,11 @@ public class UI_Container : MonoBehaviour
 
         for(int i = 0; i < availableAbilityList.Count; i++)
         {
-            //availableAbilityList[i].GetComponent<Ability>().isAppeared = false;
             totalWeight += availableAbilityList[i].GetComponent<Ability>().weight;
             availableAbilityList[i].SetActive(false);
             selection.Add(availableAbilityList[i]);
         }
-        if (selection.Count == 0) Debug.Log("There's no remain ability");   // 남아있는 어빌리티가 없음
+        if (selection.Count == 0) AlermTextEnable("획득 가능한 어빌리티가 없습니다.");   // 남아있는 어빌리티가 없음
         else
         {
             Ability_UI.SetActive(true);
@@ -251,35 +228,30 @@ public class UI_Container : MonoBehaviour
         Debug.Log("Selected ability is : " + name);
         if (name == "PowerUp_Z")
         {
-            //playerAttack.damage_z_multiplier = 1f + 0.1f * ability.level;
             if (!playerAttack.damage_z_buffer.ContainsKey("PowerUp_Z")) playerAttack.damage_z_buffer.Add("PowerUp_Z", 0.2f * ability.level);
             else playerAttack.damage_z_buffer["PowerUp_Z"] = 0.2f * ability.level;
             CollectionZ();
         }
         else if (name == "PowerUp_X")
         {
-            //playerAttack.damage_x_multiplier = 1f + 0.1f * ability.level;
             if (!playerAttack.damage_x_buffer.ContainsKey("PowerUp_X")) playerAttack.damage_x_buffer.Add("PowerUp_X", 0.2f * ability.level);
             else playerAttack.damage_x_buffer["PowerUp_X"] = 0.2f * ability.level;
             CollectionX();
         }
         else if (name == "SpeedUp_Z")
         {
-            //playerAttack.Speed_Z = 1f + 0.2f * ability.level;
             if (!playerAttack.speed_z_buffer.ContainsKey("SpeedUp_Z")) playerAttack.speed_z_buffer.Add("SpeedUp_Z", 0.2f * ability.level);
             else playerAttack.speed_z_buffer["SpeedUp_Z"] = 0.2f * ability.level;
             CollectionZ();
         }
         else if (name == "SpeedUp_X")
         {
-            //playerAttack.Speed_X = 1f + 0.2f * ability.level;
             if (!playerAttack.speed_x_buffer.ContainsKey("SpeedUp_X")) playerAttack.speed_x_buffer.Add("SpeedUp_X", 0.2f * ability.level);
             else playerAttack.speed_x_buffer["SpeedUp_X"] = 0.2f * ability.level;
             CollectionX();
         }
         else if (name == "PowerUp")
         {
-            //playerAttack.playerPower = 100f * (1f + 0.1f * ability.level);
             if (!playerAttack.power_buffer.ContainsKey("PowerUp")) playerAttack.power_buffer.Add("PowerUp", 0.1f * ability.level);
             else playerAttack.power_buffer["PowerUp"] = 0.1f * ability.level;
         }
@@ -479,7 +451,7 @@ public class UI_Container : MonoBehaviour
             if (SelectedAbilityList[i].GetComponent<Ability>().level < 10) selection.Add(SelectedAbilityList[i]);
         }
 
-        if (selection.Count == 0) Debug.Log("강화가능한 어빌리티가 없습니다.");
+        if (selection.Count == 0) AlermTextEnable("강화가능한 어빌리티가 없습니다.");
         else
         {
             Debug.Log("강화가능한 어빌리티 개수 : " + selection.Count);
@@ -501,7 +473,6 @@ public class UI_Container : MonoBehaviour
             }
         }
     }
-
     public void GiveUp()
     {
         Time.timeScale = 1f;
@@ -611,8 +582,6 @@ public class UI_Container : MonoBehaviour
     public IEnumerator FadeOutStart()
     {
         Fade_UI.SetActive(true);
-        faded = true;
-        //GameManager.Instance.gameState = "fading";
         GameManager.Instance.fadeState = "fading";
         Image fadeImage = Fade_UI.GetComponent<Image>();
         for(float f = 0f; f < 1f; f += Time.deltaTime * 2)
@@ -622,15 +591,12 @@ public class UI_Container : MonoBehaviour
             fadeImage.color = c;
             yield return null;
         }
-        //GameManager.Instance.faded = true;
-        //GameManager.Instance.gameState = "faded";
         GameManager.Instance.fadeState = "faded";
         yield break;
     }
     public IEnumerator FadeInStart()
     {
         Fade_UI.SetActive(true);
-        //GameManager.Instance.gameState = "fading";
         GameManager.Instance.fadeState = "fading";
         Image fadeImage = Fade_UI.GetComponent<Image>();
 
@@ -647,9 +613,6 @@ public class UI_Container : MonoBehaviour
             yield return null;
         }
         Fade_UI.SetActive(false);
-        faded = false;
-        //GameManager.Instance.faded = false;
-        //GameManager.Instance.gameState = "playing";
         GameManager.Instance.fadeState = "clear";
         yield break;
     }
@@ -696,5 +659,16 @@ public class UI_Container : MonoBehaviour
         }
         textObj.SetActive(false);
         imageObj.SetActive(false);
+    }
+    public void PopUpControl()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Esc_UI.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.B) && !Esc_UI.activeSelf)
+        {
+            Book_UI.SetActive(true);
+        }
     }
 }

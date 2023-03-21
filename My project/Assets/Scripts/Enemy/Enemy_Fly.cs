@@ -79,7 +79,7 @@ public class Enemy_Fly : Enemy_Default
     private void Shoot()
     {
         GameObject gameObject = EnemyBulletPool.Instance.GetFromPool();
-        gameObject.GetComponent<Enemy_Bullet>().damage = 10f;
+        gameObject.GetComponent<Enemy_Bullet>().damage = 2f;
         gameObject.GetComponent<Enemy_Bullet>().type = 0;
         gameObject.transform.position = firePoint.position;
         gameObject.transform.rotation = transform.rotation;
