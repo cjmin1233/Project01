@@ -13,7 +13,6 @@ public class Boss_Healthbar : MonoBehaviour
         if (Slider == null) Slider = GetComponent<Slider>();
         Slider.maxValue = maxHealth;
         Slider.value = currentHealth;
-        Debug.Log(Slider.normalizedValue);
         Slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, Slider.normalizedValue);
     }
 }
