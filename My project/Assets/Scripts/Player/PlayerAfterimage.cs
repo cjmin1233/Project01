@@ -5,11 +5,6 @@ using UnityEngine;
 public class PlayerAfterimage : MonoBehaviour
 {
     private float alpha;
-/*    private float activeTime = .2f;
-    private float timeActivated;
-    private float alphaSet = 1.0f;
-    private float alphaSubtracter = 0.0083f;
-*/
     private Transform player;
 
     private SpriteRenderer sr;
@@ -39,7 +34,7 @@ public class PlayerAfterimage : MonoBehaviour
             color.r = alpha;
             color.g = alpha;
             color.b = alpha;
-            //color.a = alpha;
+            color.a = alpha;
             sr.color = color;
             yield return null;
         }

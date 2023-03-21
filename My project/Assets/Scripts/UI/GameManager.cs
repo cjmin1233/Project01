@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    public List<GameObject> objects;
+    private List<GameObject> objects;
     [SerializeField] private GameObject[] players;
     [SerializeField] private GameObject startCamera;
     [SerializeField] private GameObject PlayerAfterImagePool;
@@ -41,26 +41,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject EnemyPool;
     [SerializeField] private GameObject ui_container;
     [SerializeField] private GameObject eventSystem;
-    [HideInInspector] public bool newGame;
-    int weaponType;
-    Data gameData;
+    private int weaponType;
+    private Data gameData;
     private GameObject player;
     private GameObject boss;
     private GameObject MainCamera;
     private GameObject Camera_Background_Container;
     private Vector3 tempPos;
-    [SerializeField] private float speed;
-    [SerializeField] Vector3 difValue;
+    [SerializeField] private float camSpeed;
+    [SerializeField] private Vector3 difValue;
 
-    public bool playerFollowing;
-    public bool bossFollowing;
-    public bool isPlaying;
-    public int loadingType;
+    [HideInInspector] public bool newGame;
+    [HideInInspector] public bool playerFollowing;
+    [HideInInspector] public bool bossFollowing;
+    [HideInInspector] public bool isPlaying;
+    [HideInInspector] public int loadingType;
 
     // 페이드인 효과, 로딩화면
-    public string gameState;
-    public bool faded;
-    public string fadeState;
+    [HideInInspector] public string gameState;
+    [HideInInspector] public bool faded;
+    [HideInInspector] public string fadeState;
     private Vector3 destination;
 
     private void Awake()
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
         #endregion
 
         #region 초기 세팅
@@ -81,15 +81,16 @@ public class GameManager : MonoBehaviour
         playerFollowing = true;
         bossFollowing = false;
         isPlaying = false;
-        //faded = false;
         loadingType = 0;
 
         var event_system = Instantiate(eventSystem);
         event_system.name = eventSystem.name;
+        DontDestroyOnLoad(event_system);
 
         var cam_obj = Instantiate(startCamera);
         MainCamera = cam_obj;
         MainCamera.name = startCamera.name;
+        DontDestroyOnLoad(MainCamera);
         Camera_Background_Container = MainCamera.transform.GetChild(0).gameObject;
         #endregion
     }
@@ -120,14 +121,14 @@ public class GameManager : MonoBehaviour
             {
                 MainCamera.GetComponent<Camera>().orthographicSize = _size > 3f ? _size - Time.deltaTime * 2f : 3f;
                 if (boss == null) boss = GameObject.FindGameObjectWithTag("Boss");
-                tempPos = Vector3.Lerp(MainCamera.transform.position, boss.transform.position + difValue, speed);
+                tempPos = Vector3.Lerp(MainCamera.transform.position, boss.transform.position + difValue, camSpeed);
                 MainCamera.transform.position = new Vector3(tempPos.x, tempPos.y, -10f);
             }
             else if (playerFollowing)
             {
                 // 플레이어 추적 카메라
                 MainCamera.GetComponent<Camera>().orthographicSize = _size < 5f ? _size + Time.deltaTime * 2f : 5f;
-                tempPos = Vector3.Lerp(MainCamera.transform.position, player.transform.position + difValue, speed);
+                tempPos = Vector3.Lerp(MainCamera.transform.position, player.transform.position + difValue, camSpeed);
                 MainCamera.transform.position = new Vector3(tempPos.x, tempPos.y, -10f);
             }
         }
@@ -175,6 +176,7 @@ public class GameManager : MonoBehaviour
     public void AddToList(GameObject instance)
     {
         objects.Add(instance);
+        DontDestroyOnLoad(instance);
     }
     private void AfterLoading(Scene scene, LoadSceneMode mode)
     {
@@ -207,6 +209,7 @@ public class GameManager : MonoBehaviour
         AddToList(gameObject);
         player = gameObject;
         player.name = players[weaponType - 1].name;
+        DontDestroyOnLoad(player);
 
         if (!newGame)
         {

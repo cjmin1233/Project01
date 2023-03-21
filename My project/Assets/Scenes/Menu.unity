@@ -1271,7 +1271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f44f86c563abff4bab577cd5cb2dd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objects: []
   players:
   - {fileID: 1320270001586724024, guid: 9ef8ff38a4489684e8c723de85a0c1e9, type: 3}
   - {fileID: 1336409127228282675, guid: 48b61e944bfa7a846abc881507a841ee, type: 3}
@@ -1287,9 +1286,9 @@ MonoBehaviour:
   EnemyPool: {fileID: 4995036262264072338, guid: 7c1c2c1f321e8ee40bb3a651b9df14a9, type: 3}
   ui_container: {fileID: 1759081849171130609, guid: 021267dd0a08514408bd4aea1ad63154, type: 3}
   eventSystem: {fileID: 8324336419308337175, guid: b7f0b9afbd0cafd48a0fe68c845a404b, type: 3}
-  newGame: 0
-  speed: 10
+  camSpeed: 0.15
   difValue: {x: 0, y: 0, z: 0}
+  newGame: 0
   playerFollowing: 0
   bossFollowing: 0
   isPlaying: 0

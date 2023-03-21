@@ -39,7 +39,6 @@ public class EnemyPool : MonoBehaviour
     private void OnEnable()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject);
         //
         enemyQueue = new MultiQueue<GameObject>(enemyPrefab.Length);
         enemy_id_counter = new int[enemyPrefab.Length];

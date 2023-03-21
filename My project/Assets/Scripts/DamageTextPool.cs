@@ -15,7 +15,6 @@ public class DamageTextPool : MonoBehaviour
     {
         Instance = this;
         GrowPool();
-        DontDestroyOnLoad(gameObject);
     }
     private void GrowPool()
     {
