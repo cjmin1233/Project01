@@ -6,16 +6,9 @@ public class Enemy_Attack_Collider : MonoBehaviour
 {
     public float damage;
     public AudioSource audioSource;
-    //public float anim_Speed = 1.0f;
-
-    //private Animator animator;
-    /*private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }*/
+    [HideInInspector] public int spellType;
     private void OnEnable()
     {
-        //animator.SetFloat("EnableSpeed", anim_Speed);
         if (audioSource != null) audioSource.PlayOneShot(audioSource.clip);
     }
 
@@ -24,9 +17,17 @@ public class Enemy_Attack_Collider : MonoBehaviour
         string tag = collision.tag;
         if (tag == "Player")
         {
-            //Debug.Log("hit " + collision.name);
             collision.GetComponent<Player>().TakeDamage(damage);
         }
-        //else Debug.Log("We hit " + collision.name);
     }
+    private void PlayAudio()
+    {
+        if (audioSource != null) audioSource.PlayOneShot(audioSource.clip);
+    }
+    private void Disable_Object()
+    {
+        //gameObject.SetActive(false);
+        Boss_Default.Instance.AddToPool(spellType, gameObject);
+    }
+
 }

@@ -245,6 +245,7 @@ public class Enemy_Default : MonoBehaviour
         GameObject gameObject = EnemyBulletPool.Instance.GetFromPool();
         gameObject.GetComponent<Enemy_Bullet>().damage = 10f;
         gameObject.GetComponent<Enemy_Bullet>().type = 1;
+        gameObject.GetComponent<Enemy_Bullet>().bulletSpeed = new Vector2(5f, 5f);
         gameObject.transform.position = transform.position + new Vector3(0.1f, 0.1f, 0f);
         gameObject.transform.rotation = transform.rotation;
         gameObject.SetActive(true);

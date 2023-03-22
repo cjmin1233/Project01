@@ -5,15 +5,55 @@ using UnityEngine;
 public class Boss_Default : Enemy_Default
 {
     [SerializeField] private GameObject boss_healthbar;
-    [SerializeField] private GameObject[] skill_01;
-    [SerializeField] private GameObject spell_1;
-    [SerializeField] private GameObject spell_2;
+    //[SerializeField] private GameObject spell_1;
+    //[SerializeField] private GameObject spell_2;
 
     private int actionCounter;
     private int random;
+
+    // 보스 스펠 컨테이너
+    private class MultiQueue<GameObject>
+    {
+        private Queue<GameObject>[] queues;
+
+        public MultiQueue(int count)
+        {
+            queues = new Queue<GameObject>[count];
+            for (int i = 0; i < count; i++) { queues[i] = new Queue<GameObject>(); }
+        }
+        public void Enqueue(int index, GameObject item)
+        {
+            queues[index].Enqueue(item);
+        }
+        public GameObject Dequeue(int index)
+        {
+            return queues[index].Dequeue();
+        }
+        public int Count(int index)
+        {
+            return queues[index].Count;
+        }
+        public GameObject Peek(int index)
+        {
+            return queues[index].Peek();
+        }
+    }
+    [SerializeField] private GameObject spell_container;
+    [SerializeField] private GameObject[] spellPrefab;
+    private MultiQueue<GameObject> spellQueue;
+
+    [SerializeField] private GameObject fixed_spell_pos_container;
+    [SerializeField] private GameObject[] random_spell_pos_container;
+    public static Boss_Default Instance { get; private set; }
     protected override void OnEnable()
     {
         #region 초기 세팅
+        Instance = this;
+        spellQueue = new MultiQueue<GameObject>(2);
+        for (int i = 0; i < spellPrefab.Length; i++) GrowPool(i);
+
+
+
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -89,26 +129,67 @@ public class Boss_Default : Enemy_Default
     {
         actionCounter = 0;
     }
-    private void Skill_01()
+    private void RandomSpell()
     {
-        int rand = Random.Range(0, skill_01.Length);
-        if (skill_01[rand] != null)
+        int rand = Random.Range(0, spellPrefab.Length);
+        if (spellPrefab[rand] != null)
         {
-            Vector3 temp = skill_01[rand].transform.position;
+            Vector3 temp = random_spell_pos_container[rand].transform.position;
             temp.x = player.transform.position.x;
-            skill_01[rand].transform.position = temp;
-            skill_01[rand].SetActive(true);
+            SpellSpawn(rand, temp);
         }
     }
-    private void Main_Skill_Spell01()
+    private void SpellSpawn(int index, Vector3 spawnPos)
+    {
+        var spell = GetFromPool(index);
+        spell.transform.position = spawnPos;
+        spell.SetActive(true);
+    }
+    private void FixedSpell(int childIndex)
+    {
+        GameObject parentGameObject = fixed_spell_pos_container.transform.GetChild(childIndex).gameObject;
+        int childCount = parentGameObject.transform.childCount;
+        int spellType;
+        if (int.TryParse(parentGameObject.name, out spellType))
+        {
+            for (int i = 0; i < childCount; i++)
+            {
+                GameObject childGameObject = parentGameObject.transform.GetChild(i).gameObject;
+                SpellSpawn(spellType, childGameObject.transform.position);
+            }
+        }
+        else return;
+    }
+    /*private void Main_Skill_Spell01()
     {
         spell_1.SetActive(true);
     }
     private void Main_Skill_Spell02()
     {
         spell_2.SetActive(true);
+    }*/
+    private void GrowPool(int spellType)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            var instanceToAdd = Instantiate(spellPrefab[spellType]);
+            instanceToAdd.GetComponent<Enemy_Attack_Collider>().spellType = spellType;
+            instanceToAdd.transform.SetParent(spell_container.transform);
+            AddToPool(spellType, instanceToAdd);
+        }
+    }
+    public void AddToPool(int spellType, GameObject instance)
+    {
+        instance.SetActive(false);
+        spellQueue.Enqueue(spellType, instance);
     }
 
+    private GameObject GetFromPool(int spellType)
+    {
+        if (spellQueue.Count(spellType) == 0) GrowPool(spellType);
+        var instance = spellQueue.Dequeue(spellType);
+        return instance;
+    }
     public override void TakeDamage(float damage, Vector2 damageForce, bool isCrit, Color damageColor, int fxType)
     {
         if (!animator.GetBool("IsDead"))
