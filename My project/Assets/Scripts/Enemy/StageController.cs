@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StageController : MonoBehaviour
 {
@@ -11,10 +12,14 @@ public class StageController : MonoBehaviour
     //public GameObject[] enemies;
     private bool isEntered;
     private bool isStarted;
+
+    private string sceneName;
+    private int remainEnemies = 0;
     private void OnEnable()
     {
         isEntered = false;
         isStarted = false;
+        sceneName = SceneManager.GetActiveScene().name;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,6 +27,7 @@ public class StageController : MonoBehaviour
         {
             isEntered = true;
             StartCoroutine(UI_Container.Instance.StartSaving());
+            UI_Container.Instance.NoticeMainTextEnable("- " + sceneName + " -");
 
             DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
             DataManager.Instance.SaveGameData();
@@ -37,19 +43,34 @@ public class StageController : MonoBehaviour
             enemy.SetActive(true);
         }
         isStarted = true;
-        //GameManager.Instance.stageCleared = false;
+
         if (enemies_type.Length == 0) EnemyPool.Instance.remainEnemies = 0;
+        else
+        {
+            UI_Container.Instance.NoticeSubTextEnable("적을 처치하십시오.\n(" + $"{enemies_type.Length}/{enemies_type.Length}" + ")");
+            remainEnemies = enemies_type.Length;
+        }
     }
     private void Update()
     {
-        if (isStarted && EnemyPool.Instance.remainEnemies == 0)
+        if (isStarted)
         {
-            for(int i = 0; i < enable_objective.Length; i++)
+            if (remainEnemies != EnemyPool.Instance.remainEnemies)
             {
-                enable_objective[i].SetActive(true);
+                remainEnemies = EnemyPool.Instance.remainEnemies;
+                UI_Container.Instance.NoticeSubTextEnable("적을 처치하십시오.\n(" + $"{remainEnemies}/{enemies_type.Length}" + ")");
             }
-            // 스테이지 클리어 표시
-            isStarted = false;
+            if (remainEnemies == 0)
+            {
+                for (int i = 0; i < enable_objective.Length; i++)
+                {
+                    enable_objective[i].SetActive(true);
+                }
+                // 스테이지 클리어 표시
+                isStarted = false;
+                if (enemies_type.Length > 0) UI_Container.Instance.NoticeMainTextEnable("스테이지 클리어");
+                UI_Container.Instance.NoticeSubTextEnable("");
+            }
         }
     }
 }

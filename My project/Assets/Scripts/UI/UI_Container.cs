@@ -62,8 +62,6 @@ public class UI_Container : MonoBehaviour
 
     // 페이드 UI
     [SerializeField] private GameObject Fade_UI;
-    public bool fade_in_start;
-    //private bool faded;
 
     // 옵션 UI
     [SerializeField] private AudioMixer audioMixer;
@@ -73,6 +71,8 @@ public class UI_Container : MonoBehaviour
 
     // 알람 UI
     [SerializeField] private GameObject AlermText;
+    [SerializeField] private GameObject NoticeMainText;
+    [SerializeField] private GameObject NoticeSubText;
 
     // 저장중 UI
     [SerializeField] private GameObject RotatingCircleUI;
@@ -548,37 +548,6 @@ public class UI_Container : MonoBehaviour
         var instance = enemySliderQueue.Dequeue();
         return instance;
     }
-    /*public IEnumerator FadeFlow()
-    {
-        Fade_UI.SetActive(true);
-        faded = true;
-        for (float f = 0f; f < 1f; f += Time.deltaTime * 2)
-        {
-            Color c = Fade_UI.GetComponent<Image>().color;
-            c.a = f;
-            Fade_UI.GetComponent<Image>().color = c;
-            yield return null;
-        }
-
-        GameManager.Instance.faded = true;
-        fade_in_start = false;
-        yield return new WaitUntil(() => fade_in_start);
-        yield return new WaitForSecondsRealtime(0.5f);
-        Debug.Log("페이드인 시작");
-        for (float f = 1f; f > 0f; f -= Time.deltaTime * 2)
-        {
-            Color c = Fade_UI.GetComponent<Image>().color;
-            c.a = f;
-            Fade_UI.GetComponent<Image>().color = c;
-            yield return null;
-        }
-        //yield return new WaitForSeconds(0.1f);
-        Fade_UI.SetActive(false);
-        faded = false;
-        GameManager.Instance.faded = false;
-        Debug.Log("페이드 끝");
-        yield break;
-    }*/
     public IEnumerator FadeOutStart()
     {
         Fade_UI.SetActive(true);
@@ -636,6 +605,16 @@ public class UI_Container : MonoBehaviour
         AlermText.GetComponent<TextMeshProUGUI>().text = text;
         AlermText.GetComponent<Animator>().ResetTrigger("AlermTrigger");
         AlermText.GetComponent<Animator>().SetTrigger("AlermTrigger");
+    }
+    public void NoticeMainTextEnable(string text)
+    {
+        NoticeMainText.GetComponent<TextMeshProUGUI>().text = text;
+        NoticeMainText.GetComponent<Animator>().ResetTrigger("AlermTrigger");
+        NoticeMainText.GetComponent<Animator>().SetTrigger("AlermTrigger");
+    }
+    public void NoticeSubTextEnable(string text)
+    {
+        NoticeSubText.GetComponent<TextMeshProUGUI>().text = text;
     }
     public IEnumerator StartSaving()
     {
