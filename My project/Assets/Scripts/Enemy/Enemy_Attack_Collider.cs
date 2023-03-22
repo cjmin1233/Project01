@@ -6,7 +6,6 @@ public class Enemy_Attack_Collider : MonoBehaviour
 {
     public float damage;
     public AudioSource audioSource;
-    [HideInInspector] public int spellType;
     private void OnEnable()
     {
         if (audioSource != null) audioSource.PlayOneShot(audioSource.clip);
@@ -23,11 +22,6 @@ public class Enemy_Attack_Collider : MonoBehaviour
     private void PlayAudio()
     {
         if (audioSource != null) audioSource.PlayOneShot(audioSource.clip);
-    }
-    private void Disable_Object()
-    {
-        //gameObject.SetActive(false);
-        Boss_Default.Instance.AddToPool(spellType, gameObject);
     }
 
 }

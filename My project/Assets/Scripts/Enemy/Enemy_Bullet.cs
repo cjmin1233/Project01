@@ -92,7 +92,7 @@ public class Enemy_Bullet : MonoBehaviour
         animator.SetInteger("Type", type);
         rb.velocity = new Vector2(transform.right.x * bulletSpeed.x, transform.up.y * bulletSpeed.y);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         string tag = collision.tag;
         if (tag == "Player")

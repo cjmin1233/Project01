@@ -81,6 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   audioSource: {fileID: 0}
+  spellType: 0
 --- !u!1 &3685506390457425335
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +327,7 @@ MonoBehaviour:
   enemyType: 0
   baseSpeed: 100
   moveSpeed_multiplier: 1
-  range: 
+  range: 000000
   detectPlayer: 0
   attackRate: 0.5
   maxHP: 1000
@@ -334,7 +335,6 @@ MonoBehaviour:
   Offset: {x: 0, y: 1, z: 0}
   die_sound: {fileID: 0}
   damage_sound: []
-  safePos: {x: 0, y: 0, z: 0}
 --- !u!1 &4376163761630433869
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   audioSource: {fileID: 0}
+  spellType: 0
 --- !u!1 &4376163761891538229
 GameObject:
   m_ObjectHideFlags: 0
