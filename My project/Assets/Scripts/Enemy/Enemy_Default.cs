@@ -47,7 +47,7 @@ public class Enemy_Default : MonoBehaviour
 
     // 추락 방지
     private RaycastHit2D GroundRayHit;
-    public Vector3 safePos;
+    private Vector3 safePos;
     protected virtual void OnEnable()
     {
         #region 초기 세팅

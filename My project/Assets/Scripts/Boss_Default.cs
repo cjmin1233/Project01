@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss_Default : Enemy_Default
 {
     [SerializeField] private GameObject boss_healthbar;
+    [SerializeField] private GameObject[] skill_01;
     [SerializeField] private GameObject spell_1;
     [SerializeField] private GameObject spell_2;
 
@@ -88,12 +89,22 @@ public class Boss_Default : Enemy_Default
     {
         actionCounter = 0;
     }
-
-    private void Spell01()
+    private void Skill_01()
+    {
+        int rand = Random.Range(0, skill_01.Length);
+        if (skill_01[rand] != null)
+        {
+            Vector3 temp = skill_01[rand].transform.position;
+            temp.x = player.transform.position.x;
+            skill_01[rand].transform.position = temp;
+            skill_01[rand].SetActive(true);
+        }
+    }
+    private void Main_Skill_Spell01()
     {
         spell_1.SetActive(true);
     }
-    private void Spell02()
+    private void Main_Skill_Spell02()
     {
         spell_2.SetActive(true);
     }
