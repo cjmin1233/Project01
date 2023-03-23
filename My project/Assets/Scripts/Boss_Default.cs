@@ -13,6 +13,12 @@ public class Boss_Default : Enemy_Default
     [SerializeField] private GameObject[] fixed_spell_pos_container;
     [SerializeField] private GameObject[] random_spell_pos_container;
     [SerializeField] private int[] spellTypes;
+
+    // 쫄몹 소환
+    [SerializeField] private float enemy_spawn_range;
+    private RaycastHit2D rayHit;
+    private float min_x, max_x;
+
     protected override void OnEnable()
     {
         #region 초기 세팅
@@ -62,7 +68,7 @@ public class Boss_Default : Enemy_Default
             {
                 canMove = false;
                 // 메인 패턴
-                random = Random.Range(0, 2);
+                random = Random.Range(0, 3);
                 animator.SetTrigger("Main_Skill" + random);
                 isAttacking = true;
                 animator.SetBool("IsAttacking", isAttacking);
@@ -82,6 +88,21 @@ public class Boss_Default : Enemy_Default
             else movementX = 0f;
             animator.SetFloat("Speed", Mathf.Abs(movementX));
         }
+    }
+    protected override void FixedUpdate()
+    {
+        rayHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), direction: Vector2.right, distance: enemy_spawn_range, layerMask: LayerMask.GetMask("StaticMap"));
+        // 오른쪽 벽이 범위 안쪽인 경우
+        if (rayHit.collider != null) max_x = rayHit.distance - 2f;
+        // 오른쪽 벽이 범위 밖인 경우
+        else max_x = enemy_spawn_range;
+        rayHit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), direction: Vector2.left, distance: enemy_spawn_range, layerMask: LayerMask.GetMask("StaticMap"));
+        // 왼쪽 벽이 범위 안쪽인 경우
+        if (rayHit.collider != null) min_x = -rayHit.distance + 2f;
+        // 왼쪽 벽이 범위 밖인 경우
+        else min_x = -enemy_spawn_range;
+
+        Move();
     }
     private void Fin_Skill()
     {
@@ -115,6 +136,18 @@ public class Boss_Default : Enemy_Default
         {
             Transform transform = parentGameObject.transform.GetChild(i);
             SpellSpawn(2, transform.position);
+        }
+    }
+    private void EnemySummon(int num)
+    {
+        Debug.Log(min_x + "~" + max_x);
+        for(int i = 0; i < num; i++)
+        {
+            var enemy = EnemyPool.Instance.GetFromPool(2);
+            float range = Random.Range(0, max_x - min_x);
+            Debug.Log("소환 위치: " + range + " / " + (max_x - min_x));
+            enemy.transform.position = new Vector3(transform.position.x + min_x + range, transform.position.y, 0f);
+            enemy.SetActive(true);
         }
     }
     public override void TakeDamage(float damage, Vector2 damageForce, bool isCrit, Color damageColor, int fxType)
@@ -155,7 +188,6 @@ public class Boss_Default : Enemy_Default
             boss_healthbar.GetComponent<Boss_Healthbar>().SetHealth(curHP, maxHP);
             if (curHP <= 0)
             {
-                curHP = 0;
                 Die();
             }
 
@@ -163,6 +195,8 @@ public class Boss_Default : Enemy_Default
     }
     protected override void Die()
     {
+        curHP = 0;
+        if (die_sound != null) die_sound.PlayOneShot(die_sound.clip);
         animator.SetBool("IsDead", true);
         GameManager.Instance.bossFollowing = true;
         canMove = false;

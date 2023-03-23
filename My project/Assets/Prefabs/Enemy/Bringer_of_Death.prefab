@@ -58,8 +58,39 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8927122752437743147}
+  - {fileID: 7135964657915920821}
   m_Father: {fileID: 8526196659100048673}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6620987786521590892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7135964657915920821}
+  m_Layer: 0
+  m_Name: Type1_Pos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7135964657915920821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620987786521590892}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5407402430579803199}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8526196658909941803
 GameObject:
@@ -326,7 +357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8526196659100048666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.26, y: 0.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 8526196660513867591}
@@ -361,7 +392,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e349a0801dbfd8f42b97fd87229d9e1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -488,7 +519,9 @@ MonoBehaviour:
   - {fileID: 8526196659197086995}
   random_spell_pos_container:
   - {fileID: 2592260494001822561}
-  spellTypes: 02000000
+  - {fileID: 6620987786521590892}
+  spellTypes: 0200000003000000
+  enemy_spawn_range: 10
 --- !u!1 &8526196659151758478
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +781,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   audioSource: {fileID: 0}
-  spellType: 0
 --- !u!1 &8526196659534055388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,7 +2005,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 50
   audioSource: {fileID: 0}
-  spellType: 0
 --- !u!1 &8526196660909022633
 GameObject:
   m_ObjectHideFlags: 0

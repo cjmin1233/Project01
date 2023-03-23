@@ -39,7 +39,7 @@ public class Enemy_Default : MonoBehaviour
     [SerializeField] protected Vector3 Offset;
 
     // 소리
-    [Header("Audio Source")] [SerializeField] private AudioSource die_sound;
+    [Header("Audio Source")] [SerializeField] protected AudioSource die_sound;
     [SerializeField] protected AudioSource[] damage_sound;
 
     // 독뎀
@@ -48,6 +48,7 @@ public class Enemy_Default : MonoBehaviour
     // 추락 방지
     private RaycastHit2D GroundRayHit;
     private Vector3 safePos;
+    bool grounded = false;
     protected virtual void OnEnable()
     {
         #region 초기 세팅
@@ -108,16 +109,19 @@ public class Enemy_Default : MonoBehaviour
     protected virtual void FixedUpdate()
     {
         GroundRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x, boxCollider2D.bounds.min.y), Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
-        if (GroundRayHit.collider != null)
+        if (!grounded && GroundRayHit.collider != null) grounded = true;
+        if (grounded)
         {
-            //Debug.Log("Touching ground");
-            safePos = transform.position;
-            rb.gravityScale = 1f;
-        }
-        else if (safePos != Vector3.zero)
-        {
-            transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
-            rb.gravityScale = 0f;
+            if (GroundRayHit.collider != null)
+            {
+                safePos = transform.position;
+                rb.gravityScale = 1f;
+            }
+            else if (safePos != Vector3.zero)
+            {
+                transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
+                rb.gravityScale = 0f;
+            }
         }
         Move();
     }
@@ -202,13 +206,13 @@ public class Enemy_Default : MonoBehaviour
             healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
             if (curHP <= 0)
             {
-                curHP = 0;
                 Die();
             }
         }
     }
     protected virtual void Die()
     {
+        curHP = 0;
         if (die_sound != null) die_sound.PlayOneShot(die_sound.clip);
         animator.SetBool("IsDead", true);
         canMove = false;
