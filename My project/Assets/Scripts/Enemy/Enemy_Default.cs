@@ -66,6 +66,7 @@ public class Enemy_Default : MonoBehaviour
         isAttacking = false;
         for (int i = 0; i < range.Length; i++) range[i] = false;
         currentSpeed = moveSpeed_multiplier * baseSpeed;
+        safePos = Vector3.zero;
         #endregion
     }
     protected virtual void Update()
@@ -108,7 +109,7 @@ public class Enemy_Default : MonoBehaviour
     }
     protected virtual void FixedUpdate()
     {
-        GroundRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x, boxCollider2D.bounds.min.y), Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
+        GroundRayHit = Physics2D.Raycast(new Vector2(boxCollider2D.bounds.center.x, boxCollider2D.bounds.min.y), Vector2.down, 1f, LayerMask.GetMask("Ground"));
         if (!grounded && GroundRayHit.collider != null) grounded = true;
         if (grounded)
         {
@@ -120,7 +121,7 @@ public class Enemy_Default : MonoBehaviour
             else if (safePos != Vector3.zero)
             {
                 transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
-                rb.gravityScale = 0f;
+                //rb.gravityScale = 0f;
             }
         }
         Move();

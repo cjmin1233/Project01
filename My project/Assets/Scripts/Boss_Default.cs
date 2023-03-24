@@ -15,7 +15,7 @@ public class Boss_Default : Enemy_Default
     [SerializeField] private int[] spellTypes;
 
     // ÂÌ¸÷ ¼ÒÈ¯
-    [SerializeField] private float enemy_spawn_range;
+    [SerializeField] private float enemy_spawn_range;   // ÃÖ¼Ò 2 ÀÌ»ó
     private RaycastHit2D rayHit;
     private float min_x, max_x;
 
