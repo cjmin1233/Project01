@@ -49,6 +49,12 @@ public class Enemy_Default : MonoBehaviour
     private RaycastHit2D GroundRayHit;
     private Vector3 safePos;
     bool grounded = false;
+
+    // 체력 재생
+    [SerializeField] private float recovery;
+    [SerializeField] private float recoveryRate;
+    private bool isRecovering = false;
+
     protected virtual void OnEnable()
     {
         #region 초기 세팅
@@ -209,6 +215,10 @@ public class Enemy_Default : MonoBehaviour
             {
                 Die();
             }
+            else if (recovery > 0f && !isRecovering)
+            {
+                StartCoroutine(AutoRecovery());
+            }
         }
     }
     protected virtual void Die()
@@ -299,8 +309,25 @@ public class Enemy_Default : MonoBehaviour
     }
     private void destoryObject()
     {
-        //Destroy(gameObject);
         EnemyPool.Instance.AddToPool(enemyType, gameObject);
         EnemyPool.Instance.remainEnemies--;
+    }
+    private IEnumerator AutoRecovery()
+    {
+        isRecovering = true;
+        float timer = 0f;
+        while (curHP != maxHP && isRecovering)
+        {
+            timer += Time.deltaTime;
+            if (timer > recoveryRate)
+            {
+                timer = 0f;
+                curHP += recovery;
+                if (curHP > maxHP) curHP = maxHP;
+                healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
+            }
+            yield return null;
+        }
+        isRecovering = false;
     }
 }
