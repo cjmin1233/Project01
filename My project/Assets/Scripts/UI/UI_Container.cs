@@ -40,7 +40,7 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private GameObject[] hiddenHashashinAbility_Z;
     [SerializeField] private GameObject swiftAbility;
 
-    [HideInInspector] public List<int> SelectLog = new List<int>();
+    /*[HideInInspector]*/ public List<int> SelectLog = new List<int>();
 
     private GameObject playerObject;
     private Player _player;
@@ -225,8 +225,6 @@ public class UI_Container : MonoBehaviour
     public void GetAbility(GameObject SelectedAbility)
     {
         Ability ability = SelectedAbility.GetComponent<Ability>();
-        //Player player = playerObject.GetComponent<Player>();
-        //PlayerAttack playerAttack = playerObject.GetComponent<PlayerAttack>();
 
         if (ability.level < 10) ability.level++;
         SelectedAbility.SetActive(false);
@@ -279,7 +277,6 @@ public class UI_Container : MonoBehaviour
         else if (name == "Dodge")
         {
             _player.dodge_enable = true;
-            AddPlayerBuff("Dodge", 0f);
         }
         else if (name == "SecondHeart")
         {
@@ -291,11 +288,11 @@ public class UI_Container : MonoBehaviour
         }
         else if (name == "Guard")
         {
-            AddPlayerBuff("Guard", -1f);
+            _player.guard_enable = true;
         }
         else if (name == "Aura")
         {
-
+            ///////////////////////////////
         }
         else if (name == "GoldRush")
         {
@@ -494,15 +491,21 @@ public class UI_Container : MonoBehaviour
     public void QuitGame()
     {
         Time.timeScale = 1f;
-        int length = SelectLog.Count;
+        /*int length = SelectLog.Count;
         int[] arr = new int[length];
         for (int i = 0; i < length; i++)
         {
             arr[i] = SelectLog[i];
         }
-        DataManager.Instance.data.select_log = arr;
+        DataManager.Instance.data.select_log = arr;*/
 
         StartCoroutine(GameManager.Instance.QuitGameFlow());
+    }
+    public void SaveSelectLog()
+    {
+        int[] arr = new int[SelectLog.Count];
+        for (int i = 0; i < arr.Length; i++) arr[i] = SelectLog[i];
+        DataManager.Instance.data.select_log = arr;
     }
     public void AddToBook(GameObject gameObject)
     {
@@ -717,7 +720,6 @@ public class UI_Container : MonoBehaviour
 
                     iconImage.fillAmount = 1f;
                     x -= rectTransform.sizeDelta.x + buff_space;
-
                 }
                 else
                 {

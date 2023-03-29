@@ -55,8 +55,7 @@ public class DataManager : MonoBehaviour
         data.maxHP = player.GetComponent<Player>().MaxHP;
         data.gold = player.GetComponent<Player>().CheckGold();
         data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        //data.stageCleared = GameManager.Instance.stageCleared;
-
+        UI_Container.Instance.SaveSelectLog();
 
         string ToJsonData = JsonUtility.ToJson(data, true);
         string filePath = Application.persistentDataPath + "/" + GameDataFileName;

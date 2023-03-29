@@ -41,11 +41,14 @@ public class Player : MonoBehaviour
 
     [SerializeField] private LayerMask WhatIsGround;
 
-    public float defence_multiplier = 1f;
-    public bool recovery_enable = false;
-    public bool resistance_enable = false;
-    public bool dodge_enable = false;
-    public float hpincrease_multiplier = 1f;
+    [HideInInspector] public float defence_multiplier = 1f;
+    [HideInInspector] public float hpincrease_multiplier = 1f;
+    [HideInInspector] public bool recovery_enable = false;
+    [HideInInspector] public bool resistance_enable = false;
+    [HideInInspector] public bool dodge_enable = false;
+    [HideInInspector] public bool guard_enable = false;
+    private float lastDamageTime = -100f;
+
     [HideInInspector] public float MaxHP;
     [HideInInspector] public float CurHP;
     [HideInInspector] public bool canInvincible;
@@ -85,6 +88,21 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        //
+        if (Time.time > lastDamageTime + 20f && guard_enable)
+        {
+            UI_Container.Instance.AddPlayerBuff("Guard", -1f);
+        }
+        //
+        if (resistance_enable && CurHP / MaxHP <= 0.4f)
+        {
+            UI_Container.Instance.AddPlayerBuff("Resistance", -1f);
+        }
+        else
+        {
+            UI_Container.Instance.AddPlayerBuff("Resistance", 0f);
+        }
+
         // HP bar test.
         if (Input.GetKeyDown(KeyCode.A))    //Increase hp.
         {
@@ -311,41 +329,45 @@ public class Player : MonoBehaviour
             }
             else
             {
-                // 플레이어 밀침 효과
-                float damageForce = 20.0f;
-                rb.AddForce(new Vector2(-1f * transform.right.x * damageForce, 0f), ForceMode2D.Impulse);
-                damage /= defence_multiplier;
-
-                if(playerAttack.sword_shield_enable && playerAttack.isXAttacking)
+                // 데미지 무시가능한 경우
+                if (guard_enable && Time.time > lastDamageTime + 20f)
                 {
-                    damage *= 0.5f;
-                    if (damage_shield_sound != null) damage_shield_sound.PlayOneShot(damage_shield_sound.clip);
+                    Debug.Log("데미지 무시!");
+                    UI_Container.Instance.AddPlayerBuff("Guard", 0f);
                 }
-
-                if (resistance_enable && CurHP / MaxHP <= 0.4f) damage *= 0.9f;
-
-                CurHP -= Mathf.Round(damage);
-
-                // 무적 시간 부여
-                canInvincible = true;
-                damagingTimeLeft = damagingTime;
-                StartCoroutine(Damaging_Check());
-
-                /*// 스프라이트 이미지 어둡게
-                Color invincibleColor = new Color(0.5f, 0.5f, 0.5f, 1.0f);
-                sr.color = invincibleColor;*/
-
-                if (CurHP <= 0)
+                else
                 {
-                    // 플레이어 사망
-                    CurHP = 0;
-                    Die();
+                    // 플레이어 밀침 효과
+                    float damageForce = 20.0f;
+                    rb.AddForce(new Vector2(-1f * transform.right.x * damageForce, 0f), ForceMode2D.Impulse);
+                    damage /= defence_multiplier;
+
+                    if (playerAttack.sword_shield_enable && playerAttack.isXAttacking)
+                    {
+                        damage *= 0.5f;
+                        if (damage_shield_sound != null) damage_shield_sound.PlayOneShot(damage_shield_sound.clip);
+                    }
+
+                    if (resistance_enable && CurHP / MaxHP <= 0.4f) damage *= 0.9f;
+
+                    CurHP -= Mathf.Round(damage);
+                    // 무적 시간 부여
+                    canInvincible = true;
+                    damagingTimeLeft = damagingTime;
+                    StartCoroutine(Damaging_Check());
+                    if (CurHP <= 0)
+                    {
+                        // 플레이어 사망
+                        CurHP = 0;
+                        Die();
+                    }
+                    else if (recovery_enable)
+                    {
+                        damage *= 0.3f;
+                        Heal(damage);
+                    }
                 }
-                else if (recovery_enable)
-                {
-                    damage *= 0.3f;
-                    Heal(damage);
-                }
+                lastDamageTime = Time.time;
             }
         }
         UI_Container.Instance.HandleHP(CurHP, MaxHP);

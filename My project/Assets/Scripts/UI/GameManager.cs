@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
                 if (UI_Container.Instance.popup_ui_counter > 0) Time.timeScale = 0f;
                 else if (bossFollowing) Time.timeScale = 0.3f;
                 else if (playerFollowing) Time.timeScale = 1f;
+                else Time.timeScale = 1f;
 
                 // cheat key
                 if (Input.GetKeyDown(KeyCode.C)) StartCoroutine(TransportFlow(Vector3.zero, true));
