@@ -14,7 +14,9 @@ public class Debuff_Container : MonoBehaviour
         {
             string debuff_name = debuff.Key;
             float debuff_time = debuff.Value;
+            // 처음 받는 디버프
             if (!maxDebuffDuration.ContainsKey(debuff_name)) maxDebuffDuration.Add(debuff_name, debuff_time);
+            // 이미 있던 디버프 중 지속시간이 더 긴 경우
             else if (maxDebuffDuration[debuff_name] < debuff_time) maxDebuffDuration[debuff_name] = debuff_time;
 
             GameObject debuffIcon = transform.Find(debuff_name).gameObject;

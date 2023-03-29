@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public float defence_multiplier = 1f;
     public bool recovery_enable = false;
     public bool resistance_enable = false;
+    public bool dodge_enable = false;
     public float hpincrease_multiplier = 1f;
     [HideInInspector] public float MaxHP;
     [HideInInspector] public float CurHP;
@@ -306,7 +307,7 @@ public class Player : MonoBehaviour
             if (isDashing)
             {
                 // 피격 회피
-                Debug.Log("Dodged!");
+                if (dodge_enable) UI_Container.Instance.AddPlayerBuff("Dodge", 3f);
             }
             else
             {
@@ -364,18 +365,6 @@ public class Player : MonoBehaviour
         gold -= price;
         UI_Container.Instance.HandleGold(gold);
     }
-    /*private void DamagingCheck()
-    {
-        if (damagingTimeLeft > 0)
-        {
-            damagingTimeLeft -= Time.deltaTime;
-            if (damagingTimeLeft <= 0)
-            {
-                canInvincible = false;
-                sr.color = Color.white;
-            }
-        }
-    }*/
     private IEnumerator Damaging_Check()
     {
         float counter = 0;

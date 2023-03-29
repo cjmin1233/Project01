@@ -43,6 +43,8 @@ public class UI_Container : MonoBehaviour
     [HideInInspector] public List<int> SelectLog = new List<int>();
 
     private GameObject playerObject;
+    private Player _player;
+    private PlayerAttack _playerAttack;
     private int z_collection = 0;
     private int x_collection = 0;
     int totalWeight;
@@ -80,10 +82,18 @@ public class UI_Container : MonoBehaviour
 
     // UI 카운터
     public int popup_ui_counter = 0;
+
+    // 플레이어 버프 UI
+    [SerializeField] private GameObject PlayerBuffContainer;
+    [HideInInspector] public List<PlayerBuff> playerBuffs = new List<PlayerBuff>();
+    private float buff_space = 5f;
     private void OnEnable()
     {
         Instance = this;
         playerObject = GameObject.FindGameObjectWithTag("Player");
+        _player = playerObject.GetComponent<Player>();
+        _playerAttack = playerObject.GetComponent<PlayerAttack>();
+
         if (PlayerPrefs.GetInt("weaponType") == 3)
         {
             hashshin_gauge_UI.SetActive(true);
@@ -111,9 +121,12 @@ public class UI_Container : MonoBehaviour
         EffectAudioSlider.value = PlayerPrefs.GetFloat("EffectVolume");
 
         // 플레이어 세팅
-        Player _player = playerObject.GetComponent<Player>();
         HandleGold(_player.CheckGold());
         HandleHP(_player.CurHP, _player.MaxHP);
+    }
+    private void Update()
+    {
+        UpdatePlayerBuffIcon();
     }
     public void Data_Recovery()
     {
@@ -212,8 +225,8 @@ public class UI_Container : MonoBehaviour
     public void GetAbility(GameObject SelectedAbility)
     {
         Ability ability = SelectedAbility.GetComponent<Ability>();
-        Player player = playerObject.GetComponent<Player>();
-        PlayerAttack playerAttack = playerObject.GetComponent<PlayerAttack>();
+        //Player player = playerObject.GetComponent<Player>();
+        //PlayerAttack playerAttack = playerObject.GetComponent<PlayerAttack>();
 
         if (ability.level < 10) ability.level++;
         SelectedAbility.SetActive(false);
@@ -225,60 +238,60 @@ public class UI_Container : MonoBehaviour
         }
 
         string name = SelectedAbility.name;
-        Debug.Log("Selected ability is : " + name);
         if (name == "PowerUp_Z")
         {
-            if (!playerAttack.damage_z_buffer.ContainsKey("PowerUp_Z")) playerAttack.damage_z_buffer.Add("PowerUp_Z", 0.2f * ability.level);
-            else playerAttack.damage_z_buffer["PowerUp_Z"] = 0.2f * ability.level;
+            if (!_playerAttack.damage_z_buffer.ContainsKey("PowerUp_Z")) _playerAttack.damage_z_buffer.Add("PowerUp_Z", 0.2f * ability.level);
+            else _playerAttack.damage_z_buffer["PowerUp_Z"] = 0.2f * ability.level;
             CollectionZ();
         }
         else if (name == "PowerUp_X")
         {
-            if (!playerAttack.damage_x_buffer.ContainsKey("PowerUp_X")) playerAttack.damage_x_buffer.Add("PowerUp_X", 0.2f * ability.level);
-            else playerAttack.damage_x_buffer["PowerUp_X"] = 0.2f * ability.level;
+            if (!_playerAttack.damage_x_buffer.ContainsKey("PowerUp_X")) _playerAttack.damage_x_buffer.Add("PowerUp_X", 0.2f * ability.level);
+            else _playerAttack.damage_x_buffer["PowerUp_X"] = 0.2f * ability.level;
             CollectionX();
         }
         else if (name == "SpeedUp_Z")
         {
-            if (!playerAttack.speed_z_buffer.ContainsKey("SpeedUp_Z")) playerAttack.speed_z_buffer.Add("SpeedUp_Z", 0.2f * ability.level);
-            else playerAttack.speed_z_buffer["SpeedUp_Z"] = 0.2f * ability.level;
+            if (!_playerAttack.speed_z_buffer.ContainsKey("SpeedUp_Z")) _playerAttack.speed_z_buffer.Add("SpeedUp_Z", 0.2f * ability.level);
+            else _playerAttack.speed_z_buffer["SpeedUp_Z"] = 0.2f * ability.level;
             CollectionZ();
         }
         else if (name == "SpeedUp_X")
         {
-            if (!playerAttack.speed_x_buffer.ContainsKey("SpeedUp_X")) playerAttack.speed_x_buffer.Add("SpeedUp_X", 0.2f * ability.level);
-            else playerAttack.speed_x_buffer["SpeedUp_X"] = 0.2f * ability.level;
+            if (!_playerAttack.speed_x_buffer.ContainsKey("SpeedUp_X")) _playerAttack.speed_x_buffer.Add("SpeedUp_X", 0.2f * ability.level);
+            else _playerAttack.speed_x_buffer["SpeedUp_X"] = 0.2f * ability.level;
             CollectionX();
         }
         else if (name == "PowerUp")
         {
-            if (!playerAttack.power_buffer.ContainsKey("PowerUp")) playerAttack.power_buffer.Add("PowerUp", 0.1f * ability.level);
-            else playerAttack.power_buffer["PowerUp"] = 0.1f * ability.level;
+            if (!_playerAttack.power_buffer.ContainsKey("PowerUp")) _playerAttack.power_buffer.Add("PowerUp", 0.1f * ability.level);
+            else _playerAttack.power_buffer["PowerUp"] = 0.1f * ability.level;
         }
         else if (name == "SpeedUp_Run")
         {
-            player.moveSpeed_multiplier = 1f + 0.1f * ability.level;
+            _player.moveSpeed_multiplier = 1f + 0.1f * ability.level;
             if (ability.level == 1) UnlockSwift();
         }
         else if (name == "DefenceUp")
         {
-            player.defence_multiplier = 1f + 0.1f * ability.level;
+            _player.defence_multiplier = 1f + 0.1f * ability.level;
         }
         else if (name == "Dodge")
         {
-
+            _player.dodge_enable = true;
+            AddPlayerBuff("Dodge", 0f);
         }
         else if (name == "SecondHeart")
         {
-            player.hpincrease_multiplier = 1.3f;
+            _player.hpincrease_multiplier = 1.3f;
         }
         else if (name == "Recovery")
         {
-            player.recovery_enable = true;
+            _player.recovery_enable = true;
         }
         else if (name == "Guard")
         {
-
+            AddPlayerBuff("Guard", -1f);
         }
         else if (name == "Aura")
         {
@@ -286,81 +299,81 @@ public class UI_Container : MonoBehaviour
         }
         else if (name == "GoldRush")
         {
-            player.gold_multiplier = 1.2f;
+            _player.gold_multiplier = 1.2f;
         }
         else if (name == "Resistance")
         {
-            player.resistance_enable = true;
+            _player.resistance_enable = true;
         }
         else if (name == "SwordWind")
         {
-            playerAttack.sword_wind_enable = true;
+            _playerAttack.sword_wind_enable = true;
         }
         else if (name == "StormSlash")
         {
-            playerAttack.sword_storm_enable = true;
+            _playerAttack.sword_storm_enable = true;
         }
         else if (name == "CursedSlash")
         {
-            playerAttack.sword_cursed_enable = true;
+            _playerAttack.sword_cursed_enable = true;
         }
         else if (name == "ChargeSlash")
         {
-            playerAttack.sword_charging_enable = true;
+            _playerAttack.sword_charging_enable = true;
         }
         else if (name == "CriticalSlash")
         {
-            playerAttack.sword_critical_enable = true;
+            _playerAttack.sword_critical_enable = true;
         }
         else if (name == "DefenceSlash")
         {
-            playerAttack.sword_shield_enable = true;
+            _playerAttack.sword_shield_enable = true;
         }
         else if (name == "StormShot")
         {
-            playerAttack.bow_storm_enable = true;
+            _playerAttack.bow_storm_enable = true;
         }
         else if (name == "PoisonShot")
         {
-            playerAttack.bow_poison_enable = true;
+            _playerAttack.bow_poison_enable = true;
         }
         else if (name == "AirShot")
         {
-            playerAttack.bow_air_enable = true;
+            _playerAttack.bow_air_enable = true;
         }
         else if (name == "ArrowRain")
         {
-            playerAttack.bow_rain_enable = true;
+            _playerAttack.bow_rain_enable = true;
         }
         else if (name == "HardPlant")
         {
-            playerAttack.bow_slow_enable = true;
+            _playerAttack.bow_slow_enable = true;
         }
         else if (name == "QuickShower")
         {
-            playerAttack.bow_fast_enable = true;
+            _playerAttack.bow_fast_enable = true;
         }
         else if (name == "DaggerStorm")
         {
-            playerAttack.dagger_storm_enable = true;
+            _playerAttack.dagger_storm_enable = true;
             availableAbilityList.Remove(hiddenHashashinAbility_Z[1]);
             availableAbilityList.Remove(hiddenHashashinAbility_Z[2]);
         }
         else if (name == "QuickWind")
         {
-            playerAttack.quick_wind_enable = true;
+            _playerAttack.quick_wind_enable = true;
             availableAbilityList.Remove(hiddenHashashinAbility_Z[0]);
         }
         else if (name == "Assassin")
         {
-            playerAttack.assassin_enable = true;
+            _playerAttack.assassin_enable = true;
             availableAbilityList.Remove(hiddenHashashinAbility_Z[0]);
-            playerAttack.speed_x_buffer.Add("Assassin", 0.5f);
-            playerAttack.damage_x_buffer.Add("Assassin", 0.5f);
+            _playerAttack.speed_x_buffer.Add("Assassin", 0.5f);
+            _playerAttack.damage_x_buffer.Add("Assassin", 0.5f);
         }
         else if (name == "Swift")
         {
-
+            _playerAttack.swift_enable = true;
         }
 
         AddToBook(SelectedAbility);
@@ -650,4 +663,73 @@ public class UI_Container : MonoBehaviour
             Book_UI.SetActive(true);
         }
     }
+    public void AddPlayerBuff(string buff_name, float max_dur)
+    {
+        PlayerBuff buff = new PlayerBuff
+        {
+            name = buff_name,
+            max_duration = max_dur,
+            cur_duration = max_dur
+        };
+        bool exist = false;
+        for(int i = 0; i < playerBuffs.Count; i++)
+        {
+            if (playerBuffs[i].name == buff.name)
+            {
+                exist = true;
+                playerBuffs[i] = buff;
+                break;
+            }
+        }
+        if (!exist) playerBuffs.Add(buff);
+    }
+    private void UpdatePlayerBuffIcon()
+    {
+        float x = 0f;
+        for(int i = 0; i < playerBuffs.Count; i++)
+        {
+            PlayerBuff buff = playerBuffs[i];
+
+            GameObject buffIcon = PlayerBuffContainer.transform.Find(buff.name).gameObject;
+            if (buffIcon != null)
+            {
+                Image iconImage = buffIcon.GetComponent<Image>();
+                if (buff.cur_duration > 0f)
+                {
+                    if (buff.name == "Dodge")
+                    {
+                        _playerAttack.dodgeBuff = true;
+                    }
+                    //
+                    buff.cur_duration -= Time.deltaTime;
+                    buffIcon.SetActive(true);
+                    RectTransform rectTransform = buffIcon.GetComponent<RectTransform>();
+                    rectTransform.anchoredPosition = new Vector2(x, 0f);
+
+                    iconImage.fillAmount = buff.cur_duration / buff.max_duration;
+                    x -= rectTransform.sizeDelta.x + buff_space;
+                }
+                else if (buff.max_duration == -1f)
+                {
+                    buffIcon.SetActive(true);
+                    RectTransform rectTransform = buffIcon.GetComponent<RectTransform>();
+                    rectTransform.anchoredPosition = new Vector2(x, 0f);
+
+                    iconImage.fillAmount = 1f;
+                    x -= rectTransform.sizeDelta.x + buff_space;
+
+                }
+                else
+                {
+                    // 버프 소진시
+                    if (buff.name == "Dodge")
+                    {
+                        _playerAttack.dodgeBuff = false;
+                    }
+                    buffIcon.SetActive(false);
+                }
+            }
+        }
+    }
+
 }

@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
 
     protected Rigidbody2D rb;
     protected Animator animator;
+    protected Player player;
 
     protected int comboCounter = 0;
     protected int inputZCounter = 0;
@@ -42,13 +43,18 @@ public class PlayerAttack : MonoBehaviour
     public bool quick_wind_enable;
     public bool assassin_enable;
 
+    [HideInInspector] public bool swift_enable;
+
     protected bool isJumping;
     protected bool isDashing;
 
+    // น๖วม
+    [HideInInspector] public bool dodgeBuff = false;
     protected virtual void OnEnable()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        player = GetComponent<Player>();
 
         sword_wind_enable = false;
         sword_storm_enable = false;
@@ -67,6 +73,8 @@ public class PlayerAttack : MonoBehaviour
         dagger_storm_enable = false;
         quick_wind_enable = false;
         assassin_enable = false;
+
+        swift_enable = false;
 
         isJumping = false;
         isDashing = false;
@@ -146,6 +154,15 @@ public class PlayerAttack : MonoBehaviour
             full_power += value;
         }
 
+        if (swift_enable)
+        {
+            full_power *= 1f + 0.4f * (player.moveSpeed_multiplier - 1f);
+        }
+
+        if (dodgeBuff)
+        {
+            full_power *= 1.5f;
+        }
         return playerPower * full_power;
     }
     protected float Z_DamageCalculation()
