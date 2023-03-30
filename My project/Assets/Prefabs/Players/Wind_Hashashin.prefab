@@ -1849,9 +1849,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   defence_multiplier: 1
+  hpincrease_multiplier: 1
   recovery_enable: 0
   resistance_enable: 0
-  hpincrease_multiplier: 1
+  dodge_enable: 0
+  guard_enable: 0
   MaxHP: 0
   CurHP: 0
   canInvincible: 0
@@ -1903,6 +1905,8 @@ MonoBehaviour:
   dagger_storm_enable: 0
   quick_wind_enable: 0
   assassin_enable: 0
+  swift_enable: 0
+  dodgeBuff: 0
   comboCollider:
   - {fileID: 1015373028}
   - {fileID: 416063871}

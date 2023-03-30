@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> items;
+    [SerializeField] private GameObject[] items;
     public void OpenChest()
     {
-        int rand = Random.Range(0, items.Count);
+        int rand = Random.Range(0, items.Length);
         Instantiate(items[rand], transform.position, transform.rotation);
         Destroy(gameObject);
     }

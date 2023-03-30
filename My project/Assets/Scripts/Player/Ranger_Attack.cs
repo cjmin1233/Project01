@@ -17,40 +17,43 @@ public class Ranger_Attack : PlayerAttack
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
-
-        if (bow_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isXAttacking && !isDashing && comboCounter == 4)
+        isDead = animator.GetBool("IsDead");
+        if (!isDead)
         {
-            if (isJumping && bow_air_enable)
+            if (bow_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isXAttacking && !isDashing && comboCounter == 4)
             {
-                BowZAttack_Air();
+                if (isJumping && bow_air_enable)
+                {
+                    BowZAttack_Air();
+                }
+                else
+                {
+                    BowZAttack();
+                }
             }
-            else
+            else if (Input.GetButtonDown("AttackZ") && !isXAttacking && !isDashing && comboCounter < 3)
             {
-                BowZAttack();
+                if (isZAttacking)
+                {
+                    // 스택 증가
+                    inputZCounter++;
+                }
+                else if (isJumping && bow_air_enable) BowZAttack_Air();
+                else if (!isJumping) BowZAttack();
             }
-        }
-        else if (Input.GetButtonDown("AttackZ") && !isXAttacking && !isDashing && comboCounter < 3)
-        {
-            if (isZAttacking)
+
+            if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
             {
-                // 스택 증가
-                inputZCounter++;
+                if (comboCounter == 3 || bow_fast_enable) BowXAttack();
             }
-            else if (isJumping && bow_air_enable) BowZAttack_Air();
-            else if (!isJumping) BowZAttack();
-        }
 
-        if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
-        {
-            if (comboCounter == 3 || bow_fast_enable) BowXAttack();
-        }
-
-        //  over Z input handle
-        if (!isZAttacking && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)
-        {
-            if (isJumping && bow_air_enable) BowZAttack_Air();
-            else if (!isJumping) BowZAttack();
-            inputZCounter = 0;
+            //  over Z input handle
+            if (!isZAttacking && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)
+            {
+                if (isJumping && bow_air_enable) BowZAttack_Air();
+                else if (!isJumping) BowZAttack();
+                inputZCounter = 0;
+            }
         }
     }
     private void FixedUpdate()

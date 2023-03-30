@@ -17,29 +17,32 @@ public class Hashashin_Attack : PlayerAttack
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
-
-        if (dagger_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
+        isDead = animator.GetBool("IsDead");
+        if (!isDead)
         {
-            DaggerZAttack();
-        }
-        else if (!isJumping && !isXAttacking && !isDashing && comboCounter < 3)
-        {
-            if (Input.GetButtonDown("AttackZ"))
-            {
-                if (isZAttacking) inputZCounter++;
-                else DaggerZAttack();
-            }
-            //  over Z input handle
-            else if (inputZCounter > 0 && !isZAttacking)
+            if (dagger_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
             {
                 DaggerZAttack();
-                inputZCounter = 0;
             }
-        }
+            else if (!isJumping && !isXAttacking && !isDashing && comboCounter < 3)
+            {
+                if (Input.GetButtonDown("AttackZ"))
+                {
+                    if (isZAttacking) inputZCounter++;
+                    else DaggerZAttack();
+                }
+                //  over Z input handle
+                else if (inputZCounter > 0 && !isZAttacking)
+                {
+                    DaggerZAttack();
+                    inputZCounter = 0;
+                }
+            }
 
-        if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
-        {
-            DaggerXAttack();
+            if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
+            {
+                DaggerXAttack();
+            }
         }
     }
     private void DaggerZAttack()

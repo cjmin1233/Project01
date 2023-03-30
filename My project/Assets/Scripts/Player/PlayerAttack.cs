@@ -47,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
 
     protected bool isJumping;
     protected bool isDashing;
-
+    protected bool isDead;
     // น๖วม
     [HideInInspector] public bool dodgeBuff = false;
     protected virtual void OnEnable()

@@ -27,65 +27,55 @@ public class Knight_Attack : PlayerAttack
     {
         isDashing = animator.GetBool("IsDashing");
         isJumping = animator.GetBool("IsJumping");
-
-        if (sword_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
+        isDead = animator.GetBool("IsDead");
+        if (!isDead)
         {
-            SwordZAttack();
-        }
-        else if (!isJumping && !isXAttacking && !isDashing && comboCounter < 3)
-        {
-            if (Input.GetButtonDown("AttackZ"))
-            {
-                if (isZAttacking) inputZCounter++;
-                else SwordZAttack();
-            }
-            //  over Z input handle
-            else if (inputZCounter > 0 && !isZAttacking)
+            if (sword_storm_enable && Input.GetButton("AttackZ") && !isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter == 4)
             {
                 SwordZAttack();
-                inputZCounter = 0;
             }
-        }
-
-        /*else if (Input.GetButtonDown("AttackZ") && !isJumping && !isXAttacking && !isDashing && comboCounter < 3)
-        {
-            if (isZAttacking) inputZCounter++;
-            else SwordZAttack();
-        }*/
-
-        if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
-        {
-            // Z+X ÄÞº¸
-            if (comboCounter == 3)
+            else if (!isJumping && !isXAttacking && !isDashing && comboCounter < 3)
             {
-                gameObject.GetComponent<Player>().canMove = false;
-
-                animator.SetFloat("Speed_X", X_SpeedCalculation());
-                isXAttacking = true;
-                animator.SetBool("IsXAttacking", isXAttacking);
-
-                animator.SetTrigger("Combo3");
-
-                rb.AddForce(new Vector2(transform.right.x * 1f, 0f), ForceMode2D.Impulse);
+                if (Input.GetButtonDown("AttackZ"))
+                {
+                    if (isZAttacking) inputZCounter++;
+                    else SwordZAttack();
+                }
+                //  over Z input handle
+                else if (inputZCounter > 0 && !isZAttacking)
+                {
+                    SwordZAttack();
+                    inputZCounter = 0;
+                }
             }
-            // ÀÏ¹Ý X
-            else
+            if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
             {
-                //  Sword X attack.
-                SwordXAttack();
+                // Z+X ÄÞº¸
+                if (comboCounter == 3)
+                {
+                    gameObject.GetComponent<Player>().canMove = false;
+
+                    animator.SetFloat("Speed_X", X_SpeedCalculation());
+                    isXAttacking = true;
+                    animator.SetBool("IsXAttacking", isXAttacking);
+
+                    animator.SetTrigger("Combo3");
+
+                    rb.AddForce(new Vector2(transform.right.x * 1f, 0f), ForceMode2D.Impulse);
+                }
+                // ÀÏ¹Ý X
+                else
+                {
+                    //  Sword X attack.
+                    SwordXAttack();
+                }
+            }
+            if (Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
+            {
+                isCharging = false;
+                animator.SetBool("IsCharging", isCharging);
             }
         }
-        if (Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
-        {
-            isCharging = false;
-            animator.SetBool("IsCharging", isCharging);
-        }
-        /*//  over Z input handle
-        if (!isZAttacking && !isJumping && !isXAttacking && !isDashing && comboCounter < 3 && inputZCounter > 0)
-        {
-            SwordZAttack();
-            inputZCounter = 0;
-        }*/
     }
     private void Finish_X_Charging()
     {

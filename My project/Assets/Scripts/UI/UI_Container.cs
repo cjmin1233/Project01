@@ -87,6 +87,9 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private GameObject PlayerBuffContainer;
     [HideInInspector] public List<PlayerBuff> playerBuffs = new List<PlayerBuff>();
     private float buff_space = 5f;
+
+    // 플레이어 사망 UI
+    [SerializeField] private GameObject PlayerDieUI;
     private void OnEnable()
     {
         Instance = this;
@@ -278,7 +281,7 @@ public class UI_Container : MonoBehaviour
         {
             _player.dodge_enable = true;
         }
-        else if (name == "SecondHeart")
+        else if (name == "PotionMaster")
         {
             _player.hpincrease_multiplier = 1.3f;
         }
@@ -733,5 +736,8 @@ public class UI_Container : MonoBehaviour
             }
         }
     }
-
+    public void EnableDieUI()
+    {
+        PlayerDieUI.SetActive(true);
+    }
 }

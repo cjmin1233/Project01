@@ -59,6 +59,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public float gold_multiplier = 1f;
     private int gold = 0;
     [SerializeField] private Player_Ground_Checker ground_checker;
+
+    [HideInInspector] public bool isDead = false;
     private void OnEnable()
     {
         canInvincible = false;
@@ -88,71 +90,77 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //
-        if (Time.time > lastDamageTime + 20f && guard_enable)
+        if (!isDead)
         {
-            UI_Container.Instance.AddPlayerBuff("Guard", -1f);
-        }
-        //
-        if (resistance_enable && CurHP / MaxHP <= 0.4f)
-        {
-            UI_Container.Instance.AddPlayerBuff("Resistance", -1f);
-        }
-        else
-        {
-            UI_Container.Instance.AddPlayerBuff("Resistance", 0f);
-        }
+            //
+            if (Time.time > lastDamageTime + 20f && guard_enable)
+            {
+                UI_Container.Instance.AddPlayerBuff("Guard", -1f);
+            }
+            //
+            if (resistance_enable && CurHP / MaxHP <= 0.4f)
+            {
+                UI_Container.Instance.AddPlayerBuff("Resistance", -1f);
+            }
+            else
+            {
+                UI_Container.Instance.AddPlayerBuff("Resistance", 0f);
+            }
 
-        // HP bar test.
-        if (Input.GetKeyDown(KeyCode.A))    //Increase hp.
-        {
-            IncreaseMaxHP();
-        }
-        if (Input.GetKeyDown(KeyCode.Q))    //Take damage.
-        {
-            TakeDamage(20f);
-        }
-        /////////////////////
-        currentSpeed = moveSpeed_multiplier * baseSpeed;
-        if (canMove)
-        {
-            if (!isDashing) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
-            animator.SetFloat("Speed", Mathf.Abs(movementX));
-        }
-        else
-        {
-            if (!isDashing) movementX = 0f;
-            animator.SetFloat("Speed", Mathf.Abs(movementX));
-        }
+            // HP bar test.
+            if (Input.GetKeyDown(KeyCode.A))    //Increase hp.
+            {
+                IncreaseMaxHP();
+            }
+            if (Input.GetKeyDown(KeyCode.Q))    //Take damage.
+            {
+                TakeDamage(20f);
+            }
+            /////////////////////
+            currentSpeed = moveSpeed_multiplier * baseSpeed;
+            if (canMove)
+            {
+                if (!isDashing) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
+                animator.SetFloat("Speed", Mathf.Abs(movementX));
+            }
+            else
+            {
+                if (!isDashing) movementX = 0f;
+                animator.SetFloat("Speed", Mathf.Abs(movementX));
+            }
 
 
-        if (Input.GetButton("Jump") && !isDashing && !animator.GetBool("IsJumping"))
-        {
-            jump = true;
-        }
+            if (Input.GetButton("Jump") && !isDashing && !animator.GetBool("IsJumping"))
+            {
+                jump = true;
+            }
 
         
-        if (Input.GetButtonDown("Dash"))
-        {
-            if (!isDashing && !animator.GetBool("IsJumping"))
+            if (Input.GetButtonDown("Dash"))
             {
-                if (Time.time >= (lastDash + dashCoolDown))
+                if (!isDashing && !animator.GetBool("IsJumping"))
                 {
-                    movementX = Input.GetAxisRaw("Horizontal");
-                    AttemptToDash();
+                    if (Time.time >= (lastDash + dashCoolDown))
+                    {
+                        movementX = Input.GetAxisRaw("Horizontal");
+                        AttemptToDash();
+                    }
                 }
             }
+            //DamagingCheck();
+            FlipPlayer();
+            CheckDash();
+            CheckAfterImage();
         }
-        //DamagingCheck();
-        FlipPlayer();
-        CheckDash();
-        CheckAfterImage();
     }
 
     private void FixedUpdate()
     {
-        HorizontalMove();
-        VerticalMove();
+        if (!isDead)
+        {
+            HorizontalMove();
+            VerticalMove();
+        }
     }
     private void FlipPlayer()
     {
@@ -320,7 +328,8 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        if (!canInvincible)
+        // 죽지 않았고 무적이 아닐 때
+        if (!canInvincible && !isDead)
         {
             if (isDashing)
             {
@@ -337,6 +346,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
+                    if (!playerAttack.isZAttacking && !playerAttack.isXAttacking && !animator.GetBool("IsJumping") && movementX == 0f) animator.SetTrigger("Hit");
                     // 플레이어 밀침 효과
                     float damageForce = 20.0f;
                     rb.AddForce(new Vector2(-1f * transform.right.x * damageForce, 0f), ForceMode2D.Impulse);
@@ -355,10 +365,9 @@ public class Player : MonoBehaviour
                     canInvincible = true;
                     damagingTimeLeft = damagingTime;
                     StartCoroutine(Damaging_Check());
-                    if (CurHP <= 0)
+                    if (CurHP <= 0 && !isDead)
                     {
                         // 플레이어 사망
-                        CurHP = 0;
                         Die();
                     }
                     else if (recovery_enable)
@@ -418,6 +427,16 @@ public class Player : MonoBehaviour
     }
     private void Die()
     {
-        Debug.Log("Player Died");
+        isDead = true;
+        animator.SetBool("IsDead", isDead);
+
+        CurHP = 0;
+        // 사망 소리
+        canMove = false;
+        rb.gravityScale = 0f;
+        rb.velocity = Vector2.zero;
+
+        // 사망 UI 출력
+        UI_Container.Instance.EnableDieUI();
     }
 }
