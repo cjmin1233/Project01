@@ -82,7 +82,7 @@ public class Enemy_Default : MonoBehaviour
         if (!animator.GetBool("IsDead"))
         {
             DebuffChecker();
-            if (!detectPlayer) canMove = false;
+            if (!detectPlayer || player.GetComponent<Player>().isDead) canMove = false;
             else
             {
                 for (int i = 0; i < range.Length; i++)

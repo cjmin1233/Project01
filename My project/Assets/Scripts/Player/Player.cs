@@ -433,10 +433,13 @@ public class Player : MonoBehaviour
         CurHP = 0;
         // »ç¸Á ¼Ò¸®
         canMove = false;
-        rb.gravityScale = 0f;
-        rb.velocity = Vector2.zero;
+        //rb.gravityScale = 0f;
+        //rb.velocity = new Vector2(0f, rb.velocity.y);
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX;
 
         // »ç¸Á UI Ãâ·Â
         UI_Container.Instance.EnableDieUI();
+
+        GameManager.Instance.isPlaying = false;
     }
 }

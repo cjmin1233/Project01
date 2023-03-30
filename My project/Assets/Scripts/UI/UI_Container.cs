@@ -179,9 +179,11 @@ public class UI_Container : MonoBehaviour
         }
         else borderImage.color = new Color(255f, 255f, 255f);
     }
-    public void RandomAbility()
+    public void GetRandomAbility()
     {
-        if (Ability_UI.activeSelf) return;
+        //if (Ability_UI.activeSelf) return;
+        if (popup_ui_counter > 0 || PlayerDieUI.activeSelf) return;
+
         totalWeight = 0;
         // 새로운 리스트에 출현가능한 어빌리티들 복사
         List<GameObject> selection = new List<GameObject>();
@@ -452,9 +454,10 @@ public class UI_Container : MonoBehaviour
         // 스위프트가 없으면 추가
         if (!availableAbilityList.Contains(swiftAbility)) availableAbilityList.Add(swiftAbility);
     }
-    public void UpgradeAbility()
+    public void UpgradeRandomAbility()
     {
-        if (Ability_UI.activeSelf) return;
+        //if (Ability_UI.activeSelf) return;
+        if (popup_ui_counter > 0 || PlayerDieUI.activeSelf) return;
 
         List<GameObject> selection = new List<GameObject>();
         for(int i = 0; i < SelectedAbilityList.Count; i++)
@@ -664,6 +667,7 @@ public class UI_Container : MonoBehaviour
         {
             Esc_UI.SetActive(true);
         }
+        // esc ui가 켜져있지 않으면 book ui 활성화
         else if (Input.GetKeyDown(KeyCode.B) && !Esc_UI.activeSelf)
         {
             Book_UI.SetActive(true);

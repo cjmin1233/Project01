@@ -13,7 +13,6 @@ public class Item : MonoBehaviour
     float floatingAmplitude=.2f;
     private void Awake()
     {
-        //EquipIcon.gameObject.SetActive(false);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -27,8 +26,6 @@ public class Item : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Player = collision.gameObject;
-            //EquipIcon.gameObject.SetActive(true);
-            //EquipIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
             isPickUp = true;
             UI_Container.Instance.EnableToggleText(itemIndex);
         }
@@ -37,8 +34,6 @@ public class Item : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            //EquipIcon.gameObject.SetActive(false);
-            //EquipIcon.GetComponent<Animator>().SetBool("IsEnabled", false);
             UI_Container.Instance.DisableToggleText(itemIndex);
             isPickUp = false;
         }
@@ -47,9 +42,7 @@ public class Item : MonoBehaviour
     {
         if (CompareTag("Book"))
         {
-            UI_Container.Instance.RandomAbility();
-            //Player.GetComponent<SelectAbility>().RandomAbility();
-            //Destroy(gameObject);
+            UI_Container.Instance.GetRandomAbility();
         }
         else if (CompareTag("Potion"))
         {
@@ -58,16 +51,12 @@ public class Item : MonoBehaviour
         }
         else if (CompareTag("Upgrade"))
         {
-            UI_Container.Instance.UpgradeAbility();
-            //Player.GetComponent<SelectAbility>().UpgradeAbility();
-            //Destroy(gameObject);
+            UI_Container.Instance.UpgradeRandomAbility();
         }
         else if (CompareTag("Chest"))
         {
             gameObject.GetComponent<Chest>().OpenChest();
-            //Player.GetComponent<SelectAbility>().UpgradeAbility();
-            //Destroy(gameObject);
-            this.enabled = false;
+            enabled = false;
         }
         else if (CompareTag("Coin"))
         {
