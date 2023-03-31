@@ -334,6 +334,7 @@ public class Player : MonoBehaviour
             if (isDashing)
             {
                 // 피격 회피
+                UI_Container.Instance.EnableEventText("Dodge", "회피!");
                 if (dodge_enable) UI_Container.Instance.AddPlayerBuff("Dodge", 3f);
             }
             else

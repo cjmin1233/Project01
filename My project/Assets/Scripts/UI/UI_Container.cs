@@ -90,6 +90,9 @@ public class UI_Container : MonoBehaviour
 
     // 플레이어 사망 UI
     [SerializeField] private GameObject PlayerDieUI;
+
+    // 이벤트 텍스트 UI
+    [SerializeField] private GameObject EventTextUI;
     private void OnEnable()
     {
         Instance = this;
@@ -751,5 +754,13 @@ public class UI_Container : MonoBehaviour
     public void EnableDieUI()
     {
         PlayerDieUI.SetActive(true);
+    }
+    public void EnableEventText(string name, string text)
+    {
+        EventText eventText = EventTextUI.transform.Find(name).gameObject.GetComponent<EventText>();
+        eventText.text = text;
+
+        eventText.gameObject.SetActive(false);
+        eventText.gameObject.SetActive(true);
     }
 }
