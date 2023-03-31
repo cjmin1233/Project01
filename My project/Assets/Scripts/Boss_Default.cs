@@ -201,6 +201,7 @@ public class Boss_Default : Enemy_Default
         GameManager.Instance.bossFollowing = true;
         canMove = false;
         baseSpeed = 0f;
+        EnemyPool.Instance.ClearRemainEnemies();
     }
     private void Die_Fin()
     {

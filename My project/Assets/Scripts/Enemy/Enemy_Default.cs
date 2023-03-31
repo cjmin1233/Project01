@@ -235,6 +235,16 @@ public class Enemy_Default : MonoBehaviour
         // Ã¼·Â¹Ù ¹Ý³³
         UI_Container.Instance.AddToEnemySliderPool(healthbar);
     }
+    public virtual void Eliminate()
+    {
+        curHP = 0;
+        animator.SetBool("IsDead", true);
+        canMove = false;
+        rb.velocity = Vector2.zero;
+
+        // Ã¼·Â¹Ù ¹Ý³³
+        UI_Container.Instance.AddToEnemySliderPool(healthbar);
+    }
     private void BackStep()
     {
         Vector2 force = new Vector2(transform.right.x * (-20f), 0f);
@@ -310,7 +320,6 @@ public class Enemy_Default : MonoBehaviour
     private void destoryObject()
     {
         EnemyPool.Instance.AddToPool(enemyType, gameObject);
-        EnemyPool.Instance.remainEnemies--;
     }
     private IEnumerator AutoRecovery()
     {

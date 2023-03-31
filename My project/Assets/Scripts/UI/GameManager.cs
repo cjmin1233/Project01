@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject SwordWindPool;
     [SerializeField] private GameObject ArrowPool;
     [SerializeField] private GameObject ArrowShowerPool;
-    [SerializeField] private GameObject EnemyPool;
+    [SerializeField] private GameObject EnemyPoolPrefab;
     [SerializeField] private GameObject ui_container;
     [SerializeField] private GameObject eventSystem;
     private int weaponType;
@@ -185,22 +185,28 @@ public class GameManager : MonoBehaviour
         Debug.Log("씬이 로드되었습니다.");
         Debug.Log("씬 이름은" + scene.name + "이며");
         Debug.Log("로드 타입은" + loadingType + "입니다.");
+
+        // 다음 씬으로 이동할 때
         if (loadingType == 1)
         {
             // 다음 씬에서 플레이어 이동
             TransportFinish();
         }
+        // 메인메뉴로 이동할 때
         else if (loadingType == 2)
         {
-            // 메인메뉴로 이동
             StartCoroutine(ToMainMenu());
         }
+        // 첫번째 씬 로딩 후
         else if (loadingType == 3)
         {
-            // 첫 씬 로딩 후 세팅
             OnFirstSceneLoaded();
         }
-        else Debug.Log("아무것도 안합니다");
+        else
+        {
+            // 로딩 씬이 로드되었을 때 loadingType==0
+            // Debug.Log("아무것도 안합니다");
+        }
 
         loadingType = 0;
     }
@@ -270,8 +276,8 @@ public class GameManager : MonoBehaviour
         gameObject.name = ui_container.name;
         AddToList(gameObject);
 
-        gameObject = Instantiate(EnemyPool);
-        gameObject.name = EnemyPool.name;
+        gameObject = Instantiate(EnemyPoolPrefab);
+        gameObject.name = EnemyPoolPrefab.name;
         AddToList(gameObject);
 
         #endregion
@@ -293,13 +299,14 @@ public class GameManager : MonoBehaviour
     public IEnumerator TransportFlow(Vector3 dest, bool loadScene)
     {
         destination = dest;
-        //faded = false;
         StartCoroutine(UI_Container.Instance.FadeOutStart());
         // 페이드 완료시까지 대기
         yield return new WaitUntil(() => fadeState == "faded");
         isPlaying = false;
         if (loadScene)
         {
+            // 다음 씬 이동시 남은 적 제거
+            EnemyPool.Instance.ClearRemainEnemies();
             LoadingSceneController.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, 1);
         }
         else
@@ -341,7 +348,7 @@ public class GameManager : MonoBehaviour
         }
         StartCoroutine(UI_Container.Instance.FadeInStart());
         isPlaying = true;
-        Debug.Log("플레이어 전송 끝");
+        //Debug.Log("플레이어 전송 끝");
     }
     public IEnumerator GiveUpFlow()
     {
@@ -356,6 +363,9 @@ public class GameManager : MonoBehaviour
         DataManager.Instance.data.weaponType = -1;
         DataManager.Instance.SaveGameData();
 
+        // 다음 씬 이동시 남은 적 제거
+        EnemyPool.Instance.ClearRemainEnemies();
+
         // 로딩씬 호출
         LoadingSceneController.LoadScene(0, 2);
         yield break;
@@ -368,6 +378,9 @@ public class GameManager : MonoBehaviour
 
         isPlaying = false;
         MainCamera.transform.position = new Vector3(0f, 0f, -10f);
+
+        // 다음 씬 이동시 남은 적 제거
+        EnemyPool.Instance.ClearRemainEnemies();
 
         // 로딩씬 호출
         LoadingSceneController.LoadScene(0, 2);

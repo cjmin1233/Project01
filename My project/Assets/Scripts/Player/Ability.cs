@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Ability : MonoBehaviour
 {
-    //public int index;
-    //public int Type;
-    //public int Tier;
     public int index;
     public bool hidden;
     public int level;
     public int weight;
-    //public bool isAppeared = false;
-    //public bool isSelected = false;
-    public void IncreaseLevel()
+
+    private GameObject upgradeLevel;
+    private void Awake()
     {
-        level++;
+        upgradeLevel = transform.Find("UpgradeLevelText").gameObject;
+    }
+    public void EnableUpgradeLevelText(string text)
+    {
+        if (upgradeLevel != null) upgradeLevel.GetComponent<TextMeshProUGUI>().text = text;
     }
 }

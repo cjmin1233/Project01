@@ -216,6 +216,9 @@ public class UI_Container : MonoBehaviour
                         break;
                     }
                 }
+                // 선택된 어빌리티 업그레이드 레벨 텍스트 없애기
+                selection[rand].GetComponent<Ability>().EnableUpgradeLevelText(" ");
+
                 RectTransform rect = selection[rand].GetComponent<RectTransform>();
                 rect.anchoredPosition = buttonLocations[idx].anchoredPosition;
                 selection[rand].SetActive(true);
@@ -470,13 +473,18 @@ public class UI_Container : MonoBehaviour
         if (selection.Count == 0) AlermTextEnable("강화가능한 어빌리티가 없습니다.");
         else
         {
-            Debug.Log("강화가능한 어빌리티 개수 : " + selection.Count);
+            //Debug.Log("강화가능한 어빌리티 개수 : " + selection.Count);
             Ability_UI.SetActive(true);
             int idx = 0;
             int rand;
             while (selection.Count > 0)
             {
                 rand = Random.Range(0, selection.Count);
+
+                // 선택된 어빌리티 업그레이드 레벨 텍스트 활성화
+                Ability ability = selection[rand].GetComponent<Ability>();
+                string upgrade_level_text = "Lv." + ability.level.ToString() + " > Lv." + (ability.level + 1).ToString();
+                ability.EnableUpgradeLevelText(upgrade_level_text);
 
                 RectTransform rect = selection[rand].GetComponent<RectTransform>();
                 rect.anchoredPosition = buttonLocations[idx].anchoredPosition;

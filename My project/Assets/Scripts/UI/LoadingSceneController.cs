@@ -56,7 +56,7 @@ public class LoadingSceneController : MonoBehaviour
                     op.allowSceneActivation = true;
                     // 로딩 완료 후 행동 지정
                     GameManager.Instance.loadingType = loadingType;
-                    Debug.Log("로딩 완료?" + timer);
+                    //Debug.Log("로딩 완료?" + timer);
                 }
             }
         }

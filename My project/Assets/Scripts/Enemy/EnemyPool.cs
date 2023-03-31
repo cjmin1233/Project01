@@ -33,7 +33,11 @@ public class EnemyPool : MonoBehaviour
     [SerializeField] private GameObject[] enemyPrefab;
     private int[] enemy_id_counter;
     private MultiQueue<GameObject> enemyQueue;
-    public int remainEnemies;
+    //public int remainEnemies;
+
+    // 남은 적 관리
+    public List<GameObject> remainEnemiesList;
+    //public Queue<GameObject> ramainEnemiesQueue;
     public static EnemyPool Instance { get; private set; }
 
     private void OnEnable()
@@ -41,6 +45,9 @@ public class EnemyPool : MonoBehaviour
         Instance = this;
         //
         enemyQueue = new MultiQueue<GameObject>(enemyPrefab.Length);
+        remainEnemiesList = new List<GameObject>();
+        //ramainEnemiesQueue = new Queue<GameObject>();
+
         enemy_id_counter = new int[enemyPrefab.Length];
 
         for(int i = 0; i < enemyPrefab.Length; i++)
@@ -48,7 +55,7 @@ public class EnemyPool : MonoBehaviour
             enemy_id_counter[i] = 0;
             GrowPool(i);
         }
-        remainEnemies = -1;
+        //remainEnemies = -1;
     }
     private void GrowPool(int index)
     {
@@ -66,14 +73,28 @@ public class EnemyPool : MonoBehaviour
         instance.GetComponent<Enemy_Default>().enemyType = index;
         instance.SetActive(false);
         enemyQueue.Enqueue(index, instance);
+        if (remainEnemiesList.Contains(instance)) remainEnemiesList.Remove(instance);
     }
 
     public GameObject GetFromPool(int index)
     {
         if (enemyQueue.Count(index) == 0) GrowPool(index);
         var instance = enemyQueue.Dequeue(index);
-        if (remainEnemies < 0) remainEnemies = 0;
-        remainEnemies++;
+        //if (remainEnemies < 0) remainEnemies = 0;
+        //remainEnemies++;
+        //ramainEnemiesQueue.Enqueue(instance);
+        remainEnemiesList.Add(instance);
         return instance;
+    }
+    public int GetEnemiesCount()
+    {
+        return remainEnemiesList.Count;
+    }
+    public void ClearRemainEnemies()
+    {
+        for (int i = remainEnemiesList.Count - 1; i >= 0; i--)
+        {
+            remainEnemiesList[i].GetComponent<Enemy_Default>().Eliminate();
+        }
     }
 }

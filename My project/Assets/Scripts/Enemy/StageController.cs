@@ -44,7 +44,10 @@ public class StageController : MonoBehaviour
         }
         isStarted = true;
 
-        if (enemies_type.Length == 0) EnemyPool.Instance.remainEnemies = 0;
+        if (enemies_type.Length == 0)
+        {
+            //
+        }
         else
         {
             UI_Container.Instance.NoticeSubTextEnable("적을 처치하십시오\n(" + $"{enemies_type.Length}/{enemies_type.Length}" + ")");
@@ -55,9 +58,9 @@ public class StageController : MonoBehaviour
     {
         if (isStarted)
         {
-            if (remainEnemies != EnemyPool.Instance.remainEnemies)
+            if (remainEnemies != EnemyPool.Instance.GetEnemiesCount())
             {
-                remainEnemies = EnemyPool.Instance.remainEnemies;
+                remainEnemies = EnemyPool.Instance.GetEnemiesCount();
                 UI_Container.Instance.NoticeSubTextEnable("적을 처치하십시오\n(" + $"{remainEnemies}/{enemies_type.Length}" + ")");
             }
             if (remainEnemies == 0)
