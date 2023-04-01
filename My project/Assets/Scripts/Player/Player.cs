@@ -363,6 +363,7 @@ public class Player : MonoBehaviour
                     if (resistance_enable && CurHP / MaxHP <= 0.4f) damage *= 0.9f;
 
                     CurHP -= Mathf.Round(damage);
+                    UI_Container.Instance.EnableEventText("Damage", ((int)damage).ToString());
                     // 무적 시간 부여
                     canInvincible = true;
                     damagingTimeLeft = damagingTime;
