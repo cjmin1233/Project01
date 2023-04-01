@@ -7,12 +7,12 @@ public class EventText : MonoBehaviour
 {
     [HideInInspector] public string text;
     [SerializeField] private float y_speed;
-    private TextMeshProUGUI event_text;
+    private TextMeshPro event_text;
     private float alpha;
     private Color textColor;
     private void Awake()
     {
-        event_text = GetComponent<TextMeshProUGUI>();
+        event_text = GetComponent<TextMeshPro>();
     }
     private void OnEnable()
     {

@@ -325,6 +325,7 @@ public class Player : MonoBehaviour
         CurHP += heal;
         if (CurHP > MaxHP) CurHP = MaxHP;
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
+        UI_Container.Instance.EnableEventText("Heal", "+" + ((int)heal).ToString());
     }
     public void TakeDamage(float damage)
     {
@@ -387,6 +388,7 @@ public class Player : MonoBehaviour
         get_gold = (int)Mathf.Round(get_gold * gold_multiplier);
         gold += get_gold;
         UI_Container.Instance.HandleGold(gold);
+        UI_Container.Instance.EnableEventText("Gold", "+" + get_gold.ToString() + "G");
     }
     public int CheckGold()
     {
@@ -396,6 +398,7 @@ public class Player : MonoBehaviour
     {
         gold -= price;
         UI_Container.Instance.HandleGold(gold);
+        UI_Container.Instance.EnableEventText("Purchase", "-" + price.ToString() + "G");
     }
     private IEnumerator Damaging_Check()
     {

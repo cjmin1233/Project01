@@ -757,10 +757,10 @@ public class UI_Container : MonoBehaviour
     }
     public void EnableEventText(string name, string text)
     {
-        EventText eventText = EventTextUI.transform.Find(name).gameObject.GetComponent<EventText>();
-        eventText.text = text;
-
-        eventText.gameObject.SetActive(false);
-        eventText.gameObject.SetActive(true);
+        GameObject eventTextObject = EventTextUI.transform.Find(name).gameObject;
+        eventTextObject.GetComponent<EventText>().text = text;
+        eventTextObject.transform.position = playerObject.transform.position;
+        eventTextObject.SetActive(false);
+        eventTextObject.SetActive(true);
     }
 }
