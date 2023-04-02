@@ -315,10 +315,12 @@ public class Player : MonoBehaviour
     }
     public void IncreaseMaxHP()
     {
-        MaxHP += Mathf.Round(25f * hpincrease_multiplier);
-        CurHP += Mathf.Round(25f * hpincrease_multiplier);
+        float increase = Mathf.Round(25f * hpincrease_multiplier);
+        MaxHP += increase;
+        CurHP += increase;
 
         UI_Container.Instance.HandleHP(CurHP, MaxHP);
+        UI_Container.Instance.EnableEventText("Heal", "+" + ((int)increase).ToString() + "HP");
     }
     public void Heal(float heal)
     {

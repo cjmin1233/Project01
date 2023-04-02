@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public string fadeState;
     private Vector3 destination;
 
+    // 서펜트 스크류
+    [SerializeField] private GameObject SerpentScrewPrefab;
     private void Awake()
     {
         #region 객체 직렬화
@@ -396,5 +398,16 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => fadeState == "clear");
 
         ClearObjects();
+    }
+    public void EnableSurpentScrew()
+    {
+        if (SerpentScrewPrefab != null)
+        {
+            GameObject screw = Instantiate(SerpentScrewPrefab);
+            screw.name = SerpentScrewPrefab.name;
+            screw.transform.SetParent(player.transform);
+            screw.transform.position = player.GetComponent<BoxCollider2D>().bounds.center;
+            screw.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 }

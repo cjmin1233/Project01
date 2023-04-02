@@ -303,7 +303,8 @@ public class UI_Container : MonoBehaviour
         }
         else if (name == "Aura")
         {
-            ///////////////////////////////
+            ///////////////////////////////서펜트 스크류
+            GameManager.Instance.EnableSurpentScrew();
         }
         else if (name == "GoldRush")
         {
