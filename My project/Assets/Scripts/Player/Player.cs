@@ -350,10 +350,11 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    if (!playerAttack.isZAttacking && !playerAttack.isXAttacking && !animator.GetBool("IsJumping") && movementX == 0f) animator.SetTrigger("Hit");
                     // 플레이어 밀침 효과
                     float damageForce = 20.0f;
                     rb.AddForce(new Vector2(-1f * transform.right.x * damageForce, 0f), ForceMode2D.Impulse);
+
+                    #region 데미지 계산
                     damage /= defence_multiplier;
 
                     if (playerAttack.sword_shield_enable && playerAttack.isXAttacking)
@@ -363,14 +364,23 @@ public class Player : MonoBehaviour
                     }
 
                     if (resistance_enable && CurHP / MaxHP <= 0.4f) damage *= 0.9f;
+                    #endregion
 
                     CurHP -= Mathf.Round(damage);
-                    UI_Container.Instance.EnableEventText("Damage", ((int)damage).ToString());
+                    // 데미지 표현
+                    if (damage > 0f)
+                    {
+                        UI_Container.Instance.EnableEventText("Damage", "-" + Mathf.RoundToInt(damage).ToString());
+                        if (!playerAttack.isZAttacking && !playerAttack.isXAttacking && !animator.GetBool("IsJumping") && movementX == 0f)
+                        {
+                            animator.SetTrigger("Hit");
+                        }
+                    }
                     // 무적 시간 부여
                     canInvincible = true;
                     damagingTimeLeft = damagingTime;
                     StartCoroutine(Damaging_Check());
-                    if (CurHP <= 0 && !isDead)
+                    if (CurHP <= 0f && !isDead)
                     {
                         // 플레이어 사망
                         Die();
@@ -390,8 +400,11 @@ public class Player : MonoBehaviour
     {
         get_gold = (int)Mathf.Round(get_gold * gold_multiplier);
         gold += get_gold;
-        UI_Container.Instance.HandleGold(gold);
-        UI_Container.Instance.EnableEventText("Gold", "+" + get_gold.ToString() + "G");
+        if (get_gold > 0)
+        {
+            UI_Container.Instance.HandleGold(gold);
+            UI_Container.Instance.EnableEventText("Gold", "+" + get_gold.ToString() + "G");
+        }
     }
     public int CheckGold()
     {
@@ -400,8 +413,11 @@ public class Player : MonoBehaviour
     public void Purchase(int price)
     {
         gold -= price;
-        UI_Container.Instance.HandleGold(gold);
-        UI_Container.Instance.EnableEventText("Purchase", "-" + price.ToString() + "G");
+        if (price > 0)
+        {
+            UI_Container.Instance.HandleGold(gold);
+            UI_Container.Instance.EnableEventText("Purchase", "-" + price.ToString() + "G");
+        }
     }
     private IEnumerator Damaging_Check()
     {
@@ -447,6 +463,9 @@ public class Player : MonoBehaviour
         // 사망 UI 출력
         UI_Container.Instance.EnableDieUI();
 
+        // 서펜트 어빌리티 비활성화
+        GameObject surpent = transform.Find("Serpent_Screw").gameObject;
+        if (surpent != null) surpent.SetActive(false);
         GameManager.Instance.isPlaying = false;
     }
 }

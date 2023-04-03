@@ -8,9 +8,11 @@ public class Screw_Collider : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private int fxType;
     private List<string> hit_list;
+    private GameObject playerObject;
     private void Awake()
     {
         hit_list = new List<string>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -29,5 +31,7 @@ public class Screw_Collider : MonoBehaviour
     private void ClearHitList()
     {
         hit_list.Clear();
+        // 플레이어 위치로 이동
+        transform.position = playerObject.GetComponent<BoxCollider2D>().bounds.center;
     }
 }

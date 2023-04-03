@@ -55,6 +55,8 @@ public class Enemy_Default : MonoBehaviour
     [SerializeField] private float recoveryRate;
     private bool isRecovering = false;
 
+    // 드랍하는 골드
+    protected int gold;
     protected virtual void OnEnable()
     {
         #region 초기 세팅
@@ -230,7 +232,7 @@ public class Enemy_Default : MonoBehaviour
         rb.velocity = Vector2.zero;
         // 골드 생성
         player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<Player>().GetGold(100);
+        player.GetComponent<Player>().GetGold(Random.Range(Mathf.RoundToInt(0.5f * gold), gold));
 
         // 체력바 반납
         UI_Container.Instance.AddToEnemySliderPool(healthbar);
@@ -338,5 +340,10 @@ public class Enemy_Default : MonoBehaviour
             yield return null;
         }
         isRecovering = false;
+    }
+    public void EnemySetting(float max_hp, int max_gold)
+    {
+        maxHP = max_hp;
+        gold = max_gold;
     }
 }

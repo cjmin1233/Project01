@@ -148,6 +148,7 @@ public class Boss_Default : Enemy_Default
             float range = Random.Range(0, max_x - min_x);
             Debug.Log("소환 위치: " + range + " / " + (max_x - min_x));
             enemy.transform.position = new Vector3(transform.position.x + min_x + range, transform.position.y, 0f);
+            enemy.GetComponent<Enemy_Default>().EnemySetting(200f, 0);
             enemy.SetActive(true);
         }
     }

@@ -301,9 +301,8 @@ public class UI_Container : MonoBehaviour
         {
             _player.guard_enable = true;
         }
-        else if (name == "Aura")
+        else if (name == "Surpent")
         {
-            ///////////////////////////////서펜트 스크류
             GameManager.Instance.EnableSurpentScrew();
         }
         else if (name == "GoldRush")
@@ -398,6 +397,7 @@ public class UI_Container : MonoBehaviour
     }
     public void SelectLogUpdate(Ability ability)
     {
+        // 직접 어빌리티 선택했을 때만 호출
         SelectLog.Add(ability.index);
     }
     public void CollectionZ()
@@ -463,7 +463,6 @@ public class UI_Container : MonoBehaviour
     }
     public void UpgradeRandomAbility()
     {
-        //if (Ability_UI.activeSelf) return;
         if (popup_ui_counter > 0 || PlayerDieUI.activeSelf) return;
 
         List<GameObject> selection = new List<GameObject>();
@@ -509,14 +508,6 @@ public class UI_Container : MonoBehaviour
     public void QuitGame()
     {
         Time.timeScale = 1f;
-        /*int length = SelectLog.Count;
-        int[] arr = new int[length];
-        for (int i = 0; i < length; i++)
-        {
-            arr[i] = SelectLog[i];
-        }
-        DataManager.Instance.data.select_log = arr;*/
-
         StartCoroutine(GameManager.Instance.QuitGameFlow());
     }
     public void SaveSelectLog()
