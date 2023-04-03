@@ -14,6 +14,10 @@ public class Screw_Collider : MonoBehaviour
         hit_list = new List<string>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
     }
+    private void Update()
+    {
+        transform.localRotation = playerObject.transform.rotation;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         string tag = collision.tag;

@@ -29872,11 +29872,27 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enable_objective.Array.data[0]
       value: 
       objectReference: {fileID: 2141701014}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enemies_trasform.Array.data[0]
+      value: 
+      objectReference: {fileID: 38342924}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].maxHP
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].drop_gold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].enemy_transform
       value: 
       objectReference: {fileID: 38342924}
     - target: {fileID: 948513166190360575, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
@@ -29974,6 +29990,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enable_objective.Array.data[0]
       value: 
       objectReference: {fileID: 1061682267}
@@ -29987,6 +30007,50 @@ PrefabInstance:
       objectReference: {fileID: 703510395}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enemies_trasform.Array.data[2]
+      value: 
+      objectReference: {fileID: 1495426190}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].maxHP
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].maxHP
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[2].maxHP
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].drop_gold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].drop_gold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[2].drop_gold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].enemy_type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[2].enemy_type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].enemy_transform
+      value: 
+      objectReference: {fileID: 1692897253}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].enemy_transform
+      value: 
+      objectReference: {fileID: 703510395}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[2].enemy_transform
       value: 
       objectReference: {fileID: 1495426190}
     - target: {fileID: 948513166190360575, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
@@ -30638,6 +30702,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enable_objective.Array.data[0]
       value: 
       objectReference: {fileID: 582735769}
@@ -30655,6 +30723,70 @@ PrefabInstance:
       objectReference: {fileID: 1952810485}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enemies_trasform.Array.data[3]
+      value: 
+      objectReference: {fileID: 341245213}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[2].maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[3].maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].drop_gold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].drop_gold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[2].drop_gold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[3].drop_gold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].enemy_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].enemy_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[2].enemy_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[3].enemy_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].enemy_transform
+      value: 
+      objectReference: {fileID: 903435886}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].enemy_transform
+      value: 
+      objectReference: {fileID: 1831883357}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[2].enemy_transform
+      value: 
+      objectReference: {fileID: 1952810485}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[3].enemy_transform
       value: 
       objectReference: {fileID: 341245213}
     - target: {fileID: 948513166190360575, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
@@ -30930,6 +31062,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enable_objective.Array.data[0]
       value: 
       objectReference: {fileID: 558244904}
@@ -30939,6 +31075,34 @@ PrefabInstance:
       objectReference: {fileID: 2099209362}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enemies_trasform.Array.data[1]
+      value: 
+      objectReference: {fileID: 1786747747}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].maxHP
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].drop_gold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].drop_gold
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].enemy_type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].enemy_transform
+      value: 
+      objectReference: {fileID: 2099209362}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].enemy_transform
       value: 
       objectReference: {fileID: 1786747747}
     - target: {fileID: 948513166190360575, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
@@ -63859,6 +64023,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enable_objective.Array.data[0]
       value: 
       objectReference: {fileID: 883119291}
@@ -63868,6 +64036,38 @@ PrefabInstance:
       objectReference: {fileID: 1806996522}
     - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
       propertyPath: enemies_trasform.Array.data[1]
+      value: 
+      objectReference: {fileID: 511587558}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].maxHP
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].maxHP
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].drop_gold
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].drop_gold
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].enemy_type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].enemy_type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[0].enemy_transform
+      value: 
+      objectReference: {fileID: 1806996522}
+    - target: {fileID: 948513166190360573, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}
+      propertyPath: enemySummonDatas.Array.data[1].enemy_transform
       value: 
       objectReference: {fileID: 511587558}
     - target: {fileID: 948513166190360575, guid: 3ee0ae5cc4b0fe54bb566df397721c07, type: 3}

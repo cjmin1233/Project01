@@ -50,10 +50,10 @@ public class Enemy_Default : MonoBehaviour
     private Vector3 safePos;
     bool grounded = false;
 
-    // 체력 재생
-    [SerializeField] private float recovery;
-    [SerializeField] private float recoveryRate;
-    private bool isRecovering = false;
+    /*// 체력 재생
+    [SerializeField] protected float recovery;
+    [SerializeField] protected float recoveryRate;
+    protected bool isRecovering = false;*/
 
     // 드랍하는 골드
     protected int gold;
@@ -217,10 +217,10 @@ public class Enemy_Default : MonoBehaviour
             {
                 Die();
             }
-            else if (recovery > 0f && !isRecovering)
+            /*else if (recovery > 0f && !isRecovering)
             {
                 StartCoroutine(AutoRecovery());
-            }
+            }*/
         }
     }
     protected virtual void Die()
@@ -323,7 +323,7 @@ public class Enemy_Default : MonoBehaviour
     {
         EnemyPool.Instance.AddToPool(enemyType, gameObject);
     }
-    private IEnumerator AutoRecovery()
+    /*protected IEnumerator AutoRecovery()
     {
         isRecovering = true;
         float timer = 0f;
@@ -340,7 +340,7 @@ public class Enemy_Default : MonoBehaviour
             yield return null;
         }
         isRecovering = false;
-    }
+    }*/
     public void EnemySetting(float max_hp, int max_gold)
     {
         maxHP = max_hp;
