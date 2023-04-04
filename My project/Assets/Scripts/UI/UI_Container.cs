@@ -197,7 +197,7 @@ public class UI_Container : MonoBehaviour
             availableAbilityList[i].SetActive(false);
             selection.Add(availableAbilityList[i]);
         }
-        if (selection.Count == 0) AlermTextEnable("획득 가능한 어빌리티가 없습니다.");   // 남아있는 어빌리티가 없음
+        if (selection.Count == 0) EnableAlermText("획득 가능한 어빌리티가 없습니다.");   // 남아있는 어빌리티가 없음
         else
         {
             Ability_UI.SetActive(true);
@@ -473,7 +473,7 @@ public class UI_Container : MonoBehaviour
             if (SelectedAbilityList[i].GetComponent<Ability>().level < 10) selection.Add(SelectedAbilityList[i]);
         }
 
-        if (selection.Count == 0) AlermTextEnable("강화가능한 어빌리티가 없습니다.");
+        if (selection.Count == 0) EnableAlermText("강화가능한 어빌리티가 없습니다.");
         else
         {
             //Debug.Log("강화가능한 어빌리티 개수 : " + selection.Count);
@@ -625,19 +625,19 @@ public class UI_Container : MonoBehaviour
         audioMixer.SetFloat("EffectVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("EffectVolume", volume);
     }
-    public void AlermTextEnable(string text)
+    public void EnableAlermText(string text)
     {
         AlermText.GetComponent<TextMeshProUGUI>().text = text;
         AlermText.GetComponent<Animator>().ResetTrigger("AlermTrigger");
         AlermText.GetComponent<Animator>().SetTrigger("AlermTrigger");
     }
-    public void NoticeMainTextEnable(string text)
+    public void EnableNoticeMainText(string text)
     {
         NoticeMainText.GetComponent<TextMeshProUGUI>().text = text;
         NoticeMainText.GetComponent<Animator>().ResetTrigger("AlermTrigger");
         NoticeMainText.GetComponent<Animator>().SetTrigger("AlermTrigger");
     }
-    public void NoticeSubTextEnable(string text)
+    public void EnableNoticeSubText(string text)
     {
         NoticeSubText.GetComponent<TextMeshProUGUI>().text = text;
     }

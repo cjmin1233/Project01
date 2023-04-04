@@ -45,6 +45,7 @@ public class Ranger_Attack : PlayerAttack
             if (Input.GetButtonDown("AttackX") && !isXAttacking && !isZAttacking && !isJumping && !isDashing)
             {
                 if (comboCounter == 3 || bow_fast_enable) BowXAttack();
+                else UI_Container.Instance.EnableAlermText("연계 후 사용가능합니다.");
             }
 
             //  over Z input handle
