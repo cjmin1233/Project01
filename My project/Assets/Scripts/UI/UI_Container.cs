@@ -93,6 +93,9 @@ public class UI_Container : MonoBehaviour
 
     // 이벤트 텍스트 UI
     [SerializeField] private GameObject EventTextUI;
+
+    // 차징 바
+    [SerializeField] private GameObject ChargingBar;
     private void OnEnable()
     {
         Instance = this;
@@ -754,5 +757,17 @@ public class UI_Container : MonoBehaviour
         eventTextObject.transform.position = playerObject.transform.position;
         eventTextObject.SetActive(false);
         eventTextObject.SetActive(true);
+    }
+    public void EnableChargingBar()
+    {
+        ChargingBar.GetComponent<Animator>().SetBool("IsEnabled", true);
+    }
+    public void UpdateChargingBar(float amount)
+    {
+        ChargingBar.GetComponent<Slider>().value = amount;
+    }
+    public void DisableChargingBar()
+    {
+        ChargingBar.GetComponent<Animator>().SetBool("IsEnabled",false);
     }
 }

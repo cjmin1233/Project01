@@ -13,11 +13,11 @@ public class Knight_Attack : PlayerAttack
     [SerializeField] private GameObject ChargeEffect;
     private bool isCharging = false;
     private int chargeCounter = 0;
-
     private float combo_coef = 0.4f;
     private float sp_coef = 1.5f;
     private float wind_coef = 0.2f;
 
+    [Range(0,1)] public float chargeAmount = 0f;
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -70,10 +70,17 @@ public class Knight_Attack : PlayerAttack
                     SwordXAttack();
                 }
             }
-            if (Input.GetButtonUp("AttackX") && isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
+            if (isXAttacking && !isZAttacking && !isJumping && !isDashing && isCharging)
             {
-                isCharging = false;
-                animator.SetBool("IsCharging", isCharging);
+                if (Input.GetButtonUp("AttackX"))
+                {
+                    isCharging = false;
+                    animator.SetBool("IsCharging", isCharging);
+                    // 차징 바 비활성화
+                    chargeAmount = 0f;
+                    UI_Container.Instance.DisableChargingBar();
+                }
+                UI_Container.Instance.UpdateChargingBar(chargeAmount);
             }
         }
     }
@@ -87,6 +94,11 @@ public class Knight_Attack : PlayerAttack
             ChargeEffect.transform.localScale = new Vector3(chargeScale, chargeScale, 1f);
             ChargeEffect.GetComponent<Animator>().SetTrigger("Enable");
             chargeCounter++;
+            if (chargeCounter == 3)
+            {
+                // 차징 바 비활성화
+                UI_Container.Instance.DisableChargingBar();
+            }
         }
     }
     private void Enable_Sword_Combo_Collider()
@@ -167,6 +179,8 @@ public class Knight_Attack : PlayerAttack
             isCharging = true;
             animator.SetBool("IsCharging", isCharging);
             chargeCounter = 0;
+            // 차징 바 활성화
+            UI_Container.Instance.EnableChargingBar();
         }
         else animator.SetTrigger("AttackX");
 

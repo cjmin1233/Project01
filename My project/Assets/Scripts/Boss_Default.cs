@@ -43,42 +43,44 @@ public class Boss_Default : Enemy_Default
         {
             DebuffChecker();
             canMove = false;
-            if (actionCounter < 3)
+            if (!player.GetComponent<Player>().isDead)
             {
-                for (int i = 0; i < range.Length; i++)
+                if (actionCounter < 3)
                 {
-                    if (range[i])
+                    for (int i = 0; i < range.Length; i++)
                     {
-                        canMove = false;
-                        if (Time.time >= lastAttackTime + 1 / attackRate && !isAttacking)
+                        if (range[i])
                         {
-                            LookPlayer();
-                            // 일반 패턴. 거리에 따른 우선도
-                            animator.SetTrigger("Skill" + i);
-                            isAttacking = true;
-                            animator.SetBool("IsAttacking", isAttacking);
-                            //
-                            lastAttackTime = Time.time;
+                            canMove = false;
+                            if (Time.time >= lastAttackTime + 1 / attackRate && !isAttacking)
+                            {
+                                LookPlayer();
+                                // 일반 패턴. 거리에 따른 우선도
+                                animator.SetTrigger("Skill" + i);
+                                isAttacking = true;
+                                animator.SetBool("IsAttacking", isAttacking);
+                                //
+                                lastAttackTime = Time.time;
+                            }
+                            break;
                         }
-                        break;
                     }
                 }
-            }
-            else if (Time.time >= lastAttackTime + 1 / attackRate && !isAttacking)
-            {
-                canMove = false;
-                // 메인 패턴
-                random = Random.Range(0, 3);
-                animator.SetTrigger("Main_Skill" + random);
-                isAttacking = true;
-                animator.SetBool("IsAttacking", isAttacking);
-                //
+                else if (Time.time >= lastAttackTime + 1 / attackRate && !isAttacking)
+                {
+                    canMove = false;
+                    // 메인 패턴
+                    random = Random.Range(0, 3);
+                    animator.SetTrigger("Main_Skill" + random);
+                    isAttacking = true;
+                    animator.SetBool("IsAttacking", isAttacking);
+                    //
 
-                lastAttackTime = Time.time;
+                    lastAttackTime = Time.time;
+                }
+                ////////////////////////////////////////수정 필요?
+                if (!range[0] && !range[1] && !isAttacking) canMove = true;
             }
-            ////////////////////////////////////////수정 필요?
-            if (!range[0] && !range[1] && !isAttacking) canMove = true;
-
             currentSpeed = moveSpeed_multiplier * baseSpeed;
             if (canMove)
             {

@@ -464,7 +464,7 @@ public class Player : MonoBehaviour
         UI_Container.Instance.EnableDieUI();
 
         // 서펜트 어빌리티 비활성화
-        GameObject surpent = transform.Find("Serpent_Screw").gameObject;
+        var surpent = transform.Find("Serpent_Screw")?.gameObject;
         if (surpent != null) surpent.SetActive(false);
         GameManager.Instance.isPlaying = false;
     }
