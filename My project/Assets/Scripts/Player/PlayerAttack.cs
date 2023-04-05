@@ -107,7 +107,7 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("IsXAttacking", isXAttacking);
 
         comboCounter = 0;
-        gameObject.GetComponent<Player>().canMove = true;
+        GetComponent<Player>().canMove = true;
         // 스택 초기화
         inputZCounter = 0;
     }
@@ -115,9 +115,12 @@ public class PlayerAttack : MonoBehaviour
     public void PlayerInit()
     {
         // after image off
-        gameObject.GetComponent<Player>().AfterImageAvailable = false;
+        GetComponent<Player>().AfterImageAvailable = false;
+        // 스킬로 인한 움직임 고정, 무적, 카메라 고정 등 해제
         GetComponent<Player>().canMove = true;
+        GetComponent<Player>().skillInvincible = false;
         GameManager.Instance.playerFollowing = true;
+
         isZAttacking = false;
         isXAttacking = false;
         animator.SetBool("IsZAttacking", isZAttacking);

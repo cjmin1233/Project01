@@ -7,23 +7,22 @@ public class Combo_Collider : MonoBehaviour
     public int fxType;
     [HideInInspector] public float damage;
     [HideInInspector] public Vector2 damageForce;
-    [HideInInspector] public bool critical;
+    [HideInInspector] public bool critical = false;
+    [HideInInspector] public bool absorb_enable = false;
     private PlayerAttack playerAttack;
     private Player player;
 
     public AudioSource[] audioSource;
-    private List<string> hit_list;
+    private List<string> hit_list = new List<string>();
     int rand;
     private void Awake()
     {
         //animator = GetComponent<Animator>();
         playerAttack = transform.parent.GetComponent<PlayerAttack>();
         player = transform.parent.GetComponent<Player>();
-        critical = false;
     }
     private void OnEnable()
     {
-        hit_list = new List<string>();
         rand = Random.Range(0, audioSource.Length);
         if (audioSource[rand] != null) audioSource[rand].PlayOneShot(audioSource[rand].clip);
     }
@@ -44,7 +43,7 @@ public class Combo_Collider : MonoBehaviour
             {
                 if (critical) collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, critical, Color.yellow, 5);
                 else collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, critical, Color.white, fxType);
-                if (playerAttack.sword_cursed_enable) player.Heal(2f);
+                if (absorb_enable) player.Heal(2f);
             }
         }
     }

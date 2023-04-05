@@ -51,9 +51,12 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public float MaxHP;
     [HideInInspector] public float CurHP;
+    [HideInInspector] public int invincibleCounter;
     [HideInInspector] public bool canInvincible;
+    [HideInInspector] public bool damagingInvincible;
+    [HideInInspector] public bool skillInvincible;
     [SerializeField] private AudioSource damage_shield_sound;
-    private float damagingTimeLeft = -1f;
+    private float damagingTimeLeft;
     const float damagingTime = 1f;
 
     [HideInInspector] public float gold_multiplier = 1f;
@@ -64,6 +67,9 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         canInvincible = false;
+        damagingInvincible = false;
+        skillInvincible = false;
+        invincibleCounter = 0;
         damagingTimeLeft = -1f;
 
         rb = GetComponent<Rigidbody2D>();
@@ -92,12 +98,12 @@ public class Player : MonoBehaviour
     {
         if (!isDead)
         {
-            //
+            // 20초동안 안맞으면 가드 어빌리티 활성화
             if (Time.time > lastDamageTime + 20f && guard_enable)
             {
                 UI_Container.Instance.AddPlayerBuff("Guard", -1f);
             }
-            //
+            // 체력 40퍼 이하시 최후의 저항 어빌리티 활성화
             if (resistance_enable && CurHP / MaxHP <= 0.4f)
             {
                 UI_Container.Instance.AddPlayerBuff("Resistance", -1f);
@@ -130,18 +136,13 @@ public class Player : MonoBehaviour
                 UI_Container.Instance.UpgradeRandomAbility();
             }
             /////////////////////
-            currentSpeed = moveSpeed_multiplier * baseSpeed;
-            if (canMove)
+            if (!isDashing)
             {
-                if (!isDashing) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
-                animator.SetFloat("Speed", Mathf.Abs(movementX));
+                currentSpeed = moveSpeed_multiplier * baseSpeed;
+                if (canMove) movementX = Input.GetAxisRaw("Horizontal") * currentSpeed;
+                else movementX = 0f;
             }
-            else
-            {
-                if (!isDashing) movementX = 0f;
-                animator.SetFloat("Speed", Mathf.Abs(movementX));
-            }
-
+            animator.SetFloat("Speed", Mathf.Abs(movementX));
 
             if (Input.GetButton("Jump") && !isDashing && !animator.GetBool("IsJumping"))
             {
@@ -155,12 +156,12 @@ public class Player : MonoBehaviour
                 {
                     if (Time.time >= (lastDash + dashCoolDown))
                     {
+                        jump = false;   // 점프와 동시입력 방지
                         movementX = Input.GetAxisRaw("Horizontal");
                         AttemptToDash();
                     }
                 }
             }
-            //DamagingCheck();
             FlipPlayer();
             CheckDash();
             CheckAfterImage();
@@ -177,14 +178,12 @@ public class Player : MonoBehaviour
     }
     private void FlipPlayer()
     {
-        if (movementX > 0)
-        {
-            if (transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-        else if (movementX < 0)
-        {
-            if (transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        }
+        // 플레이어 transform.rotation 뒤집기 함수
+
+        // 오른쪽으로 가려는데 왼쪽을 보고 있는 경우
+        if (movementX > 0 && transform.rotation.y != 0f) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+        // 왼쪽으로 가려는데 오른쪽을 보고 있는 경우
+        else if (movementX < 0 && transform.rotation.y == 0f) transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }
     private void AttemptToDash()
     {
@@ -195,8 +194,10 @@ public class Player : MonoBehaviour
 
         // 대쉬 조건 초기화
         isDashing = true;
+        animator.SetBool("IsDashing", isDashing);
         dashTimeLeft = dashTime;
         lastDash = Time.time;
+        currentSpeed = dashPower * moveSpeed_multiplier * baseSpeed;
 
         AfterimagePool.Instance.GetFromPool();
         lastImageXpos = transform.position.x;
@@ -208,32 +209,23 @@ public class Player : MonoBehaviour
             if (dashTimeLeft > 0)
             {
                 // 대쉬 방향 설정
-                animator.SetBool("IsDashing", isDashing);
-                currentSpeed = dashPower * moveSpeed_multiplier * baseSpeed;
                 movementX = transform.right.x * currentSpeed;
-
-
                 dashTimeLeft -= Time.deltaTime;
 
+                // 잔상과 일정 간격 이상일 때 잔상 생성
                 if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
                 {
                     AfterimagePool.Instance.GetFromPool();
                     lastImageXpos = transform.position.x;
                 }
-
             }
             if (dashTimeLeft <= 0)
             {
                 // 대쉬 정지
-                canMove = true;
-                currentSpeed = moveSpeed_multiplier * baseSpeed;
+                //canMove = true;
+                //currentSpeed = moveSpeed_multiplier * baseSpeed;
                 isDashing = false;
                 animator.SetBool("IsDashing", isDashing);
-                if (damagingTimeLeft <= 0)
-                {
-                    // 데미지를 입은 상태가 아니라면 무적 해제
-                    Invincible_OFF();
-                }
             }
         }
     }
@@ -261,7 +253,6 @@ public class Player : MonoBehaviour
     }
     private void VerticalMove()
     {
-        ///////////////////////////////
         bool wasGrounded = isGrounded;
         isGrounded = false;
         if (GetComponent<Player_Collider_Checker>().groundCollision && ground_checker.isGrounded) isGrounded = true;
@@ -270,39 +261,10 @@ public class Player : MonoBehaviour
             // 공중에서 착지
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsJumpingDown", false);
-            //animator.SetBool("IsFalling", false);
-            //rb.velocity = Vector2.zero;
         }
-        //////////////////////////////
-        /*bool wasGrounded = isGrounded;
-        isGrounded = false;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(GroundCheck.position, GroundedRadius, WhatIsGround);
-
-        //if (colliders.Length == 0 && !wasGrounded) Debug.Log("I'm flying!");
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                isGrounded = true;
-                //Debug.Log(colliders[i].gameObject.layer);
-                if (!wasGrounded)
-                {
-                    // 현재는 땅에 닿았으나 이전 프레임에는 닿지 않은 경우, 즉 방금 착지한 경우
-                    animator.SetBool("IsJumping", false);
-                    animator.SetBool("IsJumpingDown", false);
-                }
-            }
-        }*/
-        /*// 점프하지 않고 낙하하는 경우
-        if (wasGrounded && !isGrounded && rb.velocity.y <= 0)
-        {
-            Debug.Log("i'm falling! Am I jumping? : " + animator.GetBool("IsJumping"));
-        }*/
         // 점프없이 낙하하는 경우
         if (wasGrounded && !isGrounded)
         {
-            Debug.Log("Not grounded");
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsJumpingDown", true);
             animator.SetTrigger("Fall");
@@ -310,7 +272,6 @@ public class Player : MonoBehaviour
         if (prev_vel_y > 0 && rb.velocity.y <= 0 && animator.GetBool("IsJumping"))
         {
             // 점프중 낙하구간
-            //Debug.Log("Jumping and falling");
             animator.SetBool("IsJumpingDown", true);
         }
         prev_vel_y = rb.velocity.y;
@@ -345,11 +306,11 @@ public class Player : MonoBehaviour
     public void TakeDamage(float damage)
     {
         // 죽지 않았고 무적이 아닐 때
-        if (!canInvincible && !isDead)
+        if (!isDead && !damagingInvincible && !skillInvincible)
         {
             if (isDashing)
             {
-                // 피격 회피
+                // 대쉬 시 모든 피격 무시
                 UI_Container.Instance.EnableEventText("Dodge", "회피!");
                 if (dodge_enable) UI_Container.Instance.AddPlayerBuff("Dodge", 3f);
             }
@@ -358,7 +319,6 @@ public class Player : MonoBehaviour
                 // 데미지 무시가능한 경우
                 if (guard_enable && Time.time > lastDamageTime + 20f)
                 {
-                    Debug.Log("데미지 무시!");
                     UI_Container.Instance.AddPlayerBuff("Guard", 0f);
                 }
                 else
@@ -384,14 +344,13 @@ public class Player : MonoBehaviour
                     if (damage > 0f)
                     {
                         UI_Container.Instance.EnableEventText("Damage", "-" + Mathf.RoundToInt(damage).ToString());
+                        // 피격 애니메이션
                         if (!playerAttack.isZAttacking && !playerAttack.isXAttacking && !animator.GetBool("IsJumping") && movementX == 0f)
                         {
                             animator.SetTrigger("Hit");
                         }
                     }
                     // 무적 시간 부여
-                    canInvincible = true;
-                    damagingTimeLeft = damagingTime;
                     StartCoroutine(Damaging_Check());
                     if (CurHP <= 0f && !isDead)
                     {
@@ -404,6 +363,7 @@ public class Player : MonoBehaviour
                         Heal(damage);
                     }
                 }
+                // 마지막 피격 시간 표시
                 lastDamageTime = Time.time;
             }
         }
@@ -434,23 +394,26 @@ public class Player : MonoBehaviour
     }
     private IEnumerator Damaging_Check()
     {
-        float counter = 0;
-        Color c = Color.white;
+        float timer = 0;
+        Color damagingColor = Color.white;
+        damagingTimeLeft = damagingTime;
+        damagingInvincible = true;
         while (damagingTimeLeft > 0f)
         {
             damagingTimeLeft -= Time.deltaTime;
-            counter += Time.deltaTime;
-            if (counter >= 0.125f)
+            timer += Time.deltaTime;
+            // 0.125초마다 스프라이트 깜빡
+            if (timer >= 0.125f)
             {
-                counter = 0f;
-                if (sr.color.a > 0f) c.a = 0f;
-                else c.a = 1f;
-                sr.color = c;
+                timer = 0f;
+                if (sr.color.a > 0f) damagingColor.a = 0f;
+                else damagingColor.a = 1f;
+                sr.color = damagingColor;
             }
 
             yield return null;
         }
-        canInvincible = false;
+        damagingInvincible = false;
         sr.color = Color.white;
     }
     public void Invincible_ON()
