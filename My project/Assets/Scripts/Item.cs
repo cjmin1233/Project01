@@ -42,8 +42,7 @@ public class Item : MonoBehaviour
     {
         if (CompareTag("Book"))
         {
-            UI_Container.Instance.GetRandomAbility();
-            Destroy(gameObject);
+            if (UI_Container.Instance.GetRandomAbility()) Destroy(gameObject);
         }
         else if (CompareTag("Potion"))
         {
@@ -52,8 +51,7 @@ public class Item : MonoBehaviour
         }
         else if (CompareTag("Upgrade"))
         {
-            UI_Container.Instance.UpgradeRandomAbility();
-            Destroy(gameObject);
+            if (UI_Container.Instance.UpgradeRandomAbility()) Destroy(gameObject);
         }
         else if (CompareTag("Chest"))
         {

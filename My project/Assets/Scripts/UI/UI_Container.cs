@@ -185,10 +185,10 @@ public class UI_Container : MonoBehaviour
         }
         else borderImage.color = new Color(255f, 255f, 255f);
     }
-    public void GetRandomAbility()
+    public bool GetRandomAbility()
     {
         //if (Ability_UI.activeSelf) return;
-        if (popup_ui_counter > 0 || PlayerDieUI.activeSelf) return;
+        if (popup_ui_counter > 0 || PlayerDieUI.activeSelf) return false;
 
         totalWeight = 0;
         // 새로운 리스트에 출현가능한 어빌리티들 복사
@@ -200,7 +200,12 @@ public class UI_Container : MonoBehaviour
             availableAbilityList[i].SetActive(false);
             selection.Add(availableAbilityList[i]);
         }
-        if (selection.Count == 0) EnableAlermText("획득 가능한 어빌리티가 없습니다.");   // 남아있는 어빌리티가 없음
+        if (selection.Count == 0) 
+        { 
+            // 남아있는 어빌리티가 없음
+            EnableAlermText("획득 가능한 어빌리티가 없습니다.");
+            return false;
+        }   
         else
         {
             Ability_UI.SetActive(true);
@@ -212,7 +217,7 @@ public class UI_Container : MonoBehaviour
                 rand = Random.Range(1, totalWeight + 1);    // 1~totalweight 까지 랜덤
                 weight = 0;
                 // 가중치 기반 selection 리스트에서 하나 뽑기
-                for(int i = 0; i < selection.Count; i++)
+                for (int i = 0; i < selection.Count; i++)
                 {
                     weight += selection[i].GetComponent<Ability>().weight;
                     if (rand <= weight)
@@ -235,6 +240,7 @@ public class UI_Container : MonoBehaviour
                 if (idx == 3) break;
             }
         }
+        return true;
     }
     public void GetAbility(GameObject SelectedAbility)
     {
@@ -464,9 +470,9 @@ public class UI_Container : MonoBehaviour
         // 스위프트가 없으면 추가
         if (!availableAbilityList.Contains(swiftAbility)) availableAbilityList.Add(swiftAbility);
     }
-    public void UpgradeRandomAbility()
+    public bool UpgradeRandomAbility()
     {
-        if (popup_ui_counter > 0 || PlayerDieUI.activeSelf) return;
+        if (popup_ui_counter > 0 || PlayerDieUI.activeSelf) return false;
 
         List<GameObject> selection = new List<GameObject>();
         for(int i = 0; i < SelectedAbilityList.Count; i++)
@@ -476,7 +482,12 @@ public class UI_Container : MonoBehaviour
             if (SelectedAbilityList[i].GetComponent<Ability>().level < 10) selection.Add(SelectedAbilityList[i]);
         }
 
-        if (selection.Count == 0) EnableAlermText("강화가능한 어빌리티가 없습니다.");
+        if (selection.Count == 0)
+        {
+            EnableAlermText("강화가능한 어빌리티가 없습니다.");
+            return false;
+        }
+
         else
         {
             Ability_UI.SetActive(true);
@@ -488,7 +499,7 @@ public class UI_Container : MonoBehaviour
 
                 // 선택된 어빌리티 업그레이드 레벨 텍스트 활성화
                 Ability ability = selection[rand].GetComponent<Ability>();
-                string upgrade_level_text = "Lv." + ability.level.ToString() + " > Lv." + (ability.level + 1).ToString();
+                string upgrade_level_text = "Lv." + ability.level.ToString() + " -> Lv." + (ability.level + 1).ToString();
                 ability.EnableUpgradeLevelText(upgrade_level_text);
 
                 RectTransform rect = selection[rand].GetComponent<RectTransform>();
@@ -501,6 +512,7 @@ public class UI_Container : MonoBehaviour
                 if (idx == 3) break;
             }
         }
+        return true;
     }
     public void GiveUp()
     {
