@@ -241,7 +241,7 @@ public class UI_Container : MonoBehaviour
         Ability ability = SelectedAbility.GetComponent<Ability>();
 
         if (ability.level < 10) ability.level++;
-        SelectedAbility.SetActive(false);
+        //SelectedAbility.SetActive(false);
         if (availableAbilityList.Contains(SelectedAbility))
         {
             // 처음 고른 어빌리티
@@ -479,7 +479,6 @@ public class UI_Container : MonoBehaviour
         if (selection.Count == 0) EnableAlermText("강화가능한 어빌리티가 없습니다.");
         else
         {
-            //Debug.Log("강화가능한 어빌리티 개수 : " + selection.Count);
             Ability_UI.SetActive(true);
             int idx = 0;
             int rand;
@@ -549,6 +548,12 @@ public class UI_Container : MonoBehaviour
         float y = 0f;
         for(int i = 0; i < ScrollViewList.Count; i++)
         {
+            Ability ability = ScrollViewList[i].GetComponent<Ability>();
+            int level = ability.level;
+            if (1 <= level && level <= 10)
+            {
+                ability.EnableUpgradeLevelText("Lv." + level.ToString());
+            }
             RectTransform rectTransform = ScrollViewList[i].GetComponent<RectTransform>();
             rectTransform.anchoredPosition = new Vector2(0f, -y);
             y += rectTransform.sizeDelta.y + space;

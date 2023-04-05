@@ -107,14 +107,27 @@ public class Player : MonoBehaviour
                 UI_Container.Instance.AddPlayerBuff("Resistance", 0f);
             }
 
-            // HP bar test.
-            if (Input.GetKeyDown(KeyCode.A))    //Increase hp.
+            /////////////////////
+            // Testing code
+            if (Input.GetKeyDown(KeyCode.A))
             {
+                // Increse hp.
                 IncreaseMaxHP();
             }
-            if (Input.GetKeyDown(KeyCode.Q))    //Take damage.
+            if (Input.GetKeyDown(KeyCode.Q))
             {
+                // Take damage.
                 TakeDamage(20f);
+            }
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                // Get ability.
+                UI_Container.Instance.GetRandomAbility();
+            }
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                // Upgrade ability.
+                UI_Container.Instance.UpgradeRandomAbility();
             }
             /////////////////////
             currentSpeed = moveSpeed_multiplier * baseSpeed;

@@ -229,7 +229,10 @@ public class Enemy_Default : MonoBehaviour
         if (die_sound != null) die_sound.PlayOneShot(die_sound.clip);
         animator.SetBool("IsDead", true);
         canMove = false;
-        rb.velocity = Vector2.zero;
+        //rb.velocity = Vector2.zero;
+        // »ç¸Á½Ã Á¤Áö
+        rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+
         // °ñµå »ý¼º
         player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Player>().GetGold(Random.Range(Mathf.RoundToInt(0.5f * gold), gold));

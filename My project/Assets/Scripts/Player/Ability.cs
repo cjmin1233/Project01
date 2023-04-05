@@ -11,12 +11,10 @@ public class Ability : MonoBehaviour
     public int weight;
 
     private GameObject upgradeLevel;
-    private void Awake()
-    {
-        upgradeLevel = transform.Find("UpgradeLevelText").gameObject;
-    }
+
     public void EnableUpgradeLevelText(string text)
     {
+        if (upgradeLevel==null) upgradeLevel = transform.Find("UpgradeLevelText")?.gameObject;
         if (upgradeLevel != null) upgradeLevel.GetComponent<TextMeshProUGUI>().text = text;
     }
 }
