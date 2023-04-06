@@ -222,8 +222,6 @@ public class Player : MonoBehaviour
             if (dashTimeLeft <= 0)
             {
                 // 대쉬 정지
-                //canMove = true;
-                //currentSpeed = moveSpeed_multiplier * baseSpeed;
                 isDashing = false;
                 animator.SetBool("IsDashing", isDashing);
             }
@@ -305,8 +303,8 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        // 죽지 않았고 무적이 아닐 때
-        if (!isDead && !damagingInvincible && !skillInvincible)
+        // 죽지 않았고 무적이 아닐 때, 화면 전환중이 아닐 때
+        if (!isDead && !damagingInvincible && !skillInvincible && GameManager.Instance.fadeState=="clear")
         {
             if (isDashing)
             {

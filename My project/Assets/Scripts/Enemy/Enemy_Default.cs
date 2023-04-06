@@ -75,6 +75,8 @@ public class Enemy_Default : MonoBehaviour
         for (int i = 0; i < range.Length; i++) range[i] = false;
         currentSpeed = moveSpeed_multiplier * baseSpeed;
         safePos = Vector3.zero;
+
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         #endregion
     }
     protected virtual void Update()

@@ -48,7 +48,7 @@ public class Hashashin_Attack : PlayerAttack
     private void DaggerZAttack()
     {
         // 공격동안 움직임 제어
-        gameObject.GetComponent<Player>().canMove = false;
+        player.canMove = false;
         
         animator.SetFloat("Speed_Z", Z_SpeedCalculation());
         isZAttacking = true;
@@ -79,7 +79,9 @@ public class Hashashin_Attack : PlayerAttack
 
             GameManager.Instance.playerFollowing = false;
             // 공격동안 움직임 제어
-            gameObject.GetComponent<Player>().canMove = false;
+            player.canMove = false;
+            // 공격동안 무적 부여
+            player.skillInvincible = true;
 
             animator.SetFloat("Speed_X", X_SpeedCalculation());
 
@@ -88,7 +90,7 @@ public class Hashashin_Attack : PlayerAttack
             animator.SetTrigger("AttackX");
 
             // after image on
-            gameObject.GetComponent<Player>().AfterImageAvailable = true;
+            player.AfterImageAvailable = true;
             comboCounter = 0;
         }
         else
