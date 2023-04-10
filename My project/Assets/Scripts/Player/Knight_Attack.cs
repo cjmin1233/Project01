@@ -105,7 +105,6 @@ public class Knight_Attack : PlayerAttack
     {
         Vector2 damageForce = new Vector2(transform.right.x * 10f, 0f);
         int count = comboCounter % 3;
-        if (comboCounter == 2) damageForce.y = 10f;
         comboCollider[count].GetComponent<Combo_Collider>().damage = Mathf.Round(PlayerPowerCalculation() * Z_DamageCalculation() * combo_coef * (1 + (float)count * 0.2f));
         comboCollider[count].GetComponent<Combo_Collider>().damageForce = damageForce;
         if(sword_cursed_enable) comboCollider[count].GetComponent<Combo_Collider>().absorb_enable = true;

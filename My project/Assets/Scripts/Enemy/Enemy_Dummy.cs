@@ -26,6 +26,7 @@ public class Enemy_Dummy : Enemy_Default
         base.OnEnable();
         dpsText = dpsChecker.GetComponent<TextMeshPro>();
         dpsText_rect = dpsChecker.GetComponent<RectTransform>();
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
     protected override void Update()
     {

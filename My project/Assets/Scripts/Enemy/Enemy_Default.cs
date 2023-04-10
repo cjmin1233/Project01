@@ -64,6 +64,7 @@ public class Enemy_Default : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         if (maxHP > 0) curHP = maxHP;
         healthbar = UI_Container.Instance.GetFromEnemySliderPool();
@@ -231,7 +232,7 @@ public class Enemy_Default : MonoBehaviour
         if (die_sound != null) die_sound.PlayOneShot(die_sound.clip);
         animator.SetBool("IsDead", true);
         canMove = false;
-        //rb.velocity = Vector2.zero;
+        gameObject.layer = LayerMask.NameToLayer("DiedEnemy");
         // »ç¸Á½Ã Á¤Áö
         rb.constraints = RigidbodyConstraints2D.FreezePositionX;
 
