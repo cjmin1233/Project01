@@ -52,7 +52,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public float MaxHP;
     [HideInInspector] public float CurHP;
     [HideInInspector] public int invincibleCounter;
-    [HideInInspector] public bool canInvincible;
     [HideInInspector] public bool damagingInvincible;
     [HideInInspector] public bool skillInvincible;
     [SerializeField] private AudioSource damage_shield_sound;
@@ -66,7 +65,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isDead = false;
     private void OnEnable()
     {
-        canInvincible = false;
         damagingInvincible = false;
         skillInvincible = false;
         invincibleCounter = 0;
@@ -414,14 +412,6 @@ public class Player : MonoBehaviour
         damagingInvincible = false;
         sr.color = Color.white;
     }
-    public void Invincible_ON()
-    {
-        canInvincible = true;
-    }
-    public void Invincible_OFF()
-    {
-        canInvincible = false;
-    }
     private void Die()
     {
         isDead = true;
@@ -430,8 +420,6 @@ public class Player : MonoBehaviour
         CurHP = 0;
         // »ç¸Á ¼Ò¸®
         canMove = false;
-        //rb.gravityScale = 0f;
-        //rb.velocity = new Vector2(0f, rb.velocity.y);
         rb.constraints = RigidbodyConstraints2D.FreezePositionX;
 
         // »ç¸Á UI Ãâ·Â

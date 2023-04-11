@@ -114,4 +114,12 @@ public class Hashashin_Attack : PlayerAttack
         if (curGauge > maxGauge) curGauge = maxGauge;
         UI_Container.Instance.updateGauge(curGauge);
     }
+    private void EnableCameraFollowing()
+    {
+        GameManager.Instance.playerFollowing = true;
+    }
+    private void DisableCameraFollowing()
+    {
+        GameManager.Instance.playerFollowing = false;
+    }
 }

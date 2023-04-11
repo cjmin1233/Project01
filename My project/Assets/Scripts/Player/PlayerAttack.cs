@@ -102,7 +102,6 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Finish_X()
     {
-        GameManager.Instance.playerFollowing = true;
         isXAttacking = false;
         animator.SetBool("IsXAttacking", isXAttacking);
 
