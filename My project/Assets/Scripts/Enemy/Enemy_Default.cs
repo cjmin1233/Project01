@@ -127,12 +127,10 @@ public class Enemy_Default : MonoBehaviour
             if (GroundRayHit.collider != null)
             {
                 safePos = transform.position;
-                rb.gravityScale = 1f;
             }
             else if (safePos != Vector3.zero)
             {
                 transform.position = Vector3.Lerp(transform.position, safePos, 0.9f);
-                //rb.gravityScale = 0f;
             }
         }
         Move();
@@ -149,7 +147,6 @@ public class Enemy_Default : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         if (transform.position.x < player.transform.position.x) transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         else transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-        //if ((player.transform.position.x < transform.position.x && movementX > 0) || (transform.position.x < player.transform.position.x && movementX < 0)) movementX *= -1f;
     }
     protected void Flip()
     {
@@ -177,7 +174,6 @@ public class Enemy_Default : MonoBehaviour
     {
         superArmor = false;
     }
-
     public virtual void TakeDamage(float damage, Vector2 damageForce, bool isCrit, Color damageColor, int fxType)
     {
         if (!animator.GetBool("IsDead"))

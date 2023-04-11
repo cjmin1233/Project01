@@ -2246,6 +2246,7 @@ MonoBehaviour:
   damage: 0
   damageForce: {x: 0, y: 0}
   critical: 0
+  absorb_enable: 0
   audioSource:
   - {fileID: 1492782785}
 --- !u!1 &93130276312372353
@@ -2338,6 +2339,7 @@ MonoBehaviour:
   damage: 0
   damageForce: {x: 0, y: 0}
   critical: 0
+  absorb_enable: 0
   audioSource:
   - {fileID: 1029165181}
 --- !u!1 &93130276930052984
@@ -2434,6 +2436,7 @@ MonoBehaviour:
   damage: 0
   damageForce: {x: 0, y: 0}
   critical: 0
+  absorb_enable: 0
   audioSource:
   - {fileID: 787222547}
 --- !u!1 &93130277039606292
@@ -2531,6 +2534,7 @@ MonoBehaviour:
   damage: 0
   damageForce: {x: 0, y: 0}
   critical: 0
+  absorb_enable: 0
   audioSource:
   - {fileID: 821024022}
 --- !u!1 &1320270001586724024
@@ -2733,7 +2737,9 @@ MonoBehaviour:
   guard_enable: 0
   MaxHP: 0
   CurHP: 0
-  canInvincible: 0
+  invincibleCounter: 0
+  damagingInvincible: 0
+  skillInvincible: 0
   damage_shield_sound: {fileID: 7552273577865189459}
   gold_multiplier: 1
   ground_checker: {fileID: 815865361}
@@ -2800,6 +2806,7 @@ MonoBehaviour:
   - {fileID: 1825629106}
   - {fileID: 1301231515}
   ChargeEffect: {fileID: 31798414}
+  chargeAmount: 0
 --- !u!1 &7711797352877794464
 GameObject:
   m_ObjectHideFlags: 0

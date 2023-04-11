@@ -34,13 +34,6 @@ public class DataManager : MonoBehaviour
         {
             string FromJsonData = File.ReadAllText(filePath);
             data = JsonUtility.FromJson<Data>(FromJsonData);
-            /*for(int i = 0; i < data.test_arr.Length; i++)
-            {
-                print($"{i}번 test_arr : " + data.test_arr[i]);
-            }*/
-            /*print("curHP:" + data.curHP);
-            print("maxHP:" + data.maxHP);
-            print("gold:" + data.gold);*/
             print("불러오기 완료");
         }
     }

@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
 
             /////////////////////
             // Testing code
+#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.A))
             {
                 // Increse hp.
@@ -133,6 +134,7 @@ public class Player : MonoBehaviour
                 // Upgrade ability.
                 UI_Container.Instance.UpgradeRandomAbility();
             }
+#endif
             /////////////////////
             if (!isDashing)
             {

@@ -110,7 +110,6 @@ public class PlayerAttack : MonoBehaviour
         // 스택 초기화
         inputZCounter = 0;
     }
-
     public void PlayerInit()
     {
         // after image off

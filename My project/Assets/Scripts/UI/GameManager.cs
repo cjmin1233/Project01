@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int loadingType;
 
     // 페이드인 효과, 로딩화면
-    [HideInInspector] public string gameState;
     [HideInInspector] public string fadeState;
     private Vector3 destination;
 
@@ -66,7 +65,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject SerpentScrewPrefab;
     private void Awake()
     {
-        #region 객체 직렬화
+        #region 싱글톤
         var objs = FindObjectsOfType<GameManager>();
         if (objs.Length != 1)
         {
@@ -108,8 +107,10 @@ public class GameManager : MonoBehaviour
                 else if (playerFollowing) Time.timeScale = 1f;
                 else Time.timeScale = 1f;
 
+#if UNITY_EDITOR
                 // cheat key
                 if (Input.GetKeyDown(KeyCode.C)) StartCoroutine(TransportFlow(Vector3.zero, true));
+#endif
             }
         }
     }
@@ -118,7 +119,6 @@ public class GameManager : MonoBehaviour
         if (isPlaying)
         {
             float _size = MainCamera.GetComponent<Camera>().orthographicSize;
-            //int popup_counter = UI_Container.Instance.popup_ui_counter;
             if (bossFollowing)
             {
                 MainCamera.GetComponent<Camera>().orthographicSize = _size > 3f ? _size - Time.deltaTime * 2f : 3f;
@@ -183,9 +183,6 @@ public class GameManager : MonoBehaviour
     private void AfterLoading(Scene scene, LoadSceneMode mode)
     {
         // 로딩 완료후 어두운 화면에서 항상 호출되는 함수
-        Debug.Log("씬이 로드되었습니다.");
-        Debug.Log("씬 이름은" + scene.name + "이며");
-        Debug.Log("로드 타입은" + loadingType + "입니다.");
 
         // 다음 씬으로 이동할 때
         if (loadingType == 1)
@@ -202,11 +199,6 @@ public class GameManager : MonoBehaviour
         else if (loadingType == 3)
         {
             OnFirstSceneLoaded();
-        }
-        else
-        {
-            // 로딩 씬이 로드되었을 때 loadingType==0
-            // Debug.Log("아무것도 안합니다");
         }
 
         loadingType = 0;
@@ -349,7 +341,6 @@ public class GameManager : MonoBehaviour
         }
         StartCoroutine(UI_Container.Instance.FadeInStart());
         isPlaying = true;
-        //Debug.Log("플레이어 전송 끝");
     }
     public IEnumerator GiveUpFlow()
     {
