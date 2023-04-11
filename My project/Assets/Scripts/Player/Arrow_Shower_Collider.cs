@@ -6,19 +6,11 @@ public class Arrow_Shower_Collider : MonoBehaviour
 {
     public int fxType;
     [HideInInspector] public float damage;
-    //[HideInInspector] public float anim_Speed = 1.0f;
     [HideInInspector] public Vector2 damageForce;
     [HideInInspector] public bool rain_enable = false;
     [HideInInspector] public bool slow_enable = false;
     private float damage_multiplier = 1f;
-    //public AudioSource audioSource;
-    //private Animator animator;
     //private List<string> hit_list;
-    /*private void Awake()
-    {
-        //animator = GetComponent<Animator>();
-        //hit_list = new List<string>();
-    }*/
     private void OnEnable()
     {
         damage_multiplier = 1f;
@@ -35,7 +27,7 @@ public class Arrow_Shower_Collider : MonoBehaviour
             if (slow_enable) collision.GetComponent<Enemy_Default>().Debuff("Slow", 5f);
         }
     }
-    private void Disable_Sword_Collider()
+    private void Disable_Collider()
     {
         ArrowShowerPool.Instance.AddToPool(gameObject);
     }

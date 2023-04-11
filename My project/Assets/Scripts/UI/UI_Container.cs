@@ -40,7 +40,7 @@ public class UI_Container : MonoBehaviour
     [SerializeField] private GameObject[] hiddenHashashinAbility_Z;
     [SerializeField] private GameObject swiftAbility;
 
-    /*[HideInInspector]*/ public List<int> SelectLog = new List<int>();
+    [HideInInspector] public List<int> SelectLog = new List<int>();
 
     private GameObject playerObject;
     private Player _player;
@@ -187,7 +187,6 @@ public class UI_Container : MonoBehaviour
     }
     public bool GetRandomAbility()
     {
-        //if (Ability_UI.activeSelf) return;
         if (popup_ui_counter > 0 || PlayerDieUI.activeSelf) return false;
 
         totalWeight = 0;
@@ -247,7 +246,6 @@ public class UI_Container : MonoBehaviour
         Ability ability = SelectedAbility.GetComponent<Ability>();
 
         if (ability.level < 10) ability.level++;
-        //SelectedAbility.SetActive(false);
         if (availableAbilityList.Contains(SelectedAbility))
         {
             // 처음 고른 어빌리티

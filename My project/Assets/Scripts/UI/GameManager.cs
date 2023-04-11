@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
 
     // 페이드인 효과, 로딩화면
     [HideInInspector] public string gameState;
-    //[HideInInspector] public bool faded;
     [HideInInspector] public string fadeState;
     private Vector3 destination;
 

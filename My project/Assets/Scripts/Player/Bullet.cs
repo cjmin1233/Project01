@@ -10,24 +10,17 @@ public class Bullet : MonoBehaviour
     [HideInInspector] public bool isPoisoned;
     [HideInInspector] public bool isDiagonal;
     private float speed = 25f;
-    //public GameObject ImpactEffect;
     private Transform player;
     private Rigidbody2D rb;
     private Animator animator;
-    private BoxCollider2D arrow_collider;
-    private Vector2 offset;
-    private Vector2 offset_diagonal;
     private List<string> hit_list;
+    private Vector3 offset;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        arrow_collider = GetComponent<BoxCollider2D>();
-        //anim_Speed = 1.0f;
         isPoisoned = false;
         isDiagonal = false;
-        offset = new Vector2(0.11f, 0f);
-        offset_diagonal = new Vector2(0.08f, -0.08f);
         hit_list = new List<string>();
     }
     private void OnEnable()
@@ -38,8 +31,6 @@ public class Bullet : MonoBehaviour
         animator.SetBool("IsDiagonal", isDiagonal);
         if (isDiagonal) rb.velocity = new Vector2(transform.right.x * speed, transform.up.y * (-speed));
         else rb.velocity = transform.right * speed;
-        if (isDiagonal)  arrow_collider.offset = offset_diagonal;
-        else arrow_collider.offset = offset;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -57,6 +48,7 @@ public class Bullet : MonoBehaviour
                 }
                 else collision.GetComponent<Enemy_Default>().TakeDamage(damage, damageForce, false, Color.green, fxType);
 
+                offset = transform.position - collision.bounds.center;
             }
         }
         animator.SetTrigger("Hit");
@@ -68,7 +60,8 @@ public class Bullet : MonoBehaviour
         if (tag == "Enemy" || tag == "Boss")
         {
             // 적 충돌시 박힌채 이동
-            rb.velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            //rb.velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            transform.position = collision.bounds.center + offset;
         }
     }
     private void Disable_Arrow()
