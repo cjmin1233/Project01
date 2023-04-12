@@ -94,7 +94,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        // 플레이어가 살아있고 팝업 UI가 없을 때
+        if (!isDead && UI_Container.Instance.popup_ui_counter <= 0)
         {
             // 20초동안 안맞으면 가드 어빌리티 활성화
             if (Time.time > lastDamageTime + 20f && guard_enable)

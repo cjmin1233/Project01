@@ -15,7 +15,6 @@ public class LoadingSceneController : MonoBehaviour
     {
         nextScene = sceneIndex;
         loadingType = loading_type;
-        Debug.Log("로딩씬 로드");
         SceneManager.LoadScene("LoadingScene"); // Start() 에서 코루틴 LoadSceneProcess 시작
     }
     private void Awake()
@@ -56,7 +55,6 @@ public class LoadingSceneController : MonoBehaviour
                     op.allowSceneActivation = true;
                     // 로딩 완료 후 행동 지정
                     GameManager.Instance.loadingType = loadingType;
-                    //Debug.Log("로딩 완료?" + timer);
                 }
             }
         }
