@@ -60,7 +60,6 @@ public class Ranger_Attack : PlayerAttack
     private void FixedUpdate()
     {
         rayHit = Physics2D.Raycast(rb.position, Vector3.down, 10f, LayerMask.GetMask("Ground"));
-        //Debug.Log(rayHit.distance);
     }
     private void Finish_Air_Combo()
     {
@@ -105,6 +104,10 @@ public class Ranger_Attack : PlayerAttack
             animator.SetBool("IsJumpingDown", true);
             rb.velocity = new Vector2(rb.velocity.x, 0f);
             rb.AddForce(new Vector2(transform.right.x * (-5f), 3f), ForceMode2D.Impulse);
+        }
+        else
+        {
+            UI_Container.Instance.EnableAlermText("높이가 부족합니다.");
         }
     }
     private void ShootArrow()

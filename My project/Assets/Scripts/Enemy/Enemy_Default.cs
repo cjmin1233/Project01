@@ -318,7 +318,6 @@ public class Enemy_Default : MonoBehaviour
         {
             lastPoisonDamageTime = Time.time;
             TakeDamage(10f, Vector2.zero, false, Color.magenta, -1);
-            Debug.Log("<color=purple>독 데미지</color>");
         }
     }
     private void destoryObject()

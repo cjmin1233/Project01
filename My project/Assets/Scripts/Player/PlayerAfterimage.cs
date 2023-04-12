@@ -19,11 +19,9 @@ public class PlayerAfterimage : MonoBehaviour
         playerSR = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>();
         sr = GetComponent<SpriteRenderer>();
 
-        //alpha = alphaSet;
         sr.sprite = playerSR.sprite;
         transform.SetPositionAndRotation(player.position, player.rotation);
 
-        //timeActivated = Time.time;
         StartCoroutine(StartAfterImage());
     }
     private IEnumerator StartAfterImage()

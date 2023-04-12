@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Arrow_Shower_Startpoint : MonoBehaviour
 {
-    public Transform offset;
     [HideInInspector] public float anim_Speed;
 
     private Rigidbody2D rb;
     private float speed = 20f;
+    Vector3 offset;
     private void Awake()
     {
-        //offset = GetComponent<Transform>().position;
         rb = GetComponent<Rigidbody2D>();
+        offset = transform.localPosition;
         anim_Speed = 1f;
     }
     private void OnEnable()
     {
-        transform.position = offset.position;
+        transform.localPosition = offset;
         rb.velocity = anim_Speed * speed * transform.right;
     }
     private void OnTriggerEnter2D(Collider2D collision)

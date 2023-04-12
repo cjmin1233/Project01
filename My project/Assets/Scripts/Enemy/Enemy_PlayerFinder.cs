@@ -15,7 +15,6 @@ public class Enemy_PlayerFinder : MonoBehaviour
         if (tag == "Player")
         {
             enemy_Default.detectPlayer = true;
-            //gameObject.GetComponentInParent<Enemy_Default>().detectPlayer = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -24,7 +23,6 @@ public class Enemy_PlayerFinder : MonoBehaviour
         if (tag == "Player")
         {
             if (enemy_Default != null) enemy_Default.detectPlayer = false;
-            //gameObject.GetComponentInParent<Enemy_Default>().detectPlayer = false;
         }
     }
 }
