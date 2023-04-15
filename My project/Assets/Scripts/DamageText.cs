@@ -19,7 +19,6 @@ public class DamageText : MonoBehaviour
     [HideInInspector] public float damage;
     [HideInInspector] public float x_dir;
     [HideInInspector] public Color textColor;
-    //private Color startColor;
     private void Awake()
     {
         text = GetComponent<TextMeshPro>();

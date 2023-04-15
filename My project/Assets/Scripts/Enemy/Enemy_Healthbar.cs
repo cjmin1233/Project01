@@ -8,8 +8,6 @@ public class Enemy_Healthbar : MonoBehaviour
     private Slider Slider;
     public Color Low;
     public Color High;
-    //public Vector3 Offset;
-    //[HideInInspector] public Transform enemyTransform;
 
     private void OnEnable()
     {
@@ -17,7 +15,7 @@ public class Enemy_Healthbar : MonoBehaviour
     }
     public void SetHealth(float currentHealth, float maxHealth)
     {
-        Slider.gameObject.SetActive(currentHealth < maxHealth);
+        gameObject.SetActive(currentHealth < maxHealth);
         Slider.maxValue = maxHealth;
         Slider.value = currentHealth;
 

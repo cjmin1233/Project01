@@ -143,7 +143,6 @@ public class Boss_Default : Enemy_Default
     private void EnemySummon(int num)
     {
         EnemyPool.Instance.ClearRemainEnemies();
-        Debug.Log(min_x + "~" + max_x);
         for(int i = 0; i < num; i++)
         {
             var enemy = EnemyPool.Instance.GetFromPool(2);

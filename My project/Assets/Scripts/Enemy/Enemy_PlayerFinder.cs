@@ -11,16 +11,14 @@ public class Enemy_PlayerFinder : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        string tag = collision.tag;
-        if (tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             enemy_Default.detectPlayer = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        string tag = collision.tag;
-        if (tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             if (enemy_Default != null) enemy_Default.detectPlayer = false;
         }
