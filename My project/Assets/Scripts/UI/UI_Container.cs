@@ -168,7 +168,7 @@ public class UI_Container : MonoBehaviour
     public void EnablePurchaseText(int price)
     {
         purchaseText.GetComponent<Animator>().SetBool("IsEnabled", true);
-        purchaseText.GetComponentInChildren<TextMeshProUGUI>().text = "Purchase " + price.ToString() + "G";
+        purchaseText.GetComponentInChildren<TextMeshProUGUI>().text = "±¸¸Å: " + price.ToString() + "G";
     }
     public void DisablePurchaseText()
     {
