@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour
             Player = collision.gameObject;
             //EnterIcon.SetActive(true);
             //EnterIcon.GetComponent<Animator>().SetBool("IsEnabled", true);
-            UI_Container.Instance.EnableToggleText(4);
+            UiManager.Instance.EnableToggleText(4);
             isPickUp = true;
         }
     }
@@ -37,15 +37,14 @@ public class Portal : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             isPickUp = false;
-            UI_Container.Instance.DisableToggleText(4);
+            UiManager.Instance.DisableToggleText(4);
         }
     }
     void PickUp()
     {
         isPickUp = false;
-        UI_Container.Instance.DisableToggleText(4);
+        UiManager.Instance.DisableToggleText(4);
         int rand = Random.Range(0, destination.Length);
         StartCoroutine(GameManager.Instance.TransportFlow(destination[rand].position, false));
-        //this.enabled = false;
     }
 }

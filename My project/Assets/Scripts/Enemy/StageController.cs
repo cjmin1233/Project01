@@ -25,8 +25,8 @@ public class StageController : MonoBehaviour
         if (collision.tag == "Player" && !isEntered)
         {
             isEntered = true;
-            StartCoroutine(UI_Container.Instance.StartSaving());
-            UI_Container.Instance.EnableNoticeMainText("- " + sceneName + " -");
+            StartCoroutine(UiManager.Instance.StartSaving());
+            UiManager.Instance.EnableNoticeMainText("- " + sceneName + " -");
 
             DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
             DataManager.Instance.SaveGameData();
@@ -54,12 +54,12 @@ public class StageController : MonoBehaviour
 
         if (enemySummonDatas.Length == 0)
         {
-            UI_Container.Instance.EnableNoticeSubText("");
+            UiManager.Instance.EnableNoticeSubText("");
             remainEnemies = enemySummonDatas.Length;
         }
         else
         {
-            UI_Container.Instance.EnableNoticeSubText("적을 처치하십시오\n(" + $"{enemySummonDatas.Length}/{enemySummonDatas.Length}" + ")");
+            UiManager.Instance.EnableNoticeSubText("적을 처치하십시오\n(" + $"{enemySummonDatas.Length}/{enemySummonDatas.Length}" + ")");
             remainEnemies = enemySummonDatas.Length;
         }
     }
@@ -70,7 +70,7 @@ public class StageController : MonoBehaviour
             if (remainEnemies != EnemyPool.Instance.GetEnemiesCount())
             {
                 remainEnemies = EnemyPool.Instance.GetEnemiesCount();
-                UI_Container.Instance.EnableNoticeSubText("적을 처치하십시오\n(" + $"{remainEnemies}/{enemySummonDatas.Length}" + ")");
+                UiManager.Instance.EnableNoticeSubText("적을 처치하십시오\n(" + $"{remainEnemies}/{enemySummonDatas.Length}" + ")");
             }
             if (remainEnemies == 0)
             {
@@ -80,8 +80,8 @@ public class StageController : MonoBehaviour
                 }
                 // 스테이지 클리어 표시
                 isStarted = false;
-                if (enemySummonDatas.Length > 0) UI_Container.Instance.EnableNoticeMainText("스테이지 클리어");
-                UI_Container.Instance.EnableNoticeSubText("");
+                if (enemySummonDatas.Length > 0) UiManager.Instance.EnableNoticeMainText("스테이지 클리어");
+                UiManager.Instance.EnableNoticeSubText("");
             }
         }
     }

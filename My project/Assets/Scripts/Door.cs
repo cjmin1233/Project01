@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             Player = collision.gameObject;
-            UI_Container.Instance.EnableToggleText(4);
+            UiManager.Instance.EnableToggleText(4);
             isPickUp = true;
         }
     }
@@ -32,7 +32,7 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            UI_Container.Instance.DisableToggleText(4);
+            UiManager.Instance.DisableToggleText(4);
             isPickUp = false;
         }
     }
@@ -40,6 +40,6 @@ public class Door : MonoBehaviour
     {
         isPickUp = false;
         StartCoroutine(GameManager.Instance.TransportFlow(Vector3.zero, true));
-        UI_Container.Instance.DisableToggleText(4);
+        UiManager.Instance.DisableToggleText(4);
     }
 }

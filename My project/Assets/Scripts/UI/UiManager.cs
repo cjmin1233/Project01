@@ -6,9 +6,9 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class UI_Container : MonoBehaviour
+public class UiManager : MonoBehaviour
 {
-    public static UI_Container Instance { get; private set; }
+    public static UiManager Instance { get; private set; }
     [SerializeField] private Slider HP_UI;
     [SerializeField] private TextMeshProUGUI HP_Text;
     float MaxHP;

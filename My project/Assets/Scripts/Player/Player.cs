@@ -95,21 +95,21 @@ public class Player : MonoBehaviour
     private void Update()
     {
         // 플레이어가 살아있고 팝업 UI가 없을 때
-        if (!isDead && UI_Container.Instance.popup_ui_counter <= 0)
+        if (!isDead && UiManager.Instance.popup_ui_counter <= 0)
         {
             // 20초동안 안맞으면 가드 어빌리티 활성화
             if (Time.time > lastDamageTime + 20f && guard_enable)
             {
-                UI_Container.Instance.AddPlayerBuff("Guard", -1f);
+                UiManager.Instance.AddPlayerBuff("Guard", -1f);
             }
             // 체력 40퍼 이하시 최후의 저항 어빌리티 활성화
             if (resistance_enable && CurHP / MaxHP <= 0.4f)
             {
-                UI_Container.Instance.AddPlayerBuff("Resistance", -1f);
+                UiManager.Instance.AddPlayerBuff("Resistance", -1f);
             }
             else
             {
-                UI_Container.Instance.AddPlayerBuff("Resistance", 0f);
+                UiManager.Instance.AddPlayerBuff("Resistance", 0f);
             }
 
             /////////////////////
@@ -128,12 +128,12 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.G))
             {
                 // Get ability.
-                UI_Container.Instance.GetRandomAbility();
+                UiManager.Instance.GetRandomAbility();
             }
             if (Input.GetKeyDown(KeyCode.U))
             {
                 // Upgrade ability.
-                UI_Container.Instance.UpgradeRandomAbility();
+                UiManager.Instance.UpgradeRandomAbility();
             }
 #endif
             /////////////////////
@@ -292,15 +292,15 @@ public class Player : MonoBehaviour
         MaxHP += increase;
         CurHP += increase;
 
-        UI_Container.Instance.HandleHP(CurHP, MaxHP);
-        UI_Container.Instance.EnableEventText("Heal", "+" + ((int)increase).ToString() + "HP");
+        UiManager.Instance.HandleHP(CurHP, MaxHP);
+        UiManager.Instance.EnableEventText("Heal", "+" + ((int)increase).ToString() + "HP");
     }
     public void Heal(float heal)
     {
         CurHP += heal;
         if (CurHP > MaxHP) CurHP = MaxHP;
-        UI_Container.Instance.HandleHP(CurHP, MaxHP);
-        UI_Container.Instance.EnableEventText("Heal", "+" + ((int)heal).ToString());
+        UiManager.Instance.HandleHP(CurHP, MaxHP);
+        UiManager.Instance.EnableEventText("Heal", "+" + ((int)heal).ToString());
     }
     public void TakeDamage(float damage)
     {
@@ -310,15 +310,15 @@ public class Player : MonoBehaviour
             if (isDashing)
             {
                 // 대쉬 시 모든 피격 무시
-                UI_Container.Instance.EnableEventText("Dodge", "회피!");
-                if (dodge_enable) UI_Container.Instance.AddPlayerBuff("Dodge", 3f);
+                UiManager.Instance.EnableEventText("Dodge", "회피!");
+                if (dodge_enable) UiManager.Instance.AddPlayerBuff("Dodge", 3f);
             }
             else
             {
                 // 데미지 무시가능한 경우
                 if (guard_enable && Time.time > lastDamageTime + 20f)
                 {
-                    UI_Container.Instance.AddPlayerBuff("Guard", 0f);
+                    UiManager.Instance.AddPlayerBuff("Guard", 0f);
                 }
                 else
                 {
@@ -342,7 +342,7 @@ public class Player : MonoBehaviour
                     // 데미지 표현
                     if (damage > 0f)
                     {
-                        UI_Container.Instance.EnableEventText("Damage", "-" + Mathf.RoundToInt(damage).ToString());
+                        UiManager.Instance.EnableEventText("Damage", "-" + Mathf.RoundToInt(damage).ToString());
                         // 피격 애니메이션
                         if (!playerAttack.isZAttacking && !playerAttack.isXAttacking && !animator.GetBool("IsJumping") && movementX == 0f)
                         {
@@ -366,7 +366,7 @@ public class Player : MonoBehaviour
                 lastDamageTime = Time.time;
             }
         }
-        UI_Container.Instance.HandleHP(CurHP, MaxHP);
+        UiManager.Instance.HandleHP(CurHP, MaxHP);
     }
     public void GetGold(int get_gold)
     {
@@ -374,8 +374,8 @@ public class Player : MonoBehaviour
         gold += get_gold;
         if (get_gold > 0)
         {
-            UI_Container.Instance.HandleGold(gold);
-            UI_Container.Instance.EnableEventText("Gold", "+" + get_gold.ToString() + "G");
+            UiManager.Instance.HandleGold(gold);
+            UiManager.Instance.EnableEventText("Gold", "+" + get_gold.ToString() + "G");
         }
     }
     public int CheckGold()
@@ -387,8 +387,8 @@ public class Player : MonoBehaviour
         gold -= price;
         if (price > 0)
         {
-            UI_Container.Instance.HandleGold(gold);
-            UI_Container.Instance.EnableEventText("Purchase", "-" + price.ToString() + "G");
+            UiManager.Instance.HandleGold(gold);
+            UiManager.Instance.EnableEventText("Purchase", "-" + price.ToString() + "G");
         }
     }
     private IEnumerator Damaging_Check()
@@ -426,7 +426,7 @@ public class Player : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezePositionX;
 
         // 사망 UI 출력
-        UI_Container.Instance.EnableDieUI();
+        UiManager.Instance.EnableDieUI();
 
         // 서펜트 어빌리티 비활성화
         var surpent = transform.Find("Serpent_Screw")?.gameObject;

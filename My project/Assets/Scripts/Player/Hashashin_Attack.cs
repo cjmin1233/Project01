@@ -75,7 +75,7 @@ public class Hashashin_Attack : PlayerAttack
         {
             // 게이지 소비 후 ui 반영
             curGauge -= reqGauge;
-            UI_Container.Instance.updateGauge(curGauge);
+            UiManager.Instance.updateGauge(curGauge);
 
             GameManager.Instance.playerFollowing = false;
             // 공격동안 움직임 제어
@@ -95,7 +95,7 @@ public class Hashashin_Attack : PlayerAttack
         }
         else
         {
-            UI_Container.Instance.EnableAlermText("게이지가 부족합니다.");
+            UiManager.Instance.EnableAlermText("게이지가 부족합니다.");
         }
     }
     private void Enable_Dagger_X_Collider()
@@ -112,7 +112,7 @@ public class Hashashin_Attack : PlayerAttack
     {
         curGauge += gauge;
         if (curGauge > maxGauge) curGauge = maxGauge;
-        UI_Container.Instance.updateGauge(curGauge);
+        UiManager.Instance.updateGauge(curGauge);
     }
     private void EnableCameraFollowing()
     {

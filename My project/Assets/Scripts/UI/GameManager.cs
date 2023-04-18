@@ -101,8 +101,8 @@ public class GameManager : MonoBehaviour
             if (fadeState == "clear")
             {
                 // 페이딩 없는 화면일 때
-                UI_Container.Instance.PopUpControl();
-                if (UI_Container.Instance.popup_ui_counter > 0) Time.timeScale = 0f;
+                UiManager.Instance.PopUpControl();
+                if (UiManager.Instance.popup_ui_counter > 0) Time.timeScale = 0f;
                 else if (bossFollowing) Time.timeScale = 0.3f;
                 else if (playerFollowing) Time.timeScale = 1f;
                 else Time.timeScale = 1f;
@@ -278,13 +278,13 @@ public class GameManager : MonoBehaviour
         if (!newGame)
         {
             // 이어하기인 경우 로그를 통해 어빌리티 데이터 복구
-            UI_Container.Instance.Data_Recovery();
+            UiManager.Instance.Data_Recovery();
         }
 
         isPlaying = true;
         Camera_Background_Container.SetActive(true);
-        StartCoroutine(UI_Container.Instance.FadeInStart());
-        StartCoroutine(UI_Container.Instance.StartSaving());
+        StartCoroutine(UiManager.Instance.FadeInStart());
+        StartCoroutine(UiManager.Instance.StartSaving());
 
         DataManager.Instance.data.weaponType = PlayerPrefs.GetInt("weaponType");
         DataManager.Instance.SaveGameData();
@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator TransportFlow(Vector3 dest, bool loadScene)
     {
         destination = dest;
-        StartCoroutine(UI_Container.Instance.FadeOutStart());
+        StartCoroutine(UiManager.Instance.FadeOutStart());
         // 페이드 완료시까지 대기
         yield return new WaitUntil(() => fadeState == "faded");
         isPlaying = false;
@@ -314,7 +314,7 @@ public class GameManager : MonoBehaviour
                     backgroundMover.SettingOrigin();
                 }
             }
-            StartCoroutine(UI_Container.Instance.FadeInStart());
+            StartCoroutine(UiManager.Instance.FadeInStart());
             isPlaying = true;
         }
 
@@ -339,13 +339,13 @@ public class GameManager : MonoBehaviour
                 backgroundMover.SettingOrigin();
             }
         }
-        StartCoroutine(UI_Container.Instance.FadeInStart());
+        StartCoroutine(UiManager.Instance.FadeInStart());
         isPlaying = true;
     }
     public IEnumerator GiveUpFlow()
     {
         // 페이드 완료시까지 대기
-        StartCoroutine(UI_Container.Instance.FadeOutStart());
+        StartCoroutine(UiManager.Instance.FadeOutStart());
         yield return new WaitUntil(() => fadeState == "faded");
 
         isPlaying = false;
@@ -365,7 +365,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator QuitGameFlow()
     {
         // 페이드 완료시까지 대기
-        StartCoroutine(UI_Container.Instance.FadeOutStart());
+        StartCoroutine(UiManager.Instance.FadeOutStart());
         yield return new WaitUntil(() => fadeState == "faded");
 
         isPlaying = false;
@@ -383,8 +383,8 @@ public class GameManager : MonoBehaviour
         // 화면 밝게
         Camera_Background_Container.SetActive(false);
         // base UI 비활성화
-        UI_Container.Instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        StartCoroutine(UI_Container.Instance.FadeInStart());
+        UiManager.Instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        StartCoroutine(UiManager.Instance.FadeInStart());
         yield return new WaitUntil(() => fadeState == "clear");
 
         ClearObjects();

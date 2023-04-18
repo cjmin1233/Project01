@@ -19,7 +19,7 @@ public class Shop_Item : MonoBehaviour
         {
             player = collision.gameObject;
             isPickUp = true;
-            UI_Container.Instance.EnablePurchaseText(price);
+            UiManager.Instance.EnablePurchaseText(price);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -27,7 +27,7 @@ public class Shop_Item : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             isPickUp = false;
-            UI_Container.Instance.DisablePurchaseText();
+            UiManager.Instance.DisablePurchaseText();
         }
     }
     private void Purchase()
@@ -41,7 +41,7 @@ public class Shop_Item : MonoBehaviour
             item.GetComponent<BoxCollider2D>().enabled = true;
 
         }
-        else UI_Container.Instance.EnableAlermText("골드가 부족합니다.");
+        else UiManager.Instance.EnableAlermText("골드가 부족합니다.");
     }
 
 }

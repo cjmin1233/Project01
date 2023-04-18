@@ -78,9 +78,9 @@ public class Knight_Attack : PlayerAttack
                     animator.SetBool("IsCharging", isCharging);
                     // 차징 바 비활성화
                     chargeAmount = 0f;
-                    UI_Container.Instance.DisableChargingBar();
+                    UiManager.Instance.DisableChargingBar();
                 }
-                UI_Container.Instance.UpdateChargingBar(chargeAmount);
+                UiManager.Instance.UpdateChargingBar(chargeAmount);
             }
         }
     }
@@ -97,7 +97,7 @@ public class Knight_Attack : PlayerAttack
             if (chargeCounter == 3)
             {
                 // 차징 바 비활성화
-                UI_Container.Instance.DisableChargingBar();
+                UiManager.Instance.DisableChargingBar();
             }
         }
     }
@@ -182,7 +182,7 @@ public class Knight_Attack : PlayerAttack
             animator.SetBool("IsCharging", isCharging);
             chargeCounter = 0;
             // 차징 바 활성화
-            UI_Container.Instance.EnableChargingBar();
+            UiManager.Instance.EnableChargingBar();
         }
         else animator.SetTrigger("AttackX");
 

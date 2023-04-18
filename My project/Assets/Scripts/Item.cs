@@ -27,14 +27,14 @@ public class Item : MonoBehaviour
         {
             Player = collision.gameObject;
             isPickUp = true;
-            UI_Container.Instance.EnableToggleText(itemIndex);
+            UiManager.Instance.EnableToggleText(itemIndex);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            UI_Container.Instance.DisableToggleText(itemIndex);
+            UiManager.Instance.DisableToggleText(itemIndex);
             isPickUp = false;
         }
     }
@@ -42,7 +42,7 @@ public class Item : MonoBehaviour
     {
         if (CompareTag("Book"))
         {
-            if (UI_Container.Instance.GetRandomAbility()) Destroy(gameObject);
+            if (UiManager.Instance.GetRandomAbility()) Destroy(gameObject);
         }
         else if (CompareTag("Potion"))
         {
@@ -51,7 +51,7 @@ public class Item : MonoBehaviour
         }
         else if (CompareTag("Upgrade"))
         {
-            if (UI_Container.Instance.UpgradeRandomAbility()) Destroy(gameObject);
+            if (UiManager.Instance.UpgradeRandomAbility()) Destroy(gameObject);
         }
         else if (CompareTag("Chest"))
         {

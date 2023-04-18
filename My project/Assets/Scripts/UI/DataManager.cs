@@ -48,7 +48,7 @@ public class DataManager : MonoBehaviour
         data.maxHP = player.GetComponent<Player>().MaxHP;
         data.gold = player.GetComponent<Player>().CheckGold();
         data.sceneNumber = SceneManager.GetActiveScene().buildIndex;
-        UI_Container.Instance.SaveSelectLog();
+        UiManager.Instance.SaveSelectLog();
 
         string ToJsonData = JsonUtility.ToJson(data, true);
         string filePath = Application.persistentDataPath + "/" + GameDataFileName;
@@ -56,6 +56,6 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(filePath, ToJsonData);
 
         print("저장 완료");
-        UI_Container.Instance.saveDone = true;
+        UiManager.Instance.saveDone = true;
     }
 }

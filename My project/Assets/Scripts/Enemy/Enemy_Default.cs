@@ -67,7 +67,7 @@ public class Enemy_Default : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         if (maxHP > 0) curHP = maxHP;
-        healthbar = UI_Container.Instance.GetFromEnemySliderPool();
+        healthbar = UiManager.Instance.GetFromEnemySliderPool();
         healthbar.GetComponent<Enemy_Healthbar>().SetHealth(curHP, maxHP);
         debuff_container = healthbar.transform.Find("Debuff_Container").gameObject;
 
@@ -237,7 +237,7 @@ public class Enemy_Default : MonoBehaviour
         player.GetComponent<Player>().GetGold(Random.Range(Mathf.RoundToInt(0.5f * gold), gold));
 
         // Ã¼·Â¹Ù ¹Ý³³
-        UI_Container.Instance.AddToEnemySliderPool(healthbar);
+        UiManager.Instance.AddToEnemySliderPool(healthbar);
     }
     public virtual void Eliminate()
     {
@@ -247,7 +247,7 @@ public class Enemy_Default : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         // Ã¼·Â¹Ù ¹Ý³³
-        UI_Container.Instance.AddToEnemySliderPool(healthbar);
+        UiManager.Instance.AddToEnemySliderPool(healthbar);
     }
     private void BackStep()
     {
