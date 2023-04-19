@@ -31,17 +31,16 @@ public class SettingsMenu : MonoBehaviour
     public GameObject LoadButton;
 
     [SerializeField] private GameObject Fade_UI;
-
     private void Start()
     {
         #region 초기 옵션 세팅
         fullScreenToggle.isOn = Screen.fullScreen;
 
-        if (!PlayerPrefs.HasKey("MasterVolume")) PlayerPrefs.SetFloat("MasterVolume", 1f);
+        if (!PlayerPrefs.HasKey("MasterVolume")) SetMasterVolume(1f);
         MasterAudioSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-        if (!PlayerPrefs.HasKey("BgmVolume")) PlayerPrefs.SetFloat("BgmVolume", 0.75f);
+        if (!PlayerPrefs.HasKey("BgmVolume")) SetBgmVolume(1f);
         BgmAudioSlider.value = PlayerPrefs.GetFloat("BgmVolume");
-        if (!PlayerPrefs.HasKey("EffectVolume")) PlayerPrefs.SetFloat("EffectVolume", 0.75f);
+        if (!PlayerPrefs.HasKey("EffectVolume")) SetEffectVolume(1f);
         EffectAudioSlider.value = PlayerPrefs.GetFloat("EffectVolume");
 
         availableResolutions = new List<Resolution>();
@@ -128,7 +127,6 @@ public class SettingsMenu : MonoBehaviour
     }*/
     public void PlayGame(int selected)
     {
-        //GameManager.Instance.PlayGame(selected);
         StartCoroutine(FadeFlow(selected));
     }
     public void CloseGame()

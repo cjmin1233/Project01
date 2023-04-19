@@ -80,7 +80,6 @@ public class Player : MonoBehaviour
             Data gameData = DataManager.Instance.data;
             MaxHP = gameData.maxHP;
             CurHP = gameData.curHP;
-            Debug.Log("hp is : " + MaxHP.ToString() + ", " + CurHP.ToString());
             gold = gameData.gold;
         }
         else
