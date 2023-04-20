@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int loadingType;
 
     // 페이드인 효과, 로딩화면
-    [HideInInspector] public string fadeState;
+    [SerializeField] public string fadeState;
     private Vector3 destination;
 
     // 서펜트 스크류
@@ -399,5 +399,25 @@ public class GameManager : MonoBehaviour
             screw.transform.position = player.GetComponent<BoxCollider2D>().bounds.center;
             screw.transform.localScale = new Vector3(1f, 1f, 1f);
         }
+    }
+    public IEnumerator GameClearFlow()
+    {
+        bossFollowing = false;
+        Time.timeScale = 1f;
+        // 페이드 완료시까지 대기
+        StartCoroutine(UiManager.Instance.FadeOutStart());
+        yield return new WaitUntil(() => fadeState == "faded");
+        isPlaying = false;
+        MainCamera.transform.position = new Vector3(0f, 0f, -10f);
+        MainCamera.GetComponent<Camera>().orthographicSize = 5f;
+
+        yield return StartCoroutine(UiManager.Instance.WritingEnding());
+
+        // 포기한 상태로 표시
+        DataManager.Instance.data.weaponType = -1;
+        DataManager.Instance.SaveGameData();
+
+        // 로딩씬 호출
+        LoadingSceneController.LoadScene(0, 2);
     }
 }

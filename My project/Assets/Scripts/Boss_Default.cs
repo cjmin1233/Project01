@@ -207,9 +207,10 @@ public class Boss_Default : Enemy_Default
     }
     private void Die_Fin()
     {
-        GameManager.Instance.bossFollowing = false;
-        boss_healthbar.SetActive(false);
+        //GameManager.Instance.bossFollowing = false;
+        //boss_healthbar.SetActive(false);
+        StartCoroutine(GameManager.Instance.GameClearFlow());
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

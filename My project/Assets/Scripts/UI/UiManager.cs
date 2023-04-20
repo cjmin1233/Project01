@@ -96,6 +96,9 @@ public class UiManager : MonoBehaviour
 
     // 차징 바
     [SerializeField] private GameObject ChargingBar;
+
+    // 게임 클리어 UI
+    [SerializeField] private GameObject GameClearText_UI;
     private void OnEnable()
     {
         Instance = this;
@@ -784,5 +787,32 @@ public class UiManager : MonoBehaviour
     public void DisableChargingBar()
     {
         ChargingBar.GetComponent<Animator>().SetBool("IsEnabled",false);
+    }
+    /*public void UpdateGameClearText(string text)
+    {
+        if (!GameClearText.gameObject.activeSelf) GameClearText.gameObject.SetActive(true);
+        GameClearText.text = text;
+    }
+    public void DisableGameClearText()
+    {
+        GameClearText.GetComponent<Animator>().SetTrigger("Disable");
+    }*/
+    public IEnumerator WritingEnding()
+    {
+        GameClearText_UI.SetActive(true);
+        string game_clear_text = "-Chapter 1: 어둠의 숲 클리어-\n\n" +
+            "다음 챕터는 개발중입니다...\n\n" +
+            "플레이해주셔서 감사합니다:D\n\n" +
+            "2017312262 차정민";
+        TextMeshProUGUI textMeshPro = GameClearText_UI.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        textMeshPro.GetComponent<Animator>().SetBool("Enable", true);
+        while (textMeshPro.text.Length < game_clear_text.Length)
+        {
+            textMeshPro.text += game_clear_text[textMeshPro.text.Length];
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+        textMeshPro.GetComponent<Animator>().SetBool("Enable", false);
+        yield return new WaitUntil(() => textMeshPro.color.a == 0f);
+        GameClearText_UI.SetActive(false);
     }
 }
