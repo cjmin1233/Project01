@@ -155,7 +155,7 @@ public class Knight_Attack : PlayerAttack
         if (sword_critical_enable)
         {
             int rand = Random.Range(1, 101);
-            if (rand <= 100)
+            if (rand <= 40)
             {
                 Sword_Collider_X.GetComponent<Combo_Collider>().critical = true;
                 damage *= 1.5f;

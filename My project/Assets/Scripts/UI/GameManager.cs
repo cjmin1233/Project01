@@ -404,6 +404,7 @@ public class GameManager : MonoBehaviour
     {
         bossFollowing = false;
         Time.timeScale = 1f;
+        yield return new WaitForSecondsRealtime(2f);
         // 페이드 완료시까지 대기
         StartCoroutine(UiManager.Instance.FadeOutStart());
         yield return new WaitUntil(() => fadeState == "faded");
